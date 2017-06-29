@@ -1,6 +1,14 @@
+import _ from 'lodash'
+import geolib from 'geolib'
 import moment from 'moment'
 
 import {parsePrice} from 'src/cost_utils.js'
+
+import countries from 'src/data/countries.csv'
+import regions from 'src/data/french-regions.csv'
+
+const COUNTRY_MAP = _.keyBy(countries, 'short_name')
+const REGION_MAP = _.keyBy(regions, 'region')
 
 export const CODE_ANY = '__choice_any__'
 export const FRANCE = 'France'
@@ -32,24 +40,42 @@ export const DURATIONS = {
   [DURATION_MORE_3_DAYS]: 'Plus de 3 jours',
 }
 
+export const AVAILABLE_DISTANCES = {
+  10: '10km',
+  50: '50km',
+  250: '250km',
+  500: '500km',
+}
+
+export const ANY_DISTANCE = 'Partout'
 
 function parseLocation (rawLocation) {
-  let region = null
   let country = null
-  try {
-    region = parseInt(rawLocation, 10)
-    if (isNaN(region)) throw new Error('region was NaN')
-    region = '' + region
-    country = FRANCE  // FIXME(vperron): Get an actual country list FFS, with ISO country codes
-  } catch (exc) {
+  let lat = null
+  let lng = null
+
+  let region = parseInt(rawLocation, 10)
+  if (isNaN(region)) {
     if (rawLocation && rawLocation !== '') {
       region = 'N/A'
       country = rawLocation  // safe bet as of now
+      if (!(country in COUNTRY_MAP)) throw new Error(country + ' is not a registered country!')
+      const entry = COUNTRY_MAP[country]
+      lat = entry.lat
+      lng = entry.lng
     } else {
       throw new Error(`location '${rawLocation}' was not parseable`)
     }
+  } else {
+    region = '' + region
+    country = FRANCE  // FIXME(vperron): Get an actual country list FFS, with ISO country codes
+    if (!(region in REGION_MAP)) throw new Error(region + ' is not a registered region!')
+    const entry = REGION_MAP[region]
+    lat = entry.lat
+    lng = entry.lng
   }
-  return {region, country}
+
+  return {region, country, lat, lng}
 }
 
 
@@ -84,6 +110,7 @@ function lineToDict (line) {
   }, {})
 }
 
+
 function LarpModel (raw, id) {
 
   const price = parsePrice(raw.raw_cost)
@@ -94,20 +121,20 @@ function LarpModel (raw, id) {
     npc_price = parsePrice(raw.raw_npc_cost)
   }
 
-
-  const {country, region} = parseLocation(raw.raw_location)
+  const {country, region, lat, lng} = parseLocation(raw.raw_location)
 
   const start = parseMoment(raw.raw_start)
   const duration = parseDuration(raw.raw_duration)
   const end = start.clone().add(duration, 'days')
 
-  return {
+  const model = {
     id: id,  // just there for the 'for' key
     name: raw.name,
     organization: raw.organization,
-    description: raw.description,
+    description: raw.description || 'No description :(',
     url: raw.url,
     cost: price.amount,
+    readable_cost: `${Math.round(price.amount / 100)}${price.symbol}`,  // better include that in Price model
     currency: price.currency,
     npc_cost: npc_price.amount,
     start: start,
@@ -115,9 +142,22 @@ function LarpModel (raw, id) {
     duration: duration,
     country: country,
     region: region,
-    address: raw.address,
+    address: raw.address || `${country}, ${region}`,
     comment: raw.comment,
+    lat: lat,
+    lng: lng,
+    distance: null,
+
+    computeDistance: (lat, lng) => {
+      model.distance = Math.round(geolib.getDistance(
+        {latitude: lat, longitude: lng},
+        {latitude: model.lat, longitude: model.lng},
+        1000,  // 1km accuracy
+      ) / 1000.0)  // get the distance in kilometers
+    },
   }
+
+  return model
 }
 
 export function transformRawData (raw) {

@@ -1,123 +1,138 @@
-/* global gapi */
-
 import _ from 'lodash'
 import moment from 'moment'
 
-import 'bootstrap'
-import 'bootstrap/dist/css/bootstrap.css'
-
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Vuetify from 'vuetify'
 
-import headerImg from 'src/logo.png'
 import 'src/styles.css'
 
 import * as models from './models'
 import * as url from './url_utils'
 
-// We have to also import the root element to have it precompiled. Yep.
+import bus from './msgbus'
+
+import {
+  getPlaceDetails,
+  getGoogleSheetsData,
+} from './services/google'
+
 import rootComponent from './components/root.vue'
-import btnItem from './components/btn-item.vue'
-import dropdownItem from './components/dropdown-item.vue'
-import larpLine from './components/larp_line.vue'
 
 const API_KEY = 'AIzaSyCDjYyOPVtg43sXCTvJtdHtlJySKa4EN0I'
-const DISCOVERY_DOCS = ['https://sheets.googleapis.com/$discovery/rest?version=v4']
 const SPREADSHEET_ID = '1zQZM5nrsHXLO74MXa7EBnL4aUiJe6BhSvIRWWbRtDNc'
 const SPREADSHEET_RANGE = 'PROCHAINS GNs FRANCE'
 
-document.getElementById('headerImg').src = headerImg
-
 Vue.use(Vuex)
+Vue.use(Vuetify)
 
 moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
 
 const store = new Vuex.Store({
   state: {
-    month: null,
-    duration: null,
-    country: models.CODE_ANY,
-    region: models.CODE_ANY,
-    filter: null,
+    startDate: null,
+    endDate: null,
+    placeName: null,
+    maxDistance: null,
+    sortKey: 'start',
+    rawLarps: [],
   },
   mutations: {
-    setMonth (state, value) {
-      state.month = value
+    init (state, value) {
+      state.rawLarps = value
     },
-    setDuration (state, value) {
-      state.duration = value
+    initDistances (state, {lat, lng}) {
+      state.rawLarps.forEach((larp) => larp.computeDistance(lat, lng))
     },
-    setCountry (state, value) {
-      state.country = value
+    setMaxDistance (state, value) {
+      state.maxDistance = value
     },
-    setRegion (state, value) {
-      state.region = value
+    setStartDate (state, value) {
+      state.startDate = value
     },
-    setFilter (state, value) {
-      state.filter = value
+    setEndDate (state, value) {
+      state.endDate = value
+    },
+    setPlaceName (state, value) {
+      state.placeName = value
+    },
+    setSortKey (state, value) {
+      state.sortKey = value
     },
   },
 })
 
-const app = new Vue({  // eslint-disable-line no-new
-  el: '#content',
-  store,
-  ...rootComponent,
-  mounted: function () {
-    console.log('component root was mounted')
-  },
-  methods: {
-    updateFilter: _.debounce(function (e) {
-      const value = e.target.value !== '' ? e.target.value.toLowerCase() : null
-      this.$store.commit('setFilter', value)
-    }, 250),
-    updateUrl: function ({type, code}) {
-      switch (type) {
-        case 'country':
-        case 'region':
-          if (code === models.CODE_ANY) {
-            url.updateParamsWith(type, undefined)
-          } else {
-            url.updateParamsWith(type, code)
-          }
-          break
-        case 'month':
-        case 'duration':
-          url.updateParamsWith(type, code, true)
-      }
-      updateApplication()
-    },
-  },
-  components: {
-    'btn-item': btnItem,
-    'dropdown-item': dropdownItem,
-    'larp-line': larpLine,
+function distanceChanged (distance) {
+  url.updateParamsWith('distance', distance)
+  store.commit('setMaxDistance', distance)
+}
+
+function dateRangeChanged (dateRange) {
+  url.updateParamsWith('start', dateRange[0].format('YYYY-MM'))
+  url.updateParamsWith('end', dateRange[1].format('YYYY-MM'))
+  store.commit('setStartDate', dateRange[0])
+  store.commit('setEndDate', dateRange[1])
+}
+
+function placeChanged (place) {
+  url.updateParamsWith('place', place.place_id)
+  const lat = place.geometry.location.lat()
+  const lng = place.geometry.location.lng()
+  store.commit('initDistances', {lat, lng})
+}
+
+function sortChanged (key) {
+  url.updateParamsWith('sortBy', key)
+  store.commit('setSortKey', key)
+}
+
+async function bootstrapApplication () {
+  let rawLarps = []
+  if (process.env.NODE_ENV !== 'production') {
+    rawLarps = models.transformRawData(require('src/data.json'))
+  } else {
+    const sheetData = await getGoogleSheetsData(API_KEY, SPREADSHEET_ID, SPREADSHEET_RANGE)
+    rawLarps = models.transformRawData(sheetData)
   }
-})
 
-function updateApplication () {
-  store.commit('setMonth', url.getMonth())
-  store.commit('setDuration', url.getDuration())
-  store.commit('setCountry', url.getCountry() || models.CODE_ANY)
-  store.commit('setRegion', url.getRegion() || models.CODE_ANY)
-}
+  // TODO: Validate the parameters and void them if invalid
+  store.commit('setStartDate', url.getMomentParam('start'))
+  store.commit('setEndDate', url.getMomentParam('end'))
+  store.commit('setSortKey', url.getStringParam('sortBy'))
 
-async function appStart () {
-  await gapi.client.init({
-    discoveryDocs: DISCOVERY_DOCS,
-    apiKey: API_KEY,
+  const maxDistance = parseInt(url.getStringParam('distance'), 10)
+  const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
+  if (maxDistance && !_.isNaN(maxDistance) && allowedValues.includes(maxDistance)) {
+    store.commit('setMaxDistance', maxDistance)
+  } else {
+    url.updateParamsWith('distance', null)
+  }
+
+  new Vue({  // eslint-disable-line no-new
+    el: '#content',
+    store,
+    ...rootComponent,
   })
-  const {result} = await gapi.client.sheets.spreadsheets.values.get({
-    spreadsheetId: SPREADSHEET_ID,
-    range: SPREADSHEET_RANGE,
-  })
-  app.rawLarps = models.transformRawData(result.values)
-  updateApplication()
+
+  const placeId = url.getStringParam('place')
+  if (placeId) {
+    try {
+      const place = await getPlaceDetails(placeId)
+      store.commit('setPlaceName', place.formatted_address)
+      const lat = place.geometry.location.lat()
+      const lng = place.geometry.location.lng()
+      rawLarps.forEach((larp) => larp.computeDistance(lat, lng))
+    } catch (err) {
+      console.warn('Place not found for id: ', placeId)
+    }
+  }
+
+  store.commit('init', rawLarps)
+
+  bus.$on('date_range_changed', dateRangeChanged)
+  bus.$on('distance_changed', distanceChanged)
+  bus.$on('place_changed', placeChanged)
+  bus.$on('sort_changed', sortChanged)
 }
 
-if (process.env.NODE_ENV !== 'production') {
-  app.rawLarps = models.transformRawData(require('src/data.json'))
-  updateApplication()
-} else {
-  gapi.load('client', appStart)
-}
+bootstrapApplication()

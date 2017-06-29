@@ -1,7 +1,6 @@
 const webpack = require('webpack')
 const webpackDefaults = require('systematic').webpack_get_defaults(__dirname)
 
-webpackDefaults.module.rules.push({ test: /\.vue$/, loader: 'vue-loader' })
 webpackDefaults.module.rules.push({ test: /\.csv$/, loader: 'dsv-loader' })
 
 webpackDefaults.plugins.push(

@@ -3,7 +3,7 @@ const CURRENCY_EURO = 'EUR'
 const DEFAULT_CURRENCY = CURRENCY_EURO
 
 const CURRENCY_SYMBOLS = {
-  CURRENCY_EURO: '€',
+  [CURRENCY_EURO]: '€',
 }
 
 export function parsePrice (rawPrice) {
@@ -12,6 +12,7 @@ export function parsePrice (rawPrice) {
       // FIXME(vperron): Nope, if cost is ? it should not be 0 :)
       amount: 0,  // cents
       currency: DEFAULT_CURRENCY,
+      symbol: CURRENCY_SYMBOLS[DEFAULT_CURRENCY],
     }
   }
 
@@ -24,5 +25,6 @@ export function parsePrice (rawPrice) {
       symbol: symbol,
     }
   }
+  // throw new Error(`the price '${rawPrice}' was not parseable`)
   throw new Error(`the price '${rawPrice}' was not parseable`)
 }

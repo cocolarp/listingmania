@@ -1,5 +1,4 @@
-/* global moment */
-
+import moment from 'moment'
 import queryString from 'query-string'
 
 function parseUri (uri) {
@@ -30,10 +29,20 @@ function getQueryParam (key, dflt = null) {
   return dflt
 }
 
-function getStringParam (key) {
+export function getStringParam (key) {
   const value = getQueryParam(key)
   if (value && value !== '') return value
   return null
+}
+
+export function getMomentParam (key) {
+  const value = getStringParam(key)
+  if (value) {
+    const m = moment(value)
+    if (m.isValid()) {
+      return m
+    }
+  }
 }
 
 export function updateParamsWith (key, value, toggle = false) {
@@ -45,25 +54,4 @@ export function updateParamsWith (key, value, toggle = false) {
   }
   const stringParams = queryString.stringify(urlParams, {encode: false})
   history.pushState(null, '', `?${stringParams}`)
-}
-
-export function getIsFree () {
-  const isFree = getQueryParam('is_free')
-  return isFree == 'true'  // eslint-disable-line eqeqeq
-}
-
-export function getMonth () {
-  return getStringParam('month')
-}
-
-export function getDuration () {
-  return getStringParam('duration')
-}
-
-export function getCountry () {
-  return getStringParam('country')
-}
-
-export function getRegion () {
-  return getStringParam('region')
 }
