@@ -3,14 +3,14 @@ const webpackDefaults = require('systematic').webpack_get_defaults(__dirname)
 
 webpackDefaults.module.rules.push({ test: /\.csv$/, loader: 'dsv-loader' })
 
+function getOr (x, dflt = null) {
+  return x ? JSON.stringify(x) : dflt
+}
+
 webpackDefaults.plugins.push(
-  // For Bootstrap to work
-  new webpack.ProvidePlugin({
-    $: "jquery",
-    jQuery: "jquery"
-  }),
-  // Selected locales in momentJS
-  new webpack.ContextReplacementPlugin(/moment[\\/]locale$/, /^\.\/(fr)$/)
+  new webpack.DefinePlugin({
+    BACKENT_URL: getOr(process.env.BACKENT_URL),
+  })
 )
 
 module.exports = webpackDefaults

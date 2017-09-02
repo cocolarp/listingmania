@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import _ from 'lodash'
+import sortby from 'lodash.sortby'
 import { mapState } from 'vuex'
 
 import headerImg from 'src/logo.png'  // OMG is ugly
@@ -48,7 +48,7 @@ export default {
         if (state.endDate) larps = larps.filter((d) => d.end.isBefore(state.endDate))
         if (state.maxDistance) larps = larps.filter((d) => d.distance <= state.maxDistance)
 
-        return _.sortBy(larps, state.sortKey)
+        return sortby(larps, state.sortKey)
       },
     }),
   },

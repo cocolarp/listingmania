@@ -1,3 +1,5 @@
+export BACKENT_URL
+
 include node_modules/systematic/mk/main.mk
 
 PACKAGE_VERSION ?= $(call read_package,version)

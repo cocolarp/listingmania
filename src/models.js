@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import keyby from 'lodash.keyby'
 import geolib from 'geolib'
 import moment from 'moment'
 
@@ -7,8 +7,8 @@ import {parsePrice} from 'src/cost_utils.js'
 import countries from 'src/data/countries.csv'
 import regions from 'src/data/french-regions.csv'
 
-const COUNTRY_MAP = _.keyBy(countries, 'short_name')
-const REGION_MAP = _.keyBy(regions, 'region')
+const COUNTRY_MAP = keyby(countries, 'short_name')
+const REGION_MAP = keyby(regions, 'region')
 
 export const CODE_ANY = '__choice_any__'
 export const FRANCE = 'France'
@@ -111,7 +111,7 @@ function lineToDict (line) {
 }
 
 
-function LarpModel (raw, id) {
+function SheetLarpModel (raw, id) {
 
   const price = parsePrice(raw.raw_cost)
   let npc_price = null
@@ -168,12 +168,59 @@ export function transformRawData (raw) {
   const larps = []
   for (const rawLarp of raw.map(lineToDict)) {
     try {
-      larps.push(LarpModel(rawLarp, i))
+      larps.push(SheetLarpModel(rawLarp, i))
     } catch (err) {
       console.warn(`parsing larp data for ${rawLarp.name} failed: ${err}`)
     }
     i += 1
   }
 
+  return larps.sort((a, b) => a.start - b.start)
+}
+
+
+function BackentLarpModel (raw) {
+
+
+  const start = moment(raw.start)
+  const end = moment(raw.end)
+  const duration = moment.duration(end.diff(start, 'days')).humanize()
+
+  return {
+    id: raw.slug,
+    name: raw.name,
+    organization: raw.organization,
+    location: raw.location,
+    description: raw.description || 'No description :(',
+    url: raw.external_url,
+    cost: raw.price,
+    readable_cost: `${Math.round(raw.price / 100)}€`,  // TODO: use org currency
+    start: start,
+    end: end,
+    duration: duration,
+    address: raw.address,  // nope, location :(
+    lat: raw.lat,
+    lng: raw.lng,
+    distance: null,
+
+    computeDistance: (lat, lng) => {
+      model.distance = Math.round(geolib.getDistance(
+        {latitude: lat, longitude: lng},
+        {latitude: model.lat, longitude: model.lng},
+        1000,  // 1km accuracy
+      ) / 1000.0)  // get the distance in kilometers
+    },
+  }
+}
+
+
+export function transformBackentData (rawCollection) {
+  const larps = rawCollection.map((rawLarp) => {
+    try {
+      return BackentLarpModel(rawLarp)
+    } catch (err) {
+      console.warn(`parsing larp data for ${rawLarp.name} failed: ${err}`)
+    }
+  })
   return larps.sort((a, b) => a.start - b.start)
 }

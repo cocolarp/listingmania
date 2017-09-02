@@ -1,4 +1,6 @@
-import _ from 'lodash'
+/* global BACKENT_URL */
+
+import isnan from 'lodash.isnan'
 import moment from 'moment'
 
 import Vue from 'vue'
@@ -16,6 +18,8 @@ import {
   getPlaceDetails,
   getGoogleSheetsData,
 } from './services/google'
+
+import {client} from './services/backent'
 
 import rootComponent from './components/root.vue'
 
@@ -88,12 +92,17 @@ function sortChanged (key) {
 
 async function bootstrapApplication () {
   let rawLarps = []
-  if (process.env.NODE_ENV !== 'production') {
+  if (BACKENT_URL) {
+    client.init(BACKENT_URL)
+    const clientData = await client.getEvents()
+    rawLarps = models.transformBackentData(clientData)
+  } else if (process.env.NODE_ENV !== 'production') {
     rawLarps = models.transformRawData(require('src/data.json'))
   } else {
     const sheetData = await getGoogleSheetsData(API_KEY, SPREADSHEET_ID, SPREADSHEET_RANGE)
     rawLarps = models.transformRawData(sheetData)
   }
+
 
   // TODO: Validate the parameters and void them if invalid
   store.commit('setStartDate', url.getMomentParam('start'))
@@ -102,11 +111,13 @@ async function bootstrapApplication () {
 
   const maxDistance = parseInt(url.getStringParam('distance'), 10)
   const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
-  if (maxDistance && !_.isNaN(maxDistance) && allowedValues.includes(maxDistance)) {
+  if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
     store.commit('setMaxDistance', maxDistance)
   } else {
     url.updateParamsWith('distance', null)
   }
+
+  store.commit('init', rawLarps)
 
   new Vue({  // eslint-disable-line no-new
     el: '#content',
@@ -126,8 +137,6 @@ async function bootstrapApplication () {
       console.warn('Place not found for id: ', placeId)
     }
   }
-
-  store.commit('init', rawLarps)
 
   bus.$on('date_range_changed', dateRangeChanged)
   bus.$on('distance_changed', distanceChanged)

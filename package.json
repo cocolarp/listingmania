@@ -15,13 +15,14 @@
     "moment": "^2.18.1",
     "query-string": "^5.0.0",
     "vue": "^2.3.4",
-    "vue-slider-component": "^2.3.3",
+    "vue-slider-component": "^2.3.9",
     "vuetify": "^0.14.8",
     "vuex": "^2.3.1"
   },
   "devDependencies": {
     "dsv-loader": "^2.0.0",
     "karma": "^1.7.0",
+    "source-map-loader": "git+https://github.com/vperron/source-map-loader.git#2154a7fd0368839a88ac372e509790c218f339f3",
     "systematic": "1.7.1",
     "vue-template-compiler": "^2.3.4"
   },
