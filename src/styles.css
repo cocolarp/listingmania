@@ -16,8 +16,9 @@ label {
 }
 
 .vue-slider {
-  margin: 0px 1rem;
+  margin: 1.2rem 1rem 0px 1rem;
 }
+
 .vue-slider-wrap {
   margin-top: 1.2rem;
 }

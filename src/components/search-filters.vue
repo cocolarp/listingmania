@@ -30,12 +30,6 @@
       </v-flex>
     </v-layout>
 
-    <v-layout row wrap>
-      <v-flex xs12 class="text-xs-center">
-        <v-btn class="blue-grey lighten-4" light info>Chercher mon prochain GN</v-btn>
-      </v-flex>
-    </v-layout>
-
   </v-container>
 </v-card>
 </template>

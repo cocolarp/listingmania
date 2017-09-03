@@ -98,7 +98,13 @@ async function bootstrapApplication () {
   // TODO: Validate the parameters and void them if invalid
   store.commit('setStartDate', url.getMomentParam('start'))
   store.commit('setEndDate', url.getMomentParam('end'))
-  store.commit('setSortKey', url.getStringParam('sortBy'))
+
+  const sortKey = url.getStringParam('sortBy')
+  if (!sortKey) {
+    sortChanged('start')
+  } else {
+    store.commit('setSortKey', sortKey)
+  }
 
   const maxDistance = parseInt(url.getStringParam('distance'), 10)
   const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
