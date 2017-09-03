@@ -3,33 +3,31 @@
   <v-flex xs12>
     <v-subheader style="display:block;">
       Trier par...
-      <v-btn-toggle @change="sortChanged" class="ml-2" v-bind:items="toggle_text" v-model="toggle_exclusive"></v-btn-toggle>
+      <v-btn-toggle class="ml-2" v-model="currentBtn">
+        <v-btn flat>Date</v-btn>
+        <v-btn flat>Prix</v-btn>
+        <v-btn flat>Distance</v-btn>
+      </v-btn-toggle>
     </v-subheader>
   </v-flex>
 </v-layout>
 </template>
 
 <script>
-import {mapState} from 'vuex'
 import bus from 'src/msgbus'
 
+const SORT_KEYS = ['start', 'cost', 'distance']
+
 export default {
-  methods: {
-    sortChanged: function (value) {
-      bus.$emit('sort_changed', value)
+  computed: {
+    currentBtn: {
+      get: function () {
+        return SORT_KEYS.indexOf(this.$store.state.sortKey)
+      },
+      set: function (newValue) {
+        bus.$emit('sort_changed', SORT_KEYS[newValue])
+      },
     },
-  },
-  computed: mapState({
-    toggle_exclusive: 'sortKey',
-  }),
-  data () {
-    return {
-      toggle_text: [
-        { text: 'Date', value: 'start' },
-        { text: 'Prix', value: 'cost' },
-        { text: 'Distance', value: 'distance' },
-      ],
-    }
   },
 }
 </script>

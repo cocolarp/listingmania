@@ -10,7 +10,6 @@ export const AVAILABLE_DISTANCES = {
 
 const CURRENCY_EUR = 'EUR'
 const CURRENCY_USD = 'USD'
-const DEFAULT_CURRENCY = CURRENCY_EUR
 const CURRENCY_SYMBOLS = {
   [CURRENCY_EUR]: '€',
   [CURRENCY_USD]: '$',
