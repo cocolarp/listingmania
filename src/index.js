@@ -16,16 +16,11 @@ import bus from './msgbus'
 
 import {
   getPlaceDetails,
-  getGoogleSheetsData,
 } from './services/google'
 
 import {client} from './services/backent'
 
 import rootComponent from './components/root.vue'
-
-const API_KEY = 'AIzaSyCDjYyOPVtg43sXCTvJtdHtlJySKa4EN0I'
-const SPREADSHEET_ID = '1zQZM5nrsHXLO74MXa7EBnL4aUiJe6BhSvIRWWbRtDNc'
-const SPREADSHEET_RANGE = 'PROCHAINS GNs FRANCE'
 
 Vue.use(Vuex)
 Vue.use(Vuetify)
@@ -96,13 +91,9 @@ async function bootstrapApplication () {
     client.init(BACKENT_URL)
     const clientData = await client.getEvents()
     rawLarps = models.transformBackentData(clientData)
-  } else if (process.env.NODE_ENV !== 'production') {
-    rawLarps = models.transformRawData(require('src/data.json'))
   } else {
-    const sheetData = await getGoogleSheetsData(API_KEY, SPREADSHEET_ID, SPREADSHEET_RANGE)
-    rawLarps = models.transformRawData(sheetData)
+    rawLarps = models.transformRawData(require('src/data.json'))
   }
-
 
   // TODO: Validate the parameters and void them if invalid
   store.commit('setStartDate', url.getMomentParam('start'))
