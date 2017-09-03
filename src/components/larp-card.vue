@@ -18,7 +18,7 @@
           <v-container fill-height fluid>
             <v-layout fill-height>
               <v-flex xs12 align-end flexbox>
-                <span>{{ description }}</span>
+                <span>{{ summary }}</span>
               </v-flex>
             </v-layout>
           </v-container>
@@ -72,7 +72,7 @@ export default {
       required: true,
       validator: notEmpty,
     },
-    description: {
+    summary: {
       type: String,
       required: true,
       validator: notEmpty,

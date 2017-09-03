@@ -10,5 +10,5 @@ export const client = {
   },
   getEvents: function () {
     return basicXhr(urljoin(baseUrl, 'api/events/'))
-  }
+  },
 }

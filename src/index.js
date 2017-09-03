@@ -87,12 +87,11 @@ function sortChanged (key) {
 
 async function bootstrapApplication () {
   let rawLarps = []
+
   if (BACKENT_URL) {
     client.init(BACKENT_URL)
-    const clientData = await client.getEvents()
-    rawLarps = models.transformBackentData(clientData)
-  } else {
-    rawLarps = models.transformRawData(require('src/data.json'))
+    const events = await client.getEvents()
+    rawLarps = models.transformBackentData(events)
   }
 
   // TODO: Validate the parameters and void them if invalid

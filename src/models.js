@@ -8,30 +8,38 @@ export const AVAILABLE_DISTANCES = {
   500: '500km',
 }
 
+const CURRENCY_EUR = 'EUR'
+const CURRENCY_USD = 'USD'
+const DEFAULT_CURRENCY = CURRENCY_EUR
+const CURRENCY_SYMBOLS = {
+  [CURRENCY_EUR]: '€',
+  [CURRENCY_USD]: '$',
+}
+
 export const ANY_DISTANCE = 'Partout'
 
-
-function BackentLarpModel (raw) {
+function BackentEvent (raw) {
   const start = moment(raw.start)
   const end = moment(raw.end)
   const duration = moment.duration(end.diff(start, 'days')).humanize()
 
-  return {
+  const currency = raw.organization.currency
+
+  const model = {
     id: raw.slug,
     name: raw.name,
-    organization: raw.organization,
-    location: raw.location,
+    organization: raw.organization.name,
     summary: raw.summary,
     description: raw.description,
     url: raw.external_url,
     cost: raw.price,
-    readable_cost: `${Math.round(raw.price / 100)}€`,  // TODO: use org currency
+    readable_cost: `${Math.round(raw.price / 100)}${CURRENCY_SYMBOLS[currency]}`,
     start: start,
     end: end,
     duration: duration,
-    address: raw.address,  // nope, location :(
-    lat: raw.lat,
-    lng: raw.lng,
+    address: raw.location.address,
+    lat: raw.location.latitude,
+    lng: raw.location.longitude,
     distance: null,
 
     computeDistance: (lat, lng) => {
@@ -42,16 +50,18 @@ function BackentLarpModel (raw) {
       ) / 1000.0)  // get the distance in kilometers
     },
   }
+
+  return model
 }
 
 
-export function transformBackentData (rawCollection) {
-  const larps = rawCollection.map((rawLarp) => {
+export function transformBackentData (rawEvents) {
+  const events = rawEvents.map((rawEvent) => {
     try {
-      return BackentLarpModel(rawLarp)
+      return BackentEvent(rawEvent)
     } catch (err) {
-      console.warn(`parsing larp data for ${rawLarp.name} failed: ${err}`)
+      console.warn(`parsing event data for ${rawEvent.name} failed: ${err}`)
     }
   })
-  return larps.sort((a, b) => a.start - b.start)
+  return events.sort((a, b) => a.start - b.start)
 }
