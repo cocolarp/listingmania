@@ -11,4 +11,9 @@ export const client = {
   getEvents: function () {
     return basicXhr(urljoin(baseUrl, 'api/events/'))
   },
+  getUser: function () {
+    return basicXhr(urljoin(baseUrl, 'profile/'), 'GET', null, {
+      'Authorization': `Token ${localStorage.getItem('token')}`,
+    })
+  },
 }

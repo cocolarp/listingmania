@@ -29,6 +29,7 @@ moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
 
 const store = new Vuex.Store({
   state: {
+    user: null,
     startDate: null,
     endDate: null,
     placeName: null,
@@ -37,6 +38,9 @@ const store = new Vuex.Store({
     rawLarps: [],
   },
   mutations: {
+    setUser (state, value) {
+      state.user = value
+    },
     init (state, value) {
       state.rawLarps = value
     },
@@ -90,6 +94,14 @@ async function bootstrapApplication () {
 
   if (BACKENT_URL) {
     client.init(BACKENT_URL)
+
+    try {
+      const user = await client.getUser()
+      store.commit('setUser', user)
+    } catch (_err) {
+      console.log('User is not authenticated.')
+    }
+
     const events = await client.getEvents()
     rawLarps = models.transformBackentData(events)
   }

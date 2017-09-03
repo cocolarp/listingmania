@@ -1,7 +1,17 @@
 <template>
   <v-app id="example-2">
     <v-container style="max-width:1024px;">
+
       <v-layout row wrap>
+        <v-flex xs12 class="text-xs-right">
+          <v-btn icon>
+            <v-icon>account_circle</v-icon>
+          </v-btn>
+          <span v-if="username">{{ username }}</span>
+        </v-flex>
+      </v-layout>
+
+      <v-layout row wrap class="overflow-over-navbar">
         <v-flex xs12 class="text-xs-center">
           <img :src="logoSrc" id="headerImg">
         </v-flex>
@@ -41,6 +51,9 @@ export default {
   },
   computed: {
     ...mapState({
+      username: function (state) {
+        if (state.user) return state.user.username
+      },
       larps: function (state) {
         let larps = state.rawLarps.map((x) => x)  // copy
 

@@ -22,3 +22,7 @@ label {
 .vue-slider-wrap {
   margin-top: 1.2rem;
 }
+
+.overflow-over-navbar {
+  margin-top: -4rem;
+}
