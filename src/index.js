@@ -30,6 +30,7 @@ moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
 const store = new Vuex.Store({
   state: {
     user: null,
+    loginFormDisplayed: false,
     startDate: null,
     endDate: null,
     placeName: null,
@@ -38,6 +39,9 @@ const store = new Vuex.Store({
     rawLarps: [],
   },
   mutations: {
+    showLoginForm (state, value) {
+      state.loginFormDisplayed = value
+    },
     setUser (state, value) {
       state.user = value
     },

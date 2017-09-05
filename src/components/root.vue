@@ -2,9 +2,11 @@
   <v-app id="example-2">
     <v-container style="max-width:1024px;">
 
+      <login-form></login-form>
+
       <v-layout row wrap>
         <v-flex xs12 class="text-xs-right">
-          <v-btn icon>
+          <v-btn @click.stop="openLoginForm" icon>
             <v-icon>account_circle</v-icon>
           </v-btn>
           <span v-if="username">{{ username }}</span>
@@ -35,6 +37,7 @@ import { mapState } from 'vuex'
 import headerImg from 'src/logo.png'  // OMG is ugly
 
 import larpCard from './larp-card.vue'
+import loginForm from './login-form.vue'
 import searchFilters from './search-filters.vue'
 import sortFilters from './sort-filters.vue'
 
@@ -45,9 +48,15 @@ export default {
     }
   },
   components: {
+    'login-form': loginForm,
     'larp-card': larpCard,
     'search-filters': searchFilters,
     'sort-filters': sortFilters,
+  },
+  methods: {
+    openLoginForm: function () {
+      this.$store.commit('showLoginForm', true)
+    },
   },
   computed: {
     ...mapState({
