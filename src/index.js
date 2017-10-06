@@ -4,7 +4,6 @@ import isnan from 'lodash.isnan'
 import moment from 'moment'
 
 import Vue from 'vue'
-import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 
 import 'src/styles.css'
@@ -13,6 +12,7 @@ import * as models from './models'
 import * as url from './url_utils'
 
 import bus from './msgbus'
+import store from './store'
 
 import {
   getPlaceDetails,
@@ -22,52 +22,9 @@ import {client} from './services/backent'
 
 import rootComponent from './components/root.vue'
 
-Vue.use(Vuex)
 Vue.use(Vuetify)
 
 moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
-
-const store = new Vuex.Store({
-  state: {
-    user: null,
-    loginFormDisplayed: false,
-    startDate: null,
-    endDate: null,
-    placeName: null,
-    maxDistance: null,
-    sortKey: 'start',
-    rawLarps: [],
-  },
-  mutations: {
-    showLoginForm (state, value) {
-      state.loginFormDisplayed = value
-    },
-    setUser (state, value) {
-      state.user = value
-    },
-    init (state, value) {
-      state.rawLarps = value
-    },
-    initDistances (state, {lat, lng}) {
-      state.rawLarps.forEach((larp) => larp.computeDistance(lat, lng))
-    },
-    setMaxDistance (state, value) {
-      state.maxDistance = value
-    },
-    setStartDate (state, value) {
-      state.startDate = value
-    },
-    setEndDate (state, value) {
-      state.endDate = value
-    },
-    setPlaceName (state, value) {
-      state.placeName = value
-    },
-    setSortKey (state, value) {
-      state.sortKey = value
-    },
-  },
-})
 
 function distanceChanged (distance) {
   url.updateParamsWith('distance', distance)
