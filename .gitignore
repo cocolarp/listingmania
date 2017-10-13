@@ -3,3 +3,4 @@ dist
 *.swp*
 *~
 *.tar
+package-lock.json
