@@ -1,0 +1,41 @@
+#root {
+  background-color: white;
+  border-radius: 1.2rem;
+  position: relative;
+  user-select: none;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.20), 0 4px 0 0 rgba(0,0,0,0.10);
+  padding-bottom: 1px;
+  padding-left: 2px;
+  text-align: center;
+}
+
+.topmargin {
+  margin-top: var(--spacer-line-height);
+}
+
+#root * {
+  font-family: Geomanist;
+  font-size: 0.8rem;
+}
+
+.separator {
+  border-left: solid 2px var(--highlight-text-color);
+  height: 1rem;
+  margin-top: 0.8rem;
+}
+
+.year {
+  position: relative;
+  display: inline;
+  top: -2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.year.before {
+  margin-left: -1.5rem;
+}
+
+.year.after {
+  margin-right: -1.5rem;
+}

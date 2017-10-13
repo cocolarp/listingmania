@@ -8,6 +8,10 @@ export const AVAILABLE_DISTANCES = {
   500: '500km',
 }
 
+const DURATION_SHORT = 'short'
+const DURATION_MEDIUM = 'medium'
+const DURATION_LONG = 'long'
+
 const CURRENCY_EUR = 'EUR'
 const CURRENCY_USD = 'USD'
 const CURRENCY_SYMBOLS = {
@@ -15,12 +19,10 @@ const CURRENCY_SYMBOLS = {
   [CURRENCY_USD]: '$',
 }
 
-export const ANY_DISTANCE = 'Partout'
-
 function BackentEvent (raw) {
   const start = moment(raw.start)
   const end = moment(raw.end)
-  const duration = moment.duration(end.diff(start, 'days')).humanize()
+  const duration = moment.duration(end.diff(start, 'days'), 'days')
 
   const currency = raw.organization.currency
 
@@ -40,6 +42,18 @@ function BackentEvent (raw) {
     lat: raw.location.latitude,
     lng: raw.location.longitude,
     distance: null,
+
+    hasDurationCategory: (category) => {
+      const numDays = model.duration.days()
+      switch(category) {
+        case DURATION_SHORT:
+          return [0, 1].includes(numDays)
+        case DURATION_MEDIUM:
+          return [2, 3].includes(numDays)
+        case DURATION_LONG:
+          return numDays > 3
+      }
+    },
 
     computeDistance: (lat, lng) => {
       model.distance = Math.round(geolib.getDistance(

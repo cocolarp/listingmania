@@ -45,13 +45,11 @@ export function getMomentParam (key) {
   }
 }
 
-export function updateParamsWith (key, value, toggle = false) {
+export function updateParamsWith (key, value) {
   const urlParams = getParams(window.location.href)
-  if (toggle && urlParams[key] === value) {
-    urlParams[key] = undefined
-  } else {
-    urlParams[key] = value
-  }
+  if (urlParams[key] === value) return
+
+  urlParams[key] = value
   const stringParams = queryString.stringify(urlParams, {encode: false})
-  history.pushState(null, '', `?${stringParams}`)
+  history.pushState(null, '', `?${stringParams}${window.location.hash}`)
 }

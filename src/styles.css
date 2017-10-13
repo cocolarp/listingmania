@@ -1,28 +1,111 @@
+:root {
+  --main-bg-color: #aaa;
+  --main-text-color: rgba(3,3,3,.9);
+  --highlight-text-color: #999;
+  --navbar-height: 4rem;
+  --logo-height: 5rem;
+  --form-line-height: 2rem;
+  --spacer-line-height: 1rem;
+  --color-orange: #D16E47;
+}
+
+@font-face {
+  font-family: 'CocoGothic';
+  src: url("assets/Coco-Gothic-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'CocoGothic-Heavy';
+  src: url("assets/Coco-Gothic-Heavy.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Geomanist';
+  src: url("assets/geomanist-regular-webfont.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Geomanist-Bold';
+  src: url("assets/geomanist-bold-webfont.woff") format("woff");
+}
+
+html {
+  height: 100%;
+}
+
 body {
-  color: rgba(0,0,0,.9);
+  display: flex;
+  flex-direction: column;
+  color: var(--main-text-color);
+  font-family: 'Geomanist';
+  height: 100%;
+  margin: 0;
+}
+
+#main-app {
+  margin: 3px 0px;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-image: url('assets/bg.jpeg');
 }
 
 label {
   font-weight: 600;
 }
 
-#headerImg {
-  margin: 2rem 0;
-  width: 300px;
-}
-
 .margin-bottom {
   margin-bottom: 1rem;
 }
 
-.vue-slider {
-  margin: 1.2rem 1rem 0px 1rem;
+.button {
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.20), 0 4px 0 0 rgba(0,0,0,0.10);
+  height: var(--form-line-height);
+  line-height: var(--form-line-height);
+  display: inline-block;
+  text-align: center;
+  min-width: 6rem;
+  margin: 0 1rem;
+  padding: 0 1rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  background-color: white;
+  color: var(--highlight-text-color);
 }
 
-.vue-slider-wrap {
-  margin-top: 1.2rem;
+input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 100%;
+  color: var(--main-text-color);
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
 }
 
-.overflow-over-navbar {
-  margin-top: -4rem;
+input[type="text"]:focus {
+  outline: none;
+}
+
+.pac-container {
+  margin-top: 0.3rem;
+  border-radius: 0.8rem;
+}
+
+.pac-logo::after {
+  display: none;
+}
+
+.pac-item {
+  cursor: pointer;
+}
+
+a:link, a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
+.spacer {
+  height: var(--spacer-line-height);
 }

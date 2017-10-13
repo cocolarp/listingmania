@@ -4,12 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
+    <style>
+/* Dead Simple Grid by Vladimir Agafonkin */
+.row .row { margin:  0 -1.5em; }
+.col      { padding: 0  1.5em; }
+.row:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+@media only screen { .col {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+}}
+@media (max-width: 768px) { .row {
+    margin: 0 0.5rem;
+}}
+    </style>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCDjYyOPVtg43sXCTvJtdHtlJySKa4EN0I"></script>
     <title>CocoLarp</title>
   </head>
   <body>
-    <div id='content'></div>
+    <div id='main-app'>
+      <div id='content'></div>
+    </div>
     <div id='placeAnchor' style="display:none;"></div>
   </body>
 </html>
