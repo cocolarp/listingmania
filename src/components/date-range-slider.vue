@@ -16,8 +16,6 @@ import last from 'lodash.last'
 import times from 'lodash.times'
 import moment from 'moment'
 
-import vueSlider from 'vue-slider-component'
-
 import bus from 'src/msgbus'
 
 
@@ -76,9 +74,6 @@ export default {
         bus.$emit('date_range_changed', newValue.map((d) => d.value))  // emit only the moments
       },
     },
-  },
-  components: {
-    'vue-slider': vueSlider,
   },
 }
 </script>

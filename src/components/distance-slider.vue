@@ -7,8 +7,6 @@
 import invert from 'lodash.invert'
 import last from 'lodash.last'
 
-import vueSlider from 'vue-slider-component'
-
 import bus from 'src/msgbus'
 
 import {
@@ -52,9 +50,6 @@ export default {
         bus.$emit('distance_changed', distance)
       },
     },
-  },
-  components: {
-    'vue-slider': vueSlider,
   },
 }
 </script>

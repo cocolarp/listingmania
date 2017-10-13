@@ -4,7 +4,6 @@ import isnan from 'lodash.isnan'
 import moment from 'moment'
 
 import Vue from 'vue'
-import Vuetify from 'vuetify'
 
 import 'src/styles.css'
 
@@ -21,8 +20,6 @@ import {
 import {client} from './services/backent'
 
 import rootComponent from './components/root.vue'
-
-Vue.use(Vuetify)
 
 moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
 
