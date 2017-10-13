@@ -8,6 +8,9 @@ function getOr (x, dflt = null) {
 }
 
 webpackDefaults.plugins.push(
+  new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/)
+)
+webpackDefaults.plugins.push(
   new webpack.DefinePlugin({
     BACKENT_URL: getOr(process.env.BACKENT_URL),
   })
