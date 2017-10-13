@@ -20,8 +20,7 @@
   "devDependencies": {
     "dsv-loader": "^2.0.0",
     "karma": "^1.7.1",
-    "source-map-loader": "git+https://github.com/vperron/source-map-loader.git#2154a7fd0368839a88ac372e509790c218f339f3",
-    "systematic": "1.8.1",
+    "systematic": "../../dev/systematic/systematic-1.8.1.tgz",
     "vue-template-compiler": "^2.5.0"
   },
   "scripts": {

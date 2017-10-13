@@ -7,6 +7,8 @@ function getOr (x, dflt = null) {
   return x ? JSON.stringify(x) : dflt
 }
 
+webpackDefaults.devtool = 'eval'
+
 webpackDefaults.plugins.push(
   new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/)
 )

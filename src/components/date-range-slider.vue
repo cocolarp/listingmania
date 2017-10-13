@@ -1,10 +1,10 @@
 <template>
   <vue-slider ref="slider" v-bind="config" v-model="value">
-    <template slot="label" scope="data">
+    <template slot="label" slot-scope="data">
       <div v-if="data.label.isYearStart" class="date-slider-year-label">{{ data.label.value.format('YYYY') }}</div>
       <span class="hidden-xs-only vue-slider-piecewise-label">{{ data.label.value.format('MMM') }}</span>
     </template>
-    <template slot="tooltip" scope="tooltip">
+    <template slot="tooltip" slot-scope="tooltip">
       <span v-if="tooltip.value && tooltip.value.value" class="hidden-sm-and-up vue-slider-tooltip">{{ tooltip.value.value.format('MMM YYYY') }}</span>
     </template>
   </vue-slider>
