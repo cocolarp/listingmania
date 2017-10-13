@@ -88,11 +88,12 @@ async function bootstrapApplication () {
 
   store.commit('init', rawLarps)
 
-  new Vue({  // eslint-disable-line no-new
-    el: '#content',
-    store,
-    ...rootComponent,
-  })
+  new Vue(  // eslint-disable-line no-new
+    Object.assign({
+      el: '#content',
+      store,
+    }, rootComponent)
+  )
 
   const placeId = url.getStringParam('place')
   if (placeId) {

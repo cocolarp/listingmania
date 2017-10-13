@@ -60,10 +60,8 @@ export default {
       bus.$emit('place_changed', place)
     })
   },
-  computed: {
-    ...mapState({
-      place: 'placeName',
-    }),
-  },
+  computed: mapState({
+    place: 'placeName',
+  }),
 }
 </script>

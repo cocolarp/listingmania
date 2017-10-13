@@ -49,10 +49,8 @@ export default {
       }
     },
   },
-	computed: {
-		...mapState({
-			display: 'loginFormDisplayed',
-		}),
-	},
+	computed: mapState({
+    display: 'loginFormDisplayed',
+  }),
 }
 </script>

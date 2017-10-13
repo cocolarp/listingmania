@@ -58,21 +58,19 @@ export default {
       this.$store.commit('showLoginForm', true)
     },
   },
-  computed: {
-    ...mapState({
-      username: function (state) {
-        if (state.user) return state.user.username
-      },
-      larps: function (state) {
-        let larps = state.rawLarps.map((x) => x)  // copy
+  computed: mapState({
+    username: function (state) {
+      if (state.user) return state.user.username
+    },
+    larps: function (state) {
+      let larps = state.rawLarps.map((x) => x)  // copy
 
-        if (state.startDate) larps = larps.filter((d) => d.start.isAfter(state.startDate))
-        if (state.endDate) larps = larps.filter((d) => d.end.isBefore(state.endDate))
-        if (state.maxDistance) larps = larps.filter((d) => d.distance <= state.maxDistance)
+      if (state.startDate) larps = larps.filter((d) => d.start.isAfter(state.startDate))
+      if (state.endDate) larps = larps.filter((d) => d.end.isBefore(state.endDate))
+      if (state.maxDistance) larps = larps.filter((d) => d.distance <= state.maxDistance)
 
-        return sortby(larps, state.sortKey)
-      },
-    }),
-  },
+      return sortby(larps, state.sortKey)
+    },
+  }),
 }
 </script>
