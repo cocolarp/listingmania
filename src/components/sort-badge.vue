@@ -10,7 +10,6 @@ import {mapState} from 'vuex'
 
 export default {
   props: {
-    'canToggle': {default: false, type: Boolean},
     'stateProperty': {type: String},
     'stateMutation': {type: String},
     'value': {type: String},

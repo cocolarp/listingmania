@@ -12,11 +12,23 @@ const DURATION_SHORT = 'short'
 const DURATION_MEDIUM = 'medium'
 const DURATION_LONG = 'long'
 
+export const DURATIONS = [DURATION_SHORT, DURATION_MEDIUM, DURATION_LONG]
+
 const CURRENCY_EUR = 'EUR'
 const CURRENCY_USD = 'USD'
 const CURRENCY_SYMBOLS = {
   [CURRENCY_EUR]: '€',
   [CURRENCY_USD]: '$',
+}
+
+function daysToCategory (days) {
+  if (days < 2) {
+    return DURATION_SHORT
+  } else if (days >= 2 && days < 4) {
+    return DURATION_MEDIUM
+  } else {
+    return DURATION_LONG
+  }
 }
 
 function BackentEvent (raw) {
@@ -38,22 +50,11 @@ function BackentEvent (raw) {
     start: start,
     end: end,
     duration: duration,
+    durationCategory: daysToCategory(duration.days()),
     address: raw.location.address,
     lat: raw.location.latitude,
     lng: raw.location.longitude,
     distance: null,
-
-    hasDurationCategory: (category) => {
-      const numDays = model.duration.days()
-      switch(category) {
-        case DURATION_SHORT:
-          return [0, 1].includes(numDays)
-        case DURATION_MEDIUM:
-          return [2, 3].includes(numDays)
-        case DURATION_LONG:
-          return numDays > 3
-      }
-    },
 
     computeDistance: (lat, lng) => {
       model.distance = Math.round(geolib.getDistance(

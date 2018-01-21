@@ -49,7 +49,7 @@ async function bootstrapApplication () {
   }
 
   updateStoreFromUrl('sort', 'setSortKey')
-  updateStoreFromUrl('duration', 'setDurationFilter')
+  updateStoreFromUrl('duration', 'initDurationFilter')
   updateStoreFromUrl('months', 'initMonths')
   updateStoreFromUrl('anywhere', 'updateAnyWhere', str2bool)
   updateStoreFromUrl('my_events', 'toggleMyEventsOnly', str2bool)

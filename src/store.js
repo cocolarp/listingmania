@@ -5,7 +5,8 @@ import * as url from './url_utils'
 
 Vue.use(Vuex)
 
-const months2str = (arr) => arr.map((x) => x ? '1' : '0').join(',')
+const bits2str = (arr) => arr.map((x) => x ? '1' : '0').join(',')
+const str2bits = (value) => value.split(',').map((m) => parseInt(m, 10) === 1)
 
 const store = new Vuex.Store({
   state: {
@@ -17,7 +18,7 @@ const store = new Vuex.Store({
     place: null,
     maxDistance: 500,
     sortKey: 'start',
-    durationFilter: null,
+    durationFilter: Array(3).fill(true),
     rawEvents: [],
   },
   mutations: {
@@ -30,22 +31,25 @@ const store = new Vuex.Store({
     setUser (state, value) {
       state.user = value
     },
-    setDurationFilter (state, value) {
-      url.updateParamsWith('duration', value)
-      state.durationFilter = value
+    toggleDurationFilter (state, index) {
+      const nextValue = !state.durationFilter[index]
+      Vue.set(state.durationFilter, index, nextValue)
+      url.updateParamsWith('duration', bits2str(state.durationFilter))
     },
     initMonths (state, value) {
-      const months = value.split(',').map((m) => parseInt(m, 10) === 1)
-      state.selectedMonths = months
+      state.selectedMonths = str2bits(value)
+    },
+    initDurationFilter (state, value) {
+      state.durationFilter = str2bits(value)
     },
     updateAnyTime (state, value) {
       state.selectedMonths = Array(13).fill(value)
-      url.updateParamsWith('months', months2str(state.selectedMonths))
+      url.updateParamsWith('months', bits2str(state.selectedMonths))
     },
     toggleMonth (state, index) {
       const nextValue = !state.selectedMonths[index]
       Vue.set(state.selectedMonths, index, nextValue)
-      url.updateParamsWith('months', months2str(state.selectedMonths))
+      url.updateParamsWith('months', bits2str(state.selectedMonths))
     },
     updateAnyWhere (state, value) {
       url.updateParamsWith('anywhere', value)

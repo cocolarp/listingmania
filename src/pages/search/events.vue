@@ -41,25 +41,22 @@
           .col
             .round-filter
               strong Format
-              sort-badge(
-                :can-toggle="true",
+              multi-sort-badge(
                 stateProperty='durationFilter',
-                stateMutation='setDurationFilter',
-                value='short',
+                stateMutation='toggleDurationFilter',
+                value=0,
                 badgeText='COURT'
               )
-              sort-badge(
-                :can-toggle="true",
+              multi-sort-badge(
                 stateProperty='durationFilter',
-                stateMutation='setDurationFilter',
-                value='medium',
+                stateMutation='toggleDurationFilter',
+                value=1,
                 badgeText='MOYEN'
               )
-              sort-badge(
-                :can-toggle="true",
+              multi-sort-badge(
                 stateProperty='durationFilter',
-                stateMutation='setDurationFilter',
-                value='long',
+                stateMutation='toggleDurationFilter',
+                value=2,
                 badgeText='LONG'
               )
           .col
@@ -99,6 +96,7 @@ import moment from 'moment'
 import {mapState} from 'vuex'
 import merge from 'lodash.merge'
 
+import {DURATIONS} from 'src/models'
 import eventCard from 'src/components/event-card.vue'
 import sortBadge from 'src/components/sort-badge.vue'
 
@@ -106,10 +104,26 @@ import MainFiltersMixin from './main-filters.js'
 
 const today = moment()
 
+
+const multiSortBadge = merge({}, sortBadge, {
+  computed: {
+    isSelected () {
+      return this.$store.state[this.stateProperty][this.value]
+    },
+  },
+  methods: {
+    setSortKey () {
+      this.$store.commit(this.stateMutation, this.value)
+    },
+  },
+})
+
+
 const EventsPage = merge({}, MainFiltersMixin, {
   components: {
     'event-card': eventCard,
     'sort-badge': sortBadge,
+    'multi-sort-badge': multiSortBadge,
   },
   computed: mapState({
     events: (state) => {
@@ -124,7 +138,7 @@ const EventsPage = merge({}, MainFiltersMixin, {
           )
           &&
           (
-            !state.durationFilter || event.hasDurationCategory(state.durationFilter)
+            state.durationFilter[DURATIONS.indexOf(event.durationCategory)]
           )
           &&
           (
