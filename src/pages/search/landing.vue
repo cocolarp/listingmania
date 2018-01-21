@@ -35,20 +35,32 @@
   .row.spacer
   .row
     #buttons.col
-      .button(id="ok-button", @click="goToSearch") Trouver mon prochain GN
+      .button(
+        id="ok-button",
+        :class="{disabled: !canSearch}",
+        @click="goToSearch"
+      ) Trouver mon prochain GN
 </template>
 
 <script>
 import merge from 'lodash.merge'
+import {mapState, mapMutations} from 'vuex'
 
 import router from 'src/routes'
 
 import MainFiltersMixin from './main-filters.js'
 
 const LandingPage = merge({}, MainFiltersMixin, {
+  computed: mapState({
+    canSearch (state) {
+      return (state.anyWhere || state.place)
+    }
+  }),
   methods: {
     goToSearch () {
-      router.push('events')
+      if (this.canSearch) {
+        router.push('events')
+      }
     },
   },
 })
@@ -89,6 +101,11 @@ export default LandingPage
   color: white;
   font-weight: bold;
   font-size: 0.9rem;
+}
+
+.disabled {
+  background-color: #ddd !important;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) { #distance-slider {
