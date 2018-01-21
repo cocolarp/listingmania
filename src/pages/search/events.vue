@@ -152,7 +152,12 @@ const EventsPage = merge({}, MainFiltersMixin, {
           )
         )
       }).sort((eventA, eventB) => {
-        return eventA[state.sortKey] > eventB[state.sortKey]
+        switch (state.sortKey) {
+          case 'start':
+            return eventA.start.diff(eventB.start, 'days')
+          default:
+            return eventA[state.sortKey] - eventB[state.sortKey]
+        }
       })
     },
   }),
