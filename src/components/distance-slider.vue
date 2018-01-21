@@ -1,7 +1,8 @@
 <template lang="pug">
 #root(
   @mousemove="mouseMove",
-  @mousedown="setupMouseUpTrap",
+  @touchmove="touchMove",
+  @mousedown="setupEventTrap($event, 'mouseup')",
 )
   #distance-badges
     .distance-badge(
@@ -11,7 +12,10 @@
       @click="setSliderIndex(key)",
     ) {{ dist.text }}
   #background(:style="{ width: `${posX}px` }")
-  #button(:style="{ left: `${posX}px` }")
+  #button(
+    :style="{ left: `${posX}px` }",
+    @touchstart="setupEventTrap($event, 'touchend')",
+  )
 </template>
 
 <script>
@@ -63,27 +67,31 @@ export default {
       this.dockedPosX = this.posX = stopPoints[i]
       this.$store.commit('setMaxDistance', DISTANCES_ENUM[i])
     },
-    setupMouseUpTrap (event) {
+    setupEventTrap(event, eventKind) {
       event.preventDefault()
       const handleMouseUp = () => {
-        document.removeEventListener('mouseup', handleMouseUp)
+        document.removeEventListener(eventKind, handleMouseUp)
         this.posX = this.dockedPosX
       }
-      document.addEventListener('mouseup', handleMouseUp)
+      document.addEventListener(eventKind, handleMouseUp)
     },
+    processSliderMove (sliderXPosition) {
+      const newPosition = sliderXPosition - this.$el.getBoundingClientRect().x - BUTTON_SIZE / 2
+      if (newPosition < 0) return  // before slider
+      if (newPosition > this.$el.clientWidth - BUTTON_SIZE / 2) return  // after slider
+      const closest = closestStopPointIndex(newPosition, BUTTON_SIZE)
+      if (closest ) {
+        this.setSliderIndex(closest)
+      } else {
+        this.posX = newPosition
+      }
+    },
+    touchMove: throttle(function (event) {
+      this.processSliderMove(event.touches[0].pageX)
+    }, 50),  // ms
     mouseMove: throttle(function (event) {
       if (event.buttons === 1) {
-        const newPosition = event.pageX - this.$el.getBoundingClientRect().x - BUTTON_SIZE / 2
-
-        if (newPosition < 0) return  // before slider
-        if (newPosition > this.$el.clientWidth - BUTTON_SIZE / 2) return  // after slider
-
-        const closest = closestStopPointIndex(newPosition, BUTTON_SIZE)
-        if (closest) {
-          this.setSliderIndex(closest)
-        } else {
-          this.posX = newPosition
-        }
+        this.processSliderMove(event.pageX)
       } else {
         this.posX = this.dockedPosX
       }

@@ -4,6 +4,8 @@
   "description": "Cocolarp Listing",
   "main": "dist/bundle.js",
   "dependencies": {
+    "eslint": "^4.2.0",
+    "eslint-plugin-vue": "^4.2.0",
     "geolib": "^2.0.24",
     "lodash.find": "^4.6.0",
     "lodash.invert": "^4.3.0",
