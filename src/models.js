@@ -55,14 +55,17 @@ function BackentEvent (raw) {
     lat: raw.location.latitude,
     lng: raw.location.longitude,
     distance: null,
+  }
 
-    computeDistance: (lat, lng) => {
-      model.distance = Math.round(geolib.getDistance(
-        {latitude: lat, longitude: lng},
-        {latitude: model.lat, longitude: model.lng},
-        1000,  // 1km accuracy
-      ) / 1000.0)  // get the distance in kilometers
-    },
+  model.computeDistance = (lat, lng) => {
+    if (!model.lat || !model.lng) {
+      return
+    }
+    model.distance = Math.round(geolib.getDistance(
+      {latitude: lat, longitude: lng},
+      {latitude: model.lat, longitude: model.lng},
+      1000,  // 1km accuracy
+    ) / 1000.0)  // get the distance in kilometers
   }
 
   return model

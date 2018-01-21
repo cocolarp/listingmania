@@ -75,6 +75,7 @@
                 badgeText='COÛT'
               )
               sort-badge(
+                v-if="shouldDisplayDistanceFilter",
                 stateProperty='sortKey',
                 stateMutation='setSortKey',
                 value='distance',
@@ -126,6 +127,9 @@ const EventsPage = merge({}, MainFiltersMixin, {
     'multi-sort-badge': multiSortBadge,
   },
   computed: mapState({
+    shouldDisplayDistanceFilter (state) {
+      return !state.anyWhere && state.place
+    },
     events: (state) => {
       return state.rawEvents.filter((event) => {
         const eventMonth = event.start.diff(today, 'month')

@@ -76,6 +76,7 @@ async function bootstrapApplication () {
       const place = await getPlaceDetails(placeId)
       store.commit('setPlace', place)
     } catch (err) {
+      console.log(err)
       console.warn('Place not found for id: ', placeId)
     }
   }
