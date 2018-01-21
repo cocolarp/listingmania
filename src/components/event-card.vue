@@ -27,6 +27,8 @@
 <script>
 import {mapState} from 'vuex'
 
+import {DURATION_COLOR} from 'src/models'
+
 export default {
   props: ['event'],
   data: function () {
@@ -37,16 +39,7 @@ export default {
   },
   computed: {
     durationColor() {
-      switch(this.event.duration.days()) {
-        case 0:
-        case 1:
-          return '#AC73ED'
-        case 2:
-        case 3:
-          return '#3EC89C'
-        default:
-          return '#49AFEB'
-      }
+      return DURATION_COLOR[this.event.durationCategory]
     },
     ...mapState({
       shouldDisplayKms(state) {

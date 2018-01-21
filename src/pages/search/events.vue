@@ -42,22 +42,25 @@
             .round-filter
               strong Format
               multi-sort-badge(
+                class='short-duration',
                 stateProperty='durationFilter',
                 stateMutation='toggleDurationFilter',
                 value=0,
-                badgeText='COURT'
+                badgeText='COURT',
               )
               multi-sort-badge(
+                class='medium-duration',
                 stateProperty='durationFilter',
                 stateMutation='toggleDurationFilter',
                 value=1,
-                badgeText='MOYEN'
+                badgeText='MOYEN',
               )
               multi-sort-badge(
+                class='long-duration',
                 stateProperty='durationFilter',
                 stateMutation='toggleDurationFilter',
                 value=2,
-                badgeText='LONG'
+                badgeText='LONG',
               )
           .col
             .round-filter
@@ -228,6 +231,18 @@ export default EventsPage
   margin: 0 auto;
   margin-top: 1rem;
   height: 100%;
+}
+
+.short-duration.selected {
+  background-color: #AC73ED !important;
+}
+
+.medium-duration.selected {
+  background-color: #3EC89C !important;
+}
+
+.long-duration.selected {
+  background-color: #49AFEB !important;
 }
 
 @media (max-width: 768px) {

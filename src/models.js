@@ -12,6 +12,16 @@ const DURATION_SHORT = 'short'
 const DURATION_MEDIUM = 'medium'
 const DURATION_LONG = 'long'
 
+export const COLOR_SHORT = '#AC73ED'
+export const COLOR_MEDIUM = '#3EC89C'
+export const COLOR_LONG = '#49AFEB'
+
+export const DURATION_COLOR = {
+  [DURATION_SHORT]: COLOR_SHORT,
+  [DURATION_MEDIUM]: COLOR_MEDIUM,
+  [DURATION_LONG]: COLOR_LONG,
+}
+
 export const DURATIONS = [DURATION_SHORT, DURATION_MEDIUM, DURATION_LONG]
 
 const CURRENCY_EUR = 'EUR'

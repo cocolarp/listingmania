@@ -54,7 +54,7 @@ export default {
 
 .badge.selected {
   background-color: var(--color-orange);
-  border: solid 1px var(--color-orange);
+  border: solid 1px transparent;
   color: white;
   box-shadow: 0 0 1px 0 rgba(0,0,0,0.20), 0 2px 0 0 rgba(0,0,0,0.10);
 }
