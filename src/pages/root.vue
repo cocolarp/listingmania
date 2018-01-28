@@ -35,6 +35,8 @@
     router-link(to="/faq") FAQ
     span |
     router-link(to="/map") Plan du site
+  #login-form(:class="{show: loginFormDisplayed}")
+    login-form
 </template>
 
 <script>
@@ -42,10 +44,15 @@ import { mapState, mapMutations } from 'vuex'
 
 import router from 'src/routes'
 
+import loginForm from 'src/components/login-form.vue'
+
 import headerImg from 'src/assets/logo.png'
 import smallLogoImg from 'src/assets/small-logo.png'  // OMG is ugly
 
 export default {
+  components: {
+    'login-form': loginForm,
+  },
   data: function () {
     return {
       logoSrc: headerImg,
@@ -57,18 +64,21 @@ export default {
       router.push({name: 'home'})
     },
     openLoginForm () {
-      this.$store.commit('showLoginForm', true)
+      if (!this.displayName) {
+        this.$store.commit('showLoginForm', true)
+      }
     },
     ...mapMutations({
       displaySearchBar: 'toggleMobileSearchBar',
     })
   },
   computed: mapState({
-    displayName: function (state) {
+    displayName (state) {
       if (state.user) {
         return state.user.username
       }
     },
+    loginFormDisplayed: 'loginFormDisplayed',
   }),
 }
 </script>
@@ -78,6 +88,7 @@ export default {
   flex: 1 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 #footer {
@@ -159,5 +170,17 @@ export default {
   border: solid 1px #ddd;
   border-radius: 50%;
   cursor: pointer;
+}
+
+#login-form {
+  position: absolute;
+  top: 10%;
+  left: 35%;
+  width: 30%;
+  display: none;
+}
+
+.show {
+  display: block !important;
 }
 </style>
