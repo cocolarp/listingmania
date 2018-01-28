@@ -76,16 +76,23 @@ label {
   border-radius: 1rem;
   background-color: white;
   color: var(--highlight-text-color);
+  box-sizing: border-box;
+  border: solid 1px white;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   display: block;
   margin: 0;
   width: 100%;
   color: var(--main-text-color);
   appearance: none;
-  box-shadow: none;
-  border-radius: none;
+  font-family: Geomanist;
+  box-sizing: border-box;
+  padding: 0px 15px;
+  border-radius: 0.9rem;
+  height: 2rem;
+  border: none;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.20), 0 4px 0 0 rgba(0,0,0,0.10);
 }
 
 input[type="text"]:focus {

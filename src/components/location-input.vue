@@ -39,14 +39,4 @@ export default {
 </script>
 
 <style scoped>
-#location-root > input {
-  font-family: Geomanist;
-  box-sizing: border-box;
-  padding: 0px 15px;
-  width: 100%;
-  border-radius: 0.9rem;
-  height: 2rem;
-  border: none;
-  box-shadow: 0 0 4px 0 rgba(0,0,0,0.20), 0 4px 0 0 rgba(0,0,0,0.10);
-}
 </style>

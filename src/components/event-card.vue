@@ -9,6 +9,7 @@
     :style="{color: heartColor}"
     @mouseenter="highlightHeart()",
     @mouseleave="resetHeart()"
+    @click="likeEvent()"
   ) &#x2764;
   .date-details(:style="{color: durationColor}")
     span {{ event.start.format('lll') }}
@@ -66,6 +67,11 @@ export default {
         && this.$store.state.user.events.includes(this.event.id)
       ) return '#D16E47'
       return '#999'
+    },
+    likeEvent () {
+      if (!this.$store.state.user) {
+        this.$store.commit('showLoginForm', true)
+      }
     },
   },
   filters: {
