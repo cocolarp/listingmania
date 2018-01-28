@@ -248,11 +248,6 @@ export default EventsPage
   background-color: #49AFEB !important;
 }
 
-.hide {
-  visibility: hidden;
-  display: none;
-}
-
 @media (max-width: 768px) {
   #content {
     width: 100%;
@@ -315,6 +310,10 @@ export default EventsPage
 
   .round-filter strong {
     margin: 0 0.3rem;
+  }
+
+  .hide {
+    display: none;
   }
 }
 
