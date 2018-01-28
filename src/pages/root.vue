@@ -1,20 +1,29 @@
 <template lang="pug">
 #main
   #wrapper
+    .row#mobile-navbar
+      img(:src="smallLogoSrc", @click="goHome")
+      #mobile-buttons
+        .round-button
+          .icon-add
+        .round-button
+          .icon-user
+        .round-button(@click="displaySearchBar")
+          .icon-more
     .row#navbar
       #user.nav-item
         .button(@click="openLoginForm")
-          span &#x1F464;&nbsp;
+          span.icon-add
           span {{ displayName || 'Connexion' }}
       #new-event.nav-item
         .button
-          span &#x271A;&nbsp;
+          span.icon-user
           span Annoncer un GN
     .row#logo
-      #logo.col(@click="goHome")
+      .col(@click="goHome")
         img(:src="logoSrc")
         #motto L'annuaire communautaire des jeux de rôle
-    .row.spacer
+    .row#top-spacer.spacer
     .row#pages
       router-view
     .row.spacer
@@ -29,16 +38,18 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 import router from 'src/routes'
 
-import headerImg from 'src/assets/logo.png'  // OMG is ugly
+import headerImg from 'src/assets/logo.png'
+import smallLogoImg from 'src/assets/small-logo.png'  // OMG is ugly
 
 export default {
   data: function () {
     return {
       logoSrc: headerImg,
+      smallLogoSrc: smallLogoImg,
     }
   },
   methods: {
@@ -48,6 +59,9 @@ export default {
     openLoginForm () {
       this.$store.commit('showLoginForm', true)
     },
+    ...mapMutations({
+      displaySearchBar: 'toggleMobileSearchBar',
+    })
   },
   computed: mapState({
     displayName: function (state) {
@@ -86,11 +100,14 @@ export default {
   #navbar {
     float: right;
   }
+  #mobile-navbar {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
-  #navbar {
-    text-align: center;
+  #navbar, #logo, #footer, #top-spacer {
+    display: none;
   }
 }
 
@@ -99,6 +116,16 @@ export default {
   color: white;
   font-style: italic;
   text-shadow: 0 0 2px rgba(0,0,0,0.30);
+}
+
+#mobile-navbar {
+  padding: 0.3rem 0;
+}
+
+#mobile-navbar img {
+  cursor: pointer;
+  height: var(--mobile-logo-height);
+  display: inline-block;
 }
 
 #logo {
@@ -114,5 +141,23 @@ export default {
   line-height: var(--navbar-height);
   display: inline-block;
   vertical-align: middle;
+}
+
+#mobile-buttons {
+  float: right;
+}
+
+.round-button {
+  color: #333;
+  margin: 0.3rem;
+  background-color: white;
+  padding: 0.6rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: solid 1px #ddd;
+  border-radius: 50%;
+  cursor: pointer;
 }
 </style>

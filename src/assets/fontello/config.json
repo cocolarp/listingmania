@@ -1,0 +1,28 @@
+{
+  "name": "listingmania",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "b86df50a2d898bfcd371fa86c0b8b2fb",
+      "css": "user",
+      "code": 62144,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "0677f879e75956571d8cbbb478487c47",
+      "css": "add",
+      "code": 59392,
+      "src": "typicons"
+    },
+    {
+      "uid": "ef47651da3866460f27baf85ae234e5c",
+      "css": "more",
+      "code": 59393,
+      "src": "iconic"
+    }
+  ]
+}

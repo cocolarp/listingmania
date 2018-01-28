@@ -6,6 +6,8 @@ import moment from 'moment'
 import Vue from 'vue'
 
 import 'src/styles.css'
+import 'src/assets/fontello/css/listingmania-embedded.css'
+
 
 import * as models from './models'
 import * as url from './url_utils'

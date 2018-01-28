@@ -20,6 +20,7 @@ const store = new Vuex.Store({
     sortKey: 'start',
     durationFilter: Array(3).fill(true),
     rawEvents: [],
+    hideMobileSearchBar: true,
   },
   mutations: {
     init (state, value) {
@@ -74,6 +75,9 @@ const store = new Vuex.Store({
       url.updateParamsWith('sort', value)
       state.sortKey = value
     },
+    toggleMobileSearchBar (state) {
+      state.hideMobileSearchBar = !state.hideMobileSearchBar
+    }
   },
 })
 

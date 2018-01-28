@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2018 by original authors @ fontello.com</metadata>
+<defs>
+<font id="listingmania" horiz-adv-x="1000" >
+<font-face font-family="listingmania" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="add" unicode="&#xe800;" d="M469-119q-65 0-111 46t-45 111l2 159-157-3q-65 0-112 46t-46 110 46 111 110 46l159 2-2 153q0 65 45 111t111 46 110-46 46-110l3-154 155-2q63 0 109-46t46-111-46-110-111-46l-153 3-3-160q0-64-46-110t-110-46z m-53 417l0-261q0-22 16-37t37-15 37 16 15 37l0 260 262 0q21 0 36 15t15 37-16 37-37 16l-260 0 0 260q0 22-15 37t-37 15-37-15-16-37l0-260-260 0q-22 0-37-16t-15-37 15-37 37-15l260 0z" horiz-adv-x="938" />
+
+<glyph glyph-name="more" unicode="&#xe801;" d="M18 684q0 57 56 57t56-57q0-55-56-55t-56 55z m0-223q0 57 56 57t56-57q0-55-56-55t-56 55z m0-223q0 56 56 56t56-56q0-55-56-55t-56 55z m0-223q0 56 56 56t56-56q0-56-56-56t-56 56z m223 614l0 112 670 0 0-112-670 0z m0-223l0 112 670 0 0-112-670 0z m0-223l0 111 670 0 0-111-670 0z m0-224l0 112 670 0 0-112-670 0z" horiz-adv-x="928" />
+
+<glyph glyph-name="user" unicode="&#xf2c0;" d="M670 413q26-8 50-22t50-40 44-65 31-96 12-132q0-86-56-147t-134-61h-477q-78 0-134 61t-56 147q0 73 12 132t31 96 44 65 50 40 50 22q-44 69-44 151 0 58 23 111t61 91 91 61 111 23 110-23 92-61 61-91 22-111q0-82-44-151z m-241 366q-89 0-152-63t-63-152 63-151 152-63 151 63 63 151-63 152-151 63z m238-858q49 0 84 40t35 97q0 134-44 211t-126 80q-81-70-187-70t-188 70q-82-3-126-80t-44-211q0-57 35-97t84-40h477z" horiz-adv-x="857.1" />
+</font>
+</defs>
+</svg>

@@ -1,7 +1,7 @@
 <template lang="pug">
 #content
   #whitestrip
-    #searchform
+    #searchform(:class="{hide: hideOnMobile}")
       .row
         .col.first
           label Période
@@ -130,6 +130,9 @@ const EventsPage = merge({}, MainFiltersMixin, {
     'multi-sort-badge': multiSortBadge,
   },
   computed: mapState({
+    hideOnMobile (state) {
+      return state.hideMobileSearchBar
+    },
     shouldDisplayDistanceFilter (state) {
       return !state.anyWhere && state.place
     },
@@ -243,6 +246,11 @@ export default EventsPage
 
 .long-duration.selected {
   background-color: #49AFEB !important;
+}
+
+.hide {
+  visibility: hidden;
+  display: none;
 }
 
 @media (max-width: 768px) {
