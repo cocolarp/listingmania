@@ -17,7 +17,7 @@
         :value="anyWhere",
         @change="updateAnyWhere")
   .row(v-if="!anyWhere")
-    .col#location-input
+    .col#location-input(:class="{'animate-shake': moveLocationInput}")
       location-input
     .col#distance-slider
       distance-slider
@@ -37,7 +37,6 @@
     #buttons.col
       .button(
         id="ok-button",
-        :class="{disabled: !canSearch}",
         @click="goToSearch"
       ) Trouver mon prochain GN
 </template>
@@ -51,6 +50,11 @@ import router from 'src/routes'
 import MainFiltersMixin from './main-filters.js'
 
 const LandingPage = merge({}, MainFiltersMixin, {
+  data: function () {
+    return {
+      moveLocationInput: false,
+    }
+  },
   computed: mapState({
     canSearch (state) {
       return (state.anyWhere || state.place)
@@ -60,6 +64,11 @@ const LandingPage = merge({}, MainFiltersMixin, {
     goToSearch () {
       if (this.canSearch) {
         router.push('events')
+      } else {
+        this.moveLocationInput = true
+        setTimeout(() => {
+          this.moveLocationInput = false  // reset it
+        }, 1000)
       }
     },
   },
