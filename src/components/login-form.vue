@@ -22,36 +22,117 @@
     .row
       input(
         type="text",
+        v-model="username",
+        :class="{'animate-shake': shakeUsername}",
         placeholder="nom d'utilisateur",
       )
-    .row(:style="{display: displayLogin ? 'none' : 'block'}")
+    .row(v-if="!displayLogin")
       input(
         type="text",
+        v-model="email",
+        :class="{'animate-shake': shakeEmail}",
         placeholder="mail@example.com",
       )
     .row
       input(
         type="password",
+        v-model="password",
+        :class="{'animate-shake': shakePassword}",
         placeholder="mot de passe",
       )
-    .row(:style="{display: displayLogin ? 'none' : 'block'}")
+    .row(v-if="!displayLogin")
       input(
         type="password",
+        v-model="passwordConfirmation",
+        :class="{'animate-shake': shakePassword}",
         placeholder="confirmation",
       )
+    .row(v-if="invalidLogin")
+      b.active Nom d'utilisateur ou mot de passe erroné.
+    .row(v-if="unexpectedError")
+      b.active Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique.
+
   #footer
-    .button#ok-button OK
+    .button#ok-button(
+      @click="submit",
+    ) OK
 
 </template>
 
 <script>
+import {client} from 'src/services/backent'
+
 export default {
   data: function () {
     return {
       displayLogin: true,
+      shakeUsername: false,
+      shakePassword: false,
+      shakeEmail: false,
+      username: null,
+      email: null,
+      password: null,
+      passwordConfirmation: null,
+      invalidLogin: false,
+      unexpectedError: false,
     }
   },
   methods: {
+    validate () {
+      if (!this.username) {
+        this.shakeUsername = true
+        throw "invalid username"
+      }
+      if (!this.displayLogin && !this.email) {
+        this.shakeEmail = true
+        throw "invalid email"
+      }
+      if (
+          (this.displayLogin && !this.password) ||
+          (!this.displayLogin && (
+            (!this.password || !this.passwordConfirmation ||
+              this.password !== this.passwordConfirmation
+            )
+          ))
+      ) {
+        this.shakePassword = true
+        throw "invalid password"
+      }
+    },
+    async submit () {
+      try {
+        this.validate()
+      } catch (e) {
+        setTimeout(() => {
+          this.shakeUsername = false
+          this.shakePassword = false
+          this.shakeEmail = false
+        }, 1000)
+        return
+      }
+      if (this.displayLogin) {
+        let token = null
+        try {
+          token = await client.getToken(this.username, this.password)
+        } catch (e) {
+          if (e.status === 400) {
+            this.invalidLogin = true
+          } else {
+            this.unexpectedError = true
+          }
+          return
+        }
+        try {
+          const user = await client.getUser()
+          this.$store.commit('setUser', user)
+          this.$store.commit('showLoginForm', false)
+        } catch (e) {
+          this.unexpectedError = true
+        }
+      } else {
+        // do the signup
+      }
+    },
     toggleLogin () {
       this.displayLogin = true
     },

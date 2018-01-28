@@ -11,7 +11,7 @@ const str2bits = (value) => value.split(',').map((m) => parseInt(m, 10) === 1)
 const store = new Vuex.Store({
   state: {
     user: null,
-    loginFormDisplayed: true,
+    loginFormDisplayed: false,
     selectedMonths: Array(13).fill(true),
     anyWhere: true,
     onlyMyEvents: false,

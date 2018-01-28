@@ -13,11 +13,11 @@
     .row#navbar
       #user.nav-item
         .button(@click="openLoginForm")
-          span.icon-add
+          span.icon-user
           span {{ displayName || 'Connexion' }}
       #new-event.nav-item
         .button
-          span.icon-user
+          span.icon-add
           span Annoncer un GN
     .row#logo
       .col(@click="goHome")

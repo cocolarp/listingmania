@@ -16,7 +16,11 @@ export const client = {
       'username': username,
       'password': password,
     }))
-    return data.token
+    if (data.token) {
+      localStorage.setItem('token', data.token)
+      return data.token
+    }
+    throw "unexpected error"
   },
   getUser: function () {
     return basicXhr(urljoin(baseUrl, 'profile/'), 'GET', null, {

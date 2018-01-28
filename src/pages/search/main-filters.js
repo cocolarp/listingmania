@@ -13,16 +13,16 @@ export default {
     'location-input': locationInput,
   },
   methods: {
+    toggleMyEventsOnly (value) {
+      if (this.$store.state.user) {
+        this.$store.commit('toggleMyEventsOnly', value)
+      } else {
+        this.$store.commit('showLoginForm', true)
+      }
+    },
     ...mapMutations({
       updateAnyTime: 'updateAnyTime',
       updateAnyWhere: 'updateAnyWhere',
-      toggleMyEventsOnly (state, value) {
-        if (state.user) {
-          this.$store.commit('toggleMyEventsOnly', value)
-        } else {
-          this.$store.commit('showLoginForm', true)
-        }
-      },
     }),
   },
   computed: mapState({
