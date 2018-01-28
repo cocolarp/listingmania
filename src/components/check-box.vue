@@ -50,15 +50,11 @@ input[type=checkbox] {
   box-sizing: border-box;
 }
 
-input[type=checkbox]:checked {
-  background-color: #333;
-}
-
 input[type=checkbox]:checked::before {
   content: '\2714';
-  color: white;
-  padding-left: 3px;
-  padding-top: 1px;
+  color: #666;
+  padding-left: 2px;
+  padding-top: -4px;
 }
 
 .main > label {
