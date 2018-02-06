@@ -22,7 +22,7 @@
     .row#logo
       .col(@click="goHome")
         img(:src="logoSrc")
-        #motto L'annuaire communautaire des jeux de rôle
+        #motto Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux
     .row#top-spacer.spacer
     .row#pages
       router-view
