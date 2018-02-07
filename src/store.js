@@ -23,8 +23,15 @@ const store = new Vuex.Store({
     hideMobileSearchBar: true,
   },
   mutations: {
-    init (state, value) {
-      state.rawEvents = value
+    init (state, eventList) {
+      if (state.user && state.user.events) {
+        eventList.forEach((event) => {
+          if (state.user.events.includes(event.id)) {
+            event.isLiked = true
+          }
+        })
+      }
+      state.rawEvents = eventList
     },
     showLoginForm (state, value) {
       if (value === true) window.scrollTo(0, 0)
@@ -70,7 +77,9 @@ const store = new Vuex.Store({
       state.place = place
       const lat = place.geometry.location.lat()
       const lng = place.geometry.location.lng()
-      state.rawEvents.forEach((event) => event.computeDistance(lat, lng))
+      state.rawEvents.forEach((event) => {
+        event.computeDistance(lat, lng)
+      })
     },
     setSortKey (state, value) {
       url.updateParamsWith('sort', value)

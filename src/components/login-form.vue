@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import {client} from 'src/services/backent'
+/* global Backent */
 
 export default {
   data: function () {
@@ -113,7 +113,7 @@ export default {
       if (this.displayLogin) {
         let token = null
         try {
-          token = await client.getToken(this.username, this.password)
+          token = await Backent.getToken(this.username, this.password)
         } catch (e) {
           if (e.status === 400) {
             this.invalidLogin = true
@@ -123,7 +123,7 @@ export default {
           return
         }
         try {
-          const user = await client.getUser()
+          const user = await Backent.getUser()
           this.$store.commit('setUser', user)
           this.$store.commit('showLoginForm', false)
         } catch (e) {

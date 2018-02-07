@@ -62,15 +62,15 @@ export default {
       this.heartColor = this.getHeartDefaultColor()
     },
     getHeartDefaultColor() {
-      if (
-        this.$store.state.user
-        && this.$store.state.user.events.includes(this.event.id)
-      ) return '#D16E47'
+      if (this.event.isLiked) return '#D16E47'
       return '#999'
     },
-    likeEvent () {
+    likeEvent: async function () {
       if (!this.$store.state.user) {
         this.$store.commit('showLoginForm', true)
+      } else {
+        await this.event.like()
+        this.resetHeart()
       }
     },
   },

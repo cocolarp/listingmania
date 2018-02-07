@@ -1,3 +1,5 @@
+/* global Backent */
+
 import geolib from 'geolib'
 import moment from 'moment'
 
@@ -65,6 +67,12 @@ function BackentEvent (raw) {
     lat: raw.location.latitude,
     lng: raw.location.longitude,
     distance: null,
+    isLiked: false,
+  }
+
+  model.like = async function () {
+    const isLiked = await Backent.postLike(model.id)
+    model.isLiked = isLiked
   }
 
   model.computeDistance = (lat, lng) => {

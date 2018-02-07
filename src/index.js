@@ -1,4 +1,4 @@
-/* global BACKENT_URL */
+/* global BACKENT_URL, Backent */
 
 import isnan from 'lodash.isnan'
 import moment from 'moment'
@@ -22,6 +22,8 @@ import {
 
 import {client} from './services/backent'
 
+window.Backent = client
+
 import rootPage from './pages/root.vue'
 
 moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
@@ -39,14 +41,14 @@ async function bootstrapApplication () {
   let rawEvents = []
 
   if (BACKENT_URL) {
-    client.init(BACKENT_URL)
+    Backent.init(BACKENT_URL)
     try {
-      const user = await client.getUser()
+      const user = await Backent.getUser()
       store.commit('setUser', user)
     } catch (_err) {
       console.log('User is not authenticated.')
     }
-    const events = await client.getEvents()
+    const events = await Backent.getEvents()
     rawEvents = models.transformBackentData(events)
   }
 

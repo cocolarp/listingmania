@@ -8,7 +8,7 @@ export const client = {
   init: function (url) {
     baseUrl = url
   },
-  getEvents: function () {
+  getEvents () {
     return basicXhr(urljoin(baseUrl, 'api/events/'))
   },
   getToken: async function (username, password) {
@@ -22,9 +22,25 @@ export const client = {
     }
     throw "unexpected error"
   },
-  getUser: function () {
+  getUser () {
     return basicXhr(urljoin(baseUrl, 'profile/'), 'GET', null, {
       'Authorization': `Token ${localStorage.getItem('token')}`,
     })
+  },
+  postLike: async function (eventSlug, doLike = true) {
+    const url = urljoin(baseUrl, `api/events/${eventSlug}/like/`)
+    try {
+      await basicXhr(
+        url,
+        'POST',
+        null, {
+          'Authorization': `Token ${localStorage.getItem('token')}`,
+        }
+      )
+      return true
+    } catch (response) {
+      if (response.status === 204) return false // 204 no content => deleted
+      throw response
+    }
   },
 }
