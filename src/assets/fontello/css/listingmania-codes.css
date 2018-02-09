@@ -1,4 +1,5 @@
 
 .icon-add:before { content: '\e800'; } /* '' */
 .icon-more:before { content: '\e801'; } /* '' */
+.icon-logout:before { content: '\e802'; } /* '' */
 .icon-user:before { content: '\f2c0'; } /* '' */
