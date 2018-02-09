@@ -38,6 +38,10 @@ const store = new Vuex.Store({
       state.loginFormDisplayed = value
     },
     setUser (state, value) {
+      if (!value) {
+        localStorage.clear()
+        location.reload()
+      }
       state.user = value
     },
     toggleDurationFilter (state, index) {

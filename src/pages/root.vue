@@ -12,8 +12,9 @@
           .icon-more
     .row#navbar
       #user.nav-item
-        .button(@click="openLoginForm")
-          span.icon-user
+        .button(@click="onLoginBtnClick")
+          span(:class="[displayName ? 'icon-logout' : 'icon-user']")
+          span &nbsp;
           span {{ displayName || 'Connexion' }}
       #new-event.nav-item
         .button
@@ -63,9 +64,11 @@ export default {
     goHome () {
       router.push({name: 'home'})
     },
-    openLoginForm () {
+    onLoginBtnClick () {
       if (!this.displayName) {
         this.$store.commit('showLoginForm', true)
+      } else {
+        this.$store.commit('setUser', null)
       }
     },
     ...mapMutations({
