@@ -11,6 +11,18 @@ export const client = {
   getEvents () {
     return basicXhr(urljoin(baseUrl, 'api/events/'))
   },
+  signup: async function (username, email, password1, password2) {
+    await basicXhr(
+      urljoin(baseUrl, 'json_signup/'),
+      'POST',
+      JSON.stringify({
+        'username': username,
+        'email': email,
+        'password1': password1,
+        'password2': password2,
+      })
+    )
+  },
   getToken: async function (username, password) {
     const data = await basicXhr(urljoin(baseUrl, 'token/'), 'POST', JSON.stringify({
       'username': username,

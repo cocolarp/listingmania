@@ -14,7 +14,11 @@ export function basicXhr (url, method = 'GET', data = null, headers = {}) {
     xhr.onerror = reject
     xhr.onload = function () {
       if ([200, 201, 301, 302].includes(xhr.status)) {
-        resolve(JSON.parse(xhr.responseText))
+        if (xhr.responseText !== '') {
+          resolve(JSON.parse(xhr.responseText))
+        } else {
+          resolve()
+        }
       }
       reject(xhr)
     }

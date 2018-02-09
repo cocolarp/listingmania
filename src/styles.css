@@ -80,7 +80,7 @@ label {
   border: solid 1px white;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="email"], input[type="password"] {
   display: block;
   margin: 0;
   width: 100%;

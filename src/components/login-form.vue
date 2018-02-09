@@ -22,13 +22,15 @@
     .row
       input(
         type="text",
+        required,
         v-model="username",
         :class="{'animate-shake': shakeUsername}",
         placeholder="nom d'utilisateur",
       )
     .row(v-if="!displayLogin")
       input(
-        type="text",
+        type="email",
+        required,
         v-model="email",
         :class="{'animate-shake': shakeEmail}",
         placeholder="mail@example.com",
@@ -36,6 +38,7 @@
     .row
       input(
         type="password",
+        required,
         v-model="password",
         :class="{'animate-shake': shakePassword}",
         placeholder="mot de passe",
@@ -43,6 +46,7 @@
     .row(v-if="!displayLogin")
       input(
         type="password",
+        required,
         v-model="passwordConfirmation",
         :class="{'animate-shake': shakePassword}",
         placeholder="confirmation",
@@ -99,38 +103,63 @@ export default {
         throw "invalid password"
       }
     },
+    async _doLogin () {
+      try {
+        await Backent.getToken(this.username, this.password)
+      } catch (e) {
+        if (e.status === 400) {
+          this.invalidLogin = true
+        } else {
+          this.unexpectedError = true
+        }
+        return
+      }
+      try {
+        const user = await Backent.getUser()
+        this.$store.commit('setUser', user)
+        this.$store.commit('showLoginForm', false)
+      } catch (e) {
+        this.unexpectedError = true
+      }
+    },
+    _resetShakes () {
+      setTimeout(() => {
+        this.shakeUsername = false
+        this.shakePassword = false
+        this.shakeEmail = false
+      }, 1000)
+    },
     async submit () {
       try {
         this.validate()
       } catch (e) {
-        setTimeout(() => {
-          this.shakeUsername = false
-          this.shakePassword = false
-          this.shakeEmail = false
-        }, 1000)
+        this._resetShakes()
         return
       }
+
       if (this.displayLogin) {
-        let token = null
+        await this._doLogin()
+      } else {
         try {
-          token = await Backent.getToken(this.username, this.password)
-        } catch (e) {
-          if (e.status === 400) {
-            this.invalidLogin = true
+          await Backent.signup(
+            this.username,
+            this.email,
+            this.password,
+            this.passwordConfirmation,
+          )
+          await this._doLogin()
+        } catch (response) {
+          if (response.status === 400) {
+            if (response.responseText === 'email') {
+              this.shakeEmail = true
+            } else {
+              this.shakePassword = true
+            }
           } else {
             this.unexpectedError = true
           }
-          return
+          this._resetShakes()
         }
-        try {
-          const user = await Backent.getUser()
-          this.$store.commit('setUser', user)
-          this.$store.commit('showLoginForm', false)
-        } catch (e) {
-          this.unexpectedError = true
-        }
-      } else {
-        // do the signup
       }
     },
     toggleLogin () {
@@ -171,7 +200,7 @@ export default {
   text-align: center;
 }
 
-#content input[type="text"], input[type="password"] {
+#content input[type="text"], input[type="email"], input[type="password"] {
   margin: auto;
   width: 60%;
 }
