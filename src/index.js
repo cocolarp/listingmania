@@ -40,6 +40,16 @@ const str2bool = (x) => x === 'true'
 async function bootstrapApplication () {
   let rawEvents = []
 
+  document.addEventListener('click', (event) => {
+    let item = event.target.closest('.button')
+    if (item) {
+      item.classList.add('pop-animate')
+      setTimeout(() => {
+        item.classList.remove('pop-animate')
+      }, 500)
+    }
+  })
+
   if (BACKENT_URL) {
     Backent.init(BACKENT_URL)
     try {
