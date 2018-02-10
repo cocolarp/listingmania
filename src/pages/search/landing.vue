@@ -43,7 +43,7 @@
 
 <script>
 import merge from 'lodash.merge'
-import {mapState, mapMutations} from 'vuex'
+import {mapState} from 'vuex'
 
 import router from 'src/routes'
 
@@ -58,7 +58,7 @@ const LandingPage = merge({}, MainFiltersMixin, {
   computed: mapState({
     canSearch (state) {
       return (state.anyWhere || state.place)
-    }
+    },
   }),
   methods: {
     goToSearch () {
@@ -67,7 +67,7 @@ const LandingPage = merge({}, MainFiltersMixin, {
       } else {
         this.moveLocationInput = true
         setTimeout(() => {
-          this.moveLocationInput = false  // reset it
+          this.moveLocationInput = false // reset it
         }, 1000)
       }
     },

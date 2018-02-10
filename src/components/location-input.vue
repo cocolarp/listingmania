@@ -13,8 +13,6 @@
 
 import { mapState } from 'vuex'
 
-import * as url from './../url_utils'
-
 export default {
   mounted: function () {
     if (typeof google !== 'undefined') {

@@ -10,7 +10,7 @@ export function basicXhr (url, method = 'GET', data = null, headers = {}) {
     for (let key of Object.keys(headers)) {
       xhr.setRequestHeader(key, headers[key])
     }
-    xhr.withCredentials = false  // allows ALLOW_ALL CORS but no cookies
+    xhr.withCredentials = false // allows ALLOW_ALL CORS but no cookies
     xhr.onerror = reject
     xhr.onload = function () {
       if ([200, 201, 301, 302].includes(xhr.status)) {

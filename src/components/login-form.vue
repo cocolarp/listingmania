@@ -94,14 +94,14 @@ export default {
     validate () {
       if (!this.username) {
         this.shakeUsername = true
-        throw "invalid username"
+        throw new Error('invalid username')
       }
       if (!this.displayLogin && !this.email) {
         this.shakeEmail = true
-        throw "invalid email"
+        throw new Error('invalid email')
       }
       if (
-          (this.displayLogin && !this.password) ||
+        (this.displayLogin && !this.password) ||
           (!this.displayLogin && (
             (!this.password || !this.passwordConfirmation ||
               this.password !== this.passwordConfirmation
@@ -109,7 +109,7 @@ export default {
           ))
       ) {
         this.shakePassword = true
-        throw "invalid password"
+        throw new Error('invalid password')
       }
     },
     async _doLogin () {
@@ -180,7 +180,7 @@ export default {
     closeLoginForm () {
       this.$store.commit('showLoginForm', false)
     },
-  }
+  },
 }
 </script>
 

@@ -141,24 +141,21 @@ const EventsPage = merge({}, MainFiltersMixin, {
         const eventMonth = event.start.diff(today, 'month')
         return (
           (
-            !state.onlyMyEvents
-            || (
+            !state.onlyMyEvents ||
+            (
               state.user && state.user.events.includes(event.id)
             )
-          )
-          &&
+          ) &&
           (
             state.durationFilter[DURATIONS.indexOf(event.durationCategory)]
-          )
-          &&
+          ) &&
           (
-            (state.selectedMonths[eventMonth] === true)
-            || (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
-          )
-          &&
+            (state.selectedMonths[eventMonth] === true) ||
+            (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
+          ) &&
           (
-            (state.anyWhere)
-            || (event.distance < state.maxDistance)
+            (state.anyWhere) ||
+            (event.distance < state.maxDistance)
           )
         )
       }).sort((eventA, eventB) => {

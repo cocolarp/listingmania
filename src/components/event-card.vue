@@ -39,29 +39,29 @@ export default {
     }
   },
   computed: {
-    durationColor() {
+    durationColor () {
       return DURATION_COLOR[this.event.durationCategory]
     },
     ...mapState({
-      shouldDisplayKms(state) {
+      shouldDisplayKms (state) {
         return !state.anyWhere && this.event.distance
       },
-    })
+    }),
   },
   methods: {
-    highlightBackground() {
+    highlightBackground () {
       this.mainColor = this.durationColor
     },
-    resetBackground() {
+    resetBackground () {
       this.mainColor = '#999'
     },
-    highlightHeart() {
+    highlightHeart () {
       this.heartColor = '#333'
     },
-    resetHeart() {
+    resetHeart () {
       this.heartColor = this.getHeartDefaultColor()
     },
-    getHeartDefaultColor() {
+    getHeartDefaultColor () {
       if (this.event.isLiked) return '#D16E47'
       return '#999'
     },
@@ -80,7 +80,7 @@ export default {
       if (str.length <= 31) return str
       return str.substring(0, 31) + '…'
     },
-  }
+  },
 }
 </script>
 

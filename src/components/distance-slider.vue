@@ -21,7 +21,7 @@
 <script>
 import throttle from 'lodash.throttle'
 
-const BUTTON_SIZE = 16  // in px. And it's empiric.
+const BUTTON_SIZE = 16 // in px. And it's empiric.
 
 const DISTANCES_ENUM = [10, 50, 150, 250, 500]
 const DISTANCES = DISTANCES_ENUM.map((d) => {
@@ -32,7 +32,7 @@ const DISTANCES = DISTANCES_ENUM.map((d) => {
   }
 })
 
-let stopPoints = null  // this will be filled when mounting the component
+let stopPoints = null // this will be filled when mounting the component
 
 function closestStopPointIndex (x, threshold = BUTTON_SIZE / 3) {
   const distances = stopPoints.map((p) => Math.abs(p - x))
@@ -67,7 +67,7 @@ export default {
       this.dockedPosX = this.posX = stopPoints[i]
       this.$store.commit('setMaxDistance', DISTANCES_ENUM[i])
     },
-    setupEventTrap(event, eventKind) {
+    setupEventTrap (event, eventKind) {
       event.preventDefault()
       const handleMouseUp = () => {
         document.removeEventListener(eventKind, handleMouseUp)
@@ -77,10 +77,10 @@ export default {
     },
     processSliderMove (sliderXPosition) {
       const newPosition = sliderXPosition - this.$el.getBoundingClientRect().x - BUTTON_SIZE / 2
-      if (newPosition < 0) return  // before slider
-      if (newPosition > this.$el.clientWidth - BUTTON_SIZE / 2) return  // after slider
+      if (newPosition < 0) return // before slider
+      if (newPosition > this.$el.clientWidth - BUTTON_SIZE / 2) return // after slider
       const closest = closestStopPointIndex(newPosition, BUTTON_SIZE)
-      if (closest ) {
+      if (closest) {
         this.setSliderIndex(closest)
       } else {
         this.posX = newPosition
@@ -88,14 +88,14 @@ export default {
     },
     touchMove: throttle(function (event) {
       this.processSliderMove(event.touches[0].pageX)
-    }, 50),  // ms
+    }, 50), // ms
     mouseMove: throttle(function (event) {
       if (event.buttons === 1) {
         this.processSliderMove(event.pageX)
       } else {
         this.posX = this.dockedPosX
       }
-    }, 50),  // ms
+    }, 50), // ms
   },
 }
 </script>

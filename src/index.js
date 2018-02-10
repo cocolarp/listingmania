@@ -8,25 +8,17 @@ import Vue from 'vue'
 import 'src/styles.css'
 import 'src/assets/fontello/css/listingmania-embedded.css'
 
-
 import * as models from './models'
-import * as url from './url_utils'
-
-import bus from './msgbus'
+import rootPage from './pages/root.vue'
 import router from './routes'
-import store from './store'
-
-import {
-  getPlaceDetails,
-} from './services/google'
-
+import {getPlaceDetails} from './services/google'
 import {client} from './services/backent'
+import store from './store'
+import * as url from './url_utils'
 
 window.Backent = client
 
-import rootPage from './pages/root.vue'
-
-moment.locale('fr')  // FIXME: Be international, detect and let the user choose!
+moment.locale('fr') // FIXME: Be international, detect and let the user choose!
 
 function updateStoreFromUrl (urlParam, storeMutation, castCallback = (x) => x) {
   const value = url.getStringParam(urlParam)
@@ -76,7 +68,7 @@ async function bootstrapApplication () {
 
   store.commit('init', rawEvents)
 
-  new Vue(  // eslint-disable-line no-new
+  new Vue( // eslint-disable-line no-new
     Object.assign({
       el: '#content',
       store,

@@ -48,7 +48,7 @@ import router from 'src/routes'
 import loginForm from 'src/components/login-form.vue'
 
 import headerImg from 'src/assets/logo.png'
-import smallLogoImg from 'src/assets/small-logo.png'  // OMG is ugly
+import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
 
 export default {
   components: {
@@ -76,13 +76,15 @@ export default {
       switch (lang) {
         case 'fr':
           window.open('https://docs.google.com/forms/d/e/1FAIpQLSdEsDJcxV4isR4QUjIKhKAyuHGqNb-mbzhTdp7k7RQOKzdj3g/viewform?c=0&w=1')
+          break
         default:
           window.open('https://docs.google.com/forms/d/e/1FAIpQLScp7n5Hw1VY4UZW1NvKcrm5y1YWqkk1nIcvOQG0C0tKZafOXQ/viewform?c=0&w=1')
+          break
       }
     },
     ...mapMutations({
       displaySearchBar: 'toggleMobileSearchBar',
-    })
+    }),
   },
   computed: mapState({
     displayName (state) {

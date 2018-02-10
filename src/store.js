@@ -108,7 +108,7 @@ const store = new Vuex.Store({
     },
     toggleMobileSearchBar (state) {
       state.hideMobileSearchBar = !state.hideMobileSearchBar
-    }
+    },
   },
 })
 

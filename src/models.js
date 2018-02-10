@@ -82,8 +82,8 @@ function BackentEvent (raw) {
     model.distance = Math.round(geolib.getDistance(
       {latitude: lat, longitude: lng},
       {latitude: model.lat, longitude: model.lng},
-      1000,  // 1km accuracy
-    ) / 1000.0)  // get the distance in kilometers
+      1000, // 1km accuracy
+    ) / 1000.0) // get the distance in kilometers
   }
 
   return model

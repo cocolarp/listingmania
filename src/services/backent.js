@@ -32,7 +32,7 @@ export const client = {
       localStorage.setItem('token', data.token)
       return data.token
     }
-    throw "unexpected error"
+    throw new Error('unexpected error')
   },
   getUser () {
     return basicXhr(urljoin(baseUrl, 'profile/'), 'GET', null, {
