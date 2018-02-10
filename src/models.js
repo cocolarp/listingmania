@@ -63,7 +63,7 @@ function BackentEvent (raw) {
     end: end,
     duration: duration,
     durationCategory: daysToCategory(duration.days()),
-    address: raw.location.address,
+    address: raw.location.name,
     lat: raw.location.latitude,
     lng: raw.location.longitude,
     distance: null,
