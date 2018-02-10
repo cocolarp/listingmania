@@ -21,11 +21,14 @@
       ) Inscription
     .row
       input(
+        autofocus,
         type="text",
         required,
         v-model="username",
         :class="{'animate-shake': shakeUsername}",
         placeholder="nom d'utilisateur",
+        @keyup.enter="submit",
+        @keyup.esc="closeLoginForm",
       )
     .row(v-if="!displayLogin")
       input(
@@ -34,6 +37,8 @@
         v-model="email",
         :class="{'animate-shake': shakeEmail}",
         placeholder="mail@example.com",
+        @keyup.enter="submit",
+        @keyup.esc="closeLoginForm",
       )
     .row
       input(
@@ -42,6 +47,8 @@
         v-model="password",
         :class="{'animate-shake': shakePassword}",
         placeholder="mot de passe",
+        @keyup.enter="submit",
+        @keyup.esc="closeLoginForm",
       )
     .row(v-if="!displayLogin")
       input(
@@ -50,6 +57,8 @@
         v-model="passwordConfirmation",
         :class="{'animate-shake': shakePassword}",
         placeholder="confirmation",
+        @keyup.enter="submit",
+        @keyup.esc="closeLoginForm",
       )
     .row(v-if="invalidLogin")
       b.active Nom d'utilisateur ou mot de passe erroné.
