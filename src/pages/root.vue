@@ -4,7 +4,7 @@
     .row#mobile-navbar
       img(:src="smallLogoSrc", @click="goHome")
       #mobile-buttons
-        .round-button
+        .round-button(@click="openAddEventForm")
           .icon-add
         .round-button
           .icon-user
@@ -17,7 +17,7 @@
           span &nbsp;
           span {{ displayName || 'Connexion' }}
       #new-event.nav-item
-        .button
+        .button(@click="openAddEventForm")
           span.icon-add
           span Annoncer un GN
     .row#logo
@@ -69,6 +69,15 @@ export default {
         this.$store.commit('showLoginForm', true)
       } else {
         this.$store.commit('setUser', null)
+      }
+    },
+    openAddEventForm () {
+      const lang = navigator.language.split('-')[0]
+      switch (lang) {
+        case 'fr':
+          window.open('https://docs.google.com/forms/d/e/1FAIpQLSdEsDJcxV4isR4QUjIKhKAyuHGqNb-mbzhTdp7k7RQOKzdj3g/viewform?c=0&w=1')
+        default:
+          window.open('https://docs.google.com/forms/d/e/1FAIpQLScp7n5Hw1VY4UZW1NvKcrm5y1YWqkk1nIcvOQG0C0tKZafOXQ/viewform?c=0&w=1')
       }
     },
     ...mapMutations({
