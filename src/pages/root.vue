@@ -15,27 +15,28 @@
         .button(@click="onLoginBtnClick")
           span(:class="[displayName ? 'icon-logout' : 'icon-user']")
           span &nbsp;
-          span {{ displayName || 'Connexion' }}
+          span(v-if="displayName") {{ displayName }}
+          span(v-else, v-translate="") Connexion
       #new-event.nav-item
         .button(@click="openAddEventForm")
           span.icon-add
-          span Annoncer un GN
+          span(v-translate="") Annoncer un GN
     .row#logo
       .col(@click="goHome")
         img(:src="logoSrc")
-        #motto Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux
+        #motto(v-translate="") Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux
     .row#top-spacer.spacer
     .row#pages
       router-view
     .row.spacer
   .row#footer
-    router-link(to="/about") A propos
+    router-link(to="/about", v-translate="") A propos
     span |
     a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank") Suivez-nous sur Facebook
     span |
-    router-link(to="/faq") FAQ
+    router-link(to="/faq", v-translate="") FAQ
     span |
-    router-link(to="/map") Plan du site
+    router-link(to="/map", v-translate="") Plan du site
   #login-form(:class="{show: loginFormDisplayed}")
     login-form
 </template>
@@ -44,6 +45,7 @@
 import { mapState, mapMutations } from 'vuex'
 
 import router from 'src/routes'
+import {getBrowserLanguage} from 'src/lang_utils'
 
 import loginForm from 'src/components/login-form.vue'
 
@@ -72,8 +74,7 @@ export default {
       }
     },
     openAddEventForm () {
-      const lang = navigator.language.split('-')[0]
-      switch (lang) {
+      switch (getBrowserLanguage()) {
         case 'fr':
           window.open('https://docs.google.com/forms/d/e/1FAIpQLSdEsDJcxV4isR4QUjIKhKAyuHGqNb-mbzhTdp7k7RQOKzdj3g/viewform?c=0&w=1')
           break

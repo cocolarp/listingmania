@@ -4,10 +4,10 @@
     #searchform(:class="{hide: hideOnMobile}")
       .row
         .col.first
-          label Période
+          label(v-translate="") Période
         .col.second
           check-box(
-            msg="Toutes les dates",
+            :msg="everyTimeCheckboxLabel",
             :value="anyTime",
             @change="updateAnyTime"
           )
@@ -16,10 +16,10 @@
       .spacer
       .row
         .col.first
-          label Distance
+          label(v-translate="") Distance
         .col.second
           check-box(
-            msg="Dans le monde entier",
+            :msg="anyWhereCheckboxLabel",
             :value="anyWhere",
             @change="updateAnyWhere"
           )
@@ -34,61 +34,63 @@
           .col
             .round-filter#my-events
               check-box(
-                msg="Mes GNs uniquement",
+                :msg="myEventsCheckboxLabel",
                 :value="onlyMyEvents",
                 @change="toggleMyEventsOnly"
               )
           .col
             .round-filter
-              strong Format
+              strong(v-translate="") Format
               multi-sort-badge(
                 class='short-duration',
                 stateProperty='durationFilter',
                 stateMutation='toggleDurationFilter',
                 value=0,
-                badgeText='COURT',
+                :badgeText='shortFormatLabel',
               )
               multi-sort-badge(
                 class='medium-duration',
                 stateProperty='durationFilter',
                 stateMutation='toggleDurationFilter',
                 value=1,
-                badgeText='MOYEN',
+                :badgeText='mediumFormatLabel',
               )
               multi-sort-badge(
                 class='long-duration',
                 stateProperty='durationFilter',
                 stateMutation='toggleDurationFilter',
                 value=2,
-                badgeText='LONG',
+                :badgeText='longFormatLabel',
               )
           .col
             .round-filter
-              strong Tri
+              strong(v-translate="") Tri
               sort-badge(
                 stateProperty='sortKey',
                 stateMutation='setSortKey',
                 value='start',
-                badgeText='DATE'
+                :badgeText="dateFilterLabel"
               )
               sort-badge(
                 stateProperty='sortKey',
                 stateMutation='setSortKey',
                 value='cost',
-                badgeText='COÛT'
+                :badgeText='costFilterLabel'
               )
               sort-badge(
                 v-if="shouldDisplayDistanceFilter",
                 stateProperty='sortKey',
                 stateMutation='setSortKey',
                 value='distance',
-                badgeText='DISTANCE'
+                :badgeText='distanceFilterLabel'
               )
   #cards
     .row#result-count
       .col
-        strong {{ events.length }}&nbsp;
-        span résultat{{ events.length > 1 ? 's' : '' }}
+        translate(
+          :translate-n="events.length",
+          translate-plural="%{ events.length } résultats",
+        ) %{ events.length } résultat
     .row
       .col.event(v-for="event in events", :key="event.id")
         event-card(:event="event")
@@ -103,6 +105,7 @@ import merge from 'lodash.merge'
 import {DURATIONS} from 'src/models'
 import eventCard from 'src/components/event-card.vue'
 import sortBadge from 'src/components/sort-badge.vue'
+import {gettext} from 'src/lang_utils'
 
 import MainFiltersMixin from './main-filters.js'
 
@@ -129,45 +132,53 @@ const EventsPage = merge({}, MainFiltersMixin, {
     'sort-badge': sortBadge,
     'multi-sort-badge': multiSortBadge,
   },
-  computed: mapState({
-    hideOnMobile (state) {
-      return state.hideMobileSearchBar
-    },
-    shouldDisplayDistanceFilter (state) {
-      return !state.anyWhere && state.place
-    },
-    events: (state) => {
-      return state.rawEvents.filter((event) => {
-        const eventMonth = event.start.diff(today, 'month')
-        return (
-          (
-            !state.onlyMyEvents ||
+  computed: {
+    shortFormatLabel () { return this.$gettext('COURT') },
+    mediumFormatLabel () { return this.$gettext('MOYEN') },
+    longFormatLabel () { return this.$gettext('LONG') },
+    dateFilterLabel () { return this.$gettext('DATE') },
+    costFilterLabel () { return this.$gettext('COÛT') },
+    distanceFilterLabel () { return this.$gettext('DISTANCE') },
+    ...mapState({
+      hideOnMobile (state) {
+        return state.hideMobileSearchBar
+      },
+      shouldDisplayDistanceFilter (state) {
+        return !state.anyWhere && state.place
+      },
+      events: (state) => {
+        return state.rawEvents.filter((event) => {
+          const eventMonth = event.start.diff(today, 'month')
+          return (
             (
-              state.user && state.user.events.includes(event.id)
+              !state.onlyMyEvents ||
+              (
+                state.user && state.user.events.includes(event.id)
+              )
+            ) &&
+            (
+              state.durationFilter[DURATIONS.indexOf(event.durationCategory)]
+            ) &&
+            (
+              (state.selectedMonths[eventMonth] === true) ||
+              (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
+            ) &&
+            (
+              (state.anyWhere) ||
+              (event.distance < state.maxDistance)
             )
-          ) &&
-          (
-            state.durationFilter[DURATIONS.indexOf(event.durationCategory)]
-          ) &&
-          (
-            (state.selectedMonths[eventMonth] === true) ||
-            (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
-          ) &&
-          (
-            (state.anyWhere) ||
-            (event.distance < state.maxDistance)
           )
-        )
-      }).sort((eventA, eventB) => {
-        switch (state.sortKey) {
-          case 'start':
-            return eventA.start.diff(eventB.start, 'days')
-          default:
-            return eventA[state.sortKey] - eventB[state.sortKey]
-        }
-      })
-    },
-  }),
+        }).sort((eventA, eventB) => {
+          switch (state.sortKey) {
+            case 'start':
+              return eventA.start.diff(eventB.start, 'days')
+            default:
+              return eventA[state.sortKey] - eventB[state.sortKey]
+          }
+        })
+      },
+    }),
+  }
 })
 export default EventsPage
 </script>

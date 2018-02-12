@@ -1,6 +1,8 @@
 import {mapState} from 'vuex'
 import moment from 'moment'
 
+import {gettext} from 'src/lang_utils'
+
 import monthBadge from './month-badge.vue'
 
 export function dateSliderFactory (monthFormatCallback) {
@@ -23,7 +25,7 @@ export function dateSliderFactory (monthFormatCallback) {
             selected: selected,
             display: i !== state.selectedMonths.length - 1
               ? monthFormatCallback(thatMonth)
-              : 'Plus tard',
+              : this.$gettext('Plus tard'),
           }
           if (month.moment.year() === currentYear) {
             months.thisYear.push(month)

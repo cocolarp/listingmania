@@ -4,21 +4,29 @@ import isnan from 'lodash.isnan'
 import moment from 'moment'
 
 import Vue from 'vue'
+import GetTextPlugin from 'vue-gettext'
 
 import 'src/styles.css'
 import 'src/assets/fontello/css/listingmania-embedded.css'
+import translations from 'dist/translations.json'
 
 import * as models from './models'
 import rootPage from './pages/root.vue'
 import router from './routes'
-import {getPlaceDetails} from './services/google'
 import {client} from './services/backent'
+import {getPlaceDetails} from './services/google'
+import {getCurrentlySupportedLocale, getBrowserLanguage} from 'src/lang_utils'
 import store from './store'
 import * as url from './url_utils'
 
 window.Backent = client
 
-moment.locale('fr') // FIXME: Be international, detect and let the user choose!
+Vue.use(GetTextPlugin, {
+  translations: translations,
+  defaultLanguage: getCurrentlySupportedLocale(),
+})
+
+moment.locale(getBrowserLanguage())
 
 function updateStoreFromUrl (urlParam, storeMutation, castCallback = (x) => x) {
   const value = url.getStringParam(urlParam)

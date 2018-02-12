@@ -5,6 +5,8 @@ import dateRangeSlider from 'src/components/date-range-slider/inline.vue'
 import distanceSlider from 'src/components/distance-slider.vue'
 import locationInput from 'src/components/location-input.vue'
 
+import {gettext} from 'src/lang_utils'
+
 export default {
   components: {
     'check-box': checkBox,
@@ -25,11 +27,16 @@ export default {
       updateAnyWhere: 'updateAnyWhere',
     }),
   },
-  computed: mapState({
-    anyTime: (state) => {
-      return state.selectedMonths.every((x) => x === true)
-    },
-    anyWhere: 'anyWhere',
-    onlyMyEvents: 'onlyMyEvents',
-  }),
+  computed: {
+    everyTimeCheckboxLabel () { return this.$gettext('Toutes les dates') },
+    anyWhereCheckboxLabel () { return this.$gettext('Dans le monde entier') },
+    myEventsCheckboxLabel () { return this.$gettext('Mes GNs uniquement') },
+    ...mapState({
+      anyTime: (state) => {
+        return state.selectedMonths.every((x) => x === true)
+      },
+      anyWhere: 'anyWhere',
+      onlyMyEvents: 'onlyMyEvents',
+    }),
+  }
 }

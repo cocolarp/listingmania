@@ -1,0 +1,89 @@
+# English translations for cocolarp package.
+# Copyright (C) 2018 undefined
+# This file is distributed under the same license as the cocolarp package.
+# Automatically generated, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: cocolarp 0.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-12 01:55+0100\n"
+"PO-Revision-Date: 2018-02-12 01:55+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "%{ events.length } résultat"
+msgid_plural "%{ events.length } résultats"
+msgstr[0] "%{ events.length } résultat"
+msgstr[1] "%{ events.length } résultats"
+
+msgid "A propos"
+msgstr "A propos"
+
+msgid "Annoncer un GN"
+msgstr "Annoncer un GN"
+
+msgid "COURT"
+msgstr "COURT"
+
+msgid "COÛT"
+msgstr "COÛT"
+
+msgid "Connexion"
+msgstr "Connexion"
+
+msgid "DATE"
+msgstr "DATE"
+
+msgid "DISTANCE"
+msgstr "DISTANCE"
+
+msgid "Dans le monde entier"
+msgstr "Dans le monde entier"
+
+msgid "Distance"
+msgstr "Distance"
+
+msgid "FAQ"
+msgstr "FAQ"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "LONG"
+msgstr "LONG"
+
+msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
+msgstr "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
+
+msgid "MOYEN"
+msgstr "MOYEN"
+
+msgid "Mes GNs uniquement"
+msgstr "Mes GNs uniquement"
+
+msgid "Plan du site"
+msgstr "Plan du site"
+
+msgid "Plus tard"
+msgstr "Plus tard"
+
+msgid "Préférences"
+msgstr "Préférences"
+
+msgid "Période"
+msgstr "Période"
+
+msgid "Toutes les dates"
+msgstr "Toutes les dates"
+
+msgid "Tri"
+msgstr "Tri"
+
+msgid "Trouver mon prochain GN"
+msgstr "Trouver mon prochain GN"

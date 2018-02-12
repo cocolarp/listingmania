@@ -2,8 +2,12 @@
 #content
   .row
     .col
-      strong Période
-      check-box(msg="Toutes les dates", :value="anyTime", @change="updateAnyTime")
+      strong(v-translate="") Période
+      check-box(
+        :msg="everyTimeCheckboxLabel",
+        :value="anyTime",
+        @change="updateAnyTime"
+      )
   .row
     .col
       date-range-slider
@@ -11,13 +15,15 @@
   .row.spacer
   .row
     .col
-      strong Distance
+      strong(v-translate="") Distance
       check-box(
-        msg="Dans le monde entier",
+        :msg="anyWhereCheckboxLabel",
         :value="anyWhere",
         @change="updateAnyWhere")
   .row(v-if="!anyWhere")
-    .col#location-input(:class="{'animate-shake': moveLocationInput}")
+    .col#location-input(
+      :class="{'animate-shake': moveLocationInput}"
+    )
       location-input
     .col#distance-slider
       distance-slider
@@ -25,9 +31,9 @@
   .row.spacer
   .row
     .col
-      strong Préférences
+      strong(v-translate="") Préférences
       check-box(
-        msg="Mes GNs uniquement",
+        :msg="myEventsCheckboxLabel",
         :value="onlyMyEvents",
         @change="toggleMyEventsOnly"
       )
@@ -37,7 +43,8 @@
     #buttons.col
       .button(
         id="ok-button",
-        @click="goToSearch"
+        @click="goToSearch",
+        v-translate=""
       ) Trouver mon prochain GN
 </template>
 
@@ -46,6 +53,7 @@ import merge from 'lodash.merge'
 import {mapState} from 'vuex'
 
 import router from 'src/routes'
+import {gettext} from 'src/lang_utils'
 
 import MainFiltersMixin from './main-filters.js'
 
