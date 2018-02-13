@@ -46,7 +46,7 @@ async function bootstrapApplication () {
       item.classList.add('pop-animate')
       setTimeout(() => {
         item.classList.remove('pop-animate')
-      }, 500)
+      }, 1000)
     }
   })
 

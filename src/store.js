@@ -31,6 +31,7 @@ const store = new Vuex.Store({
     durationFilter: Array(3).fill(true),
     rawEvents: [],
     hideMobileSearchBar: true,
+    shakeLocationInput: false,
   },
   mutations: {
     init (state, eventList) {
@@ -112,6 +113,12 @@ const store = new Vuex.Store({
     },
     toggleMobileSearchBar (state) {
       state.hideMobileSearchBar = !state.hideMobileSearchBar
+    },
+    doShakeLocationInput (state) {
+      state.shakeLocationInput = true
+      setTimeout(() => {
+        state.shakeLocationInput = false
+      }, 1500)
     },
   },
 })

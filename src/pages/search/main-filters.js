@@ -20,9 +20,14 @@ export default {
         this.$store.commit('showLoginForm', true)
       }
     },
+    updateAnyWhere (value) {
+      if (!this.$store.state.place) {
+        this.$store.commit('doShakeLocationInput')
+      }
+      this.$store.commit('updateAnyWhere', value)
+    },
     ...mapMutations({
       updateAnyTime: 'updateAnyTime',
-      updateAnyWhere: 'updateAnyWhere',
     }),
   },
   computed: {
@@ -33,8 +38,12 @@ export default {
       anyTime: (state) => {
         return state.selectedMonths.every((x) => x === true)
       },
+      canSearch (state) {
+        return (state.anyWhere || state.place)
+      },
       anyWhere: 'anyWhere',
       onlyMyEvents: 'onlyMyEvents',
+      shakeLocationInput: 'shakeLocationInput',
     }),
   },
 }

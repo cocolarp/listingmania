@@ -22,7 +22,7 @@
         @change="updateAnyWhere")
   .row(v-if="!anyWhere")
     .col#location-input(
-      :class="{'animate-shake': moveLocationInput}"
+      :class="{'animate-shake': shakeLocationInput}"
     )
       location-input
     .col#distance-slider
@@ -57,25 +57,12 @@ import router from 'src/routes'
 import MainFiltersMixin from './main-filters.js'
 
 const LandingPage = merge({}, MainFiltersMixin, {
-  data: function () {
-    return {
-      moveLocationInput: false,
-    }
-  },
-  computed: mapState({
-    canSearch (state) {
-      return (state.anyWhere || state.place)
-    },
-  }),
   methods: {
     goToSearch () {
       if (this.canSearch) {
         router.push('events')
       } else {
-        this.moveLocationInput = true
-        setTimeout(() => {
-          this.moveLocationInput = false // reset it
-        }, 1000)
+        this.$store.commit('doShakeLocationInput')
       }
     },
   },

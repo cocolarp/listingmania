@@ -24,7 +24,9 @@
             @change="updateAnyWhere"
           )
         .col.third(v-if="!anyWhere")
-          #location-input
+          #location-input(
+            :class="{'animate-shake': shakeLocationInput}"
+          )
             location-input
           #distance-slider
             distance-slider
