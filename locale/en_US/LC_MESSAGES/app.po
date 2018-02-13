@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-13 21:35+0100\n"
-"PO-Revision-Date: 2018-02-13 21:52+0100\n"
+"PO-Revision-Date: 2018-02-13 22:07+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -39,10 +39,10 @@ msgid "COÛT"
 msgstr "COST"
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
-msgstr "Connect or register to enjoy all the features from Cocolarp"
+msgstr "Connect or register to enjoy all the features from Cocolarp …"
 
 msgid "Connexion"
-msgstr "Connection"
+msgstr "Sign in"
 
 msgid "D'où partez-vous?"
 msgstr "From where ?"
@@ -66,10 +66,10 @@ msgid "Format"
 msgstr "Format"
 
 msgid "Inscription"
-msgstr "Registration"
+msgstr "Sign up"
 
 msgid "J'ai lu et accepte les conditions générales d'utilisation"
-msgstr "I certify that I have read and accepted the website's General Conditions of Use"
+msgstr "I have read and accepted the website's Terms & Conditions"
 
 msgid "LONG"
 msgstr "LONG"
@@ -84,7 +84,7 @@ msgid "Mes GNs uniquement"
 msgstr "Only my favorite LARP"
 
 msgid "Nom d'utilisateur ou mot de passe erroné."
-msgstr "Wrong login or password"
+msgstr "Wrong login or password."
 
 msgid "OK"
 msgstr "OK"
@@ -120,17 +120,17 @@ msgid "Trouver mon prochain GN"
 msgstr "Show me my next LARP"
 
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
-msgstr "An error has occured.  Please, contact our support team"
+msgstr "An error has occurred.  Please, contact our support team."
 
 msgid "Une journée"
 msgstr "One day"
 
 msgctxt "password input field"
 msgid "confirmation"
-msgstr "Confirm password"
+msgstr "confirm password"
 
 msgid "mot de passe"
-msgstr "Password"
+msgstr "password"
 
 msgid "nom d'utilisateur"
-msgstr "Username"
+msgstr "username"
