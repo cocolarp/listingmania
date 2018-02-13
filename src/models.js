@@ -59,6 +59,13 @@ function humanDuration (days) {
   }
 }
 
+function readableCost (price, currency) {
+  if (price === 0) {
+    return '' // do not display anything if price is null
+  }
+  return `${Math.round(price / 100)}${CURRENCY_SYMBOLS[currency]}`
+}
+
 function BackentEvent (raw) {
   const start = moment(raw.start)
   const end = moment(raw.end)
@@ -74,7 +81,7 @@ function BackentEvent (raw) {
     description: raw.description,
     url: raw.external_url,
     cost: raw.price,
-    readable_cost: `${Math.round(raw.price / 100)}${CURRENCY_SYMBOLS[currency]}`,
+    readable_cost: readableCost(raw.price, currency),
     start: start,
     end: end,
     duration: duration,
