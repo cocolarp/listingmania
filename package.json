@@ -28,7 +28,7 @@
     "dsv-loader": "^2.0.0",
     "karma": "^2.0.0",
     "pug": "^2.0.0-rc.4",
-    "systematic": "file:../../dev/systematic",
+    "systematic": "^1.10.0",
     "vue-template-compiler": "^2.5.13",
     "vue-webpack-gettext": "^0.3.1"
   },
