@@ -12,14 +12,14 @@
         href='#',
         :class="{active: displayLogin}",
         @click="toggleLogin",
-        translate="",
+        v-translate="",
       ) Connexion
       span &nbsp;|&nbsp;
       a(
         href='#',
         :class="{active: !displayLogin}",
         @click="toggleSignup",
-        translate="",
+        v-translate="",
       ) Inscription
     .row
       input(
