@@ -3,6 +3,8 @@
 import geolib from 'geolib'
 import moment from 'moment'
 
+import {gettext} from 'src/lang_utils'
+
 export const AVAILABLE_DISTANCES = {
   10: '10km',
   50: '50km',
@@ -43,6 +45,20 @@ function daysToCategory (days) {
   }
 }
 
+function humanDuration (days) {
+  switch(days) {
+    case 0:
+      return gettext('Quelques heures')
+    case 1:
+      return gettext('Une journée')
+    case 2:
+    case 3:
+      return gettext('2 ou 3 jours')
+    default:
+      return gettext('Plus de 3 jours')
+  }
+}
+
 function BackentEvent (raw) {
   const start = moment(raw.start)
   const end = moment(raw.end)
@@ -63,6 +79,7 @@ function BackentEvent (raw) {
     end: end,
     duration: duration,
     durationCategory: daysToCategory(duration.days()),
+    humanDuration: humanDuration(duration.days()),
     address: raw.location.name,
     lat: raw.location.latitude,
     lng: raw.location.longitude,
