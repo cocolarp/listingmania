@@ -59,7 +59,7 @@ export default {
       const selectedIndex = DISTANCES_ENUM.indexOf(this.$store.state.maxDistance)
       this.setSliderIndex(selectedIndex, false)
     },
-    setSliderIndex (i, checkState = true ) {
+    setSliderIndex (i, checkState = true) {
       if (checkState && !this.$store.state.place) {
         this.$store.commit('doShakeLocationInput')
         return

@@ -19,7 +19,7 @@ export default {
       const autocomplete = new google.maps.places.Autocomplete(this.$refs.autocomplete)
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace()
-        if (place.hasOwnProperty('place_id'))  {  // has been resolved properly
+        if (place.hasOwnProperty('place_id')) { // has been resolved properly
           this.$store.commit('setPlace', place)
         } else {
           this.$store.commit('resetPlace')
@@ -30,7 +30,7 @@ export default {
     }
   },
   computed: {
-    locationPlaceholder () { return this.$gettext("Doù partez-vous?") },
+    locationPlaceholder () { return this.$gettext('D\'où partez-vous?') },
     ...mapState({
       placeAddress: (state) => {
         if (state.place) {

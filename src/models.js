@@ -46,7 +46,7 @@ function daysToCategory (days) {
 }
 
 function humanDuration (days) {
-  switch(days) {
+  switch (days) {
     case 0:
       return gettext('Quelques heures')
     case 1:

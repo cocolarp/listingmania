@@ -50,7 +50,6 @@
 
 <script>
 import merge from 'lodash.merge'
-import {mapState} from 'vuex'
 
 import router from 'src/routes'
 
