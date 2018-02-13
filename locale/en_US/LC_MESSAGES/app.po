@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-13 20:45+0100\n"
-"PO-Revision-Date: 2018-02-12 01:55+0100\n"
+"PO-Revision-Date: 2018-02-13 21:14+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -16,89 +16,90 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
 
 msgid "%{ events.length } résultat"
 msgid_plural "%{ events.length } résultats"
-msgstr[0] "%{ events.length } résultat"
-msgstr[1] "%{ events.length } résultats"
+msgstr[0] "%{ events.length } result"
+msgstr[1] "%{ events.length } results"
 
 msgid "2 ou 3 jours"
-msgstr ""
+msgstr "2 or 3 days"
 
 msgid "A propos"
-msgstr ""
+msgstr "Who are we"
 
 msgid "Annoncer un GN"
-msgstr ""
+msgstr "Add a LARP"
 
 msgid "COURT"
-msgstr ""
+msgstr "SHORT"
 
 msgid "COÛT"
-msgstr ""
+msgstr "COST"
 
 msgid "Connexion"
-msgstr ""
+msgstr "Connection"
 
 msgid "D'où partez-vous?"
-msgstr ""
+msgstr "From where ?"
 
 msgid "DATE"
-msgstr ""
+msgstr "MONTH"
 
 msgid "DISTANCE"
-msgstr ""
+msgstr "DISTANCE"
 
 msgid "Dans le monde entier"
-msgstr ""
+msgstr "Worldwide"
 
 msgid "Distance"
-msgstr ""
+msgstr "Distance"
 
 msgid "FAQ"
-msgstr ""
+msgstr "FAQ"
 
 msgid "Format"
-msgstr ""
+msgstr "Format"
 
 msgid "LONG"
-msgstr ""
+msgstr "LONG"
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
-msgstr ""
+msgstr "Worldwide & all inclusive calendar for LARP"
 
 msgid "MOYEN"
-msgstr ""
+msgstr "MEDIUM"
 
 msgid "Mes GNs uniquement"
-msgstr ""
+msgstr "Only my favorite LARP"
 
 msgid "Plan du site"
-msgstr ""
+msgstr "Site map"
 
 msgid "Plus de 3 jours"
-msgstr ""
+msgstr "More than 3 days"
 
 msgid "Plus tard"
-msgstr ""
+msgstr "Later on"
 
 msgid "Préférences"
-msgstr ""
+msgstr "Preferences"
 
 msgid "Période"
-msgstr ""
+msgstr "Timeframe"
 
 msgid "Quelques heures"
-msgstr ""
+msgstr "A few hours"
 
 msgid "Toutes les dates"
-msgstr ""
+msgstr "Every month"
 
 msgid "Tri"
-msgstr ""
+msgstr "Sort by"
 
 msgid "Trouver mon prochain GN"
-msgstr ""
+msgstr "Show me my next LARP"
 
 msgid "Une journée"
-msgstr ""
+msgstr "One day"
