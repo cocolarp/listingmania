@@ -19,8 +19,11 @@ export default {
       const autocomplete = new google.maps.places.Autocomplete(this.$refs.autocomplete)
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace()
-        if (!place) return
-        this.$store.commit('setPlace', place)
+        if (place.hasOwnProperty('place_id'))  {  // has been resolved properly
+          this.$store.commit('setPlace', place)
+        } else {
+          this.$store.commit('resetPlace')
+        }
       })
     } else {
       console.warn("google API not loaded: can't autocomplete")

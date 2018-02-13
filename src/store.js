@@ -101,6 +101,10 @@ const store = new Vuex.Store({
         event.computeDistance(lat, lng)
       })
     },
+    resetPlace (state) {
+      state.place = null
+      url.updateParamsWith('place', null)
+    },
     setSortKey (state, value) {
       url.updateParamsWith('sort', value)
       state.sortKey = value
