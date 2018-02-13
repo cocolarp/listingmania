@@ -78,7 +78,7 @@ export default LandingPage
 }
 
 #content strong {
-  font-family: 'Geomanist-Bold';
+  font-family: 'Montserrat-Bold';
   letter-spacing: 0.1rem;
   font-size: 1.5rem;
   margin-right: 1rem;
@@ -91,7 +91,7 @@ export default LandingPage
 }
 
 #distance-slider * {
-  font-family: Geomanist;
+  font-family: Montserrat;
   font-size: 0.8rem;
 }
 
@@ -117,7 +117,7 @@ export default LandingPage
 
 @media (min-width: 768px) {
   #content {
-    width: 60%;
+    width: 65%;
   }
   #location-input {
     width: 30%;

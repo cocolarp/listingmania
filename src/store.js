@@ -21,7 +21,7 @@ function popEvents () {
 const store = new Vuex.Store({
   state: {
     user: null,
-    loginFormDisplayed: true,
+    loginFormDisplayed: false,
     selectedMonths: Array(13).fill(true),
     anyWhere: true,
     onlyMyEvents: false,

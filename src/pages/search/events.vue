@@ -186,7 +186,7 @@ export default EventsPage
 
 <style scoped>
 #content {
-  font-family: Geomanist;
+  font-family: Montserrat;
   margin: 0 auto;
   height: 100%;
 }
@@ -212,7 +212,7 @@ export default EventsPage
   /* color: var(--main-text-color); */
   color: #777;
   margin-right: 2rem;
-  font-family: 'Geomanist-Bold';
+  font-family: 'Montserrat-Bold';
   letter-spacing: 0.1rem;
 }
 
@@ -221,13 +221,13 @@ export default EventsPage
 }
 
 #distance-slider * {
-  font-family: Geomanist;
+  font-family: Montserrat;
   font-size: 0.8rem;
 }
 
 .round-filter {
   display: inline-block;
-  font-family: Geomanist;
+  font-family: Montserrat;
   font-size: 0.8rem;
   background-color: white;
   border-radius: 1.2rem;
@@ -345,7 +345,7 @@ export default EventsPage
   }
 
   .col.first {
-    width: 10%;
+    width: 8%;
   }
 
   .col.second {
@@ -353,7 +353,7 @@ export default EventsPage
   }
 
   .col.third {
-    width: 70%;
+    width: 72%;
   }
 
   .col.event {

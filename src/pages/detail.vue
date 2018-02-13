@@ -16,7 +16,7 @@ export default {}
   margin-top: var(--navbar-height);
 }
 #content strong {
-  font-family: 'CocoGothic-Heavy';
+  font-family: 'Montserrat-Alternate';
   font-size: 1.5rem;
   margin-right: 1rem;
   text-shadow: 0 0 4px rgba(0,0,0,0.30);

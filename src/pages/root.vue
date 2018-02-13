@@ -149,7 +149,7 @@ export default {
 }
 
 #motto {
-  font-family: 'Geomanist-Bold';
+  font-family: 'Montserrat-Bold';
   color: white;
   font-style: italic;
   text-shadow: 0 0 2px rgba(0,0,0,0.30);

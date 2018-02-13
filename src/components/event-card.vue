@@ -90,7 +90,7 @@ export default {
 <style scoped>
 .event-card {
   background-color: white;
-  font-family: Geomanist;
+  font-family: Montserrat;
   color: var(--highlight-text-color);
   border-top-right-radius: 0.5rem;
   display: inline-block;

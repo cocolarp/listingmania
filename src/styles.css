@@ -11,23 +11,18 @@
 }
 
 @font-face {
-  font-family: 'CocoGothic';
-  src: url("assets/Coco-Gothic-Regular.woff") format("woff");
+  font-family: 'Montserrat';
+  src: url("assets/Montserrat-Regular.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'CocoGothic-Heavy';
-  src: url("assets/Coco-Gothic-Heavy.woff") format("woff");
+  font-family: 'Montserrat-Bold';
+  src: url("assets/Montserrat-Bold.woff2") format("woff2");
 }
 
 @font-face {
-  font-family: 'Geomanist';
-  src: url("assets/geomanist-regular-webfont.woff") format("woff");
-}
-
-@font-face {
-  font-family: 'Geomanist-Bold';
-  src: url("assets/geomanist-bold-webfont.woff") format("woff");
+  font-family: 'Montserrat-Alternate';
+  src: url("assets/MontserratAlternates-Regular.woff2") format("woff2");
 }
 
 html {
@@ -38,7 +33,7 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--main-text-color);
-  font-family: 'Geomanist';
+  font-family: 'Montserrat';
   height: 100%;
   margin: 0;
 }
@@ -94,7 +89,7 @@ input[type="text"], input[type="email"], input[type="password"] {
   width: 100%;
   color: var(--main-text-color);
   appearance: none;
-  font-family: Geomanist;
+  font-family: 'Montserrat';
   box-sizing: border-box;
   padding: 0px 15px;
   border-radius: 0.9rem;
