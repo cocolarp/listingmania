@@ -14,7 +14,7 @@
   .date-details(:style="{color: durationColor}")
     span {{ event.start.format('lll') }}
     span &nbsp;|&nbsp;
-    span {{ event.duration.humanize() }}
+    span {{ event.duration | humanize }}
   .separator
   .description {{ event.summary }}
   .location-details
@@ -37,6 +37,21 @@ export default {
       mainColor: '#999',
       heartColor: this.getHeartDefaultColor(),
     }
+  },
+  filter: {
+    humanize (duration) {
+      switch(duration.days()) {
+        case 0:
+          return this.$gettext('Quelques heures')
+        case 1:
+          return this.$gettext('Une journée')
+        case 2:
+        case 3:
+          return this.$gettext('2 ou 3 jours')
+        default:
+          return this.$gettext('Plus de 3 jours')
+      }
+    },
   },
   computed: {
     durationColor () {
