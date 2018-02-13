@@ -2,7 +2,7 @@
 #main
   #header
     .icon-user(style="font-size: 30px; margin-top: 1rem;")
-    p Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …
+    p(v-translate="") Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …
     #close-button(
       @click='closeLoginForm'
     ) ✖
@@ -12,12 +12,14 @@
         href='#',
         :class="{active: displayLogin}",
         @click="toggleLogin",
+        translate="",
       ) Connexion
       span &nbsp;|&nbsp;
       a(
         href='#',
         :class="{active: !displayLogin}",
         @click="toggleSignup",
+        translate="",
       ) Inscription
     .row
       input(
@@ -26,7 +28,7 @@
         required,
         v-model="username",
         :class="{'animate-shake': shakeUsername}",
-        placeholder="nom d'utilisateur",
+        :placeholder="usernamePlaceholder",
         @keyup.enter="submit",
         @keyup.esc="closeLoginForm",
       )
@@ -46,7 +48,7 @@
         required,
         v-model="password",
         :class="{'animate-shake': shakePassword}",
-        placeholder="mot de passe",
+        :placeholder="passwordPlaceholder",
         @keyup.enter="submit",
         @keyup.esc="closeLoginForm",
       )
@@ -56,18 +58,19 @@
         required,
         v-model="passwordConfirmation",
         :class="{'animate-shake': shakePassword}",
-        placeholder="confirmation",
+        :placeholder="passwordConfirmationPlaceholder",
         @keyup.enter="submit",
         @keyup.esc="closeLoginForm",
       )
     .row(v-if="invalidLogin")
-      b.active Nom d'utilisateur ou mot de passe erroné.
+      b.active(v-translate="") Nom d'utilisateur ou mot de passe erroné.
     .row(v-if="unexpectedError")
-      b.active Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique.
+      b.active(v-translate="") Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique.
 
   #footer
     .button#ok-button(
       @click="submit",
+      v-translate="",
     ) OK
 
 </template>

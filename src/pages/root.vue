@@ -1,4 +1,4 @@
-<template lang="pug">
+(<template lang="pug">
 #main
   #wrapper
     .row#mobile-navbar
@@ -24,7 +24,7 @@
     .row#logo
       .col(@click="goHome")
         img(:src="logoSrc")
-        #motto(v-translate="") Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux
+        translate(tag="div")#motto Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux
     .row#top-spacer.spacer
     .row#pages
       router-view
@@ -32,7 +32,7 @@
   .row#footer
     router-link(to="/about", v-translate="") A propos
     span |
-    a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank") Suivez-nous sur Facebook
+    a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank", v-translate="") Suivez-nous sur Facebook
     span |
     router-link(to="/faq", v-translate="") FAQ
     span |
@@ -40,7 +40,7 @@
   #login-backdrop(:class="{show: loginFormDisplayed}")
   #login-form(:class="{show: loginFormDisplayed}")
     login-form
-</template>
+</template>)
 
 <script>
 import { mapState, mapMutations } from 'vuex'

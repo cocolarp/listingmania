@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-13 20:45+0100\n"
+"POT-Creation-Date: 2018-02-13 21:35+0100\n"
 "PO-Revision-Date: 2018-02-13 21:14+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -38,6 +38,9 @@ msgstr "SHORT"
 msgid "COÛT"
 msgstr "COST"
 
+msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
+msgstr ""
+
 msgid "Connexion"
 msgstr "Connection"
 
@@ -62,9 +65,16 @@ msgstr "FAQ"
 msgid "Format"
 msgstr "Format"
 
+msgid "Inscription"
+msgstr ""
+
+msgid "J'ai lu et accepte les conditions générales d'utilisation"
+msgstr ""
+
 msgid "LONG"
 msgstr "LONG"
 
+#, fuzzy
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr "Worldwide & all inclusive calendar for LARP"
 
@@ -73,6 +83,12 @@ msgstr "MEDIUM"
 
 msgid "Mes GNs uniquement"
 msgstr "Only my favorite LARP"
+
+msgid "Nom d'utilisateur ou mot de passe erroné."
+msgstr ""
+
+msgid "OK"
+msgstr ""
 
 msgid "Plan du site"
 msgstr "Site map"
@@ -92,6 +108,9 @@ msgstr "Timeframe"
 msgid "Quelques heures"
 msgstr "A few hours"
 
+msgid "Suivez-nous sur Facebook"
+msgstr ""
+
 msgid "Toutes les dates"
 msgstr "Every month"
 
@@ -101,5 +120,18 @@ msgstr "Sort by"
 msgid "Trouver mon prochain GN"
 msgstr "Show me my next LARP"
 
+msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
+msgstr ""
+
 msgid "Une journée"
 msgstr "One day"
+
+msgctxt "password input field"
+msgid "confirmation"
+msgstr ""
+
+msgid "mot de passe"
+msgstr ""
+
+msgid "nom d'utilisateur"
+msgstr ""
