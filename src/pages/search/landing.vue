@@ -128,7 +128,7 @@ export default LandingPage
 
 @media (min-width: 1600px) {
   #content {
-    width: 50%;
+    width: 60%;
   }
 }
 </style>

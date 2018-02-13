@@ -345,11 +345,11 @@ export default EventsPage
   }
 
   .col.first {
-    width: 8%;
+    width: 10%;
   }
 
   .col.second {
-    width: 20%;
+    width: 18%;
   }
 
   .col.third {
