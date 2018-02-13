@@ -62,6 +62,13 @@
         @keyup.enter="submit",
         @keyup.esc="closeLoginForm",
       )
+    .row(v-if="!displayLogin")
+      check-box(
+        :class="{'animate-shake': shakeGcus}",
+        :msg="acceptedGcuCheckboxLabel",
+        :value="gcusAccepted",
+        @change="updateGcusAccepted"
+      )
     .row(v-if="invalidLogin")
       b.active(v-translate="") Nom d'utilisateur ou mot de passe erroné.
     .row(v-if="unexpectedError")
@@ -78,22 +85,42 @@
 <script>
 /* global Backent */
 
+import checkBox from 'src/components/check-box.vue'
+
 export default {
+  components: {
+    'check-box': checkBox,
+  },
   data: function () {
     return {
       displayLogin: true,
       shakeUsername: false,
       shakePassword: false,
       shakeEmail: false,
+      shakeGcus: false,
       username: null,
       email: null,
       password: null,
       passwordConfirmation: null,
+      gcusAccepted: false,
       invalidLogin: false,
       unexpectedError: false,
     }
   },
+  computed: {
+    acceptedGcuCheckboxLabel () {
+      return this.$gettext("J'ai lu et accepte les conditions générales d'utilisation")
+    },
+    usernamePlaceholder () { return this.$gettext("nom d'utilisateur") },
+    passwordPlaceholder () { return this.$gettext("mot de passe") },
+    passwordConfirmationPlaceholder () {
+      return this.$pgettext("password input field", "confirmation")
+    },
+  },
   methods: {
+    updateGcusAccepted () {
+      this.gcusAccepted = !this.gcusAccepted
+    },
     validate () {
       if (!this.username) {
         this.shakeUsername = true
@@ -113,6 +140,10 @@ export default {
       ) {
         this.shakePassword = true
         throw new Error('invalid password')
+      }
+      if (!this.gcusAccepted) {
+        this.shakeGcus = true
+        throw new Error('please accept gcus')
       }
     },
     async _doLogin () {
@@ -139,6 +170,7 @@ export default {
         this.shakeUsername = false
         this.shakePassword = false
         this.shakeEmail = false
+        this.shakeGcus = false
       }, 1000)
     },
     async submit () {
