@@ -5,8 +5,6 @@ import dateRangeSlider from 'src/components/date-range-slider/inline.vue'
 import distanceSlider from 'src/components/distance-slider.vue'
 import locationInput from 'src/components/location-input.vue'
 
-import {gettext} from 'src/lang_utils'
-
 export default {
   components: {
     'check-box': checkBox,
@@ -38,5 +36,5 @@ export default {
       anyWhere: 'anyWhere',
       onlyMyEvents: 'onlyMyEvents',
     }),
-  }
+  },
 }

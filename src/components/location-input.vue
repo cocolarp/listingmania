@@ -1,12 +1,12 @@
-<template lang="pug">
+(<template lang="pug">
 #location-root
   input(
     type="text",
-    placeholder="D'où partez-vous?",
+    :placeholder="locationPlaceholder",
     ref="autocomplete",
     :value="placeAddress",
   )
-</template>
+</template>)
 
 <script>
 /* global google */
@@ -26,15 +26,15 @@ export default {
       console.warn("google API not loaded: can't autocomplete")
     }
   },
-  computed: mapState({
-    placeAddress: (state) => {
-      if (state.place) {
-        return state.place.formatted_address
-      }
-    },
-  }),
+  computed: {
+    locationPlaceholder () { return this.$gettext("Doù partez-vous?") },
+    ...mapState({
+      placeAddress: (state) => {
+        if (state.place) {
+          return state.place.formatted_address
+        }
+      },
+    }),
+  },
 }
 </script>
-
-<style scoped>
-</style>

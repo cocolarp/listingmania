@@ -53,7 +53,6 @@ import merge from 'lodash.merge'
 import {mapState} from 'vuex'
 
 import router from 'src/routes'
-import {gettext} from 'src/lang_utils'
 
 import MainFiltersMixin from './main-filters.js'
 

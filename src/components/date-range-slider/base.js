@@ -1,8 +1,6 @@
 import {mapState} from 'vuex'
 import moment from 'moment'
 
-import {gettext} from 'src/lang_utils'
-
 import monthBadge from './month-badge.vue'
 
 export function dateSliderFactory (monthFormatCallback) {

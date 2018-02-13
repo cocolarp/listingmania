@@ -105,7 +105,6 @@ import merge from 'lodash.merge'
 import {DURATIONS} from 'src/models'
 import eventCard from 'src/components/event-card.vue'
 import sortBadge from 'src/components/sort-badge.vue'
-import {gettext} from 'src/lang_utils'
 
 import MainFiltersMixin from './main-filters.js'
 
@@ -178,7 +177,7 @@ const EventsPage = merge({}, MainFiltersMixin, {
         })
       },
     }),
-  }
+  },
 })
 export default EventsPage
 </script>
