@@ -6,8 +6,8 @@
       #mobile-buttons
         .round-button(@click="openAddEventForm")
           .icon-add
-        .round-button
-          .icon-user
+        .round-button(@click="onLoginBtnClick")
+          div(:class="[displayName ? 'icon-logout' : 'icon-user']")
         .round-button(@click="displaySearchBar")
           .icon-more
     .row#navbar
@@ -37,6 +37,7 @@
     router-link(to="/faq", v-translate="") FAQ
     span |
     router-link(to="/map", v-translate="") Plan du site
+  #login-backdrop(:class="{show: loginFormDisplayed}")
   #login-form(:class="{show: loginFormDisplayed}")
     login-form
 </template>
@@ -129,11 +130,21 @@ export default {
   #mobile-navbar {
     display: none;
   }
+  #login-form {
+    top: 4rem;
+    left: 35%;
+    width: 30%;
+  }
 }
 
 @media (max-width: 768px) {
   #navbar, #logo, #footer, #top-spacer {
     display: none;
+  }
+  #login-form {
+    top: 10rem;
+    left: 5%;
+    width: 90%;
   }
 }
 
@@ -189,10 +200,15 @@ export default {
 
 #login-form {
   position: absolute;
-  top: 10%;
-  left: 35%;
-  width: 30%;
   display: none;
+}
+
+#login-backdrop {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(200,200,200,0.80)
 }
 
 .show {

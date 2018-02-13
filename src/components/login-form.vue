@@ -209,9 +209,18 @@ export default {
   text-align: center;
 }
 
-#content input[type="text"], input[type="email"], input[type="password"] {
-  margin: auto;
-  width: 60%;
+@media (max-width: 768px) {
+  #content input[type="text"], input[type="email"], input[type="password"] {
+    margin: auto;
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  #content input[type="text"], input[type="email"], input[type="password"] {
+    margin: auto;
+    width: 60%;
+  }
 }
 
 #footer {
