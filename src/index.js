@@ -50,6 +50,23 @@ async function bootstrapApplication () {
     }
   })
 
+  updateStoreFromUrl('sort', 'setSortKey')
+  updateStoreFromUrl('duration', 'initDurationFilter')
+  updateStoreFromUrl('months', 'initMonths')
+  updateStoreFromUrl('anywhere', 'updateAnyWhere', str2bool)
+  updateStoreFromUrl('my_events', 'toggleMyEventsOnly', str2bool)
+
+  const maxDistance = parseInt(url.getStringParam('distance'), 10)
+  const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
+
+  new Vue( // eslint-disable-line no-new
+    Object.assign({
+      el: '#content',
+      store,
+      router,
+    }, rootPage)
+  )
+
   if (BACKENT_URL) {
     Backent.init(BACKENT_URL)
     try {
@@ -62,27 +79,11 @@ async function bootstrapApplication () {
     rawEvents = models.transformBackentData(events)
   }
 
-  updateStoreFromUrl('sort', 'setSortKey')
-  updateStoreFromUrl('duration', 'initDurationFilter')
-  updateStoreFromUrl('months', 'initMonths')
-  updateStoreFromUrl('anywhere', 'updateAnyWhere', str2bool)
-  updateStoreFromUrl('my_events', 'toggleMyEventsOnly', str2bool)
-
-  const maxDistance = parseInt(url.getStringParam('distance'), 10)
-  const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
   if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
     store.commit('setMaxDistance', maxDistance)
   }
 
   store.commit('init', rawEvents)
-
-  new Vue( // eslint-disable-line no-new
-    Object.assign({
-      el: '#content',
-      store,
-      router,
-    }, rootPage)
-  )
 
   const placeId = url.getStringParam('place')
   if (placeId) {
