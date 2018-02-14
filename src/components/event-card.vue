@@ -131,7 +131,7 @@ export default {
 .description {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   line-height: 1rem;
   height: 3rem;
