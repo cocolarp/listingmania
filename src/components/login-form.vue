@@ -141,7 +141,7 @@ export default {
         this.shakePassword = true
         throw new Error('invalid password')
       }
-      if (!this.gcusAccepted) {
+      if (!this.displayLogin && !this.gcusAccepted) {
         this.shakeGcus = true
         throw new Error('please accept gcus')
       }
