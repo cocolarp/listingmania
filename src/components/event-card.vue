@@ -35,10 +35,13 @@ export default {
   data: function () {
     return {
       mainColor: '#999',
-      heartColor: this.getHeartDefaultColor(),
     }
   },
   computed: {
+    heartColor () {
+      if (this.event.isLiked) return '#D16E47'
+      return '#999'
+    },
     durationColor () {
       return DURATION_COLOR[this.event.durationCategory]
     },
@@ -60,13 +63,6 @@ export default {
     },
     highlightHeart () {
       this.heartColor = '#333'
-    },
-    resetHeart () {
-      this.heartColor = this.getHeartDefaultColor()
-    },
-    getHeartDefaultColor () {
-      if (this.event.isLiked) return '#D16E47'
-      return '#999'
     },
     likeEvent: async function () {
       if (!this.$store.state.user) {

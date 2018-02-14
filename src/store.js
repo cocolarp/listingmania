@@ -18,6 +18,12 @@ function popEvents () {
   }
 }
 
+function addLikes (eventList, likedEventIds) {
+  eventList.forEach((event) => {
+    event.isLiked = likedEventIds.includes(event.id)
+  })
+}
+
 const store = new Vuex.Store({
   state: {
     user: null,
@@ -36,11 +42,7 @@ const store = new Vuex.Store({
   mutations: {
     init (state, eventList) {
       if (state.user && state.user.events) {
-        eventList.forEach((event) => {
-          if (state.user.events.includes(event.id)) {
-            event.isLiked = true
-          }
-        })
+        addLikes(eventList, state.user.events)
       }
       state.rawEvents = eventList
     },
@@ -52,8 +54,10 @@ const store = new Vuex.Store({
       if (!value) {
         localStorage.clear()
         location.reload()
+      } else {
+        state.user = value
+        addLikes(state.rawEvents, state.user.events)
       }
-      state.user = value
     },
     toggleDurationFilter (state, index) {
       const nextValue = !state.durationFilter[index]
