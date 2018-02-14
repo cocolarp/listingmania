@@ -154,7 +154,7 @@ const EventsPage = merge({}, MainFiltersMixin, {
             (
               !state.onlyMyEvents ||
               (
-                state.user && state.user.events.includes(event.id)
+                state.user && event.isLiked
               )
             ) &&
             (
