@@ -66,7 +66,7 @@
               )
           .col
             .round-filter
-              strong(v-translate="") Tri
+              strong(v-translate="") Tri par
               sort-badge(
                 stateProperty='sortKey',
                 stateMutation='setSortKey',
