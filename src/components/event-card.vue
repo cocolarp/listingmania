@@ -7,7 +7,7 @@
   .name {{ event.name }}
   .heart(
     :style="{color: heartColor}"
-    @mouseenter="highlightHeart()",
+    @mouseenter="doHighlightHeart()",
     @mouseleave="resetHeart()"
     @click="likeEvent()"
   ) &#x2764;
@@ -35,10 +35,12 @@ export default {
   data: function () {
     return {
       mainColor: '#999',
+      highlightHeart: false,
     }
   },
   computed: {
     heartColor () {
+      if (this.highlightHeart) return '#333'
       if (this.event.isLiked) return '#D16E47'
       return '#999'
     },
@@ -61,8 +63,11 @@ export default {
     resetBackground () {
       this.mainColor = '#999'
     },
-    highlightHeart () {
-      this.heartColor = '#333'
+    doHighlightHeart () {
+      this.highlightHeart = true
+    },
+    resetHeart () {
+      this.highlightHeart = false
     },
     likeEvent: async function () {
       if (!this.$store.state.user) {
