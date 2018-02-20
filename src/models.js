@@ -12,6 +12,7 @@ export const AVAILABLE_DISTANCES = {
   500: '500km',
 }
 
+const DURATION_HOURS = 'hours'
 const DURATION_SHORT = 'short'
 const DURATION_MEDIUM = 'medium'
 const DURATION_LONG = 'long'
@@ -21,6 +22,7 @@ export const COLOR_MEDIUM = '#3EC89C'
 export const COLOR_LONG = '#49AFEB'
 
 export const DURATION_COLOR = {
+  [DURATION_HOURS]: COLOR_SHORT,
   [DURATION_SHORT]: COLOR_SHORT,
   [DURATION_MEDIUM]: COLOR_MEDIUM,
   [DURATION_LONG]: COLOR_LONG,
@@ -35,24 +37,13 @@ const CURRENCY_SYMBOLS = {
   [CURRENCY_USD]: '$',
 }
 
-function daysToCategory (days) {
-  if (days < 2) {
-    return DURATION_SHORT
-  } else if (days >= 2 && days < 4) {
-    return DURATION_MEDIUM
-  } else {
-    return DURATION_LONG
-  }
-}
-
-function humanDuration (days) {
-  switch (days) {
-    case 0:
+function humanDuration (fmt) {
+  switch (fmt) {
+    case DURATION_HOURS:
       return gettext('Quelques heures')
-    case 1:
+    case DURATION_SHORT:
       return gettext('Une journée')
-    case 2:
-    case 3:
+    case DURATION_MEDIUM:
       return gettext('2 ou 3 jours')
     default:
       return gettext('Plus de 3 jours')
@@ -67,11 +58,6 @@ function readableCost (price, currency) {
 }
 
 function BackentEvent (raw) {
-  const start = moment(raw.start)
-  const end = moment(raw.end)
-  const duration = moment.duration(end.diff(start, 'days'), 'days')
-
-  const currency = raw.organization.currency
 
   const model = {
     id: raw.slug,
@@ -81,12 +67,10 @@ function BackentEvent (raw) {
     description: raw.description,
     url: raw.external_url,
     cost: raw.price,
-    readable_cost: readableCost(raw.price, currency),
-    start: start,
-    end: end,
-    duration: duration,
-    durationCategory: daysToCategory(duration.days()),
-    humanDuration: humanDuration(duration.days()),
+    readable_cost: readableCost(raw.price, raw.currency),
+    start: moment(raw.start),
+    durationCategory: raw.event_format,
+    humanDuration: humanDuration(raw.event_format),
     address: raw.location.name,
     lat: raw.location.latitude,
     lng: raw.location.longitude,
