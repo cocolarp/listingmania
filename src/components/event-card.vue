@@ -12,7 +12,7 @@
     @click="likeEvent()"
   ) &#x2764;
   .date-details(:style="{color: durationColor}")
-    span {{ event.start.format('lll') }}
+    span {{ event.start.format('LL') }}
     span &nbsp;|&nbsp;
     span {{ translatedHumanDuration }}
   .separator
