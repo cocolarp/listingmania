@@ -12,10 +12,10 @@ export const AVAILABLE_DISTANCES = {
   500: '500km',
 }
 
-const DURATION_HOURS = 'hours'
-const DURATION_SHORT = 'short'
-const DURATION_MEDIUM = 'medium'
-const DURATION_LONG = 'long'
+export const DURATION_HOURS = 'hours'
+export const DURATION_SHORT = 'short'
+export const DURATION_MEDIUM = 'medium'
+export const DURATION_LONG = 'long'
 
 export const COLOR_SHORT = '#AC73ED'
 export const COLOR_MEDIUM = '#3EC89C'

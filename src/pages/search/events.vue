@@ -104,13 +104,29 @@ import moment from 'moment'
 import {mapState} from 'vuex'
 import merge from 'lodash.merge'
 
-import {DURATIONS} from 'src/models'
+import * as models from 'src/models'
 import eventCard from 'src/components/event-card.vue'
 import sortBadge from 'src/components/sort-badge.vue'
 
 import MainFiltersMixin from './main-filters.js'
 
 const today = moment()
+
+
+function filterDurationIndexFromEventDurationCategory (eventCategory) {
+  // extremely long function name for a simple concept:
+  // 4 event duration categories and 3 filters on the page.
+  // Just return that the two shortest are considered "short", others are unaffected.
+  switch (eventCategory) {
+    case models.DURATION_HOURS:
+    case models.DURATION_SHORT:
+      return 0
+    case models.DURATION_MEDIUM:
+      return 1
+    default:
+      return 2
+  }
+}
 
 
 const multiSortBadge = merge({}, sortBadge, {
@@ -158,7 +174,9 @@ const EventsPage = merge({}, MainFiltersMixin, {
               )
             ) &&
             (
-              state.durationFilter[DURATIONS.indexOf(event.durationCategory)]
+              state.durationFilter[filterDurationIndexFromEventDurationCategory(
+                event.durationCategory
+              )]
             ) &&
             (
               (state.selectedMonths[eventMonth] === true) ||
