@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 04:01+0100\n"
-"PO-Revision-Date: 2018-02-13 22:07+0100\n"
+"POT-Creation-Date: 2018-02-13 21:35+0100\n"
+"PO-Revision-Date: 2018-02-23 00:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -27,7 +27,7 @@ msgid "2 ou 3 jours"
 msgstr "2 or 3 days"
 
 msgid "A propos"
-msgstr "Who are we"
+msgstr "About us"
 
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
@@ -39,16 +39,16 @@ msgid "COÛT"
 msgstr "COST"
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
-msgstr "Connect or register to enjoy all the features from Cocolarp …"
+msgstr "Connect or register to enjoy every Cocolarp feature …"
 
 msgid "Connexion"
 msgstr "Sign in"
 
 msgid "D'où partez-vous?"
-msgstr "From where ?"
+msgstr "Where from?"
 
 msgid "DATE"
-msgstr "MONTH"
+msgstr "DATE"
 
 msgid "DISTANCE"
 msgstr "DISTANCE"
@@ -63,25 +63,25 @@ msgid "FAQ"
 msgstr "FAQ"
 
 msgid "Format"
-msgstr "Format"
+msgstr "Duration"
 
 msgid "Inscription"
 msgstr "Sign up"
 
 msgid "J'ai lu et accepte les conditions générales d'utilisation"
-msgstr "I have read and accepted the website's Terms & Conditions"
+msgstr "I have read and agree with the Terms and Conditions"
 
 msgid "LONG"
 msgstr "LONG"
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
-msgstr "Worldwide & all inclusive calendar for LARP"
+msgstr "The most exhaustive LARP calendar"
 
 msgid "MOYEN"
 msgstr "MEDIUM"
 
 msgid "Mes GNs uniquement"
-msgstr "Only my favorite LARP"
+msgstr "My LARPs only"
 
 msgid "Nom d'utilisateur ou mot de passe erroné."
 msgstr "Wrong login or password."
@@ -99,7 +99,7 @@ msgid "Plus tard"
 msgstr "Later on"
 
 msgid "Préférences"
-msgstr "Preferences"
+msgstr "Settings"
 
 msgid "Période"
 msgstr "Timeframe"
@@ -111,7 +111,7 @@ msgid "Suivez-nous sur Facebook"
 msgstr "Follow us on Facebook"
 
 msgid "Toutes les dates"
-msgstr "Every month"
+msgstr "Anytime"
 
 msgid "Tri par"
 msgstr "Sort by"
@@ -120,7 +120,7 @@ msgid "Trouver mon prochain GN"
 msgstr "Show me my next LARP"
 
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
-msgstr "An error has occurred.  Please, contact our support team."
+msgstr "Holy moly! An error has occurred. Please contact our support at michael@cocolarp.com."
 
 msgid "Une journée"
 msgstr "One day"
