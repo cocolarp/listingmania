@@ -149,6 +149,23 @@ const EventsPage = merge({}, MainFiltersMixin, {
     'sort-badge': sortBadge,
     'multi-sort-badge': multiSortBadge,
   },
+  mounted: async function () {
+    let rawEvents = []
+    if (BACKENT_URL) {
+      Backent.init(BACKENT_URL)
+      try {
+        const user = await Backent.getUser()
+        this.$store.commit('setUser', user)
+      } catch (_err) {
+        console.log('User is not authenticated.')
+      }
+      const events = await Backent.getEvents()
+      rawEvents = models.transformBackentData(events)
+    } else {
+      console.log("Could not connect to backend, no URL was defined.")
+    }
+    this.$store.commit('init', rawEvents)
+  },
   computed: {
     shortFormatLabel () { return this.$gettext('COURT') },
     mediumFormatLabel () { return this.$gettext('MOYEN') },

@@ -1,4 +1,4 @@
-/* global BACKENT_URL, Backent */
+/* global Backent */
 
 import isnan from 'lodash.isnan'
 import moment from 'moment'
@@ -38,7 +38,6 @@ function updateStoreFromUrl (urlParam, storeMutation, castCallback = (x) => x) {
 const str2bool = (x) => x === 'true'
 
 async function bootstrapApplication () {
-  let rawEvents = []
 
   document.addEventListener('click', (event) => {
     let item = event.target.closest('.button')
@@ -67,23 +66,10 @@ async function bootstrapApplication () {
     }, rootPage)
   )
 
-  if (BACKENT_URL) {
-    Backent.init(BACKENT_URL)
-    try {
-      const user = await Backent.getUser()
-      store.commit('setUser', user)
-    } catch (_err) {
-      console.log('User is not authenticated.')
-    }
-    const events = await Backent.getEvents()
-    rawEvents = models.transformBackentData(events)
-  }
 
   if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
     store.commit('setMaxDistance', maxDistance)
   }
-
-  store.commit('init', rawEvents)
 
   const placeId = url.getStringParam('place')
   if (placeId) {
