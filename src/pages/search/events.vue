@@ -91,7 +91,7 @@
   #cards
     .row#result-count
       .col
-        span(v-if="!isLoaded", translate="") Veuillez patienter, nous chargeons les événements...
+        span(v-if="!isLoaded", v-translate="") Veuillez patienter, nous chargeons les événements...
         translate(
           v-else,
           :translate-n="events.length",

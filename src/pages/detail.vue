@@ -17,7 +17,7 @@
       ) &#x2764;
   .row(v-if="!event")
     .col
-      strong(translate) Loading event {{$route.params.slug}}…
+      strong(v-translate) Chargement de l'événement '{{$route.params.slug}}'…
   .row#detail(v-else)
     .col#metadata
       h1.mobile {{ event.name }}

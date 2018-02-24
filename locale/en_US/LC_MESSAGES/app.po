@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-25 00:18+0100\n"
+"POT-Creation-Date: 2018-02-25 00:29+0100\n"
 "PO-Revision-Date: 2018-02-23 00:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -43,6 +43,9 @@ msgstr "COST"
 
 msgid "Ce service que nous rendons à la communauté internationale du GN, nous le faisons pour le plaisir, pour suivre nos idéaux d'intelligence collective, d'accessibilité et de transparence. Grâce à ça, les joueuses et les joueurs peuvent découvrir la variété des jeux existants dans leur région et s'inscrire à ceux qui leur conviendront le mieux. Et les équipes d'organisation utilisent CoCoLarp pour choisir la date de leur jeu, sans concurrence avec les autres."
 msgstr "We provide you with this Larp calendar to follow our values of collective intelligence, accessibility and transparency. It will allow players to discover the wide diversity of existing Larps in their area, and to sign up for those that fit their needs. Organisations will find it useful to plan the date of their next game, without a schedule conflict with another."
+
+msgid "Chargement de l'événement '{{$route.params.slug}}'…"
+msgstr "Loading event '{{$route.params.slug}}'…"
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
 msgstr "Connect or register to enjoy every Cocolarp feature …"
@@ -106,9 +109,6 @@ msgstr "LONG"
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr "The most exhaustive LARP calendar"
-
-msgid "Loading event {{$route.params.slug}}…"
-msgstr "Loading event ..."
 
 msgid "MOYEN"
 msgstr "MEDIUM"
