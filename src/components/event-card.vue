@@ -19,7 +19,7 @@
   .description {{ event.summary }}
   .location-details
     .location
-      span {{ event.address | crop }}
+      span {{ croppedAddress }}
       span(v-show='shouldDisplayKms') &nbsp;|&nbsp;
       span(v-show='shouldDisplayKms') {{ event.distance }}kms
     .price {{ event.readable_cost }}
@@ -50,6 +50,13 @@ export default {
     translatedHumanDuration () {
       return this.$gettext(this.event.humanDuration)
     },
+    croppedAddress () {
+      if (!this.event.address) return ''
+      const maxLen = this.shouldDisplayKms ? 23 : 31
+
+      if (this.event.address.length <= maxLen) return this.event.address
+      return this.event.address.substring(0, maxLen) + '…'
+    },
     ...mapState({
       shouldDisplayKms (state) {
         return !state.anyWhere && this.event.distance
@@ -76,13 +83,6 @@ export default {
         await this.event.like()
         this.resetHeart()
       }
-    },
-  },
-  filters: {
-    crop: function (str) {
-      if (!str) return ''
-      if (str.length <= 31) return str
-      return str.substring(0, 31) + '…'
     },
   },
 }
