@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-24 21:38+0100\n"
-"PO-Revision-Date: 2018-02-23 00:20+0100\n"
+"PO-Revision-Date: 2018-02-24 23:44+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -30,7 +30,7 @@ msgid "A propos"
 msgstr "About us"
 
 msgid "Ajouter à mes GNs favoris"
-msgstr ""
+msgstr "Add to my favorite LARPs"
 
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
@@ -48,10 +48,10 @@ msgid "Connexion"
 msgstr "Sign in"
 
 msgid "Coût PNJ:"
-msgstr ""
+msgstr "NPC cost:"
 
 msgid "Coût joueur:"
-msgstr ""
+msgstr "Cost for players:"
 
 msgid "D'où partez-vous?"
 msgstr "Where from?"
@@ -69,10 +69,10 @@ msgid "Distance"
 msgstr "Distance"
 
 msgid "Débute le"
-msgstr ""
+msgstr "Starts on"
 
 msgid "Evénement Facebook"
-msgstr ""
+msgstr "Facebook event"
 
 msgid "FAQ"
 msgstr "FAQ"
@@ -81,18 +81,16 @@ msgid "Format"
 msgstr "Duration"
 
 msgid "Groupe Facebook"
-msgstr ""
+msgstr "Facebook group"
 
 msgid "Inscription"
 msgstr "Sign up"
 
-#, fuzzy
 msgid "Inscription PNJ"
-msgstr "Sign up"
+msgstr "NPC sign up"
 
-#, fuzzy
 msgid "Inscription joueur"
-msgstr "Sign up"
+msgstr "Sign up for players"
 
 msgid "J'ai lu et accepte les conditions générales d'utilisation"
 msgstr "I have read and agree with the Terms and Conditions"
@@ -104,7 +102,7 @@ msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature frança
 msgstr "The most exhaustive LARP calendar"
 
 msgid "Loading event {{$route.params.slug}}…"
-msgstr ""
+msgstr "Loading event ..."
 
 msgid "MOYEN"
 msgstr "MEDIUM"
@@ -119,7 +117,7 @@ msgid "OK"
 msgstr "OK"
 
 msgid "Page Facebook"
-msgstr ""
+msgstr "Facebook page"
 
 msgid "Plan du site"
 msgstr "Site map"
@@ -131,7 +129,7 @@ msgid "Plus tard"
 msgstr "Later on"
 
 msgid "Proposer des modifications"
-msgstr ""
+msgstr "Request to modify"
 
 msgid "Préférences"
 msgstr "Settings"
@@ -143,13 +141,13 @@ msgid "Quelques heures"
 msgstr "A few hours"
 
 msgid "Retirer de mes GNs favoris"
-msgstr ""
+msgstr "Remove from my favorite LARPs"
 
 msgid "Retour aux résultats de la recherche"
-msgstr ""
+msgstr "Back to search results"
 
 msgid "Site officiel"
-msgstr ""
+msgstr "Official website"
 
 msgid "Suivez-nous sur Facebook"
 msgstr "Follow us on Facebook"
@@ -161,7 +159,7 @@ msgid "Tri par"
 msgstr "Sort by"
 
 msgid "Trouver mon prochain GN"
-msgstr "Show me my next LARP"
+msgstr "Find my next LARP"
 
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
 msgstr "Holy moly! An error has occurred. Please contact our support at michael@cocolarp.com."
@@ -170,7 +168,7 @@ msgid "Une journée"
 msgstr "One day"
 
 msgid "Veuillez patienter, nous chargeons les événements..."
-msgstr ""
+msgstr "Please wait, download pending..."
 
 msgctxt "password input field"
 msgid "confirmation"
