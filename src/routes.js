@@ -15,11 +15,19 @@ Vue.use(VueRouter)
 const routes = [
   { path: '/', name: 'home', component: landingPage },
   { path: '/events', component: eventsPage },
-  { path: '/detail', component: detailPage },
+  { path: '/event/:slug', component: detailPage },
 
   { path: '/about', component: aboutPage },
   { path: '/faq', component: faqPage },
   { path: '/map', component: mapPage },
+
+  {
+    path: '*',
+    component: landingPage,
+    beforeEnter: (to, from, next) => {
+      next('/')
+    },
+  },
 ]
 
 const router = new VueRouter({
