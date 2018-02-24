@@ -100,6 +100,8 @@
 </template>
 
 <script>
+/* global Backent */
+
 import moment from 'moment'
 import {mapState} from 'vuex'
 import merge from 'lodash.merge'
@@ -150,21 +152,8 @@ const EventsPage = merge({}, MainFiltersMixin, {
     'multi-sort-badge': multiSortBadge,
   },
   mounted: async function () {
-    let rawEvents = []
-    if (BACKENT_URL) {
-      Backent.init(BACKENT_URL)
-      try {
-        const user = await Backent.getUser()
-        this.$store.commit('setUser', user)
-      } catch (_err) {
-        console.log('User is not authenticated.')
-      }
-      const events = await Backent.getEvents()
-      rawEvents = models.transformBackentData(events)
-    } else {
-      console.log("Could not connect to backend, no URL was defined.")
-    }
-    this.$store.commit('init', rawEvents)
+    const events = await Backent.getEvents()
+    this.$store.commit('init', models.transformBackentData(events))
   },
   computed: {
     shortFormatLabel () { return this.$gettext('COURT') },

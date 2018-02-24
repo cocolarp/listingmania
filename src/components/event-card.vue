@@ -1,6 +1,7 @@
 <template lang="pug">
 .event-card(
   :style="{color: mainColor}"
+  @click="goToEventPage()",
   @mouseenter="highlightBackground()",
   @mouseleave="resetBackground()"
 )
@@ -26,11 +27,14 @@
 </template>
 
 <script>
+import merge from 'lodash.merge'
 import {mapState} from 'vuex'
+
+import HeartMixin from 'src/components/heart-mixin.js'
 
 import {DURATION_COLOR} from 'src/models'
 
-export default {
+const EventCard = merge({}, HeartMixin, {
   props: ['event'],
   data: function () {
     return {
@@ -39,11 +43,6 @@ export default {
     }
   },
   computed: {
-    heartColor () {
-      if (this.highlightHeart) return '#333'
-      if (this.event.isLiked) return '#D16E47'
-      return '#999'
-    },
     durationColor () {
       return DURATION_COLOR[this.event.durationCategory]
     },
@@ -51,11 +50,12 @@ export default {
       return this.$gettext(this.event.humanDuration)
     },
     croppedAddress () {
-      if (!this.event.address) return ''
+      const locationName = this.event.raw.location.name
+      if (!locationName) return ''
       const maxLen = this.shouldDisplayKms ? 23 : 31
 
-      if (this.event.address.length <= maxLen) return this.event.address
-      return this.event.address.substring(0, maxLen) + '…'
+      if (locationName.length <= maxLen) return locationName
+      return locationName.substring(0, maxLen) + '…'
     },
     ...mapState({
       shouldDisplayKms (state) {
@@ -64,28 +64,19 @@ export default {
     }),
   },
   methods: {
+    goToEventPage () {
+      this.$router.push({name: 'detail', params: { slug: this.event.id }})
+    },
     highlightBackground () {
       this.mainColor = this.durationColor
     },
     resetBackground () {
       this.mainColor = '#999'
     },
-    doHighlightHeart () {
-      this.highlightHeart = true
-    },
-    resetHeart () {
-      this.highlightHeart = false
-    },
-    likeEvent: async function () {
-      if (!this.$store.state.user) {
-        this.$store.commit('showLoginForm', true)
-      } else {
-        await this.event.like()
-        this.resetHeart()
-      }
-    },
   },
-}
+})
+
+export default EventCard
 </script>
 
 <style scoped>

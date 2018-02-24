@@ -112,9 +112,9 @@ export default {
       return this.$gettext("J'ai lu et accepte les conditions générales d'utilisation")
     },
     usernamePlaceholder () { return this.$gettext("nom d'utilisateur") },
-    passwordPlaceholder () { return this.$gettext("mot de passe") },
+    passwordPlaceholder () { return this.$gettext('mot de passe') },
     passwordConfirmationPlaceholder () {
-      return this.$pgettext("password input field", "confirmation")
+      return this.$pgettext('password input field', 'confirmation')
     },
   },
   methods: {

@@ -51,13 +51,16 @@ function humanDuration (fmt) {
 }
 
 function readableCost (price, currency) {
-  if (price === 0) {
-    return '' // do not display anything if price is null
-  }
-  return `${Math.round(price / 100)}${CURRENCY_SYMBOLS[currency]}`
+  if (!price) return null
+  return `${Math.round(price / 100)} ${CURRENCY_SYMBOLS[currency]}`
 }
 
-function BackentEvent (raw) {
+function isLiked (id, user) {
+  if (!user) return false // we don't know yet
+  return user.events.includes(id)
+}
+
+export function BackentEvent (raw, user = null) {
 
   const model = {
     id: raw.slug,
@@ -68,14 +71,14 @@ function BackentEvent (raw) {
     url: raw.external_url,
     cost: raw.price,
     readable_cost: readableCost(raw.price, raw.currency),
+    npc_readable_cost: readableCost(raw.npc_price, raw.currency),
     start: moment(raw.start),
     durationCategory: raw.event_format,
     humanDuration: humanDuration(raw.event_format),
-    address: raw.location.name,
-    lat: raw.location.latitude,
-    lng: raw.location.longitude,
     distance: null,
-    isLiked: false,
+    isLiked: isLiked(raw.slug, user),
+
+    raw: raw,
   }
 
   model.like = async function () {
@@ -84,12 +87,15 @@ function BackentEvent (raw) {
   }
 
   model.computeDistance = (lat, lng) => {
-    if (!model.lat || !model.lng) {
+    if (!model.raw.location.lat || !model.raw.location.lng) {
       return
     }
     model.distance = Math.round(geolib.getDistance(
       {latitude: lat, longitude: lng},
-      {latitude: model.lat, longitude: model.lng},
+      {
+        latitude: model.raw.location.lat,
+        longitude: model.raw.location.lng,
+      },
       1000, // 1km accuracy
     ) / 1000.0) // get the distance in kilometers
   }

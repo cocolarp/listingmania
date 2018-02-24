@@ -14,8 +14,8 @@ Vue.use(VueRouter)
 
 const routes = [
   { path: '/', name: 'home', component: landingPage },
-  { path: '/events', component: eventsPage },
-  { path: '/event/:slug', component: detailPage },
+  { path: '/events', name: 'events', component: eventsPage },
+  { path: '/event/:slug', name: 'detail', component: detailPage },
 
   { path: '/about', component: aboutPage },
   { path: '/faq', component: faqPage },

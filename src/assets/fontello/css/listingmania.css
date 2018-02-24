@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'listingmania';
-  src: url('../font/listingmania.eot?59798576');
-  src: url('../font/listingmania.eot?59798576#iefix') format('embedded-opentype'),
-       url('../font/listingmania.woff2?59798576') format('woff2'),
-       url('../font/listingmania.woff?59798576') format('woff'),
-       url('../font/listingmania.ttf?59798576') format('truetype'),
-       url('../font/listingmania.svg?59798576#listingmania') format('svg');
+  src: url('../font/listingmania.eot?67215319');
+  src: url('../font/listingmania.eot?67215319#iefix') format('embedded-opentype'),
+       url('../font/listingmania.woff2?67215319') format('woff2'),
+       url('../font/listingmania.woff?67215319') format('woff'),
+       url('../font/listingmania.ttf?67215319') format('truetype'),
+       url('../font/listingmania.svg?67215319#listingmania') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'listingmania';
-    src: url('../font/listingmania.svg?59798576#listingmania') format('svg');
+    src: url('../font/listingmania.svg?67215319#listingmania') format('svg');
   }
 }
 */
@@ -58,4 +58,5 @@
 .icon-add:before { content: '\e800'; } /* '' */
 .icon-more:before { content: '\e801'; } /* '' */
 .icon-logout:before { content: '\e802'; } /* '' */
+.icon-left-open:before { content: '\e803'; } /* '' */
 .icon-user:before { content: '\f2c0'; } /* '' */

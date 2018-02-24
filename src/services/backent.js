@@ -11,6 +11,9 @@ export const client = {
   getEvents () {
     return basicXhr(urljoin(baseUrl, 'api/events/'))
   },
+  getEvent: async function (slug) {
+    return basicXhr(urljoin(baseUrl, `api/events/${slug}/`))
+  },
   signup: async function (username, email, password1, password2) {
     await basicXhr(
       urljoin(baseUrl, 'json_signup/'),

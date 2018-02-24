@@ -1,4 +1,4 @@
-/* global Backent */
+/* global BACKENT_URL, Backent */
 
 import isnan from 'lodash.isnan'
 import moment from 'moment'
@@ -18,6 +18,12 @@ import {getPlaceDetails} from './services/google'
 import {getCurrentlySupportedLocale, getBrowserLanguage} from 'src/lang_utils'
 import store from './store'
 import * as url from './url_utils'
+
+if (BACKENT_URL) {
+  client.init(BACKENT_URL)
+} else {
+  console.log('Could not connect to backend, no URL was defined.')
+}
 
 window.Backent = client
 
@@ -66,6 +72,12 @@ async function bootstrapApplication () {
     }, rootPage)
   )
 
+  try {
+    const user = await Backent.getUser()
+    store.commit('setUser', user)
+  } catch (_err) {
+    console.log('User is not authenticated.')
+  }
 
   if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
     store.commit('setMaxDistance', maxDistance)
