@@ -75,6 +75,20 @@ label {
   border: solid 1px white;
 }
 
+.round-button {
+  color: #333;
+  margin: 0.3rem;
+  background-color: white;
+  padding: 0.6rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border: solid 1px #ddd;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
 @keyframes pop {
   50%  {transform: scale(1.1);}
 }

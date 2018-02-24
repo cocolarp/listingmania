@@ -8,8 +8,6 @@
           .icon-add
         .round-button(@click="onLoginBtnClick")
           div(:class="[displayName ? 'icon-logout' : 'icon-user']")
-        .round-button(@click="displaySearchBar")
-          .icon-more
     .row#navbar
       #user.nav-item
         .button(@click="onLoginBtnClick")
@@ -43,7 +41,7 @@
 </template>)
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 
 import router from 'src/routes'
 import {getBrowserLanguage} from 'src/lang_utils'
@@ -84,9 +82,6 @@ export default {
           break
       }
     },
-    ...mapMutations({
-      displaySearchBar: 'toggleMobileSearchBar',
-    }),
   },
   computed: mapState({
     displayName (state) {
@@ -182,20 +177,6 @@ export default {
 
 #mobile-buttons {
   float: right;
-}
-
-.round-button {
-  color: #333;
-  margin: 0.3rem;
-  background-color: white;
-  padding: 0.6rem;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  border: solid 1px #ddd;
-  border-radius: 50%;
-  cursor: pointer;
 }
 
 #login-form {

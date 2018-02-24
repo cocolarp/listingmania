@@ -1,6 +1,8 @@
 <template lang="pug">
 #content
   #whitestrip
+    #hamburger-menu.round-button(@click="displaySearchBar")
+      .icon-more
     #searchform(:class="{hide: hideOnMobile}")
       .row
         .col.first
@@ -89,7 +91,9 @@
   #cards
     .row#result-count
       .col
+        span(v-if="!isLoaded", translate="") Veuillez patienter, nous chargeons les événements...
         translate(
+          v-else,
           :translate-n="events.length",
           translate-plural="%{ events.length } résultats",
         ) %{ events.length } résultat
@@ -144,7 +148,6 @@ const multiSortBadge = merge({}, sortBadge, {
   },
 })
 
-
 const EventsPage = merge({}, MainFiltersMixin, {
   components: {
     'event-card': eventCard,
@@ -154,6 +157,18 @@ const EventsPage = merge({}, MainFiltersMixin, {
   mounted: async function () {
     const events = await Backent.getEvents()
     this.$store.commit('init', models.transformBackentData(events))
+    this.isLoaded = true
+  },
+  data: function () {
+    return {
+      isLoaded: false,
+      hideOnMobile: true,
+    }
+  },
+  methods: {
+    displaySearchBar () {
+      this.hideOnMobile = !this.hideOnMobile
+    }
   },
   computed: {
     shortFormatLabel () { return this.$gettext('COURT') },
@@ -198,9 +213,6 @@ const EventsPage = merge({}, MainFiltersMixin, {
       })
     },
     ...mapState({
-      hideOnMobile (state) {
-        return state.hideMobileSearchBar
-      },
       shouldDisplayDistanceFilter (state) {
         return !state.anyWhere && state.place
       },
@@ -426,6 +438,10 @@ export default EventsPage
 
   .round-filter strong {
     margin: 0 1rem;
+  }
+
+  #hamburger-menu {
+    display: none;
   }
 }
 </style>

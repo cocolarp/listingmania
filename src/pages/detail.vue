@@ -4,11 +4,11 @@
     .col#return
       .small-button(@click="$router.go(-1)")
         .icon-left-open
-      span(translate="") Retour aux résultats de la recherche
+      span.desktop(translate="") Retour aux résultats de la recherche
     .col#add-like
-      span(v-if="isLiked", translate="") Retirer de mes GNs favoris
-      span(v-else, translate="") Ajouter à mes GNs favoris
-      span &nbsp;
+      span.desktop(v-if="isLiked", translate="") Retirer de mes GNs favoris
+      span.desktop(v-else, translate="") Ajouter à mes GNs favoris
+      span.desktop &nbsp;
       .heart(
         @click="likeEvent",
         :style="{color: heartColor}",
@@ -20,6 +20,8 @@
       strong(translate) Loading event {{$route.params.slug}}…
   .row#detail(v-else)
     .col#metadata
+      h1.mobile {{ event.name }}
+      i.mobile {{ event.summary}}
       .group
         p.blue
           strong(translate="") Débute le
@@ -51,8 +53,8 @@
       p
         .button(translate="", @click="suggestChanges") Proposer des modifications
     .col#description
-      h1 {{ event.name }}
-      i {{ event.summary}}
+      h1.desktop {{ event.name }}
+      i.desktop {{ event.summary}}
       p.carriage-returns {{ event.description }}
 </template>
 
@@ -150,17 +152,13 @@ export default EventDetail
   margin: 0;
   background-color: white;
   color: var(--highlight-text-color);
-  padding: 2rem;
 }
 
 #metadata {
-  width: 30%;
   text-align: center;
 }
 
 #description {
-  width: 70%;
-  border-left: 1px solid var(--highlight-text-color);
 }
 
 .blue {
@@ -198,8 +196,34 @@ a {
   position: absolute;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+  #detail {
+    width: 100%;
+  }
+
+  #description {
+    width: 100%;
+  }
 }
-@media (min-width: 1600px) {
+@media (min-width: 768px) {
+  .mobile {
+    display: none;
+  }
+
+  #detail {
+    padding: 2rem;
+  }
+
+  #metadata {
+    width: 30%;
+  }
+
+  #description {
+    width: 70%;
+    border-left: 1px solid var(--highlight-text-color);
+  }
 }
 </style>

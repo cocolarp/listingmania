@@ -43,7 +43,6 @@ const store = new Vuex.Store({
     sortKey: 'start',
     durationFilter: Array(3).fill(true),
     rawEvents: [],
-    hideMobileSearchBar: true,
     shakeLocationInput: false,
   },
   getters: {
@@ -122,9 +121,6 @@ const store = new Vuex.Store({
       url.updateParamsWith('sort', value)
       state.sortKey = value
       popEvents()
-    },
-    toggleMobileSearchBar (state) {
-      state.hideMobileSearchBar = !state.hideMobileSearchBar
     },
     doShakeLocationInput (state) {
       state.shakeLocationInput = true
