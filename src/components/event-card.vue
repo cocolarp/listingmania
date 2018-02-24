@@ -1,18 +1,22 @@
 <template lang="pug">
 .event-card(
   :style="{color: mainColor}"
-  @click="goToEventPage()",
   @mouseenter="highlightBackground()",
   @mouseleave="resetBackground()"
 )
-  .name {{ event.name }}
+  .name(
+    @click="goToEventPage()",
+  ) {{ event.name }}
   .heart(
     :style="{color: heartColor}"
     @mouseenter="doHighlightHeart()",
     @mouseleave="resetHeart()"
     @click="likeEvent()"
   ) &#x2764;
-  .date-details(:style="{color: durationColor}")
+  .date-details(
+    :style="{color: durationColor}"
+    @click="goToEventPage()",
+  )
     span {{ event.start.format('LL') }}
     span &nbsp;|&nbsp;
     span {{ translatedHumanDuration }}
@@ -88,7 +92,6 @@ export default EventCard
   display: inline-block;
   padding: 0.5rem;
   border: var(--highlight-text-color) solid 1px;
-  cursor: pointer;
   box-sizing: border-box;
   font-size: 0.8rem;
   width: 100%;
@@ -96,6 +99,7 @@ export default EventCard
 }
 
 .heart {
+  cursor: pointer;
   position: absolute;
   top: 5px;
   right: 10px;
@@ -103,6 +107,7 @@ export default EventCard
 }
 
 .name {
+  cursor: pointer;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -111,6 +116,7 @@ export default EventCard
 }
 
 .date-details {
+  cursor: pointer;
   padding: 0.3rem 0;
   font-weight: bold;
 }

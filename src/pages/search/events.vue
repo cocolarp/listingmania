@@ -162,45 +162,47 @@ const EventsPage = merge({}, MainFiltersMixin, {
     dateFilterLabel () { return this.$gettext('DATE') },
     costFilterLabel () { return this.$gettext('COÛT') },
     distanceFilterLabel () { return this.$gettext('DISTANCE') },
+    events () {
+      const state = this.$store.state
+
+      return state.rawEvents.filter((event) => {
+        const eventMonth = event.start.diff(today, 'month')
+        return (
+          (
+            !state.onlyMyEvents ||
+            (
+              this.$store.getters.isLiked(event)
+            )
+          ) &&
+          (
+            state.durationFilter[filterDurationIndexFromEventDurationCategory(
+              event.durationCategory
+            )]
+          ) &&
+          (
+            (state.selectedMonths[eventMonth] === true) ||
+            (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
+          ) &&
+          (
+            (state.anyWhere) ||
+            (event.distance < state.maxDistance)
+          )
+        )
+      }).sort((eventA, eventB) => {
+        switch (state.sortKey) {
+          case 'start':
+            return eventA.start.diff(eventB.start, 'days')
+          default:
+            return eventA[state.sortKey] - eventB[state.sortKey]
+        }
+      })
+    },
     ...mapState({
       hideOnMobile (state) {
         return state.hideMobileSearchBar
       },
       shouldDisplayDistanceFilter (state) {
         return !state.anyWhere && state.place
-      },
-      events: (state) => {
-        return state.rawEvents.filter((event) => {
-          const eventMonth = event.start.diff(today, 'month')
-          return (
-            (
-              !state.onlyMyEvents ||
-              (
-                state.user && event.isLiked
-              )
-            ) &&
-            (
-              state.durationFilter[filterDurationIndexFromEventDurationCategory(
-                event.durationCategory
-              )]
-            ) &&
-            (
-              (state.selectedMonths[eventMonth] === true) ||
-              (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
-            ) &&
-            (
-              (state.anyWhere) ||
-              (event.distance < state.maxDistance)
-            )
-          )
-        }).sort((eventA, eventB) => {
-          switch (state.sortKey) {
-            case 'start':
-              return eventA.start.diff(eventB.start, 'days')
-            default:
-              return eventA[state.sortKey] - eventB[state.sortKey]
-          }
-        })
       },
     }),
   },

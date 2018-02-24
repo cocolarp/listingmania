@@ -3,6 +3,7 @@
 import geolib from 'geolib'
 import moment from 'moment'
 
+import store from './store'
 import {gettext} from 'src/lang_utils'
 
 export const AVAILABLE_DISTANCES = {
@@ -51,13 +52,8 @@ function humanDuration (fmt) {
 }
 
 function readableCost (price, currency) {
-  if (!price) return null
+  if (price == null) return null
   return `${Math.round(price / 100)} ${CURRENCY_SYMBOLS[currency]}`
-}
-
-function isLiked (id, user) {
-  if (!user) return false // we don't know yet
-  return user.events.includes(id)
 }
 
 export function BackentEvent (raw, user = null) {
@@ -76,14 +72,21 @@ export function BackentEvent (raw, user = null) {
     durationCategory: raw.event_format,
     humanDuration: humanDuration(raw.event_format),
     distance: null,
-    isLiked: isLiked(raw.slug, user),
 
     raw: raw,
   }
 
-  model.like = async function () {
-    const isLiked = await Backent.postLike(model.id)
-    model.isLiked = isLiked
+  model.doLike = async function () {
+    try {
+      const isLiked = await Backent.postLike(model.id)
+      if (isLiked) {
+        store.commit('addLike', model.id)
+      } else {
+        store.commit('dropLike', model.id)
+      }
+    } catch (exc) {
+      console.log(`could not like event '${model.id}`, exc)
+    }
   }
 
   model.computeDistance = (lat, lng) => {

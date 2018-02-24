@@ -8,6 +8,11 @@ Vue.use(Vuex)
 const bits2str = (arr) => arr.map((x) => x ? '1' : '0').join(',')
 const str2bits = (value) => value.split(',').map((m) => parseInt(m, 10) === 1)
 
+function removeItem (array, element) {
+  const index = array.indexOf(element)
+  array.splice(index, 1)
+}
+
 function popEvents () {
   const cards = document.getElementsByClassName('event-card')
   for (let card of cards) {
@@ -16,12 +21,6 @@ function popEvents () {
       card.classList.remove('pop-animate')
     }, 500)
   }
-}
-
-function addLikes (eventList, likedEventIds) {
-  eventList.forEach((event) => {
-    event.isLiked = likedEventIds.includes(event.id)
-  })
 }
 
 function computeDistances (eventList, place) {
@@ -47,11 +46,14 @@ const store = new Vuex.Store({
     hideMobileSearchBar: true,
     shakeLocationInput: false,
   },
+  getters: {
+    isLiked: (state) => (event) => {
+      if (!state.user) return false // we don't know yet
+      return state.user.events.includes(event.id)
+    },
+  },
   mutations: {
     init (state, eventList) {
-      if (state.user && state.user.events) {
-        addLikes(eventList, state.user.events)
-      }
       if (state.place) {
         computeDistances(eventList, state.place)
       }
@@ -67,7 +69,6 @@ const store = new Vuex.Store({
         location.reload()
       } else {
         state.user = value
-        addLikes(state.rawEvents, state.user.events)
       }
     },
     toggleDurationFilter (state, index) {
@@ -130,6 +131,16 @@ const store = new Vuex.Store({
       setTimeout(() => {
         state.shakeLocationInput = false
       }, 1500)
+    },
+    addLike (state, slug) {
+      if (!state.user.events.includes(slug)) {
+        state.user.events.push(slug)
+      }
+    },
+    dropLike (state, slug) {
+      if (state.user.events.includes(slug)) {
+        removeItem(state.user.events, slug)
+      }
     },
   },
 })

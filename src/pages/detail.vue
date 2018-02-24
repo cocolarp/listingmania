@@ -111,7 +111,7 @@ export default EventDetail
 #graystrip {
   margin: 0;
   background-color: #ddd;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 3rem 0.5rem 1rem;
   color: #333;
 }
 
@@ -120,6 +120,7 @@ export default EventDetail
 }
 
 #add-like {
+  position: relative;
   text-align: right;
 }
 
@@ -188,6 +189,7 @@ a {
   display: inline-block;
   font-size: 1.6rem;
   cursor: pointer;
+  position: absolute;
 }
 
 @media (min-width: 768px) {
