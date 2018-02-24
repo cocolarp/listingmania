@@ -33,8 +33,6 @@
     a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank", v-translate="") Suivez-nous sur Facebook
     span |
     router-link(to="/faq", v-translate="") FAQ
-    span |
-    router-link(to="/map", v-translate="") Plan du site
   #login-backdrop(:class="{show: loginFormDisplayed}")
   #login-form(:class="{show: loginFormDisplayed}")
     login-form
