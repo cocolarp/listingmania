@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-13 21:35+0100\n"
+"POT-Creation-Date: 2018-02-24 03:51+0100\n"
 "PO-Revision-Date: 2018-02-23 00:20+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -29,6 +29,9 @@ msgstr "2 or 3 days"
 msgid "A propos"
 msgstr "About us"
 
+msgid "Ajouter à mes GNs favoris"
+msgstr ""
+
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
 
@@ -43,6 +46,12 @@ msgstr "Connect or register to enjoy every Cocolarp feature …"
 
 msgid "Connexion"
 msgstr "Sign in"
+
+msgid "Coût PNJ:"
+msgstr ""
+
+msgid "Coût joueur:"
+msgstr ""
 
 msgid "D'où partez-vous?"
 msgstr "Where from?"
@@ -59,13 +68,30 @@ msgstr "Worldwide"
 msgid "Distance"
 msgstr "Distance"
 
+msgid "Débute le"
+msgstr ""
+
+msgid "Evénement Facebook"
+msgstr ""
+
 msgid "FAQ"
 msgstr "FAQ"
 
 msgid "Format"
 msgstr "Duration"
 
+msgid "Groupe Facebook"
+msgstr ""
+
 msgid "Inscription"
+msgstr "Sign up"
+
+#, fuzzy
+msgid "Inscription PNJ"
+msgstr "Sign up"
+
+#, fuzzy
+msgid "Inscription joueur"
 msgstr "Sign up"
 
 msgid "J'ai lu et accepte les conditions générales d'utilisation"
@@ -76,6 +102,9 @@ msgstr "LONG"
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr "The most exhaustive LARP calendar"
+
+msgid "Loading event {{$route.params.slug}}…"
+msgstr ""
 
 msgid "MOYEN"
 msgstr "MEDIUM"
@@ -89,6 +118,9 @@ msgstr "Wrong login or password."
 msgid "OK"
 msgstr "OK"
 
+msgid "Page Facebook"
+msgstr ""
+
 msgid "Plan du site"
 msgstr "Site map"
 
@@ -98,6 +130,9 @@ msgstr "More than 3 days"
 msgid "Plus tard"
 msgstr "Later on"
 
+msgid "Proposer des modifications"
+msgstr ""
+
 msgid "Préférences"
 msgstr "Settings"
 
@@ -106,6 +141,12 @@ msgstr "Timeframe"
 
 msgid "Quelques heures"
 msgstr "A few hours"
+
+msgid "Retour aux résultats de la recherche"
+msgstr ""
+
+msgid "Site officiel"
+msgstr ""
 
 msgid "Suivez-nous sur Facebook"
 msgstr "Follow us on Facebook"

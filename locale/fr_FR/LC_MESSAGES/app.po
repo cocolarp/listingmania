@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-13 21:40+0100\n"
+"POT-Creation-Date: 2018-02-24 03:51+0100\n"
 "PO-Revision-Date: 2018-02-23 00:04+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -29,6 +29,9 @@ msgstr ""
 msgid "A propos"
 msgstr ""
 
+msgid "Ajouter à mes GNs favoris"
+msgstr ""
+
 msgid "Annoncer un GN"
 msgstr ""
 
@@ -42,6 +45,12 @@ msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp �
 msgstr ""
 
 msgid "Connexion"
+msgstr ""
+
+msgid "Coût PNJ:"
+msgstr ""
+
+msgid "Coût joueur:"
 msgstr ""
 
 msgid "D'où partez-vous?"
@@ -59,13 +68,28 @@ msgstr ""
 msgid "Distance"
 msgstr ""
 
+msgid "Débute le"
+msgstr ""
+
+msgid "Evénement Facebook"
+msgstr ""
+
 msgid "FAQ"
 msgstr ""
 
 msgid "Format"
 msgstr "Durée"
 
+msgid "Groupe Facebook"
+msgstr ""
+
 msgid "Inscription"
+msgstr ""
+
+msgid "Inscription PNJ"
+msgstr ""
+
+msgid "Inscription joueur"
 msgstr ""
 
 msgid "J'ai lu et accepte les conditions générales d'utilisation"
@@ -75,6 +99,9 @@ msgid "LONG"
 msgstr ""
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
+msgstr ""
+
+msgid "Loading event {{$route.params.slug}}…"
 msgstr ""
 
 msgid "MOYEN"
@@ -89,6 +116,9 @@ msgstr "Identifiant ou mot de passe erroné."
 msgid "OK"
 msgstr ""
 
+msgid "Page Facebook"
+msgstr ""
+
 msgid "Plan du site"
 msgstr ""
 
@@ -98,6 +128,9 @@ msgstr ""
 msgid "Plus tard"
 msgstr ""
 
+msgid "Proposer des modifications"
+msgstr ""
+
 msgid "Préférences"
 msgstr ""
 
@@ -105,6 +138,12 @@ msgid "Période"
 msgstr ""
 
 msgid "Quelques heures"
+msgstr ""
+
+msgid "Retour aux résultats de la recherche"
+msgstr ""
+
+msgid "Site officiel"
 msgstr ""
 
 msgid "Suivez-nous sur Facebook"
