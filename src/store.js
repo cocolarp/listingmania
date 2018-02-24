@@ -24,6 +24,14 @@ function addLikes (eventList, likedEventIds) {
   })
 }
 
+function computeDistances (eventList, place) {
+  const lat = place.geometry.location.lat()
+  const lng = place.geometry.location.lng()
+  eventList.forEach((event) => {
+    event.computeDistance(lat, lng)
+  })
+}
+
 const store = new Vuex.Store({
   state: {
     user: null,
@@ -43,6 +51,9 @@ const store = new Vuex.Store({
     init (state, eventList) {
       if (state.user && state.user.events) {
         addLikes(eventList, state.user.events)
+      }
+      if (state.place) {
+        computeDistances(eventList, state.place)
       }
       state.rawEvents = eventList
     },
@@ -100,11 +111,7 @@ const store = new Vuex.Store({
     setPlace (state, place) {
       url.updateParamsWith('place', place.place_id)
       state.place = place
-      const lat = place.geometry.location.lat()
-      const lng = place.geometry.location.lng()
-      state.rawEvents.forEach((event) => {
-        event.computeDistance(lat, lng)
-      })
+      computeDistances(state.rawEvents, place)
     },
     resetPlace (state) {
       state.place = null
