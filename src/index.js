@@ -45,6 +45,8 @@ const str2bool = (x) => x === 'true'
 
 async function bootstrapApplication () {
 
+  const userPromise = Backent.getUser()
+
   document.addEventListener('click', (event) => {
     let item = event.target.closest('.button')
     if (item) {
@@ -64,6 +66,11 @@ async function bootstrapApplication () {
   const maxDistance = parseInt(url.getStringParam('distance'), 10)
   const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
 
+  if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
+    console.log("setting max distance")
+    store.commit('setMaxDistance', maxDistance)
+  }
+
   new Vue( // eslint-disable-line no-new
     Object.assign({
       el: '#content',
@@ -73,14 +80,10 @@ async function bootstrapApplication () {
   )
 
   try {
-    const user = await Backent.getUser()
+    const user = await userPromise
     store.commit('setUser', user)
   } catch (_err) {
     console.log('User is not authenticated.')
-  }
-
-  if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
-    store.commit('setMaxDistance', maxDistance)
   }
 
   const placeId = url.getStringParam('place')
@@ -93,6 +96,7 @@ async function bootstrapApplication () {
       console.warn('Place not found for id: ', placeId)
     }
   }
+
 }
 
 bootstrapApplication()

@@ -90,14 +90,14 @@ export function BackentEvent (raw, user = null) {
   }
 
   model.computeDistance = (lat, lng) => {
-    if (!model.raw.location.lat || !model.raw.location.lng) {
+    if (!model.raw.location.latitude || !model.raw.location.longitude) {
       return
     }
     model.distance = Math.round(geolib.getDistance(
       {latitude: lat, longitude: lng},
       {
-        latitude: model.raw.location.lat,
-        longitude: model.raw.location.lng,
+        latitude: model.raw.location.latitude,
+        longitude: model.raw.location.longitude,
       },
       1000, // 1km accuracy
     ) / 1000.0) // get the distance in kilometers
