@@ -4,10 +4,10 @@
     .col#return
       .small-button(@click="$router.go(-1)")
         .icon-left-open
-      span.desktop(translate="") Retour aux résultats de la recherche
+      span.desktop(v-translate="") Retour aux résultats de la recherche
     .col#add-like
-      span.desktop(v-if="isLiked", translate="") Retirer de mes GNs favoris
-      span.desktop(v-else, translate="") Ajouter à mes GNs favoris
+      span.desktop(v-if="isLiked", v-translate="") Retirer de mes GNs favoris
+      span.desktop(v-else, v-translate="") Ajouter à mes GNs favoris
       span.desktop &nbsp;
       .heart(
         @click="likeEvent",
@@ -24,7 +24,7 @@
       i.mobile {{ event.summary}}
       .group
         p.blue
-          strong(translate="") Débute le
+          strong(v-translate="") Débute le
           strong &nbsp;
           strong {{ event.start.format('LL') }}
         p.blue {{ translatedHumanDuration }}
@@ -35,23 +35,23 @@
           strong {{ event.raw.location.address }} ({{event.raw.location.country}})
       .group
         p
-          span(translate="") Coût joueur:
+          span(v-translate="") Coût joueur:
           span &nbsp;
           strong {{ event.readable_cost }}
         p(v-if="event.npc_readable_cost")
-          span(translate="") Coût PNJ:
+          span(v-translate="") Coût PNJ:
           span &nbsp;
           strong {{ event.npc_readable_cost }}
       .group
         p
-          a(:href="event.raw.external_url", target="_blank", translate="") Site officiel
-          a(v-if="event.raw.facebook_event", :href="event.raw.facebook_event", target="_blank", translate="") Evénement Facebook
-          a(v-if="event.raw.facebook_page", :href="event.raw.facebook_page", target="_blank", translate="") Groupe Facebook
-          a(v-if="event.raw.facebook_group", :href="event.raw.facebook_group", target="_blank", translate="") Page Facebook
-          a(v-if="event.raw.player_signup_page", :href="event.raw.player_signup_page", target="_blank", translate="") Inscription joueur
-          a(v-if="event.raw.npc_signup_page", :href="event.raw.npc_signup_page", target="_blank", translate="") Inscription PNJ
+          a(:href="event.raw.external_url", target="_blank", v-translate="") Site officiel
+          a(v-if="event.raw.facebook_event", :href="event.raw.facebook_event", target="_blank", v-translate="") Evénement Facebook
+          a(v-if="event.raw.facebook_page", :href="event.raw.facebook_page", target="_blank", v-translate="") Groupe Facebook
+          a(v-if="event.raw.facebook_group", :href="event.raw.facebook_group", target="_blank", v-translate="") Page Facebook
+          a(v-if="event.raw.player_signup_page", :href="event.raw.player_signup_page", target="_blank", v-translate="") Inscription joueur
+          a(v-if="event.raw.npc_signup_page", :href="event.raw.npc_signup_page", target="_blank", v-translate="") Inscription PNJ
       p
-        .button(translate="", @click="suggestChanges") Proposer des modifications
+        .button(v-translate="", @click="suggestChanges") Proposer des modifications
     .col#description
       h1.desktop {{ event.name }}
       i.desktop {{ event.summary}}
