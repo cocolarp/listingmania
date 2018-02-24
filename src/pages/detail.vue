@@ -6,13 +6,14 @@
         .icon-left-open
       span(translate="") Retour aux résultats de la recherche
     .col#add-like
-      span(translate="") Ajouter à mes GNs favoris
+      span(v-if="isLiked", translate="") Retirer de mes GNs favoris
+      span(v-else, translate="") Ajouter à mes GNs favoris
       span &nbsp;
       .heart(
-        @click="likeEvent"
-        :style="{color: heartColor}"
+        @click="likeEvent",
+        :style="{color: heartColor}",
         @mouseenter="doHighlightHeart()",
-        @mouseleave="resetHeart()"
+        @mouseleave="resetHeart()",
       ) &#x2764;
   .row(v-if="!event")
     .col
@@ -24,7 +25,7 @@
           strong(translate="") Débute le
           strong &nbsp;
           strong {{ event.start.format('LL') }}
-        p.blue {{ event.humanDuration }}
+        p.blue {{ translatedHumanDuration }}
       .group
         p
           strong {{ event.raw.location.name }}
@@ -70,6 +71,11 @@ const EventDetail = merge({}, HeartMixin, {
       highlightHeart: false,
     }
   },
+  computed: {
+    translatedHumanDuration () {
+      return this.$gettext(this.event.humanDuration)
+    },
+  },
   created () {
     this.fetchData()
   },
@@ -78,7 +84,7 @@ const EventDetail = merge({}, HeartMixin, {
   },
   methods: {
     suggestChanges () {
-      window.open('mailto:mickael@cocolarp.com')
+      window.open('mailto:michael@cocolarp.com')
     },
     fetchData: async function () {
       try {

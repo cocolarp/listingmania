@@ -1,8 +1,11 @@
 export default {
   computed: {
+    isLiked () {
+      return (this.event && this.$store.getters.isLiked(this.event))
+    },
     heartColor () {
       if (this.highlightHeart) return '#333'
-      if (this.event && this.$store.getters.isLiked(this.event)) return '#D16E47'
+      if (this.isLiked) return '#D16E47'
       return '#999'
     },
   },
