@@ -67,7 +67,6 @@ async function bootstrapApplication () {
   const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
 
   if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
-    console.log("setting max distance")
     store.commit('setMaxDistance', maxDistance)
   }
 

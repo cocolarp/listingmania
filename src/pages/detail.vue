@@ -62,6 +62,7 @@
 /* global Backent */
 import merge from 'lodash.merge'
 
+import {getBrowserLanguage} from 'src/lang_utils'
 import {BackentEvent} from 'src/models'
 
 import HeartMixin from 'src/components/heart-mixin.js'
@@ -86,7 +87,14 @@ const EventDetail = merge({}, HeartMixin, {
   },
   methods: {
     suggestChanges () {
-      window.open('mailto:michael@cocolarp.com')
+      switch (getBrowserLanguage()) {
+        case 'fr':
+          window.open('https://goo.gl/forms/fSzoxnCP3gbS4uJk1')
+          break
+        default:
+          window.open('https://goo.gl/forms/7GUEoolFpxr54zn13')
+          break
+      }
     },
     fetchData: async function () {
       try {
