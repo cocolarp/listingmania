@@ -116,7 +116,7 @@ import sortBadge from 'src/components/sort-badge.vue'
 
 import MainFiltersMixin from './main-filters.js'
 
-const today = moment()
+const startOfMonth = moment().startOf('month')
 
 
 function filterDurationIndexFromEventDurationCategory (eventCategory) {
@@ -181,7 +181,7 @@ const EventsPage = merge({}, MainFiltersMixin, {
       const state = this.$store.state
 
       return state.rawEvents.filter((event) => {
-        const eventMonth = event.start.diff(today, 'month')
+        const eventMonth = event.start.diff(startOfMonth, 'month')
         return (
           (
             !state.onlyMyEvents ||
