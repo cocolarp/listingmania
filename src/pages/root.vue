@@ -33,9 +33,11 @@
     a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank", v-translate="") Suivez-nous sur Facebook
     span |
     router-link(to="/faq", v-translate="") FAQ
-  #login-backdrop(:class="{show: loginFormDisplayed}")
+  #login-backdrop(:class="{show: loginFormDisplayed || logoutFormDisplayed}")
   #login-form(:class="{show: loginFormDisplayed}")
     login-form
+  #logout-form(:class="{show: logoutFormDisplayed}")
+    logout-form
 </template>)
 
 <script>
@@ -45,6 +47,7 @@ import router from 'src/routes'
 import {getBrowserLanguage} from 'src/lang_utils'
 
 import loginForm from 'src/components/login-form.vue'
+import logoutForm from 'src/components/logout-form.vue'
 
 import headerImg from 'src/assets/logo.png'
 import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
@@ -52,6 +55,7 @@ import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
 export default {
   components: {
     'login-form': loginForm,
+    'logout-form': logoutForm,
   },
   data: function () {
     return {
@@ -67,7 +71,7 @@ export default {
       if (!this.displayName) {
         this.$store.commit('showLoginForm', true)
       } else {
-        this.$store.commit('setUser', null)
+        this.$store.commit('showLogoutForm', true)
       }
     },
     openAddEventForm () {
@@ -88,6 +92,7 @@ export default {
       }
     },
     loginFormDisplayed: 'loginFormDisplayed',
+    logoutFormDisplayed: 'logoutFormDisplayed',
   }),
 }
 </script>
@@ -116,17 +121,31 @@ export default {
   margin: 0rem 1rem;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   #navbar {
     float: right;
   }
   #mobile-navbar {
     display: none;
   }
-  #login-form {
+  #login-form, #logout-form {
     top: 4rem;
     left: 35%;
     width: 30%;
+  }
+}
+
+@media (min-width: 768px) and  (max-width: 1200px) {
+  #navbar {
+    float: right;
+  }
+  #mobile-navbar {
+    display: none;
+  }
+  #login-form, #logout-form {
+    top: 4rem;
+    left: 20%;
+    width: 60%;
   }
 }
 
@@ -134,7 +153,7 @@ export default {
   #navbar, #logo, #footer, #top-spacer {
     display: none;
   }
-  #login-form {
+  #login-form, #logout-form {
     top: 10rem;
     left: 5%;
     width: 90%;
@@ -177,7 +196,7 @@ export default {
   float: right;
 }
 
-#login-form {
+#login-form, #logout-form {
   position: absolute;
   display: none;
 }

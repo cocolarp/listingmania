@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 17:55+0100\n"
+"POT-Creation-Date: 2018-02-26 21:30+0100\n"
 "PO-Revision-Date: 2018-02-26 16:58+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -39,6 +39,9 @@ msgid "Ajouter à mes GNs favoris"
 msgstr "Ajouter à Mes GNs"
 
 msgid "Annoncer un GN"
+msgstr ""
+
+msgid "Annuler"
 msgstr ""
 
 msgid "COURT"
@@ -217,6 +220,9 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
+msgid "Oui"
+msgstr ""
+
 msgid "Page Facebook"
 msgstr ""
 
@@ -275,6 +281,9 @@ msgid "Veuillez patienter, nous chargeons les événements..."
 msgstr "Veuillez patienter, les GNs se chargent..."
 
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
+msgstr ""
+
+msgid "Voulez-vous vous déconnecter ?"
 msgstr ""
 
 msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"

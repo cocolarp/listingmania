@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 17:55+0100\n"
+"POT-Creation-Date: 2018-02-26 21:30+0100\n"
 "PO-Revision-Date: 2018-02-26 17:19+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -40,6 +40,9 @@ msgstr "Add to My LARPs"
 
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
+
+msgid "Annuler"
+msgstr "Cancel"
 
 msgid "COURT"
 msgstr "SHORT"
@@ -217,6 +220,9 @@ msgstr "We are a project manager, a web designer, a developer and Michael, who s
 msgid "OK"
 msgstr "OK"
 
+msgid "Oui"
+msgstr "Yes"
+
 msgid "Page Facebook"
 msgstr "Facebook page"
 
@@ -276,6 +282,9 @@ msgstr "Please wait while all the are Larps loaded..."
 
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
 msgstr ""
+
+msgid "Voulez-vous vous déconnecter ?"
+msgstr "Do you wish to log out?"
 
 msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"
 msgstr ""

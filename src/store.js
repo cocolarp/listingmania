@@ -13,6 +13,7 @@ const store = new Vuex.Store({
   state: {
     user: null,
     loginFormDisplayed: false,
+    logoutFormDisplayed: false,
   },
   getters: {
     isLiked: (state) => (event) => {
@@ -24,6 +25,10 @@ const store = new Vuex.Store({
     showLoginForm (state, value) {
       if (value === true) window.scrollTo(0, 0)
       state.loginFormDisplayed = value
+    },
+    showLogoutForm (state, value) {
+      if (value === true) window.scrollTo(0, 0)
+      state.logoutFormDisplayed = value
     },
     setUser (state, value) {
       if (!value) {
