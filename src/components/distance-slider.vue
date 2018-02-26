@@ -41,6 +41,7 @@ function closestStopPointIndex (x, threshold = BUTTON_SIZE / 3) {
 }
 
 export default {
+  props: ['distance', 'place'],
   data: function () {
     return {
       dockedPosX: 0,
@@ -54,14 +55,19 @@ export default {
     stopPoints = DISTANCES.map((d, i) => i * tabWidth + (tabWidth - BUTTON_SIZE) / 2)
     this.initPosition()
   },
+  watch: {
+    distance: function (newDistance) {
+      this.initPosition()
+    },
+  },
   methods: {
     initPosition () {
-      const selectedIndex = DISTANCES_ENUM.indexOf(this.$store.state.maxDistance)
+      const selectedIndex = DISTANCES_ENUM.indexOf(this.distance)
       this.setSliderIndex(selectedIndex, false)
     },
     setSliderIndex (i, checkState = true) {
-      if (checkState && !this.$store.state.place) {
-        this.$store.commit('doShakeLocationInput')
+      if (checkState && !this.place) {
+        this.$emit('warn')
         return
       }
       this.distances.forEach((dist) => {
@@ -69,7 +75,7 @@ export default {
       })
       this.distances[i].active = true
       this.dockedPosX = this.posX = stopPoints[i]
-      this.$store.commit('setMaxDistance', DISTANCES_ENUM[i])
+      this.$emit('change', DISTANCES_ENUM[i])
     },
     setupEventTrap (event, eventKind) {
       event.preventDefault()

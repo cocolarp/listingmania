@@ -1,6 +1,5 @@
 /* global BACKENT_URL, Backent */
 
-import isnan from 'lodash.isnan'
 import moment from 'moment'
 
 import Vue from 'vue'
@@ -10,14 +9,11 @@ import 'src/styles.css'
 import 'src/assets/fontello/css/listingmania-embedded.css'
 import translations from 'dist/translations.json'
 
-import * as models from './models'
 import rootPage from './pages/root.vue'
 import router from './routes'
 import {client} from './services/backent'
-import {getPlaceDetails} from './services/google'
 import {getCurrentlySupportedLocale, getBrowserLanguage} from 'src/lang_utils'
 import store from './store'
-import * as url from './url_utils'
 
 if (BACKENT_URL) {
   client.init(BACKENT_URL)
@@ -34,15 +30,6 @@ Vue.use(GetTextPlugin, {
 
 moment.locale(getBrowserLanguage())
 
-function updateStoreFromUrl (urlParam, storeMutation, castCallback = (x) => x) {
-  const value = url.getStringParam(urlParam)
-  if (value) {
-    store.commit(storeMutation, castCallback(value))
-  }
-}
-
-const str2bool = (x) => x === 'true'
-
 async function bootstrapApplication () {
 
   const userPromise = Backent.getUser()
@@ -57,19 +44,6 @@ async function bootstrapApplication () {
     }
   })
 
-  updateStoreFromUrl('sort', 'setSortKey')
-  updateStoreFromUrl('duration', 'initDurationFilter')
-  updateStoreFromUrl('months', 'initMonths')
-  updateStoreFromUrl('anywhere', 'updateAnyWhere', str2bool)
-  updateStoreFromUrl('my_events', 'toggleMyEventsOnly', str2bool)
-
-  const maxDistance = parseInt(url.getStringParam('distance'), 10)
-  const allowedValues = Object.keys(models.AVAILABLE_DISTANCES).map((d) => parseInt(d, 10))
-
-  if (maxDistance && !isnan(maxDistance) && allowedValues.includes(maxDistance)) {
-    store.commit('setMaxDistance', maxDistance)
-  }
-
   new Vue( // eslint-disable-line no-new
     Object.assign({
       el: '#content',
@@ -83,17 +57,6 @@ async function bootstrapApplication () {
     store.commit('setUser', user)
   } catch (_err) {
     console.log('User is not authenticated.')
-  }
-
-  const placeId = url.getStringParam('place')
-  if (placeId) {
-    try {
-      const place = await getPlaceDetails(placeId)
-      store.commit('setPlace', place)
-    } catch (err) {
-      console.log(err)
-      console.warn('Place not found for id: ', placeId)
-    }
   }
 
 }

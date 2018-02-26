@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-25 00:29+0100\n"
+"POT-Creation-Date: 2018-02-26 15:56+0100\n"
 "PO-Revision-Date: 2018-02-23 00:04+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Ce service que nous rendons à la communauté internationale du GN, nous le faisons pour le plaisir, pour suivre nos idéaux d'intelligence collective, d'accessibilité et de transparence. Grâce à ça, les joueuses et les joueurs peuvent découvrir la variété des jeux existants dans leur région et s'inscrire à ceux qui leur conviendront le mieux. Et les équipes d'organisation utilisent CoCoLarp pour choisir la date de leur jeu, sans concurrence avec les autres."
 msgstr ""
 
-msgid "Chargement de l'événement '{{$route.params.slug}}'…"
+msgid "Chargement de l'événement…"
 msgstr ""
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
@@ -134,13 +134,7 @@ msgstr ""
 msgid "Page Facebook"
 msgstr ""
 
-msgid "Plan du site"
-msgstr ""
-
 msgid "Plus de 3 jours"
-msgstr ""
-
-msgid "Plus tard"
 msgstr ""
 
 msgid "Proposer des modifications"

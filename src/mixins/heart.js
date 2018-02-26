@@ -1,4 +1,9 @@
 export default {
+  data: function () {
+    return {
+      highlightHeart: false,
+    }
+  },
   computed: {
     isLiked () {
       return (this.event && this.$store.getters.isLiked(this.event))

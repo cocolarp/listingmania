@@ -16,8 +16,8 @@
         @mouseleave="resetHeart()",
       ) &#x2764;
   .row(v-if="!event")
-    .col
-      strong(v-translate) Chargement de l'événement '{{$route.params.slug}}'…
+    .col#loading
+      strong(v-translate="") Chargement de l'événement…
   .row#detail(v-else)
     .col#metadata
       h1.mobile {{ event.name }}
@@ -60,18 +60,17 @@
 
 <script>
 /* global Backent */
-import merge from 'lodash.merge'
 
 import {getBrowserLanguage} from 'src/lang_utils'
 import {BackentEvent} from 'src/models'
 
-import HeartMixin from 'src/components/heart-mixin.js'
+import HeartMixin from 'src/mixins/heart.js'
 
-const EventDetail = merge({}, HeartMixin, {
+export default {
+  mixins: [HeartMixin],
   data: function () {
     return {
       event: null,
-      highlightHeart: false,
     }
   },
   computed: {
@@ -108,9 +107,7 @@ const EventDetail = merge({}, HeartMixin, {
       }
     },
   },
-})
-
-export default EventDetail
+}
 </script>
 
 <style scoped>
@@ -118,6 +115,12 @@ export default EventDetail
   margin-top: 0.5rem;
   color: white;
   margin: 0 auto;
+}
+
+#loading {
+  text-align: center;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 #content > .row {

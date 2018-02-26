@@ -61,7 +61,7 @@ export default {
   },
   methods: {
     goHome () {
-      router.push({name: 'home'})
+      router.push({name: 'home', query: this.$route.query})
     },
     onLoginBtnClick () {
       if (!this.displayName) {

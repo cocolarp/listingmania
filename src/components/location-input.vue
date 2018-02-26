@@ -11,18 +11,17 @@
 <script>
 /* global google */
 
-import { mapState } from 'vuex'
-
 export default {
+  props: ['place'],
   mounted: function () {
     if (typeof google !== 'undefined') {
       const autocomplete = new google.maps.places.Autocomplete(this.$refs.autocomplete)
       autocomplete.addListener('place_changed', () => {
         const place = autocomplete.getPlace()
         if (place.hasOwnProperty('place_id')) { // has been resolved properly
-          this.$store.commit('setPlace', place)
+          this.$emit('change', place)
         } else {
-          this.$store.commit('resetPlace')
+          this.$emit('change', null)
         }
       })
     } else {
@@ -31,13 +30,11 @@ export default {
   },
   computed: {
     locationPlaceholder () { return this.$gettext('D\'où partez-vous?') },
-    ...mapState({
-      placeAddress: (state) => {
-        if (state.place) {
-          return state.place.formatted_address
-        }
-      },
-    }),
+    placeAddress () {
+      if (this.place) {
+        return this.place.formatted_address
+      }
+    },
   },
 }
 </script>

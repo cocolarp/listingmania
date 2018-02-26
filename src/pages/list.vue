@@ -10,11 +10,14 @@
         .col.second
           check-box(
             :msg="everyTimeCheckboxLabel",
-            :value="anyTime",
+            :value="anytime",
             @change="updateAnyTime"
           )
         .col.third
-          date-range-slider
+          date-range-slider(
+            :selected-months="months"
+            @toggle="toggleMonth"
+          )
       .spacer
       .row
         .col.first
@@ -22,16 +25,24 @@
         .col.second
           check-box(
             :msg="anyWhereCheckboxLabel",
-            :value="anyWhere",
+            :value="anywhere",
             @change="updateAnyWhere"
           )
-        .col.third(v-if="!anyWhere")
+        .col.third(v-if="!anywhere")
           #location-input(
             :class="{'animate-shake': shakeLocationInput}"
           )
-            location-input
+            location-input(
+              :place="place"
+              @change="updatePlaceAndKms"
+            )
           #distance-slider
-            distance-slider
+            distance-slider(
+              :place="place"
+              :distance="max_distance"
+              @change="updateMaxDistance"
+              @warn="_doShakeLocationInput"
+            )
 
       #filters
         .row
@@ -39,7 +50,7 @@
             .round-filter#my-events
               check-box(
                 :msg="myEventsCheckboxLabel",
-                :value="onlyMyEvents",
+                :value="my_events",
                 @change="toggleMyEventsOnly"
               )
           .col
@@ -47,22 +58,22 @@
               strong(v-translate="") Format
               multi-sort-badge(
                 class='short-duration',
-                stateProperty='durationFilter',
-                stateMutation='toggleDurationFilter',
+                :sort_key="durations"
+                @toggle="toggleDuration"
                 value=0,
                 :badgeText='shortFormatLabel',
               )
               multi-sort-badge(
                 class='medium-duration',
-                stateProperty='durationFilter',
-                stateMutation='toggleDurationFilter',
+                :sort_key="durations"
+                @toggle="toggleDuration"
                 value=1,
                 :badgeText='mediumFormatLabel',
               )
               multi-sort-badge(
                 class='long-duration',
-                stateProperty='durationFilter',
-                stateMutation='toggleDurationFilter',
+                :sort_key="durations"
+                @toggle="toggleDuration"
                 value=2,
                 :badgeText='longFormatLabel',
               )
@@ -70,21 +81,21 @@
             .round-filter
               strong(v-translate="") Tri par
               sort-badge(
-                stateProperty='sortKey',
-                stateMutation='setSortKey',
+                :sort_key="sort"
+                @toggle="setSortKey"
                 value='start',
                 :badgeText="dateFilterLabel"
               )
               sort-badge(
-                stateProperty='sortKey',
-                stateMutation='setSortKey',
+                :sort_key="sort"
+                @toggle="setSortKey"
                 value='cost',
                 :badgeText='costFilterLabel'
               )
               sort-badge(
-                v-if="shouldDisplayDistanceFilter",
-                stateProperty='sortKey',
-                stateMutation='setSortKey',
+                v-show="shouldDisplayDistanceFilter",
+                :sort_key="sort"
+                @toggle="setSortKey"
                 value='distance',
                 :badgeText='distanceFilterLabel'
               )
@@ -99,7 +110,7 @@
         ) %{ events.length } résultat
     .row
       .col.event(v-for="event in events", :key="event.id")
-        event-card(:event="event")
+        event-card(:event="event", :anywhere="anywhere")
 
 </template>
 
@@ -107,68 +118,81 @@
 /* global Backent */
 
 import moment from 'moment'
-import {mapState} from 'vuex'
-import merge from 'lodash.merge'
 
 import * as models from 'src/models'
 import eventCard from 'src/components/event-card.vue'
 import sortBadge from 'src/components/sort-badge.vue'
 
-import MainFiltersMixin from './main-filters.js'
+import SearchMixin from 'src/mixins/search.js'
 
 const startOfMonth = moment().startOf('month')
 
-
-function filterDurationIndexFromEventDurationCategory (eventCategory) {
-  // extremely long function name for a simple concept:
-  // 4 event duration categories and 3 filters on the page.
-  // Just return that the two shortest are considered "short", others are unaffected.
-  switch (eventCategory) {
-    case models.DURATION_HOURS:
-    case models.DURATION_SHORT:
-      return 0
-    case models.DURATION_MEDIUM:
-      return 1
-    default:
-      return 2
-  }
-}
-
-
-const multiSortBadge = merge({}, sortBadge, {
+const multiSortBadge = {
+  mixins: [sortBadge],
+  props: {
+    'sort_key': {type: Array},
+  },
   computed: {
     isSelected () {
-      return this.$store.state[this.stateProperty][this.value]
+      return this.sort_key[this.value]
     },
   },
-  methods: {
-    setSortKey () {
-      this.$store.commit(this.stateMutation, this.value)
-    },
-  },
-})
+}
 
-const EventsPage = merge({}, MainFiltersMixin, {
+export default {
+  mixins: [SearchMixin],
   components: {
     'event-card': eventCard,
     'sort-badge': sortBadge,
     'multi-sort-badge': multiSortBadge,
   },
-  mounted: async function () {
+  beforeRouteEnter: async function (to, from, next) {
+    // FIXME: not 100% ideal since we could wait either events or getPlace to get this done
     const events = await Backent.getEvents()
-    this.$store.commit('init', models.transformBackentData(events))
-    this.isLoaded = true
+    next((vm) => {
+      vm.rawEvents = models.transformBackentData(events)
+      vm.isLoaded = true
+      vm.updateInstanceData.call(vm, to.query)
+    })
   },
   data: function () {
     return {
+      rawEvents: [],
       isLoaded: false,
       hideOnMobile: true,
     }
   },
+  watch: {
+    place: function () {
+      if (this.place) {
+        this.computeKms()
+      }
+    },
+  },
   methods: {
     displaySearchBar () {
       this.hideOnMobile = !this.hideOnMobile
-    }
+    },
+    hasCompatibleDuration (event) {
+      let index = {
+        [models.DURATION_HOURS]: 0,
+        [models.DURATION_SHORT]: 0,
+        [models.DURATION_MEDIUM]: 1,
+        [models.DURATION_LONG]: 2,
+      }[event.durationCategory]
+      return this.durations[index]
+    },
+    computeKms () {
+      const lat = this.place.geometry.location.lat()
+      const lng = this.place.geometry.location.lng()
+      this.rawEvents.forEach((event, i) => {
+        event.computeDistance(lat, lng)
+      })
+    },
+    updatePlaceAndKms (place) {
+      this.updatePlace(place)
+      this.computeKms()
+    },
   },
   computed: {
     shortFormatLabel () { return this.$gettext('COURT') },
@@ -178,48 +202,41 @@ const EventsPage = merge({}, MainFiltersMixin, {
     costFilterLabel () { return this.$gettext('COÛT') },
     distanceFilterLabel () { return this.$gettext('DISTANCE') },
     events () {
-      const state = this.$store.state
-
-      return state.rawEvents.filter((event) => {
+      return this.rawEvents.filter((event) => {
         const eventMonth = event.start.diff(startOfMonth, 'month')
         return (
           (
-            !state.onlyMyEvents ||
+            !this.my_events ||
             (
               this.$store.getters.isLiked(event)
             )
           ) &&
           (
-            state.durationFilter[filterDurationIndexFromEventDurationCategory(
-              event.durationCategory
-            )]
+            this.hasCompatibleDuration(event)
           ) &&
           (
-            (state.selectedMonths[eventMonth] === true) ||
-            (eventMonth > 12 && state.selectedMonths.slice(-1)[0] === true)
+            (this.months[eventMonth] === true) ||
+            (eventMonth > 12 && this.months.slice(-1)[0] === true)
           ) &&
           (
-            (state.anyWhere) ||
-            (event.distance < state.maxDistance)
+            (this.anywhere) ||
+            (event.distance < this.max_distance)
           )
         )
       }).sort((eventA, eventB) => {
-        switch (state.sortKey) {
+        switch (this.sort) {
           case 'start':
             return eventA.start.diff(eventB.start, 'days')
           default:
-            return eventA[state.sortKey] - eventB[state.sortKey]
+            return eventA[this.sort] - eventB[this.sort]
         }
       })
     },
-    ...mapState({
-      shouldDisplayDistanceFilter (state) {
-        return !state.anyWhere && state.place
-      },
-    }),
+    shouldDisplayDistanceFilter () {
+      return !this.anytime && this.place
+    },
   },
-})
-export default EventsPage
+}
 </script>
 
 <style scoped>

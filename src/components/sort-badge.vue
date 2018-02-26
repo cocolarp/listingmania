@@ -1,30 +1,25 @@
 <template lang="pug">
 .badge(
   :class="{selected: isSelected}",
-  @click="setSortKey"
+  @click="toggle"
 ) {{ badgeText }}
 </template>
 
 <script>
 export default {
   props: {
-    'stateProperty': {type: String},
-    'stateMutation': {type: String},
+    'sort_key': {type: String},
     'value': {type: String},
     'badgeText': {type: String},
   },
   computed: {
     isSelected () {
-      return this.value === this.$store.state[this.stateProperty]
+      return this.value === this.sort_key
     },
   },
   methods: {
-    setSortKey () {
-      if (this.canToggle && this.isSelected) {
-        this.$store.commit(this.stateMutation, null)
-      } else {
-        this.$store.commit(this.stateMutation, this.value)
-      }
+    toggle () {
+      this.$emit('toggle', this.value)
     },
   },
 }

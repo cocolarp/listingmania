@@ -31,19 +31,16 @@
 </template>
 
 <script>
-import merge from 'lodash.merge'
-import {mapState} from 'vuex'
-
-import HeartMixin from 'src/components/heart-mixin.js'
+import HeartMixin from 'src/mixins/heart.js'
 
 import {DURATION_COLOR} from 'src/models'
 
-const EventCard = merge({}, HeartMixin, {
-  props: ['event'],
+export default {
+  mixins: [HeartMixin],
+  props: ['event', 'anywhere'],
   data: function () {
     return {
       mainColor: '#999',
-      highlightHeart: false,
     }
   },
   computed: {
@@ -61,11 +58,9 @@ const EventCard = merge({}, HeartMixin, {
       if (locationName.length <= maxLen) return locationName
       return locationName.substring(0, maxLen) + '…'
     },
-    ...mapState({
-      shouldDisplayKms (state) {
-        return !state.anyWhere && this.event.distance
-      },
-    }),
+    shouldDisplayKms () {
+      return !this.anywhere && this.event.distance
+    },
   },
   methods: {
     goToEventPage () {
@@ -78,9 +73,7 @@ const EventCard = merge({}, HeartMixin, {
       this.mainColor = '#999'
     },
   },
-})
-
-export default EventCard
+}
 </script>
 
 <style scoped>

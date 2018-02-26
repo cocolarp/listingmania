@@ -9,6 +9,7 @@ import {gettext} from 'src/lang_utils'
 export const AVAILABLE_DISTANCES = {
   10: '10km',
   50: '50km',
+  150: '150km',
   250: '250km',
   500: '500km',
 }
@@ -108,12 +109,11 @@ export function BackentEvent (raw, user = null) {
 
 
 export function transformBackentData (rawEvents) {
-  const events = rawEvents.map((rawEvent) => {
+  return rawEvents.map((rawEvent) => {
     try {
       return BackentEvent(rawEvent)
     } catch (err) {
       console.warn(`parsing event data for ${rawEvent.name} failed: ${err}`)
     }
   })
-  return events.sort((a, b) => a.start - b.start)
 }

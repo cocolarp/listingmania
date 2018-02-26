@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import landingPage from './pages/search/landing.vue'
-import eventsPage from './pages/search/events.vue'
+import homePage from './pages/home.vue'
+import listPage from './pages/list.vue'
 
 import detailPage from './pages/detail.vue'
 
@@ -13,8 +13,8 @@ import mapPage from './pages/map.vue'
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/', name: 'home', component: landingPage },
-  { path: '/events', name: 'events', component: eventsPage },
+  { path: '/', name: 'home', component: homePage },
+  { path: '/events', name: 'events', component: listPage },
   { path: '/event/:slug', name: 'detail', component: detailPage },
 
   { path: '/about', component: aboutPage },
@@ -23,7 +23,7 @@ const routes = [
 
   {
     path: '*',
-    component: landingPage,
+    component: homePage,
     beforeEnter: (to, from, next) => {
       next('/')
     },

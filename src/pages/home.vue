@@ -5,12 +5,15 @@
       strong(v-translate="") Période
       check-box(
         :msg="everyTimeCheckboxLabel",
-        :value="anyTime",
+        :value="anytime",
         @change="updateAnyTime"
       )
   .row
     .col
-      date-range-slider
+      date-range-slider(
+        :selected-months="months"
+        @toggle="toggleMonth"
+      )
 
   .row.spacer
   .row
@@ -18,15 +21,24 @@
       strong(v-translate="") Distance
       check-box(
         :msg="anyWhereCheckboxLabel",
-        :value="anyWhere",
-        @change="updateAnyWhere")
-  .row(v-if="!anyWhere")
+        :value="anywhere",
+        @change="updateAnyWhere"
+      )
+  .row(v-if="!anywhere")
     .col#location-input(
       :class="{'animate-shake': shakeLocationInput}"
     )
-      location-input
+      location-input(
+        :place="place"
+        @change="updatePlace"
+      )
     .col#distance-slider
-      distance-slider
+      distance-slider(
+        :place="place"
+        :distance="max_distance"
+        @change="updateMaxDistance"
+        @warn="_doShakeLocationInput"
+      )
 
   .row.spacer
   .row
@@ -34,7 +46,7 @@
       strong(v-translate="") Préférences
       check-box(
         :msg="myEventsCheckboxLabel",
-        :value="onlyMyEvents",
+        :value="my_events",
         @change="toggleMyEventsOnly"
       )
 
@@ -49,25 +61,27 @@
 </template>
 
 <script>
-import merge from 'lodash.merge'
-
 import router from 'src/routes'
 
-import MainFiltersMixin from './main-filters.js'
+import SearchMixin from 'src/mixins/search.js'
 
-const LandingPage = merge({}, MainFiltersMixin, {
+export default {
+  mixins: [SearchMixin],
+  beforeRouteEnter (to, from, next) {
+    next((vm) => {
+      vm.updateInstanceData.call(vm, to.query)
+    })
+  },
   methods: {
     goToSearch () {
       if (this.canSearch) {
-        router.push('events')
+        router.push({name: 'events', query: this.$route.query})
       } else {
-        this.$store.commit('doShakeLocationInput')
+        this._doShakeLocationInput()
       }
     },
   },
-})
-
-export default LandingPage
+}
 </script>
 
 <style scoped>
