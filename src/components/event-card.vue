@@ -53,7 +53,7 @@ export default {
     croppedAddress () {
       const locationName = this.event.raw.location.name
       if (!locationName) return ''
-      const maxLen = this.shouldDisplayKms ? 23 : 31
+      const maxLen = this.shouldDisplayKms ? 22 : 26
 
       if (locationName.length <= maxLen) return locationName
       return locationName.substring(0, maxLen) + '…'

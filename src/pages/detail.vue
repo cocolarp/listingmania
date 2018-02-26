@@ -185,9 +185,11 @@ a {
 .group {
   -webkit-margin-before: 1rem;
   -webkit-margin-after: 1rem;
+  margin: 1rem;
 }
 
 .group p {
+  margin: 0;
   -webkit-margin-before: 0;
   -webkit-margin-after: 0;
 }
