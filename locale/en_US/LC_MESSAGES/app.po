@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-24 21:38+0100\n"
+"POT-Creation-Date: 2018-02-26 17:55+0100\n"
 "PO-Revision-Date: 2018-02-26 17:19+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -58,6 +58,9 @@ msgstr ""
 
 msgid "Chargement de l'événement…"
 msgstr "Loading event…"
+
+msgid "CoCoLarp - Communauté Collaborative pour le GN"
+msgstr "CoCoLarp - Collaborative Community for Larp"
 
 msgid "CoCoLarp ne pourra en aucun cas être tenu responsable de tout dommage de quelque nature qu’il soit résultant de l’interprétation ou de l’utilisation des informations et/ou documents disponibles sur ce site."
 msgstr ""
@@ -149,8 +152,8 @@ msgstr "NPC sign up"
 msgid "Inscription joueur"
 msgstr "Sign up for players"
 
-msgid "J'ai lu et accepte les conditions générales d'utilisation"
-msgstr "I have read and agree with the Terms and Conditions"
+msgid "J'ai lu et accepte les"
+msgstr "I have read and agree to the"
 
 msgid "LONG"
 msgstr "LONG"
@@ -276,6 +279,9 @@ msgstr ""
 
 msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"
 msgstr ""
+
+msgid "conditions générales d'utilisation"
+msgstr "Terms and Conditions"
 
 msgctxt "password input field"
 msgid "confirmation"

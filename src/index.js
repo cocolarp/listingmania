@@ -23,12 +23,21 @@ if (BACKENT_URL) {
 
 window.Backent = client
 
+const locale = getCurrentlySupportedLocale()
+
 Vue.use(GetTextPlugin, {
   translations: translations,
-  defaultLanguage: getCurrentlySupportedLocale(),
+  defaultLanguage: locale,
 })
 
 moment.locale(getBrowserLanguage())
+
+if (translations.hasOwnProperty(locale)) {
+  const newTitle = translations[locale][document.title]
+  if (newTitle != null && newTitle != '') {
+    document.title = translations[locale][document.title]
+  }
+}
 
 async function bootstrapApplication () {
 
