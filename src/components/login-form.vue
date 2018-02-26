@@ -72,6 +72,8 @@
       strong(v-translate="") J'ai lu et accepte les
       span &nbsp;
       a(target="_blank", :href="$router.resolve('terms').href", v-translate="") conditions générales d'utilisation
+    .row(v-show="!displayLogin")
+      #recaptcha
     .row(v-if="invalidLogin")
       b.active(v-translate="") Nom d'utilisateur ou mot de passe erroné.
     .row(v-if="unexpectedError")
@@ -108,6 +110,7 @@ export default {
       gcusAccepted: false,
       invalidLogin: false,
       unexpectedError: false,
+      captchaVerified: false,
     }
   },
   computed: {
@@ -116,6 +119,14 @@ export default {
     passwordConfirmationPlaceholder () {
       return this.$pgettext('password input field', 'confirmation')
     },
+  },
+  mounted () {
+    grecaptcha.render('recaptcha', {
+      'sitekey': '6LfwHi8UAAAAAAcPnsYGLTrqWudhe36AaEwZqZhZ',
+      'callback': () => {
+        this.captchaVerified = true
+      },
+    })
   },
   methods: {
     updateGcusAccepted () {
@@ -144,6 +155,9 @@ export default {
       if (!this.displayLogin && !this.gcusAccepted) {
         this.shakeGcus = true
         throw new Error('please accept gcus')
+      }
+      if (!this.displayLogin && !this.captchaVerified) {
+        throw new Error('please check the captcha')
       }
     },
     async _doLogin () {
@@ -255,12 +269,20 @@ export default {
     margin: auto;
     width: 90%;
   }
+  #recaptcha {
+    margin: auto;
+    width: 90%;
+  }
 }
 
 @media (min-width: 768px) {
   #content input[type="text"], input[type="email"], input[type="password"] {
     margin: auto;
     width: 60%;
+  }
+  #recaptcha {
+    margin: auto;
+    width: 80%;
   }
 }
 
