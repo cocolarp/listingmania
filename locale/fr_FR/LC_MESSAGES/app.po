@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 15:56+0100\n"
+"POT-Creation-Date: 2018-02-26 17:12+0100\n"
 "PO-Revision-Date: 2018-02-23 00:04+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -135,6 +135,9 @@ msgid "Page Facebook"
 msgstr ""
 
 msgid "Plus de 3 jours"
+msgstr ""
+
+msgid "Plus tard"
 msgstr ""
 
 msgid "Proposer des modifications"

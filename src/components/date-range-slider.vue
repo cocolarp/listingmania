@@ -12,6 +12,8 @@
 <script>
 import moment from 'moment'
 
+import {gettext} from "src/lang_utils'
+
 function getMonthDisplay (month) {
   let str = month.format('MMM')
   if ([0, 11].includes(month.month())) return `${str} ${month.format('YYYY')}`
@@ -35,7 +37,7 @@ export default {
           selected: selected,
           display: i !== this.selectedMonths.length - 1
             ? getMonthDisplay(thatMonth)
-            : this.$gettext('Plus tard'),
+            : this.$gettext(gettext('Plus tard')),
         }
       })
     },
