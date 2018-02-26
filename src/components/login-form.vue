@@ -194,10 +194,16 @@ export default {
           await this._doLogin()
         } catch (response) {
           if (response.status === 400) {
-            if (response.responseText === 'email') {
-              this.shakeEmail = true
-            } else {
-              this.shakePassword = true
+            switch (response.responseText) {
+              case 'email':
+                this.shakeEmail = true
+                break
+              case 'username':
+                this.shakeUsername = true
+                break
+              default:
+                this.shakePassword = true
+                break
             }
           } else {
             this.unexpectedError = true
