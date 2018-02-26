@@ -56,7 +56,7 @@ export default {
     'location-input': locationInput,
   },
   beforeRouteUpdate (to, from, next) {
-    this.updateInstanceData(this, to.query)
+    this.updateInstanceData.call(this, to.query)
     next()
   },
   methods: {
