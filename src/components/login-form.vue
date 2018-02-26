@@ -292,7 +292,6 @@ export default {
 
 a {
   font-family: 'Montserrat-Bold';
-  color: var(--color-orange);
   display: inline-block;
 }
 </style>
