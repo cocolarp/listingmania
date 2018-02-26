@@ -48,6 +48,7 @@
         .row
           .col
             .round-filter#my-events
+              strong(v-translate="")#preferences Préférences
               check-box(
                 :msg="myEventsCheckboxLabel",
                 :value="my_events",
@@ -361,10 +362,12 @@ export default {
   }
 
   #filters {
+    margin-top: 1rem;
     width: 100%;
   }
 
   #filters .col {
+    margin-bottom: 0.5rem;
     width: 100%;
   }
 
@@ -382,7 +385,80 @@ export default {
 }
 
 
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1200px) {
+  #content {
+    width: 100%;
+  }
+
+  #whitestrip {
+    padding: 2rem 0 2rem 0;
+  }
+
+  #searchform {
+    width: 90%;
+  }
+
+  #cards {
+    width: 90%;
+  }
+
+  .col.first {
+    width: 20%;
+  }
+
+  .col.second {
+    width: 80%;
+  }
+
+  .col.third {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  .col.event {
+    width: 50%;
+    margin-bottom: 1.5rem;
+  }
+
+  .col.event:nth-child(2n+1) {
+    padding-right: 0px;
+  }
+
+  #location-input {
+    display: inline-block;
+    width: 25%;
+    margin-right: 5%;
+  }
+
+  #distance-slider {
+    display: inline-block;
+    width: 70%;
+  }
+
+  #filters {
+    margin-top: 1rem;
+    width: 100%;
+  }
+
+  #filters .col {
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .round-filter {
+    margin-bottom: 0.5rem;
+  }
+
+  .round-filter strong {
+    margin: 0 0.3rem;
+  }
+
+  #hamburger-menu {
+    display: none;
+  }
+}
+
+@media (min-width: 1200px) {
   #content {
     width: 100%;
   }
@@ -400,15 +476,15 @@ export default {
   }
 
   .col.first {
-    width: 10%;
+    width: 8%;
   }
 
   .col.second {
-    width: 18%;
+    width: 19%;
   }
 
   .col.third {
-    width: 72%;
+    width: 73%;
   }
 
   .col.event {
@@ -460,5 +536,10 @@ export default {
   #hamburger-menu {
     display: none;
   }
+
+  #preferences {
+    display: none;
+  }
+
 }
 </style>
