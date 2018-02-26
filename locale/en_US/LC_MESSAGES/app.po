@@ -208,7 +208,7 @@ msgid "Nous sommes un collectif de bénévoles indépendant sans objectif lucrat
 msgstr "We are a group of independent volunteers uninterested by profit."
 
 msgid "Nous sommes une cheffe de projet, un webdesigner, un développeur et Michael pour porter une vision au long terme et un ancrage dans le réel grâce à son expérience à gérer un calendrier de jeux de rôle grandeur nature pendant deux ans."
-msgstr "We are a project manager, a web designer, a developer and Michael, who share their long term vision, and a grounding in reality with a two years experience in managing a Larp calendar that counted over a thousand entries."
+msgstr "We are a project manager, a web designer, a developer and Michael, who shares his long terme vision, and a grounding in reality with a two years experience in managing a Larp calendar that counted over a thousand entries."
 
 msgid "OK"
 msgstr "OK"
