@@ -147,13 +147,13 @@ export default {
     'sort-badge': sortBadge,
     'multi-sort-badge': multiSortBadge,
   },
-  beforeRouteEnter: async function (to, from, next) {
-    // FIXME: not 100% ideal since we could wait either events or getPlace to get this done
-    const events = await Backent.getEvents()
+  beforeRouteEnter: function (to, from, next) {
     next((vm) => {
-      vm.rawEvents = models.transformBackentData(events)
-      vm.isLoaded = true
-      vm.updateInstanceData.call(vm, to.query)
+      Backent.getEvents().then((events) => {
+        vm.rawEvents = models.transformBackentData(events)
+        vm.isLoaded = true
+        vm.updateInstanceData.call(vm, to.query)
+      })
     })
   },
   data: function () {
