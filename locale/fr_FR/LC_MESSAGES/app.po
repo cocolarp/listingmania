@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-24 21:38+0100\n"
-"PO-Revision-Date: 2018-02-24 23:45+0100\n"
+"PO-Revision-Date: 2018-02-26 16:58+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr_FR\n"
@@ -30,7 +30,7 @@ msgid "A propos"
 msgstr ""
 
 msgid "Ajouter à mes GNs favoris"
-msgstr ""
+msgstr "Ajouter à Mes GNs"
 
 msgid "Annoncer un GN"
 msgstr ""
@@ -42,16 +42,16 @@ msgid "COÛT"
 msgstr ""
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
-msgstr ""
+msgstr "Connectez-vous ou créez un compte pour accéder aux fonctionnalités avancées ..."
 
 msgid "Connexion"
 msgstr ""
 
 msgid "Coût PNJ:"
-msgstr ""
+msgstr "Coût (PNJ) :"
 
 msgid "Coût joueur:"
-msgstr ""
+msgstr "Coût (PJ) :"
 
 msgid "D'où partez-vous?"
 msgstr ""
@@ -69,7 +69,7 @@ msgid "Distance"
 msgstr ""
 
 msgid "Débute le"
-msgstr ""
+msgstr "Début :"
 
 msgid "Evénement Facebook"
 msgstr ""
@@ -100,6 +100,8 @@ msgstr ""
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr ""
+"Le calendrier international\n"
+"de vos jeux de rôle grandeur nature"
 
 msgid "Loading event {{$route.params.slug}}…"
 msgstr ""
@@ -168,7 +170,7 @@ msgid "Une journée"
 msgstr ""
 
 msgid "Veuillez patienter, nous chargeons les événements..."
-msgstr ""
+msgstr "Veuillez patienter, les GNs se chargent..."
 
 msgctxt "password input field"
 msgid "confirmation"

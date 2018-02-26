@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-24 21:38+0100\n"
-"PO-Revision-Date: 2018-02-24 23:44+0100\n"
+"PO-Revision-Date: 2018-02-26 17:19+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -30,7 +30,7 @@ msgid "A propos"
 msgstr "About us"
 
 msgid "Ajouter à mes GNs favoris"
-msgstr "Add to my favorite LARPs"
+msgstr "Add to My LARPs"
 
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
@@ -42,16 +42,16 @@ msgid "COÛT"
 msgstr "COST"
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
-msgstr "Connect or register to enjoy every Cocolarp feature …"
+msgstr "Connect or sign up to access advanced features..."
 
 msgid "Connexion"
 msgstr "Sign in"
 
 msgid "Coût PNJ:"
-msgstr "NPC cost:"
+msgstr "Cost (npc):"
 
 msgid "Coût joueur:"
-msgstr "Cost for players:"
+msgstr "Cost (player):"
 
 msgid "D'où partez-vous?"
 msgstr "Where from?"
@@ -69,7 +69,7 @@ msgid "Distance"
 msgstr "Distance"
 
 msgid "Débute le"
-msgstr "Starts on"
+msgstr "Starts on:"
 
 msgid "Evénement Facebook"
 msgstr "Facebook event"
@@ -99,10 +99,12 @@ msgid "LONG"
 msgstr "LONG"
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
-msgstr "The most exhaustive LARP calendar"
+msgstr ""
+"Your international calendar for\n"
+"Live Action Role Playing Games"
 
 msgid "Loading event {{$route.params.slug}}…"
-msgstr "Loading event ..."
+msgstr "Loading LARP {{$route.params.slug}}..."
 
 msgid "MOYEN"
 msgstr "MEDIUM"
@@ -168,7 +170,7 @@ msgid "Une journée"
 msgstr "One day"
 
 msgid "Veuillez patienter, nous chargeons les événements..."
-msgstr "Please wait, download pending..."
+msgstr "Please wait while all the are Larps loaded..."
 
 msgctxt "password input field"
 msgid "confirmation"
