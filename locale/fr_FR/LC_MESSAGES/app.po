@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 17:12+0100\n"
+"POT-Creation-Date: 2018-02-26 17:27+0100\n"
 "PO-Revision-Date: 2018-02-23 00:04+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -18,6 +18,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.0.6\n"
 
+msgid "\"Nous” ou “CoCoLarp” : L’ensemble des individus qui constitue notre collectif “CoCoLarp”."
+msgstr ""
+
 msgid "%{ events.length } résultat"
 msgid_plural "%{ events.length } résultats"
 msgstr[0] ""
@@ -27,6 +30,9 @@ msgid "2 ou 3 jours"
 msgstr ""
 
 msgid "A propos"
+msgstr ""
+
+msgid "Accès au site"
 msgstr ""
 
 msgid "Ajouter à mes GNs favoris"
@@ -44,13 +50,37 @@ msgstr ""
 msgid "Ce service que nous rendons à la communauté internationale du GN, nous le faisons pour le plaisir, pour suivre nos idéaux d'intelligence collective, d'accessibilité et de transparence. Grâce à ça, les joueuses et les joueurs peuvent découvrir la variété des jeux existants dans leur région et s'inscrire à ceux qui leur conviendront le mieux. Et les équipes d'organisation utilisent CoCoLarp pour choisir la date de leur jeu, sans concurrence avec les autres."
 msgstr ""
 
+msgid "Certaines des données techniques de votre appareil sont collectées automatiquement par le site. Ces informations incluent notamment votre adresse IP, fournisseur d'accès à Internet, configuration matérielle, configuration logicielle, type et langue du navigateur... Ces informations nous aident à personnaliser et à améliorer continuellement votre expérience sur notre site."
+msgstr ""
+
+msgid "Ces informations et/ou documents sont susceptibles de contenir des inexactitudes techniques et des erreurs typographiques. CoCoLarp se réserve le droit de les corriger, dès que ces erreurs sont portées à sa connaissance."
+msgstr ""
+
 msgid "Chargement de l'événement…"
+msgstr ""
+
+msgid "CoCoLarp ne pourra en aucun cas être tenu responsable de tout dommage de quelque nature qu’il soit résultant de l’interprétation ou de l’utilisation des informations et/ou documents disponibles sur ce site."
+msgstr ""
+
+msgid "CoCoLarp ne saurait être tenu responsable des contenus écrits par les Usagers. Bien que CoCoLarp effectue une modération a priori, ceux-ci sont de la seule responsabilité de l’Usager. L'Usager s'engage à ne pas mettre en ligne de contenus pouvant porter atteinte aux intérêts de tierces personnes, ou aller à l’encontre de la loi de son pays et de celui qui héberge le Site (la France). Tout recours en justice contre le site, engagé par un tiers lésé ou par des services de justice, sera pris en charge par l'Usager."
+msgstr ""
+
+msgid "CoCoLarp propose deux services :"
+msgstr ""
+
+msgid "CoCoLarp s’efforce de permettre l’accès au site 24 heures sur 24, 7 jours sur 7, sauf en cas de force majeure ou d’un événement hors du contrôle de CoCoLarp, et sous réserve des éventuelles pannes et interventions de maintenance nécessaires au bon fonctionnement du site et des services. Par conséquent,CoCoLarp ne peut garantir une disponibilité du site et/ou des services, une fiabilité des transmissions et des performances en terme de temps de réponse ou de qualité."
+msgstr ""
+
+msgid "Conformément aux recommandations de la CNIL, la durée maximale de conservation des cookies est de 13 mois au maximum après leur premier dépôt dans votre terminal."
 msgstr ""
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
 msgstr ""
 
 msgid "Connexion"
+msgstr ""
+
+msgid "Cookies"
 msgstr ""
 
 msgid "Coût PNJ:"
@@ -71,13 +101,31 @@ msgstr ""
 msgid "DISTANCE"
 msgstr ""
 
+msgid "Dans la cadre de l'utilisation du site, CoCoLarp est susceptible de collecter les données d'identification (identifiant et adresse e-mail) et les données de connexion (adresses IP, journaux d'évènement)."
+msgstr ""
+
 msgid "Dans le monde entier"
+msgstr ""
+
+msgid "Description du service"
 msgstr ""
 
 msgid "Distance"
 msgstr ""
 
+msgid "Données collectées et utilisation"
+msgstr ""
+
+msgid "Droit applicable et juridiction compétente"
+msgstr ""
+
 msgid "Débute le"
+msgstr ""
+
+msgid "Définitions"
+msgstr ""
+
+msgid "En vue d’adapter le site aux demandes de ses visiteurs, nous mesurons le nombre de visites, le nombre de pages vues ainsi que l'activité des visiteurs sur le site et leur fréquence de retour."
 msgstr ""
 
 msgid "Evénement Facebook"
@@ -107,7 +155,37 @@ msgstr ""
 msgid "LONG"
 msgstr ""
 
+msgid "La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, seuls les tribunaux de la ville de Paris sont compétents."
+msgstr ""
+
+msgid "La responsabilité de CoCoLarp ne saurait être engagée en cas d’impossibilité d’accès et/ou d’utilisation des services. Par ailleurs, CoCoLarp peut être amené à interrompre le site ou une partie des services, à tout moment sans préavis, le tout sans droit à indemnités. L’Usager reconnaît et accepte que CoCoLarp ne soit pas responsable des interruptions, et des conséquences qui peuvent en découler pour l’Usager ou tout tiers."
+msgstr ""
+
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
+msgstr ""
+
+msgid "Le contenu de l'Usager peut être à tout moment et pour n'importe quelle raison supprimé ou modifié par CoCoLarp. L'Usager ne reçoit, pour le moment, aucune notification préalablement à la suppression ou à la modification du contenu Usager."
+msgstr ""
+
+msgid "Le site CoCoLarp propose notamment des liens hypertextes vers d’autres sites présents sur le réseau Internet. Les liens vers ces autres ressources vous font quitter le site CoCoLarp vers des sites tiers. Les sites tiers où mènent ces liens n'engagent en rien la responsabilité de CoCoLarp qui n'a pas le contrôle de ces sites tiers. L'Usager s'interdit donc à engager la responsabilité du Site concernant le contenu et les ressources relatives à ces liens hypertextes sortants."
+msgstr ""
+
+msgid "Les données d'identification (identifiant et adresse e-mail) sont nécessaires à la création d'un compte membre permettant notamment de bénéficier d'une fonctionnalité de création d’une liste de GNs “favoris”, et dans le futur, d’autres fonctionnalités encore. Ces données servent strictement à créer et gérer votre compte Usager sur le site CoCoLarp. Vos données ne font l'objet d'aucune communication à des tiers."
+msgstr ""
+
+msgid "Les informations et/ou documents disponibles sur ce site sont susceptibles d’être modifiés à tout moment, et peuvent avoir fait l’objet de mises à jour."
+msgstr ""
+
+msgid "Les informations et/ou documents figurant sur ce site et/ou accessibles par ce site sont, en partie, générés par la communauté d'Usagers de CoCoLarp."
+msgstr ""
+
+msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
+msgstr ""
+
+msgid "L’ajout et la mise à jour des jeux de rôle grandeur nature dans certaines régions où une communauté CoCoLarp effectue une veille constante"
+msgstr ""
+
+msgid "L’utilisation des informations et/ou documents disponibles sur ce site se fait sous l’entière et seule responsabilité de l’Usager, qui assume la totalité des conséquences pouvant en découler, sans que CoCoLarp puisse être recherché à ce titre, et sans recours contre ce dernier."
 msgstr ""
 
 msgid "MOYEN"
@@ -121,6 +199,9 @@ msgstr ""
 
 msgid "Nom d'utilisateur ou mot de passe erroné."
 msgstr "Identifiant ou mot de passe erroné."
+
+msgid "Notre responsabilité"
+msgstr ""
 
 msgid "Nous sommes un collectif de bénévoles indépendant sans objectif lucratif."
 msgstr ""
@@ -141,6 +222,9 @@ msgid "Plus tard"
 msgstr ""
 
 msgid "Proposer des modifications"
+msgstr ""
+
+msgid "Propriété intellectuelle"
 msgstr ""
 
 msgid "Préférences"
@@ -173,6 +257,9 @@ msgstr "Tri par"
 msgid "Trouver mon prochain GN"
 msgstr ""
 
+msgid "Un moteur de recherche et de filtres pour des jeux de rôle grandeur nature et des conventions ayant lieu partout dans le monde"
+msgstr ""
+
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
 msgstr "Archizut ! Une erreur est survenue. Contactez le support technique : michael@cocolarp.com."
 
@@ -180,6 +267,12 @@ msgid "Une journée"
 msgstr ""
 
 msgid "Veuillez patienter, nous chargeons les événements..."
+msgstr ""
+
+msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
+msgstr ""
+
+msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"
 msgstr ""
 
 msgctxt "password input field"
@@ -191,3 +284,18 @@ msgstr ""
 
 msgid "nom d'utilisateur"
 msgstr "identifiant"
+
+msgid "“Contenu Usager” : Les données transmises par l'Usager au sein du site."
+msgstr ""
+
+msgid "“GN” : Jeu de rôle grandeur nature, un loisir convivial aux possibilités illimités"
+msgstr ""
+
+msgid "“Membre” : L'Usager devient Membre après s’être connecté.e sur le site."
+msgstr ""
+
+msgid "“Site” : L'ensemble des sites, pages et services en ligne proposés par CoCoLarp sur www.cocolarp.com."
+msgstr ""
+
+msgid "“Usager” : La personne utilisant le Site et les services."
+msgstr ""

@@ -65,10 +65,13 @@
     .row(v-if="!displayLogin")
       check-box(
         :class="{'animate-shake': shakeGcus}",
-        :msg="acceptedGcuCheckboxLabel",
+        msg="",
         :value="gcusAccepted",
         @change="updateGcusAccepted"
       )
+      strong(v-translate="") J'ai lu et accepte les
+      span &nbsp;
+      a(target="_blank", :href="$router.resolve('terms').href", v-translate="") conditions générales d'utilisation
     .row(v-if="invalidLogin")
       b.active(v-translate="") Nom d'utilisateur ou mot de passe erroné.
     .row(v-if="unexpectedError")
@@ -108,9 +111,6 @@ export default {
     }
   },
   computed: {
-    acceptedGcuCheckboxLabel () {
-      return this.$gettext("J'ai lu et accepte les conditions générales d'utilisation")
-    },
     usernamePlaceholder () { return this.$gettext("nom d'utilisateur") },
     passwordPlaceholder () { return this.$gettext('mot de passe') },
     passwordConfirmationPlaceholder () {
@@ -288,5 +288,11 @@ export default {
 
 .active {
   color: var(--color-orange);
+}
+
+a {
+  font-family: 'Montserrat-Bold';
+  color: var(--color-orange);
+  display: inline-block;
 }
 </style>
