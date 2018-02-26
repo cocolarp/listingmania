@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 17:27+0100\n"
-"PO-Revision-Date: 2018-02-23 00:04+0100\n"
+"POT-Creation-Date: 2018-02-24 21:38+0100\n"
+"PO-Revision-Date: 2018-02-26 16:58+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr_FR\n"
@@ -36,7 +36,7 @@ msgid "Accès au site"
 msgstr ""
 
 msgid "Ajouter à mes GNs favoris"
-msgstr ""
+msgstr "Ajouter à Mes GNs"
 
 msgid "Annoncer un GN"
 msgstr ""
@@ -75,7 +75,7 @@ msgid "Conformément aux recommandations de la CNIL, la durée maximale de conse
 msgstr ""
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
-msgstr ""
+msgstr "Connectez-vous ou créez un compte pour accéder aux fonctionnalités avancées ..."
 
 msgid "Connexion"
 msgstr ""
@@ -84,10 +84,10 @@ msgid "Cookies"
 msgstr ""
 
 msgid "Coût PNJ:"
-msgstr ""
+msgstr "Coût (PNJ) :"
 
 msgid "Coût joueur:"
-msgstr ""
+msgstr "Coût (PJ) :"
 
 msgid "C’est ce calendrier que l’on a voulu changer en site web ambitieux, toujours gratuit, sans publicité, et de qualité professionnelle, en open source. Il sera toujours aussi fiable, parce qu’on n’attend pas que les organisations nous contactent : on ajoute la majorité des jeux nous-mêmes et avec notre communauté."
 msgstr ""
@@ -120,7 +120,7 @@ msgid "Droit applicable et juridiction compétente"
 msgstr ""
 
 msgid "Débute le"
-msgstr ""
+msgstr "Début :"
 
 msgid "Définitions"
 msgstr ""
@@ -163,6 +163,8 @@ msgstr ""
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr ""
+"Le calendrier international\n"
+"de vos jeux de rôle grandeur nature"
 
 msgid "Le contenu de l'Usager peut être à tout moment et pour n'importe quelle raison supprimé ou modifié par CoCoLarp. L'Usager ne reçoit, pour le moment, aucune notification préalablement à la suppression ou à la modification du contenu Usager."
 msgstr ""
@@ -267,7 +269,7 @@ msgid "Une journée"
 msgstr ""
 
 msgid "Veuillez patienter, nous chargeons les événements..."
-msgstr ""
+msgstr "Veuillez patienter, les GNs se chargent..."
 
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
 msgstr ""

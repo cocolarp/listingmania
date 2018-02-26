@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-26 17:27+0100\n"
-"PO-Revision-Date: 2018-02-23 00:20+0100\n"
+"POT-Creation-Date: 2018-02-24 21:38+0100\n"
+"PO-Revision-Date: 2018-02-26 17:19+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en_US\n"
@@ -36,7 +36,7 @@ msgid "Accès au site"
 msgstr ""
 
 msgid "Ajouter à mes GNs favoris"
-msgstr "Add to my favorite LARPs"
+msgstr "Add to My LARPs"
 
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
@@ -75,7 +75,7 @@ msgid "Conformément aux recommandations de la CNIL, la durée maximale de conse
 msgstr ""
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
-msgstr "Connect or register to enjoy every Cocolarp feature …"
+msgstr "Connect or sign up to access advanced features..."
 
 msgid "Connexion"
 msgstr "Sign in"
@@ -84,10 +84,10 @@ msgid "Cookies"
 msgstr ""
 
 msgid "Coût PNJ:"
-msgstr "NPC cost:"
+msgstr "Cost (npc):"
 
 msgid "Coût joueur:"
-msgstr "Cost for players:"
+msgstr "Cost (player):"
 
 msgid "C’est ce calendrier que l’on a voulu changer en site web ambitieux, toujours gratuit, sans publicité, et de qualité professionnelle, en open source. Il sera toujours aussi fiable, parce qu’on n’attend pas que les organisations nous contactent : on ajoute la majorité des jeux nous-mêmes et avec notre communauté."
 msgstr "It is this calendar that we wished to change into an ambitious website, still free, without any ad, and made by professionals, open sourced. This service has always been reliable, particularly because we do not wait for organisations to contact us, we add most of the games ourselves and with our community."
@@ -107,9 +107,8 @@ msgstr ""
 msgid "Dans le monde entier"
 msgstr "Worldwide"
 
-#, fuzzy
 msgid "Description du service"
-msgstr "Sign up for players"
+msgstr ""
 
 msgid "Distance"
 msgstr "Distance"
@@ -121,7 +120,7 @@ msgid "Droit applicable et juridiction compétente"
 msgstr ""
 
 msgid "Débute le"
-msgstr "Starts on"
+msgstr "Starts on:"
 
 msgid "Définitions"
 msgstr ""
@@ -163,7 +162,9 @@ msgid "La responsabilité de CoCoLarp ne saurait être engagée en cas d’impos
 msgstr ""
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
-msgstr "The most exhaustive LARP calendar"
+msgstr ""
+"Your international calendar for\n"
+"Live Action Role Playing Games"
 
 msgid "Le contenu de l'Usager peut être à tout moment et pour n'importe quelle raison supprimé ou modifié par CoCoLarp. L'Usager ne reçoit, pour le moment, aucune notification préalablement à la suppression ou à la modification du contenu Usager."
 msgstr ""
@@ -268,7 +269,7 @@ msgid "Une journée"
 msgstr "One day"
 
 msgid "Veuillez patienter, nous chargeons les événements..."
-msgstr "Please wait, download pending..."
+msgstr "Please wait while all the are Larps loaded..."
 
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
 msgstr ""
