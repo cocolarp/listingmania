@@ -35,7 +35,7 @@ function popEvents () {
 const DEFAULTS = {
   sort: 'start',
   durations: Array(3).fill(true),
-  months: Array(13).fill(true),
+  months: Array(13).fill(false).fill(true, 0, 2),
   anywhere: true,
   my_events: false,
   place: null,

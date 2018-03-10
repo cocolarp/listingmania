@@ -149,10 +149,10 @@ export default {
   },
   beforeRouteEnter: function (to, from, next) {
     next((vm) => {
+      vm.updateInstanceData.call(vm, to.query)
       Backent.getEvents().then((events) => {
         vm.rawEvents = models.transformBackentData(events)
         vm.isLoaded = true
-        vm.updateInstanceData.call(vm, to.query)
       })
     })
   },
