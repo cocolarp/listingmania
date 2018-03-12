@@ -1,8 +1,9 @@
 <template lang="pug">
 #content
   .row
-    p Lorem ipsum dolor sit amet
-    p Lorem ipsum dolor sit amet
+    .col
+      h1 FAQ
+      p(v-translate="") En cours d'écriture, un peu de patience...
 </template>
 
 <script>
@@ -11,17 +12,27 @@ export default {}
 
 <style scoped>
 #content {
-  color: white;
   margin: 0 auto;
-  margin-top: var(--navbar-height);
+  margin-top: 0.5rem;
+  background-color: white;
+  color: var(--highlight-text-color);
+}
+
+#content > .row {
+  line-height: var(--form-line-height);
+}
+
+@media (max-width: 768px) {
+  #content {
+    width: 100%;
+  }
+  .col {
+    padding: 1rem 2.5rem;
+  }
 }
 @media (min-width: 768px) {
   #content {
-    width: 60%;
-  }
-}
-@media (min-width: 1600px) {
-  #content {
+    padding: 1rem 3rem;
     width: 50%;
   }
 }
