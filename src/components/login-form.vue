@@ -88,7 +88,7 @@
 </template>
 
 <script>
-/* global Backent */
+/* global Backent, RecaptchaLoad */
 
 import checkBox from 'src/components/check-box.vue'
 
@@ -121,11 +121,13 @@ export default {
     },
   },
   mounted () {
-    grecaptcha.render('recaptcha', {
-      'sitekey': '6LfwHi8UAAAAAAcPnsYGLTrqWudhe36AaEwZqZhZ',
-      'callback': () => {
-        this.captchaVerified = true
-      },
+    RecaptchaLoad.then(() => {
+      grecaptcha.render('recaptcha', {
+        'sitekey': '6LfwHi8UAAAAAAcPnsYGLTrqWudhe36AaEwZqZhZ',
+        'callback': () => {
+          this.captchaVerified = true
+        },
+      })
     })
   },
   methods: {
