@@ -1,14 +1,15 @@
-# Cocolarp
+# Listingmania
 
-GN stuff
+The frontend application that you see at [CocoLarp](https://www.cocolarp.com)
 
-## Technical features
+## Development
 
-https://developers.google.com/api-client-library/javascript/features/discovery
+You will need a backend to be able to run the application correctly.
 
-https://sheets.googleapis.com/$discovery/rest?version=v4
+```sh
+$ BACKENT_URL=http://127.0.0.1:8000 make serve
 
-https://developers.google.com/sheets/api/reference/rest/
+```
 
 ## LICENSE
 
