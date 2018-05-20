@@ -3,6 +3,5 @@ dist
 *.swp*
 *~
 *.tar
-package-lock.json
 *.zip
 *.mo
