@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-12 22:39+0100\n"
+"POT-Creation-Date: 2018-05-27 10:33+0200\n"
 "PO-Revision-Date: 2018-02-26 16:58+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,6 +62,9 @@ msgstr ""
 msgid "Chargement de l'événement…"
 msgstr ""
 
+msgid "Choisissez votre devise ci-dessous:"
+msgstr ""
+
 msgid "CoCoLarp - Communauté Collaborative pour le GN"
 msgstr ""
 
@@ -87,6 +90,9 @@ msgid "Connexion"
 msgstr ""
 
 msgid "Cookies"
+msgstr ""
+
+msgid "Couronne Suédoise (kr)"
 msgstr ""
 
 msgid "Coût PNJ:"
@@ -119,6 +125,9 @@ msgstr ""
 msgid "Distance"
 msgstr ""
 
+msgid "Dollars US ($)"
+msgstr ""
+
 msgid "Données collectées et utilisation"
 msgstr ""
 
@@ -137,6 +146,9 @@ msgstr ""
 msgid "En vue d’adapter le site aux demandes de ses visiteurs, nous mesurons le nombre de visites, le nombre de pages vues ainsi que l'activité des visiteurs sur le site et leur fréquence de retour."
 msgstr ""
 
+msgid "Euro (€)"
+msgstr ""
+
 msgid "Evénement Facebook"
 msgstr ""
 
@@ -145,6 +157,9 @@ msgstr ""
 
 msgid "Format"
 msgstr "Durée"
+
+msgid "Franc Suisse (CHF)"
+msgstr ""
 
 msgid "Groupe Facebook"
 msgstr ""
@@ -193,6 +208,9 @@ msgstr ""
 msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
 msgstr ""
 
+msgid "Livre Sterling (£)"
+msgstr ""
+
 msgid "L’ajout et la mise à jour des jeux de rôle grandeur nature dans certaines régions où une communauté CoCoLarp effectue une veille constante"
 msgstr ""
 
@@ -206,6 +224,9 @@ msgid "Merci à toutes celles et ceux qui ont contribué à CoCoLarp jusqu’à 
 msgstr ""
 
 msgid "Mes GNs uniquement"
+msgstr ""
+
+msgid "Monnaie:"
 msgstr ""
 
 msgid "Nom d'utilisateur ou mot de passe erroné."

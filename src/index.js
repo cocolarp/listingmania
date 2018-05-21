@@ -15,6 +15,8 @@ import {client} from './services/backent'
 import {getCurrentlySupportedLocale, getBrowserLanguage} from 'src/lang_utils'
 import store from './store'
 
+import {CURRENCY_EUR, computeConversionTable} from './models'
+
 if (BACKENT_URL) {
   client.init(BACKENT_URL)
 } else {
@@ -42,6 +44,10 @@ if (translations.hasOwnProperty(locale)) {
 async function bootstrapApplication () {
 
   const userPromise = Backent.getUser()
+
+  const chosenCurrency = localStorage.getItem('currency') || CURRENCY_EUR
+  const conversionTable = await computeConversionTable(chosenCurrency)
+  store.commit('setCurrency', {currency: chosenCurrency, table: conversionTable})
 
   document.addEventListener('click', (event) => {
     let item = event.target.closest('.button')

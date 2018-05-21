@@ -98,7 +98,11 @@ export default {
     fetchData: async function () {
       try {
         const event = await Backent.getEvent(this.$route.params.slug)
-        this.event = BackentEvent(event, this.$store.state.user)
+        this.event = BackentEvent(
+          event,
+          this.$store.state.currency,
+          this.$store.state.conversionTable,
+        )
       } catch (_err) {
         console.log('event could not be found')
         setTimeout(() => {

@@ -4,11 +4,18 @@
     .row#mobile-navbar
       img(:src="smallLogoSrc", @click="goHome")
       #mobile-buttons
+        .round-button(@click="onCurrencyBtnClick")
+          span {{ selectedCurrencySymbol}}
         .round-button(@click="openAddEventForm")
           .icon-add
         .round-button(@click="onLoginBtnClick")
           div(:class="[displayName ? 'icon-logout' : 'icon-user']")
     .row#navbar
+      #currencies.nav-item
+        .button(@click="onCurrencyBtnClick")
+          span(v-translate="") Monnaie:
+          span &nbsp;
+          span {{ selectedCurrencySymbol }}
       #user.nav-item
         .button(@click="onLoginBtnClick")
           span(:class="[displayName ? 'icon-logout' : 'icon-user']")
@@ -33,19 +40,23 @@
     a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank", v-translate="") Suivez-nous sur Facebook
     span |
     router-link(to="/faq", v-translate="") FAQ
-  #login-backdrop(:class="{show: loginFormDisplayed || logoutFormDisplayed}")
+  #login-backdrop(:class="{show: loginFormDisplayed || logoutFormDisplayed || currencyFormDisplayed}")
   #login-form(:class="{show: loginFormDisplayed}")
     login-form
   #logout-form(:class="{show: logoutFormDisplayed}")
     logout-form
+  #currency-form(:class="{show: currencyFormDisplayed}")
+    currency-form
 </template>)
 
 <script>
 import { mapState } from 'vuex'
 
+import {CURRENCY_SYMBOLS} from 'src/models'
 import router from 'src/routes'
 import {getBrowserLanguage} from 'src/lang_utils'
 
+import currencyForm from 'src/components/currency-form.vue'
 import loginForm from 'src/components/login-form.vue'
 import logoutForm from 'src/components/logout-form.vue'
 
@@ -54,6 +65,7 @@ import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
 
 export default {
   components: {
+    'currency-form': currencyForm,
     'login-form': loginForm,
     'logout-form': logoutForm,
   },
@@ -74,6 +86,9 @@ export default {
         this.$store.commit('showLogoutForm', true)
       }
     },
+    onCurrencyBtnClick: async function () {
+      this.$store.commit('showCurrencyForm', true)
+    },
     openAddEventForm () {
       switch (getBrowserLanguage()) {
         case 'fr':
@@ -85,15 +100,22 @@ export default {
       }
     },
   },
-  computed: mapState({
-    displayName (state) {
-      if (state.user) {
-        return state.user.username
-      }
+  computed: {
+    selectedCurrencySymbol () {
+      return CURRENCY_SYMBOLS[this.selectedCurrency]
     },
-    loginFormDisplayed: 'loginFormDisplayed',
-    logoutFormDisplayed: 'logoutFormDisplayed',
-  }),
+    ...mapState({
+      selectedCurrency: 'currency',
+      displayName (state) {
+        if (state.user) {
+          return state.user.username
+        }
+      },
+      loginFormDisplayed: 'loginFormDisplayed',
+      logoutFormDisplayed: 'logoutFormDisplayed',
+      currencyFormDisplayed: 'currencyFormDisplayed',
+    }),
+  },
 }
 </script>
 
@@ -128,7 +150,7 @@ export default {
   #mobile-navbar {
     display: none;
   }
-  #login-form, #logout-form {
+  #login-form, #logout-form, #currency-form {
     top: 4rem;
     left: 35%;
     width: 30%;
@@ -142,7 +164,7 @@ export default {
   #mobile-navbar {
     display: none;
   }
-  #login-form, #logout-form {
+  #login-form, #logout-form, #currency-form {
     top: 4rem;
     left: 20%;
     width: 60%;
@@ -153,7 +175,7 @@ export default {
   #navbar, #logo, #footer, #top-spacer {
     display: none;
   }
-  #login-form, #logout-form {
+  #login-form, #logout-form, #currency-form {
     top: 10rem;
     left: 5%;
     width: 90%;
@@ -196,7 +218,7 @@ export default {
   float: right;
 }
 
-#login-form, #logout-form {
+#login-form, #logout-form, #currency-form {
   position: absolute;
   display: none;
 }

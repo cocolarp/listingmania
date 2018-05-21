@@ -7,7 +7,6 @@ export function getPlaceDetails (placeId) {
     try {
       await GoogleLoad
     } catch (err) {
-      console.log("hello there")
       reject(err)
     }
 

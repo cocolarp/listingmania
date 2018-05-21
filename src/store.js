@@ -1,5 +1,9 @@
+/* global localStorage */
+
 import Vue from 'vue'
 import Vuex from 'vuex'
+
+import {CURRENCY_EUR} from './models'
 
 Vue.use(Vuex)
 
@@ -12,8 +16,13 @@ function removeItem (array, element) {
 const store = new Vuex.Store({
   state: {
     user: null,
+    currency: CURRENCY_EUR,
+    conversionTable: {},
+    events: [],
+    detailEvent: null,
     loginFormDisplayed: false,
     logoutFormDisplayed: false,
+    currencyFormDisplayed: false,
   },
   getters: {
     isLiked: (state) => (event) => {
@@ -22,6 +31,24 @@ const store = new Vuex.Store({
     },
   },
   mutations: {
+    computeDistance (state, latLng) {
+      state.events.forEach((event, i) => {
+        event.computeDistance(latLng[0], latLng[1])
+      })
+    },
+    registerEvents (state, value) {
+      state.events = value
+    },
+    setCurrency (state, data) {
+      localStorage.setItem('currency', data.currency)
+      state.currency = data.currency
+      state.conversionTable = data.table
+    },
+    updateCosts (state) {
+      state.events.forEach((event, i) => {
+        event.updateCosts(state.currency, state.conversionTable)
+      })
+    },
     showLoginForm (state, value) {
       if (value === true) window.scrollTo(0, 0)
       state.loginFormDisplayed = value
@@ -29,6 +56,10 @@ const store = new Vuex.Store({
     showLogoutForm (state, value) {
       if (value === true) window.scrollTo(0, 0)
       state.logoutFormDisplayed = value
+    },
+    showCurrencyForm (state, value) {
+      if (value === true) window.scrollTo(0, 0)
+      state.currencyFormDisplayed = value
     },
     setUser (state, value) {
       if (!value) {

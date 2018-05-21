@@ -151,14 +151,20 @@ export default {
     next((vm) => {
       vm.updateInstanceData.call(vm, to.query)
       Backent.getEvents().then((events) => {
-        vm.rawEvents = models.transformBackentData(events)
+        vm.$store.commit(
+          'registerEvents',
+          models.transformBackentData(
+            events,
+            vm.$store.state.currency,
+            vm.$store.state.conversionTable
+          )
+        )
         vm.isLoaded = true
       })
     })
   },
   data: function () {
     return {
-      rawEvents: [],
       isLoaded: false,
       hideOnMobile: true,
     }
@@ -186,9 +192,7 @@ export default {
     computeKms () {
       const lat = this.place.geometry.location.lat()
       const lng = this.place.geometry.location.lng()
-      this.rawEvents.forEach((event, i) => {
-        event.computeDistance(lat, lng)
-      })
+      this.$store.commit('computeDistance', [lat, lng])
     },
     updatePlaceAndKms (place) {
       this.updatePlace(place)
@@ -203,7 +207,7 @@ export default {
     costFilterLabel () { return this.$gettext('COÛT') },
     distanceFilterLabel () { return this.$gettext('DISTANCE') },
     events () {
-      return this.rawEvents.filter((event) => {
+      return this.$store.state.events.filter((event) => {
         const eventMonth = event.start.diff(startOfMonth, 'month')
         return (
           (

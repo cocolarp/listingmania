@@ -2,9 +2,11 @@
 
 import geolib from 'geolib'
 import moment from 'moment'
+import lodash from 'lodash'
 
 import store from './store'
 import {gettext} from 'src/lang_utils'
+import {basicXhr} from 'src/services/utils.js'
 
 export const AVAILABLE_DISTANCES = {
   10: '10km',
@@ -32,12 +34,23 @@ export const DURATION_COLOR = {
 
 export const DURATIONS = [DURATION_SHORT, DURATION_MEDIUM, DURATION_LONG]
 
-const CURRENCY_EUR = 'EUR'
+const CURRENCY_CHF = 'CHF'
+export const CURRENCY_EUR = 'EUR'
+const CURRENCY_GBP = 'GBP'
+const CURRENCY_SEK = 'SEK'
 const CURRENCY_USD = 'USD'
-const CURRENCY_SYMBOLS = {
+
+export const CURRENCY_SYMBOLS = {
+  [CURRENCY_CHF]: 'CHF',
   [CURRENCY_EUR]: '€',
+  [CURRENCY_GBP]: '£',
+  [CURRENCY_SEK]: 'kr',
   [CURRENCY_USD]: '$',
 }
+
+const AVAILABLE_CURRENCIES = Object.keys(CURRENCY_SYMBOLS)
+
+let CURRENCY_CONVERSION_TABLE = {}
 
 function humanDuration (fmt) {
   switch (fmt) {
@@ -57,7 +70,19 @@ function readableCost (price, currency) {
   return `${Math.round(price / 100)} ${CURRENCY_SYMBOLS[currency]}`
 }
 
-export function BackentEvent (raw, user = null) {
+function getConvertedCosts (model, toCurrency, conversionTable) {
+  const convertedCost = model.original_price / conversionTable[model.original_currency]
+  const convertedNPCCost = model.original_npc_price / conversionTable[model.original_currency]
+
+  return {
+    cost: convertedCost,
+    npc_cost: convertedNPCCost,
+    readable_cost: readableCost(convertedCost, toCurrency),
+    npc_readable_cost: readableCost(convertedNPCCost, toCurrency),
+  }
+}
+
+export function BackentEvent (raw, currency, conversionTable) {
 
   const model = {
     id: raw.slug,
@@ -66,9 +91,9 @@ export function BackentEvent (raw, user = null) {
     summary: raw.summary,
     description: raw.description,
     url: raw.external_url,
-    cost: raw.price,
-    readable_cost: readableCost(raw.price, raw.currency),
-    npc_readable_cost: readableCost(raw.npc_price, raw.currency),
+    original_price: raw.price,
+    original_npc_price: raw.npc_price,
+    original_currency: raw.currency,
     start: moment(raw.start),
     durationCategory: raw.event_format,
     humanDuration: humanDuration(raw.event_format),
@@ -76,6 +101,12 @@ export function BackentEvent (raw, user = null) {
 
     raw: raw,
   }
+
+  model.updateCosts = function (currency, conversionTable) {
+    lodash.merge(model, getConvertedCosts(model, currency, conversionTable))
+  }
+
+  model.updateCosts(currency, conversionTable)  // setup the first costs
 
   model.doLike = async function () {
     try {
@@ -107,11 +138,48 @@ export function BackentEvent (raw, user = null) {
   return model
 }
 
+function storageRateKey (destCurrency) {
+  return `exchange-rates-${destCurrency}`
+}
 
-export function transformBackentData (rawEvents) {
+function fetchRatesFromStorage (destCurrency) {
+  const serializedRates = localStorage.getItem(storageRateKey(destCurrency))
+  if (serializedRates) {
+    const rates = JSON.parse(serializedRates)
+    if (moment(rates['zmw'].date).diff(moment(), 'days') < 30) { // FIXME: here for simplicity we choose a currency we can't select
+      return rates
+    }
+    localStorage.removeItem(storageRateKey(destCurrency))
+  }
+  return null
+}
+
+export async function computeConversionTable (destCurrency) {
+  const sourceCurrencies = AVAILABLE_CURRENCIES.filter((d) => d !== destCurrency)
+
+  let rates = fetchRatesFromStorage(destCurrency)
+  if (!rates) {
+    rates = await basicXhr(
+      `http://www.floatrates.com/daily/${destCurrency.toLowerCase()}.json`,
+      'GET',
+    )
+    const key = storageRateKey(destCurrency)
+    localStorage.setItem(key, JSON.stringify(rates))
+  }
+  const conversionTable = {
+    [destCurrency]: 1.0,
+  }
+  sourceCurrencies.forEach((srcCurrency) => {
+    const loCaseCurrency = srcCurrency.toLowerCase()
+    conversionTable[srcCurrency] = rates[loCaseCurrency].rate
+  })
+  return conversionTable
+}
+
+export function transformBackentData (rawEvents, currency, conversionTable) {
   return rawEvents.map((rawEvent) => {
     try {
-      return BackentEvent(rawEvent)
+      return BackentEvent(rawEvent, currency, conversionTable)
     } catch (err) {
       console.warn(`parsing event data for ${rawEvent.name} failed: ${err}`)
     }

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: cocolarp 0.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-12 22:39+0100\n"
+"POT-Creation-Date: 2018-05-27 10:33+0200\n"
 "PO-Revision-Date: 2018-02-26 17:19+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -62,6 +62,9 @@ msgstr ""
 msgid "Chargement de l'événement…"
 msgstr "Loading event…"
 
+msgid "Choisissez votre devise ci-dessous:"
+msgstr "Choose your currency below:"
+
 msgid "CoCoLarp - Communauté Collaborative pour le GN"
 msgstr "CoCoLarp - Collaborative Community for Larp"
 
@@ -88,6 +91,9 @@ msgstr "Sign in"
 
 msgid "Cookies"
 msgstr ""
+
+msgid "Couronne Suédoise (kr)"
+msgstr "Swedish krona (kr)"
 
 msgid "Coût PNJ:"
 msgstr "Cost (npc):"
@@ -119,6 +125,9 @@ msgstr ""
 msgid "Distance"
 msgstr "Distance"
 
+msgid "Dollars US ($)"
+msgstr "US Dollars ($)"
+
 msgid "Données collectées et utilisation"
 msgstr ""
 
@@ -137,6 +146,9 @@ msgstr "We are currently writing it, please hold on..."
 msgid "En vue d’adapter le site aux demandes de ses visiteurs, nous mesurons le nombre de visites, le nombre de pages vues ainsi que l'activité des visiteurs sur le site et leur fréquence de retour."
 msgstr ""
 
+msgid "Euro (€)"
+msgstr "Euros (€)"
+
 msgid "Evénement Facebook"
 msgstr "Facebook event"
 
@@ -145,6 +157,9 @@ msgstr "FAQ"
 
 msgid "Format"
 msgstr "Duration"
+
+msgid "Franc Suisse (CHF)"
+msgstr "Swiss Francs (CHF)"
 
 msgid "Groupe Facebook"
 msgstr "Facebook group"
@@ -193,6 +208,9 @@ msgstr ""
 msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
 msgstr ""
 
+msgid "Livre Sterling (£)"
+msgstr "British Pound Sterling (£)"
+
 msgid "L’ajout et la mise à jour des jeux de rôle grandeur nature dans certaines régions où une communauté CoCoLarp effectue une veille constante"
 msgstr ""
 
@@ -207,6 +225,9 @@ msgstr "Thanks to all those who contributed to CoCoLarp until now, one way or an
 
 msgid "Mes GNs uniquement"
 msgstr "My LARPs only"
+
+msgid "Monnaie:"
+msgstr "Currency:"
 
 msgid "Nom d'utilisateur ou mot de passe erroné."
 msgstr "Wrong login or password."
