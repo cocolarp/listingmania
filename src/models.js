@@ -160,7 +160,7 @@ export async function computeConversionTable (destCurrency) {
   let rates = fetchRatesFromStorage(destCurrency)
   if (!rates) {
     rates = await basicXhr(
-      `http://www.floatrates.com/daily/${destCurrency.toLowerCase()}.json`,
+      `https://www.floatrates.com/daily/${destCurrency.toLowerCase()}.json`,
       'GET',
     )
     const key = storageRateKey(destCurrency)
