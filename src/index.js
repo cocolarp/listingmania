@@ -30,13 +30,14 @@ const locale = getCurrentlySupportedLocale()
 Vue.use(GetTextPlugin, {
   translations: translations,
   defaultLanguage: locale,
+  silent: true,
 })
 
 moment.locale(getBrowserLanguage())
 
 if (translations.hasOwnProperty(locale)) {
   const newTitle = translations[locale][document.title]
-  if (newTitle != null && newTitle != '') {
+  if (newTitle != null && newTitle !== '') {
     document.title = translations[locale][document.title]
   }
 }
