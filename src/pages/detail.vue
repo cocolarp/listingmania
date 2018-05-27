@@ -32,7 +32,7 @@
         p
           strong {{ event.raw.location.name }}
         p
-          strong {{ event.raw.location.address }} ({{event.raw.location.country}})
+          strong {{ event.raw.location.address }}
       .group
         p
           span(v-translate="") Coût joueur:
