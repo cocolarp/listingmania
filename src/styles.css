@@ -12,16 +12,19 @@
 
 @font-face {
   font-family: 'Montserrat';
+  font-display: swap;
   src: url("assets/Montserrat-Regular.woff2") format("woff2");
 }
 
 @font-face {
   font-family: 'Montserrat-Bold';
+  font-display: swap;
   src: url("assets/Montserrat-Bold.woff2") format("woff2");
 }
 
 @font-face {
   font-family: 'Montserrat-Alternate';
+  font-display: swap;
   src: url("assets/MontserratAlternates-Regular.woff2") format("woff2");
 }
 
@@ -49,7 +52,7 @@ h1, strong {
   flex-direction: column;
   background-image: linear-gradient(
     135deg, rgba(180, 180, 180, 0.65), rgba(220, 220, 220, 0.65)
-  ), url('assets/bg3.jpeg');
+  ), url('assets/bg3.webp');
   background-size: cover;
   background-attachment: fixed;
 }

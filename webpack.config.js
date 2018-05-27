@@ -9,6 +9,8 @@ function getOr (x, dflt = null) {
 
 webpackDefaults.devtool = 'eval'
 
+webpackDefaults.module.rules.push({ test: /\.webp$/, use: 'url-loader?limit=50000' })
+
 webpackDefaults.plugins.push(
   new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /fr/)
 )
