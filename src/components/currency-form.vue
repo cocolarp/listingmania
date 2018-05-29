@@ -6,31 +6,39 @@
       @click='closeForm'
     ) ✖
   #content
-    .row
-      .button(
-        @click="submit('EUR')",
-        v-translate="",
-      ) Euro (€)
-    .row
-      .button(
-        @click="submit('CHF')",
-        v-translate="",
-      ) Franc Suisse (CHF)
-    .row
-      .button(
-        @click="submit('GBP')",
-        v-translate="",
-      ) Livre Sterling (£)
-    .row
-      .button(
-        @click="submit('SEK')",
-        v-translate="",
-      ) Couronne Suédoise (kr)
-    .row
-      .button(
-        @click="submit('USD')",
-        v-translate="",
-      ) Dollars US ($)
+    div(v-if='!isDoingRequest')
+      .row
+        .button(
+          @click="submit('EUR')",
+          v-translate="",
+        ) Euro (€)
+      .row
+        .button(
+          @click="submit('CHF')",
+          v-translate="",
+        ) Franc Suisse (CHF)
+      .row
+        .button(
+          @click="submit('GBP')",
+          v-translate="",
+        ) Livre Sterling (£)
+      .row
+        .button(
+          @click="submit('SEK')",
+          v-translate="",
+        ) Couronne Suédoise (kr)
+      .row
+        .button(
+          @click="submit('USD')",
+          v-translate="",
+        ) Dollars US ($)
+    div(v-else)
+      .row
+        .spacer
+      .row
+        span(v-translate="") Veuillez patienter, changement de devise en cours...
+      .row
+        .spacer
 
 </template>
 
@@ -38,12 +46,19 @@
 import {computeConversionTable} from 'src/models'
 
 export default {
+  data: function () {
+    return {
+      isDoingRequest: false,
+    }
+  },
   methods: {
     async submit (destCurrency) {
+      this.isDoingRequest = true
       const conversionTable = await computeConversionTable(destCurrency)  // this is cached
       this.$store.commit('setCurrency', {currency: destCurrency, table: conversionTable})
       this.$store.commit('updateCosts')
       this.$store.commit('showCurrencyForm', false)
+      this.isDoingRequest = false
     },
     closeForm () {
       this.$store.commit('showCurrencyForm', false)
