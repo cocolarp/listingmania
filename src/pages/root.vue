@@ -60,8 +60,8 @@ import currencyForm from 'src/components/currency-form.vue'
 import loginForm from 'src/components/login-form.vue'
 import logoutForm from 'src/components/logout-form.vue'
 
-import headerImg from 'src/assets/logo.webp'
-import smallLogoImg from 'src/assets/small-logo.webp' // OMG is ugly
+import headerImg from 'src/assets/logo.png'
+import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
 
 export default {
   components: {
