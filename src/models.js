@@ -86,6 +86,7 @@ export function BackentEvent (raw, currency, conversionTable) {
 
   const model = {
     id: raw.slug,
+    unique_id: `${raw.slug}-${raw.start}`, // avoid doubles in the list page
     name: raw.name,
     organization: raw.organization.name,
     summary: raw.summary,
