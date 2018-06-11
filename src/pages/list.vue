@@ -149,7 +149,7 @@ export default {
   },
   beforeRouteEnter: function (to, from, next) {
     next((vm) => {
-      vm.updateInstanceData.call(vm, to.query)
+      vm.updateInstanceData(to.query)
       Backent.getEvents().then((events) => {
         vm.$store.commit(
           'registerEvents',

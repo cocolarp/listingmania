@@ -69,7 +69,7 @@ export default {
   mixins: [SearchMixin],
   beforeRouteEnter (to, from, next) {
     next((vm) => {
-      vm.updateInstanceData.call(vm, to.query)
+      vm.updateInstanceData(to.query)
     })
   },
   methods: {

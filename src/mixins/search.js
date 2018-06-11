@@ -56,7 +56,7 @@ export default {
     'location-input': locationInput,
   },
   beforeRouteUpdate (to, from, next) {
-    this.updateInstanceData.call(this, to.query)
+    this.updateInstanceData(to.query)
     next()
   },
   methods: {
@@ -101,7 +101,7 @@ export default {
       }
     },
     _updateUrl (key, value, url_value) {
-      let query_value = '' + url_value  // force string
+      let query_value = '' + url_value // force string
       if (Array.isArray(value)) {
         if (JSON.stringify(value) === JSON.stringify(DEFAULTS[key])) {
           query_value = undefined

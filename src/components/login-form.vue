@@ -88,7 +88,7 @@
 </template>
 
 <script>
-/* global Backent, RecaptchaLoad */
+/* global grecaptcha, Backent, RecaptchaLoad */
 
 import checkBox from 'src/components/check-box.vue'
 

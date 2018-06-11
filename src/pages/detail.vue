@@ -97,7 +97,9 @@ export default {
     },
     fetchData: async function () {
       try {
-        const event = await Backent.getEvent(this.$route.params.slug)
+        // Get the id as the last part of the URL's slug.
+        const pk = this.$route.params.slug.split('-').pop()
+        const event = await Backent.getEvent(pk)
         this.event = BackentEvent(
           event,
           this.$store.state.currency,

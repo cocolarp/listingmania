@@ -50,8 +50,6 @@ export const CURRENCY_SYMBOLS = {
 
 const AVAILABLE_CURRENCIES = Object.keys(CURRENCY_SYMBOLS)
 
-let CURRENCY_CONVERSION_TABLE = {}
-
 function humanDuration (fmt) {
   switch (fmt) {
     case DURATION_HOURS:
@@ -85,8 +83,8 @@ function getConvertedCosts (model, toCurrency, conversionTable) {
 export function BackentEvent (raw, currency, conversionTable) {
 
   const model = {
-    id: raw.slug,
-    unique_id: `${raw.slug}-${raw.start}`, // avoid doubles in the list page
+    pk: raw.pk,
+    id: `${raw.slug}-${raw.pk}`,
     name: raw.name,
     organization: raw.organization.name,
     summary: raw.summary,
@@ -107,7 +105,7 @@ export function BackentEvent (raw, currency, conversionTable) {
     lodash.merge(model, getConvertedCosts(model, currency, conversionTable))
   }
 
-  model.updateCosts(currency, conversionTable)  // setup the first costs
+  model.updateCosts(currency, conversionTable) // setup the first costs
 
   model.doLike = async function () {
     try {
