@@ -37,7 +37,7 @@
   .row#footer
     router-link(to="/about", v-translate="") A propos
     span |
-    a(href="https://www.facebook.com/LarpCollaborativeCommunity/", target="_blank", v-translate="") Suivez-nous sur Facebook
+    a(href="https://www.facebook.com/CoCoLarpCalendar/", target="_blank", v-translate="") Suivez-nous sur Facebook
     span |
     router-link(to="/faq", v-translate="") FAQ
   #login-backdrop(:class="{show: loginFormDisplayed || logoutFormDisplayed || currencyFormDisplayed}")
