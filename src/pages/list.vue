@@ -110,7 +110,7 @@
           translate-plural="%{ events.length } résultats",
         ) %{ events.length } résultat
     .row
-      .col.event(v-for="event in events", :key="event.unique_id")
+      .col.event(v-for="event in events", :key="event.pk")
         event-card(:event="event", :anywhere="anywhere")
 
 </template>
