@@ -109,7 +109,7 @@ export function BackentEvent (raw, currency, conversionTable) {
 
   model.doLike = async function () {
     try {
-      const isLiked = await Backent.postLike(model.id)
+      const isLiked = await Backent.postLike(model.pk)
       if (isLiked) {
         store.commit('addLike', model.id)
       } else {
