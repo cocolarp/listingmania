@@ -148,16 +148,23 @@ export default {
     'multi-sort-badge': multiSortBadge,
   },
   beforeRouteEnter: function (to, from, next) {
-    next((vm) => {
-      vm.updateInstanceData(to.query)
-      Backent.getEvents().then((events) => {
+    next(async (vm) => {
+      await vm.updateInstanceData(to.query)
+      Backent.getEvents().then((rawEvents) => {
+        const events = models.transformBackentData(
+          rawEvents,
+          vm.$store.state.currency,
+          vm.$store.state.conversionTable,
+        )
+        if (vm.place) {
+          const lat = vm.place.geometry.location.lat()
+          const lng = vm.place.geometry.location.lng()
+          events.forEach((event) => {
+            event.distance = event.computeDistance(lat, lng)
+          })
+        }
         vm.$store.commit(
-          'registerEvents',
-          models.transformBackentData(
-            events,
-            vm.$store.state.currency,
-            vm.$store.state.conversionTable
-          )
+          'registerEvents', events
         )
         vm.isLoaded = true
       })

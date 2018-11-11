@@ -92,13 +92,15 @@ export default {
       }
 
       if (query.place) {
-        getPlaceDetails(query.place).then((place) => {
+        return getPlaceDetails(query.place).then((place) => {
           vm.place = place
         }, (err) => {
           console.log(err)
           console.warn('Place not found for id: ', query.place)
         })
       }
+
+      return Promise.resolve()
     },
     _updateUrl (key, value, url_value) {
       let query_value = '' + url_value // force string

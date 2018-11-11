@@ -33,7 +33,8 @@ const store = new Vuex.Store({
   mutations: {
     computeDistance (state, latLng) {
       state.events.forEach((event, i) => {
-        event.computeDistance(latLng[0], latLng[1])
+        event.distance = event.computeDistance(latLng[0], latLng[1])
+        Vue.set(state.events, i, event)
       })
     },
     registerEvents (state, value) {

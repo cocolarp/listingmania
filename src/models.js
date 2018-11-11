@@ -122,9 +122,9 @@ export function BackentEvent (raw, currency, conversionTable) {
 
   model.computeDistance = (lat, lng) => {
     if (!model.raw.location.latitude || !model.raw.location.longitude) {
-      return
+      return null
     }
-    model.distance = Math.round(geolib.getDistance(
+    return Math.round(geolib.getDistance(
       {latitude: lat, longitude: lng},
       {
         latitude: model.raw.location.latitude,
