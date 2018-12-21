@@ -123,6 +123,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 #main {
   flex: 1 0 auto;
   display: flex;

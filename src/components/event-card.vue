@@ -77,6 +77,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 .event-card {
   background-color: white;
   font-family: Montserrat;

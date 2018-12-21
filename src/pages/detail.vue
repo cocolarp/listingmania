@@ -117,6 +117,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 #content {
   margin-top: 0.5rem;
   color: white;

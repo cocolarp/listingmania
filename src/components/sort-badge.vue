@@ -26,6 +26,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 .badge {
   display: inline-block;
   vertical-align: middle;

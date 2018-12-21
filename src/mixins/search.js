@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
-import isnan from 'lodash.isnan'
-import clonedeep from 'lodash.clonedeep'
+import isnan from 'lodash/isNaN'
+import clonedeep from 'lodash/cloneDeep'
 
 import * as models from 'src/models'
 import {getPlaceDetails} from 'src/services/google'

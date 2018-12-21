@@ -59,6 +59,8 @@ export default {}
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 #content {
   margin: 0 auto;
   margin-top: 0.5rem;

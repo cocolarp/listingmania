@@ -34,6 +34,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 #main {
   background-color: white;
   border: solid 1px #ddd;

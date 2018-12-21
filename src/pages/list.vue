@@ -252,6 +252,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 #content {
   font-family: Montserrat;
   margin: 0 auto;

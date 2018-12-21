@@ -1,0 +1,11 @@
+:root {
+  --main-bg-color: #aaa;
+  --main-text-color: rgba(3,3,3,.9);
+  --highlight-text-color: #999;
+  --navbar-height: 4rem;
+  --logo-height: 5rem;
+  --mobile-logo-height: 3rem;
+  --form-line-height: 2rem;
+  --spacer-line-height: 1rem;
+  --color-orange: #D16E47;
+}

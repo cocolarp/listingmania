@@ -2,7 +2,7 @@
 
 import geolib from 'geolib'
 import moment from 'moment'
-import lodash from 'lodash'
+import merge from 'lodash/merge'
 
 import store from './store'
 import {gettext} from 'src/lang_utils'
@@ -102,7 +102,7 @@ export function BackentEvent (raw, currency, conversionTable) {
   }
 
   model.updateCosts = function (currency, conversionTable) {
-    lodash.merge(model, getConvertedCosts(model, currency, conversionTable))
+    merge(model, getConvertedCosts(model, currency, conversionTable))
   }
 
   model.updateCosts(currency, conversionTable) // setup the first costs

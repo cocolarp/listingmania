@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import throttle from 'lodash.throttle'
+import throttle from 'lodash/throttle'
 
 const BUTTON_SIZE = 16 // in px. And it's empiric.
 
@@ -111,6 +111,8 @@ export default {
 </script>
 
 <style scoped>
+@import "src/variables.css";
+
 #root {
   background-color: white;
   border-radius: 1.2rem;
