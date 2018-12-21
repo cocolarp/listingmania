@@ -4,7 +4,7 @@
     .row#mobile-navbar
       img(:src="smallLogoSrc", @click="goHome")
       #mobile-buttons
-        .round-button(@click="onCurrencyBtnClick")
+        .round-button(@click="onCurrencyBtnClick", v-if="canSwitchCurrencies")
           span {{ selectedCurrencySymbol}}
         .round-button(@click="openAddEventForm")
           .icon-add
@@ -12,7 +12,7 @@
           div(:class="[displayName ? 'icon-logout' : 'icon-user']")
     .row#navbar
       #currencies.nav-item
-        .button(@click="onCurrencyBtnClick")
+        .button(@click="onCurrencyBtnClick", v-if="canSwitchCurrencies")
           span(v-translate="") Monnaie:
           span &nbsp;
           span {{ selectedCurrencySymbol }}
@@ -105,6 +105,9 @@ export default {
       return CURRENCY_SYMBOLS[this.selectedCurrency]
     },
     ...mapState({
+      canSwitchCurrencies (state) {
+        return Object.keys(state.conversionTable).length > 1
+      },
       selectedCurrency: 'currency',
       displayName (state) {
         if (state.user) {

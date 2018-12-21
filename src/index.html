@@ -63,7 +63,6 @@ window.GoogleLoad = new Promise((resolve, reject) => {
   setTimeout(() => {
     if (!isLoaded) {
       console.log("Could not load Google Maps.")
-      reject()
     }
   }, 3000)
 })
@@ -76,7 +75,6 @@ window.RecaptchaLoad = new Promise((resolve, reject) => {
   setTimeout(() => {
     if (!isLoaded) {
       console.log("Could not load Google Recaptcha.")
-      reject()
     }
   }, 3000)
 })

@@ -44,11 +44,25 @@ if (translations.hasOwnProperty(locale)) {
 
 async function bootstrapApplication () {
 
-  const userPromise = Backent.getUser()
+  Backent.getUser().then((user) => {
+    store.commit('setUser', user)
+  }, () => {
+    console.log('User is not authenticated.')
+  })
 
   const chosenCurrency = localStorage.getItem('currency') || CURRENCY_EUR
-  const conversionTable = await computeConversionTable(chosenCurrency)
-  store.commit('setCurrency', {currency: chosenCurrency, table: conversionTable})
+  store.commit('setCurrency', {
+    currency: chosenCurrency,
+    table: {
+      [chosenCurrency]: 1.0,
+    },
+  })
+  computeConversionTable(chosenCurrency).then((conversionTable) => {
+    store.commit('setCurrency', {
+      currency: chosenCurrency,
+      table: conversionTable,
+    })
+  })
 
   document.addEventListener('click', (event) => {
     let item = event.target.closest('.button')
@@ -67,14 +81,6 @@ async function bootstrapApplication () {
       router,
     }, rootPage)
   )
-
-  try {
-    const user = await userPromise
-    store.commit('setUser', user)
-  } catch (_err) {
-    console.log('User is not authenticated.')
-  }
-
 }
 
 bootstrapApplication()
