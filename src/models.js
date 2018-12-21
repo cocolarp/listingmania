@@ -69,14 +69,22 @@ function readableCost (price, currency) {
 }
 
 function getConvertedCosts (model, toCurrency, conversionTable) {
-  const convertedCost = model.original_price / conversionTable[model.original_currency]
-  const convertedNPCCost = model.original_npc_price / conversionTable[model.original_currency]
+  if (Object.keys(conversionTable).includes(model.original_currency)) {
+    const convertedCost = model.original_price / conversionTable[model.original_currency]
+    const convertedNPCCost = model.original_npc_price / conversionTable[model.original_currency]
+    return {
+      cost: convertedCost,
+      npc_cost: convertedNPCCost,
+      readable_cost: readableCost(convertedCost, toCurrency),
+      npc_readable_cost: readableCost(convertedNPCCost, toCurrency),
+    }
+  }
 
   return {
-    cost: convertedCost,
-    npc_cost: convertedNPCCost,
-    readable_cost: readableCost(convertedCost, toCurrency),
-    npc_readable_cost: readableCost(convertedNPCCost, toCurrency),
+    cost: model.original_price,
+    npc_cost: model.original_npc_price,
+    readable_cost: readableCost(model.original_price, model.original_currency),
+    npc_readable_cost: readableCost(model.original_npc_price, model.original_currency),
   }
 }
 
