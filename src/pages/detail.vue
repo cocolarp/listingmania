@@ -6,15 +6,10 @@
         .icon-left-open
       span.desktop(v-translate="") Retour aux résultats de la recherche
     .col#add-like
-      span.desktop(v-if="isLiked", v-translate="") Retirer de mes GNs favoris
-      span.desktop(v-else, v-translate="") Ajouter à mes GNs favoris
-      span.desktop &nbsp;
-      .heart(
-        @click="likeEvent",
-        :style="{color: heartColor}",
-        @mouseenter="doHighlightHeart()",
-        @mouseleave="resetHeart()",
-      ) &#x2764;
+      span.desktop(v-show="eventIsLiked", v-translate="") Retirer de mes GNs favoris
+      span.desktop(v-show="!eventIsLiked", v-translate="") Ajouter à mes GNs favoris
+      span &nbsp;
+      heart(:event="event")
   .row(v-if="!event")
     .col#loading
       strong(v-translate="") Chargement de l'événement…
@@ -64,10 +59,9 @@
 import { getBrowserLanguage } from 'src/lang_utils'
 import { BackentEvent } from 'src/models'
 
-import HeartMixin from 'src/mixins/heart.js'
+import Heart from 'src/components/heart.vue'
 
 export default {
-  mixins: [HeartMixin],
   data: function () {
     return {
       event: null,
@@ -76,6 +70,9 @@ export default {
   computed: {
     translatedHumanDuration () {
       return this.$gettext(this.event.humanDuration)
+    },
+    eventIsLiked () {
+      return this.$store.getters.isLiked(this.event)
     },
   },
   created () {
@@ -108,10 +105,13 @@ export default {
       } catch (_err) {
         console.log('event could not be found')
         setTimeout(() => {
-          this.$router.push({name: 'home'})
+          this.$router.push({ name: 'home' })
         }, 3000)
       }
     },
+  },
+  components: {
+    heart: Heart,
   },
 }
 </script>
@@ -208,13 +208,6 @@ a {
   white-space: -o-pre-wrap; /* newer Opera */
   white-space: pre-wrap; /* Chrome; W3C standard */
   word-wrap: break-word; /* IE */
-}
-
-.heart {
-  display: inline-block;
-  font-size: 1.6rem;
-  cursor: pointer;
-  position: absolute;
 }
 
 @media (max-width: 768px) {

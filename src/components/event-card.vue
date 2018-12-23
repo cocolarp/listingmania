@@ -7,12 +7,7 @@
   .name(
     @click="goToEventPage()",
   ) {{ event.name }}
-  .heart(
-    :style="{color: heartColor}"
-    @mouseenter="doHighlightHeart()",
-    @mouseleave="resetHeart()"
-    @click="likeEvent()"
-  ) &#x2764;
+  heart(:event="event")
   .date-details(
     :style="{color: durationColor}"
     @click="goToEventPage()",
@@ -31,12 +26,11 @@
 </template>
 
 <script>
-import HeartMixin from 'src/mixins/heart.js'
+import Heart from 'src/components/heart.vue'
 
 import { DURATION_COLOR } from 'src/models'
 
 export default {
-  mixins: [HeartMixin],
   props: ['event', 'anywhere'],
   data: function () {
     return {
@@ -73,6 +67,9 @@ export default {
       this.mainColor = '#999'
     },
   },
+  components: {
+    heart: Heart,
+  },
 }
 </script>
 
@@ -93,14 +90,6 @@ export default {
   position: relative;
 }
 
-.heart {
-  cursor: pointer;
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-size: 1.2rem;
-}
-
 .name {
   cursor: pointer;
   font-weight: bold;
@@ -108,6 +97,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 90%;
+  display: inline-block;
 }
 
 .date-details {

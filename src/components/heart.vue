@@ -1,4 +1,15 @@
+<template lang="pug">
+.heart(:style="{color: heartColor}")
+  span(
+    @mouseenter="doHighlightHeart()",
+    @mouseleave="resetHeart()"
+    @click="likeEvent()"
+  ) &#x2764;
+</template>
+
+<script>
 export default {
+  props: ['event'],
   data: function () {
     return {
       highlightHeart: false,
@@ -6,7 +17,7 @@ export default {
   },
   computed: {
     isLiked () {
-      return (this.event && this.$store.getters.isLiked(this.event))
+      return this.$store.getters.isLiked(this.event)
     },
     heartColor () {
       if (this.highlightHeart) return '#333'
@@ -21,13 +32,23 @@ export default {
     resetHeart () {
       this.highlightHeart = false
     },
-    likeEvent: async function () {
+    likeEvent: function () {
       if (!this.$store.state.user) {
         this.$store.commit('showLoginForm', true)
       } else {
-        await this.event.doLike()
-        this.resetHeart()
+        this.event.doLike().then(() => {
+          this.resetHeart()
+        })
       }
     },
   },
 }
+</script>
+
+<style scoped>
+.heart {
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: inline-block;
+}
+</style>

@@ -27,6 +27,7 @@ const store = new Vuex.Store({
   getters: {
     isLiked: (state) => (event) => {
       if (!state.user) return false // we don't know yet
+      if (!event) return false
       return state.user.events.includes(event.id)
     },
   },
