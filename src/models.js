@@ -68,10 +68,14 @@ function readableCost (price, currency) {
   return `${Math.round(price / 100)} ${CURRENCY_SYMBOLS[currency]}`
 }
 
-function getConvertedCosts (model, toCurrency, conversionTable) {
+function round (amount) {
+  return Math.round(amount)
+}
+
+export function _getConvertedCosts (model, toCurrency, conversionTable) {
   if (Object.keys(conversionTable).includes(model.original_currency)) {
-    const convertedCost = model.original_price / conversionTable[model.original_currency]
-    const convertedNPCCost = model.original_npc_price / conversionTable[model.original_currency]
+    const convertedCost = round(model.original_price / conversionTable[model.original_currency])
+    const convertedNPCCost = round(model.original_npc_price / conversionTable[model.original_currency])
     return {
       cost: convertedCost,
       npc_cost: convertedNPCCost,
@@ -110,7 +114,7 @@ export function BackentEvent (raw, currency, conversionTable) {
   }
 
   model.updateCosts = function (currency, conversionTable) {
-    merge(model, getConvertedCosts(model, currency, conversionTable))
+    merge(model, _getConvertedCosts(model, currency, conversionTable))
   }
 
   model.updateCosts(currency, conversionTable) // setup the first costs
