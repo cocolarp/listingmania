@@ -12,7 +12,7 @@
 <script>
 import moment from 'moment'
 
-import {gettext} from 'src/lang_utils'
+import { gettext } from 'src/lang_utils'
 
 function getMonthDisplay (month) {
   let str = month.format('MMM')

@@ -75,7 +75,7 @@ export default {
   methods: {
     goToSearch () {
       if (this.canSearch) {
-        router.push({name: 'events', query: this.$route.query})
+        router.push({ name: 'events', query: this.$route.query })
       } else {
         this._doShakeLocationInput()
       }

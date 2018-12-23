@@ -13,7 +13,7 @@ export function getPlaceDetails (placeId) {
     PlacesService = new google.maps.places.PlacesService(document.createElement('div'))
 
     if (!PlacesService) reject(new Error('Google Maps was not initialized!'))
-    PlacesService.getDetails({placeId: placeId}, function (value, err) {
+    PlacesService.getDetails({ placeId: placeId }, function (value, err) {
       if (err === 'OK' && value) {
         resolve(value)
       } else {

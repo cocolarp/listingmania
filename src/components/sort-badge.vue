@@ -8,9 +8,9 @@
 <script>
 export default {
   props: {
-    'sort_key': {type: String},
-    'value': {type: String},
-    'badgeText': {type: String},
+    'sort_key': { type: String },
+    'value': { type: String },
+    'badgeText': { type: String },
   },
   computed: {
     isSelected () {

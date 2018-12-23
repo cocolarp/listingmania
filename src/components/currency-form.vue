@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import {computeConversionTable} from 'src/models'
+import { computeConversionTable } from 'src/models'
 
 export default {
   data: function () {
@@ -55,7 +55,7 @@ export default {
     async submit (destCurrency) {
       this.isDoingRequest = true
       const conversionTable = await computeConversionTable(destCurrency) // this is cached
-      this.$store.commit('setCurrency', {currency: destCurrency, table: conversionTable})
+      this.$store.commit('setCurrency', { currency: destCurrency, table: conversionTable })
       this.$store.commit('updateCosts')
       this.$store.commit('showCurrencyForm', false)
       this.isDoingRequest = false

@@ -33,7 +33,7 @@
 <script>
 import HeartMixin from 'src/mixins/heart.js'
 
-import {DURATION_COLOR} from 'src/models'
+import { DURATION_COLOR } from 'src/models'
 
 export default {
   mixins: [HeartMixin],
@@ -64,7 +64,7 @@ export default {
   },
   methods: {
     goToEventPage () {
-      this.$router.push({name: 'detail', params: { slug: this.event.id }})
+      this.$router.push({ name: 'detail', params: { slug: this.event.id } })
     },
     highlightBackground () {
       this.mainColor = this.durationColor

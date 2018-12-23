@@ -4,7 +4,7 @@ import isnan from 'lodash/isNaN'
 import clonedeep from 'lodash/cloneDeep'
 
 import * as models from 'src/models'
-import {getPlaceDetails} from 'src/services/google'
+import { getPlaceDetails } from 'src/services/google'
 
 import checkBox from 'src/components/check-box.vue'
 import dateRangeSlider from 'src/components/date-range-slider.vue'
@@ -116,7 +116,7 @@ export default {
       const query = Object.assign({}, this.$route.query, {
         [key]: query_value,
       })
-      this.$router.replace({query: query})
+      this.$router.replace({ query: query })
     },
     _updateData (key, value) {
       this[key] = value

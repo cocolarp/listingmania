@@ -61,8 +61,8 @@
 <script>
 /* global Backent */
 
-import {getBrowserLanguage} from 'src/lang_utils'
-import {BackentEvent} from 'src/models'
+import { getBrowserLanguage } from 'src/lang_utils'
+import { BackentEvent } from 'src/models'
 
 import HeartMixin from 'src/mixins/heart.js'
 

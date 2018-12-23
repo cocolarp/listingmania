@@ -5,8 +5,8 @@ import moment from 'moment'
 import merge from 'lodash/merge'
 
 import store from './store'
-import {gettext} from 'src/lang_utils'
-import {basicXhr} from 'src/services/utils.js'
+import { gettext } from 'src/lang_utils'
+import { basicXhr } from 'src/services/utils.js'
 
 export const AVAILABLE_DISTANCES = {
   10: '10km',
@@ -133,7 +133,7 @@ export function BackentEvent (raw, currency, conversionTable) {
       return null
     }
     return Math.round(geolib.getDistance(
-      {latitude: lat, longitude: lng},
+      { latitude: lat, longitude: lng },
       {
         latitude: model.raw.location.latitude,
         longitude: model.raw.location.longitude,

@@ -11,11 +11,11 @@ import translations from 'dist/translations.json'
 
 import rootPage from './pages/root.vue'
 import router from './routes'
-import {client} from './services/backent'
-import {getCurrentlySupportedLocale, getBrowserLanguage} from 'src/lang_utils'
+import { client } from './services/backent'
+import { getCurrentlySupportedLocale, getBrowserLanguage } from 'src/lang_utils'
 import store from './store'
 
-import {CURRENCY_EUR, computeConversionTable} from './models'
+import { CURRENCY_EUR, computeConversionTable } from './models'
 
 if (BACKENT_URL) {
   client.init(BACKENT_URL)

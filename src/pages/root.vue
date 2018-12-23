@@ -52,9 +52,9 @@
 <script>
 import { mapState } from 'vuex'
 
-import {CURRENCY_SYMBOLS} from 'src/models'
+import { CURRENCY_SYMBOLS } from 'src/models'
 import router from 'src/routes'
-import {getBrowserLanguage} from 'src/lang_utils'
+import { getBrowserLanguage } from 'src/lang_utils'
 
 import currencyForm from 'src/components/currency-form.vue'
 import loginForm from 'src/components/login-form.vue'
@@ -77,7 +77,7 @@ export default {
   },
   methods: {
     goHome () {
-      router.push({name: 'home', query: this.$route.query})
+      router.push({ name: 'home', query: this.$route.query })
     },
     onLoginBtnClick () {
       if (!this.displayName) {

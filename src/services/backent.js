@@ -1,5 +1,5 @@
 import urljoin from 'url-join'
-import {basicXhr} from './utils.js'
+import { basicXhr } from './utils.js'
 
 
 let baseUrl = null

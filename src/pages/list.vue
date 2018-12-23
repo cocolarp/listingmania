@@ -131,7 +131,7 @@ const startOfMonth = moment().startOf('month')
 const multiSortBadge = {
   mixins: [sortBadge],
   props: {
-    'sort_key': {type: Array},
+    'sort_key': { type: Array },
   },
   computed: {
     isSelected () {
