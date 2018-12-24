@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: Poedit 2.0.6\n"
 
 msgid "\"Nous” ou “CoCoLarp” : L’ensemble des individus qui constitue notre collectif “CoCoLarp”."
-msgstr ""
+msgstr "\"We\" or \"CoCoLarp\": all of the individuals who constitute our group \"CoCoLarp\"."
 
 msgid "%{ events.length } résultat"
 msgid_plural "%{ events.length } résultats"
@@ -30,7 +30,7 @@ msgid "A propos"
 msgstr "About us"
 
 msgid "Accès au site"
-msgstr ""
+msgstr "Site access"
 
 msgid "Ajouter à mes GNs favoris"
 msgstr "Add to My LARPs"
@@ -51,10 +51,10 @@ msgid "Ce service que nous rendons à la communauté internationale du GN, nous 
 msgstr "We provide you with this Larp calendar to follow our values of collective intelligence, accessibility and transparency. It will allow players to discover the wide diversity of existing Larps in their area, and to sign up for those that fit their needs. Organisations will find it useful to plan the date of their next game, without a schedule conflict with another."
 
 msgid "Certaines des données techniques de votre appareil sont collectées automatiquement par le site. Ces informations incluent notamment votre adresse IP, fournisseur d'accès à Internet, configuration matérielle, configuration logicielle, type et langue du navigateur... Ces informations nous aident à personnaliser et à améliorer continuellement votre expérience sur notre site."
-msgstr ""
+msgstr "Some of the technical data of your browser or device are automatically collected by the website. This information may notably include your IP address, Internet provider, hardware and software configuration, king and language of your web browser... This information helps us to continuously improve your experience on our website."
 
 msgid "Ces informations et/ou documents sont susceptibles de contenir des inexactitudes techniques et des erreurs typographiques. CoCoLarp se réserve le droit de les corriger, dès que ces erreurs sont portées à sa connaissance."
-msgstr ""
+msgstr "This information and/or documents may prove technically inaccurate and typographical mistakes. CoCoLarp has the right to modify it, as soon as the mistakes are known."
 
 msgid "Chargement de l'événement…"
 msgstr "Loading event…"
@@ -66,19 +66,19 @@ msgid "CoCoLarp - Communauté Collaborative pour le GN"
 msgstr "CoCoLarp - Collaborative Community for Larp"
 
 msgid "CoCoLarp ne pourra en aucun cas être tenu responsable de tout dommage de quelque nature qu’il soit résultant de l’interprétation ou de l’utilisation des informations et/ou documents disponibles sur ce site."
-msgstr ""
+msgstr "CoCoLarp will never be held responsible for any damage of any kind that would derive from the use or interpretation of the data or documents made available on this website."
 
 msgid "CoCoLarp ne saurait être tenu responsable des contenus écrits par les Usagers. Bien que CoCoLarp effectue une modération a priori, ceux-ci sont de la seule responsabilité de l’Usager. L'Usager s'engage à ne pas mettre en ligne de contenus pouvant porter atteinte aux intérêts de tierces personnes, ou aller à l’encontre de la loi de son pays et de celui qui héberge le Site (la France). Tout recours en justice contre le site, engagé par un tiers lésé ou par des services de justice, sera pris en charge par l'Usager."
-msgstr ""
+msgstr "CoCoLarp shall not be held responsible for the content written by the Users of this website. Even though CoCoLarp may moderate the aforementioned content, it is the ultimate responsibility of the User. The User therefore commits not to upload any content that could be of prejudice to any third party, or be against the laws of its country of origin or the laws of France. Any action of law against this website, would it be at the initiative of a third party or the Justice, would be undertaken by the User."
 
 msgid "CoCoLarp propose deux services :"
-msgstr ""
+msgstr "CoCoLarp provides two services:"
 
 msgid "CoCoLarp s’efforce de permettre l’accès au site 24 heures sur 24, 7 jours sur 7, sauf en cas de force majeure ou d’un événement hors du contrôle de CoCoLarp, et sous réserve des éventuelles pannes et interventions de maintenance nécessaires au bon fonctionnement du site et des services. Par conséquent,CoCoLarp ne peut garantir une disponibilité du site et/ou des services, une fiabilité des transmissions et des performances en terme de temps de réponse ou de qualité."
-msgstr ""
+msgstr "CoCoLarp strives to provide access to the Website 24/7, unless rare malfunction or any event out of the reach of CoCoLarp, excepted the eventual failures and maintenance that are needed for its routine functioning. There is no guarantee of reliability of the website in terms of QoS or latency."
 
 msgid "Conformément aux recommandations de la CNIL, la durée maximale de conservation des cookies est de 13 mois au maximum après leur premier dépôt dans votre terminal."
-msgstr ""
+msgstr "According to the CNIL recommendations, the maximal duration of any cookie is 13 months after their first creation."
 
 msgid "Connectez-vous ou inscrivez-vous pour profiter du meilleur de Cocolarp …"
 msgstr "Connect or sign up to access advanced features..."
@@ -87,7 +87,7 @@ msgid "Connexion"
 msgstr "Sign in"
 
 msgid "Cookies"
-msgstr ""
+msgstr "Cookies"
 
 msgid "Couronne Suédoise (kr)"
 msgstr "Swedish krona (kr)"
@@ -111,13 +111,13 @@ msgid "DISTANCE"
 msgstr "DISTANCE"
 
 msgid "Dans la cadre de l'utilisation du site, CoCoLarp est susceptible de collecter les données d'identification (identifiant et adresse e-mail) et les données de connexion (adresses IP, journaux d'évènement)."
-msgstr ""
+msgstr "CoCoLarp may collect identification data (ID and e-mail address) and also connection data (IP addresses, event logs)."
 
 msgid "Dans le monde entier"
 msgstr "Worldwide"
 
 msgid "Description du service"
-msgstr ""
+msgstr "About the service"
 
 msgid "Distance"
 msgstr "Distance"
@@ -126,22 +126,22 @@ msgid "Dollars US ($)"
 msgstr "US Dollars ($)"
 
 msgid "Données collectées et utilisation"
-msgstr ""
+msgstr "Collected data and its use"
 
 msgid "Droit applicable et juridiction compétente"
-msgstr ""
+msgstr "Terms & conditions"
 
 msgid "Débute le"
 msgstr "Starts on:"
 
 msgid "Définitions"
-msgstr ""
+msgstr "Definitions"
 
 msgid "En cours d'écriture, un peu de patience..."
 msgstr "We are currently writing it, please hold on..."
 
 msgid "En vue d’adapter le site aux demandes de ses visiteurs, nous mesurons le nombre de visites, le nombre de pages vues ainsi que l'activité des visiteurs sur le site et leur fréquence de retour."
-msgstr ""
+msgstr "In the objective of continous improvement, we measure the amount of visits, page views and visitor activity on the website; we also check the return rate."
 
 msgid "Euro (€)"
 msgstr "Euros (€)"
@@ -177,10 +177,10 @@ msgid "LONG"
 msgstr "LONG"
 
 msgid "La législation française s'applique au présent contrat. En cas d'absence de résolution amiable d'un litige né entre les parties, seuls les tribunaux de la ville de Paris sont compétents."
-msgstr ""
+msgstr "The french rule of law applies to the present terms & conditions. Only Paris courts are concerned in any case of damage between parties."
 
 msgid "La responsabilité de CoCoLarp ne saurait être engagée en cas d’impossibilité d’accès et/ou d’utilisation des services. Par ailleurs, CoCoLarp peut être amené à interrompre le site ou une partie des services, à tout moment sans préavis, le tout sans droit à indemnités. L’Usager reconnaît et accepte que CoCoLarp ne soit pas responsable des interruptions, et des conséquences qui peuvent en découler pour l’Usager ou tout tiers."
-msgstr ""
+msgstr "CoCoLarp shall not be held responsible in the event of non-access to its services. Furthermore, CoCoLarp could stop all or part of its service at any moment with no claims from any third party. CoCoLarp is not responsible for any consequences any kind of interruption may have for the User."
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr ""
@@ -188,31 +188,31 @@ msgstr ""
 "Live Action Role Playing Games"
 
 msgid "Le contenu de l'Usager peut être à tout moment et pour n'importe quelle raison supprimé ou modifié par CoCoLarp. L'Usager ne reçoit, pour le moment, aucune notification préalablement à la suppression ou à la modification du contenu Usager."
-msgstr ""
+msgstr "The User's provided content may be at any moment and for any reason modified or deleted by CoCoLarp. The User shall not yet receive any warning or notification before the aforementioned deletion or modification."
 
 msgid "Le site CoCoLarp propose notamment des liens hypertextes vers d’autres sites présents sur le réseau Internet. Les liens vers ces autres ressources vous font quitter le site CoCoLarp vers des sites tiers. Les sites tiers où mènent ces liens n'engagent en rien la responsabilité de CoCoLarp qui n'a pas le contrôle de ces sites tiers. L'Usager s'interdit donc à engager la responsabilité du Site concernant le contenu et les ressources relatives à ces liens hypertextes sortants."
-msgstr ""
+msgstr "The website contains hyperlinks towards other websites on the Internet network. CoCoLarp does not control or recognize those other websites or their content. CoCoLarp is not responsible for any resource contained by any website it provides a link towards."
 
 msgid "Les données d'identification (identifiant et adresse e-mail) sont nécessaires à la création d'un compte membre permettant notamment de bénéficier d'une fonctionnalité de création d’une liste de GNs “favoris”, et dans le futur, d’autres fonctionnalités encore. Ces données servent strictement à créer et gérer votre compte Usager sur le site CoCoLarp. Vos données ne font l'objet d'aucune communication à des tiers."
-msgstr ""
+msgstr "Some identification data (ID and a valid e-mail address) are necessary to the creation of a member account which makes the User benefit from extra features (My Larps, and many future goodies). This data is strictly and only used for the creation and management of your account on CoCoLarp. This data will never be communicated to any third party."
 
 msgid "Les informations et/ou documents disponibles sur ce site sont susceptibles d’être modifiés à tout moment, et peuvent avoir fait l’objet de mises à jour."
-msgstr ""
+msgstr "The information or data contained by this website may be modified at any moment."
 
 msgid "Les informations et/ou documents figurant sur ce site et/ou accessibles par ce site sont, en partie, générés par la communauté d'Usagers de CoCoLarp."
-msgstr ""
+msgstr "The information and/or documents on this website are at least partly provided by the CoCoLarp User community."
 
 msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
-msgstr ""
+msgstr "Our brands, logos, signs and any other content on the website is protected by the Code of Intellectual Property and especially by author rights. This is especially true for the name \"CoCoLarp\", our logo displaying an African swallow with a coconut and the background of the Website, also used for its communication."
 
 msgid "Livre Sterling (£)"
 msgstr "British Pound Sterling (£)"
 
 msgid "L’ajout et la mise à jour des jeux de rôle grandeur nature dans certaines régions où une communauté CoCoLarp effectue une veille constante"
-msgstr ""
+msgstr "The addition and update of the LARPs in some regions where a CoCoLarp community always checks for new content."
 
 msgid "L’utilisation des informations et/ou documents disponibles sur ce site se fait sous l’entière et seule responsabilité de l’Usager, qui assume la totalité des conséquences pouvant en découler, sans que CoCoLarp puisse être recherché à ce titre, et sans recours contre ce dernier."
-msgstr ""
+msgstr "The use of information and/or documents made available on this website is under the entire responsibility of the User, which would face any consequences may occur, without CoCoLarp being help responsible in any way."
 
 msgid "MOYEN"
 msgstr "MEDIUM"
@@ -230,7 +230,7 @@ msgid "Nom d'utilisateur ou mot de passe erroné."
 msgstr "Wrong login or password."
 
 msgid "Notre responsabilité"
-msgstr ""
+msgstr "Our responsibility"
 
 msgid "Nous sommes un collectif de bénévoles indépendant sans objectif lucratif."
 msgstr "We are a group of independent volunteers uninterested by profit."
@@ -251,7 +251,7 @@ msgid "Proposer des modifications"
 msgstr "Request to modify"
 
 msgid "Propriété intellectuelle"
-msgstr ""
+msgstr "Intellectal property"
 
 msgid "Préférences"
 msgstr "Settings"
@@ -281,7 +281,7 @@ msgid "Trouver mon prochain GN"
 msgstr "Find my next LARP"
 
 msgid "Un moteur de recherche et de filtres pour des jeux de rôle grandeur nature et des conventions ayant lieu partout dans le monde"
-msgstr ""
+msgstr "A sarch engine for LARPs and conventions anywhere in the world"
 
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
 msgstr "Holy moly! An error has occurred. Please contact our support at michael@cocolarp.com."
@@ -296,13 +296,13 @@ msgid "Veuillez patienter..."
 msgstr "Please wait..."
 
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
-msgstr ""
+msgstr "Your data will never be communicated to third parties. They could however be transferred for the use of an investigation, in the case of a lawful request or any judiciary authority's."
 
 msgid "Voulez-vous vous déconnecter ?"
 msgstr "Do you wish to log out?"
 
 msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"
-msgstr ""
+msgstr "You can ask without any motive, the modification or deletion of your data at: conversation@cocolarp.com"
 
 msgid "conditions générales d'utilisation"
 msgstr "Terms and Conditions"
@@ -312,7 +312,7 @@ msgid "confirmation"
 msgstr "confirm password"
 
 msgid "gettext"
-msgstr ""
+msgstr "gettext"
 
 msgid "mot de passe"
 msgstr "password"
@@ -321,19 +321,19 @@ msgid "nom d'utilisateur"
 msgstr "username"
 
 msgid "this"
-msgstr ""
+msgstr "this"
 
 msgid "“Contenu Usager” : Les données transmises par l'Usager au sein du site."
-msgstr ""
+msgstr "\"User content\": The data the User has provided through the website."
 
 msgid "“GN” : Jeu de rôle grandeur nature, un loisir convivial aux possibilités illimités"
-msgstr ""
+msgstr "\"LARP\": Live Action Role Play, a fun leisure with unlimited possibilities"
 
 msgid "“Membre” : L'Usager devient Membre après s’être connecté.e sur le site."
-msgstr ""
+msgstr "\"Member\": the User becomes a Member after having undergone a connection on the website."
 
 msgid "“Site” : L'ensemble des sites, pages et services en ligne proposés par CoCoLarp sur www.cocolarp.com."
-msgstr ""
+msgstr "\"Website\": all of the websites, pages and services provided by CoCoLarp on www.cocolarp.com. "
 
 msgid "“Usager” : La personne utilisant le Site et les services."
-msgstr ""
+msgstr "\"User\": the person using the Website and its services."
