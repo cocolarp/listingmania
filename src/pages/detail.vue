@@ -33,7 +33,7 @@
           span(v-translate="") Coût joueur:
           span &nbsp;
           strong {{ event.readable_cost }}
-        p(v-if="event.npc_readable_cost")
+        p(v-if="event.npc_cost")
           span(v-translate="") Coût PNJ:
           span &nbsp;
           strong {{ event.npc_readable_cost }}
