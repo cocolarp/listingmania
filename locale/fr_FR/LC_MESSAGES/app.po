@@ -171,7 +171,7 @@ msgid "Inscription PNJ"
 msgstr ""
 
 msgid "Inscription joueur"
-msgstr ""
+msgstr "Inscription PJ"
 
 msgid "J'ai lu et accepte les"
 msgstr ""
@@ -278,7 +278,7 @@ msgid "Retour aux résultats de la recherche"
 msgstr ""
 
 msgid "Site officiel"
-msgstr ""
+msgstr "Lien principal"
 
 msgid "Suivez-nous sur Facebook"
 msgstr ""
