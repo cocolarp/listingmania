@@ -240,6 +240,8 @@ export default {
           case 'start':
             return eventA.start.diff(eventB.start, 'days')
           default:
+            if (eventA[this.sort] == null) return 1
+            if (eventB[this.sort] == null) return -1
             return eventA[this.sort] - eventB[this.sort]
         }
       })

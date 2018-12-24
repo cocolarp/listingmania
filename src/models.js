@@ -63,32 +63,33 @@ function humanDuration (fmt) {
   }
 }
 
-function readableCost (price, currency) {
-  if (price == null) return null
+export function _readableCost (price, currency) {
+  if (price == null) return '?'
   return `${Math.round(price / 100)} ${CURRENCY_SYMBOLS[currency]}`
 }
 
-function round (amount) {
-  return Math.round(amount)
+function convertCost (price, divider) {
+  if (price == null) return null
+  return Math.round(price / divider)
 }
 
 export function _getConvertedCosts (model, toCurrency, conversionTable) {
   if (Object.keys(conversionTable).includes(model.original_currency)) {
-    const convertedCost = round(model.original_price / conversionTable[model.original_currency])
-    const convertedNPCCost = round(model.original_npc_price / conversionTable[model.original_currency])
+    const convertedCost = convertCost(model.original_price, conversionTable[model.original_currency])
+    const convertedNPCCost = convertCost(model.original_npc_price, conversionTable[model.original_currency])
     return {
       cost: convertedCost,
       npc_cost: convertedNPCCost,
-      readable_cost: readableCost(convertedCost, toCurrency),
-      npc_readable_cost: readableCost(convertedNPCCost, toCurrency),
+      readable_cost: _readableCost(convertedCost, toCurrency),
+      npc_readable_cost: _readableCost(convertedNPCCost, toCurrency),
     }
   }
 
   return {
     cost: model.original_price,
     npc_cost: model.original_npc_price,
-    readable_cost: readableCost(model.original_price, model.original_currency),
-    npc_readable_cost: readableCost(model.original_npc_price, model.original_currency),
+    readable_cost: _readableCost(model.original_price, model.original_currency),
+    npc_readable_cost: _readableCost(model.original_npc_price, model.original_currency),
   }
 }
 
