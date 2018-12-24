@@ -26,9 +26,6 @@ msgid_plural "%{ events.length } résultats"
 msgstr[0] "%{ events.length } result"
 msgstr[1] "%{ events.length } results"
 
-msgid "2 ou 3 jours"
-msgstr "2 or 3 days"
-
 msgid "A propos"
 msgstr "About us"
 
@@ -250,12 +247,6 @@ msgstr "Yes"
 msgid "Page Facebook"
 msgstr "Facebook page"
 
-msgid "Plus de 3 jours"
-msgstr "More than 3 days"
-
-msgid "Plus tard"
-msgstr "Later"
-
 msgid "Proposer des modifications"
 msgstr "Request to modify"
 
@@ -267,9 +258,6 @@ msgstr "Settings"
 
 msgid "Période"
 msgstr "Timeframe"
-
-msgid "Quelques heures"
-msgstr "A few hours"
 
 msgid "Retirer de mes GNs favoris"
 msgstr "Remove from my favorite LARPs"
@@ -298,14 +286,14 @@ msgstr ""
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
 msgstr "Holy moly! An error has occurred. Please contact our support at michael@cocolarp.com."
 
-msgid "Une journée"
-msgstr "One day"
-
 msgid "Veuillez patienter, changement de devise en cours..."
 msgstr "Please wait while the currency is modified..."
 
 msgid "Veuillez patienter, nous chargeons les événements..."
 msgstr "Please wait while all the are Larps loaded..."
+
+msgid "Veuillez patienter..."
+msgstr "Please wait..."
 
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
 msgstr ""
@@ -323,11 +311,17 @@ msgctxt "password input field"
 msgid "confirmation"
 msgstr "confirm password"
 
+msgid "gettext"
+msgstr ""
+
 msgid "mot de passe"
 msgstr "password"
 
 msgid "nom d'utilisateur"
 msgstr "username"
+
+msgid "this"
+msgstr ""
 
 msgid "“Contenu Usager” : Les données transmises par l'Usager au sein du site."
 msgstr ""

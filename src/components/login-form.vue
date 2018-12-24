@@ -82,8 +82,13 @@
   #footer
     .button#ok-button(
       @click="submit",
+      v-show="!processingLogin",
       v-translate="",
     ) OK
+    .button#processing-button(
+      v-show="processingLogin",
+      v-translate="",
+    ) Veuillez patienter...
 
 </template>
 
@@ -98,6 +103,7 @@ export default {
   },
   data: function () {
     return {
+      processingLogin: false,
       displayLogin: true,
       shakeUsername: false,
       shakePassword: false,
@@ -163,9 +169,11 @@ export default {
       }
     },
     async _doLogin () {
+      this.processingLogin = true
       try {
         await Backent.getToken(this.username, this.password)
       } catch (e) {
+        this.processingLogin = false
         if (e.status === 400) {
           this.invalidLogin = true
         } else {
@@ -173,6 +181,7 @@ export default {
         }
         return
       }
+      this.processingLogin = false
       try {
         const user = await Backent.getUser()
         this.$store.commit('setUser', user)
@@ -294,6 +303,13 @@ export default {
   height: 2rem;
   position: relative;
   width: 100%;
+}
+
+#processing-button {
+  position: absolute;
+  bottom: -1rem;
+  left: 25%;
+  cursor: not-allowed;
 }
 
 #ok-button {
