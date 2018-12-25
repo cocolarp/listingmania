@@ -4,6 +4,7 @@ import moment from 'moment'
 
 import Vue from 'vue'
 import GetTextPlugin from 'vue-gettext'
+import VueAnalytics from 'vue-analytics'
 
 import 'src/styles.css'
 import 'src/assets/fontello/css/listingmania-embedded.css'
@@ -31,6 +32,11 @@ Vue.use(GetTextPlugin, {
   translations: translations,
   defaultLanguage: locale,
   silent: true,
+})
+
+Vue.use(VueAnalytics, {
+  id: 'UA-112821426-1',
+  router,
 })
 
 moment.locale(getBrowserLanguage())
