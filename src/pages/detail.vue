@@ -16,7 +16,9 @@
   .row#detail(v-else)
     .col#metadata
       h1.mobile {{ event.name }}
-      i.mobile {{ event.summary}}
+      .mobile {{ event.summary}}
+      .mobile
+        .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
       .group
         p.blue
           strong(v-translate="") Débute le
@@ -49,7 +51,10 @@
         .button(v-translate="", @click="suggestChanges") Proposer des modifications
     .col#description
       h1.desktop {{ event.name }}
-      i.desktop {{ event.summary}}
+      .desktop
+        .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
+        .spacer
+      .desktop {{ event.summary}}
       p.carriage-returns {{ event.description }}
 </template>
 
@@ -208,6 +213,18 @@ a {
   white-space: -o-pre-wrap; /* newer Opera */
   white-space: pre-wrap; /* Chrome; W3C standard */
   word-wrap: break-word; /* IE */
+}
+
+.tag {
+  display: inline-block;
+  color: #222;
+  font-size: 0.8rem;
+  border: 1px solid #666;
+  padding: 4px;
+  line-height: initial;
+  border-radius: 2px;
+  margin: 4px;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 768px) {

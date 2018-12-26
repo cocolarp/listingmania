@@ -1,4 +1,4 @@
-export function gettext (x) { return x }
+export function $gettext (x) { return x }
 
 export function getBrowserLanguage () {
   return navigator.language.split('-')[0]

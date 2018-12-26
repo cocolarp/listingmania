@@ -21,15 +21,27 @@ msgstr ""
 msgid "\"Nous” ou “CoCoLarp” : L’ensemble des individus qui constitue notre collectif “CoCoLarp”."
 msgstr ""
 
+msgid "$gettext"
+msgstr ""
+
 msgid "%{ events.length } résultat"
 msgid_plural "%{ events.length } résultats"
 msgstr[0] ""
 msgstr[1] ""
 
+msgid "2 ou 3 jours"
+msgstr ""
+
 msgid "A propos"
 msgstr ""
 
 msgid "Accès au site"
+msgstr ""
+
+msgid "Adapté PMR"
+msgstr ""
+
+msgid "Adapté aux débutants"
 msgstr ""
 
 msgid "Ajouter à mes GNs favoris"
@@ -170,6 +182,9 @@ msgstr ""
 msgid "Inscription joueur"
 msgstr "Inscription PJ"
 
+msgid "International"
+msgstr ""
+
 msgid "J'ai lu et accepte les"
 msgstr ""
 
@@ -223,6 +238,9 @@ msgstr ""
 msgid "Mes GNs uniquement"
 msgstr ""
 
+msgid "Mineurs bienvenus"
+msgstr ""
+
 msgid "Monnaie:"
 msgstr ""
 
@@ -247,6 +265,12 @@ msgstr ""
 msgid "Page Facebook"
 msgstr ""
 
+msgid "Plus de 3 jours"
+msgstr ""
+
+msgid "Plus tard"
+msgstr ""
+
 msgid "Proposer des modifications"
 msgstr ""
 
@@ -257,6 +281,9 @@ msgid "Préférences"
 msgstr ""
 
 msgid "Période"
+msgstr ""
+
+msgid "Quelques heures"
 msgstr ""
 
 msgid "Retirer de mes GNs favoris"
@@ -286,6 +313,9 @@ msgstr ""
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
 msgstr "Archizut ! Une erreur est survenue. Contactez le support technique : michael@cocolarp.com."
 
+msgid "Une journée"
+msgstr ""
+
 msgid "Veuillez patienter, changement de devise en cours..."
 msgstr ""
 
@@ -311,9 +341,6 @@ msgctxt "password input field"
 msgid "confirmation"
 msgstr ""
 
-msgid "gettext"
-msgstr ""
-
 msgid "mot de passe"
 msgstr ""
 
@@ -321,6 +348,9 @@ msgid "nom d'utilisateur"
 msgstr "identifiant"
 
 msgid "this"
+msgstr ""
+
+msgid "x"
 msgstr ""
 
 msgid "“Contenu Usager” : Les données transmises par l'Usager au sein du site."

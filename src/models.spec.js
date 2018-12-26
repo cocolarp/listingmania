@@ -31,6 +31,7 @@ describe('BackentEvent', () => {
       'facebook_group': null,
       'player_signup_page': null,
       'npc_signup_page': null,
+      'tags': ['international'],
     }
   }
 
@@ -54,6 +55,7 @@ describe('BackentEvent', () => {
       'original_npc_price': null,
       'original_price': 10500,
       'readable_cost': '105 €',
+      'tags': [{ key: 'international', label: 'International' }],
       'raw': {
         'currency': 'EUR',
         'description': 'GN Firefly',

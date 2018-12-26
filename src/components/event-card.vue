@@ -1,12 +1,11 @@
 <template lang="pug">
 .event-card(
-  :style="{color: mainColor}"
+  :style="{'background-color': mainColor}"
   @mouseenter="highlightBackground()",
   @mouseleave="resetBackground()"
+  @click="goToEventPage()",
 )
-  .name(
-    @click="goToEventPage()",
-  ) {{ event.name }}
+  .name {{ event.name }}
   heart(:event="event")
   .date-details(
     :style="{color: durationColor}"
@@ -15,6 +14,8 @@
     span {{ event.start.format('LL') }}
     span &nbsp;|&nbsp;
     span {{ translatedHumanDuration }}
+  .tag-section
+    .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
   .separator
   .description {{ event.summary }}
   .location-details
@@ -34,7 +35,7 @@ export default {
   props: ['event', 'anywhere'],
   data: function () {
     return {
-      mainColor: '#999',
+      mainColor: 'white',
     }
   },
   computed: {
@@ -61,10 +62,10 @@ export default {
       this.$router.push({ name: 'detail', params: { slug: this.event.id } })
     },
     highlightBackground () {
-      this.mainColor = this.durationColor
+      this.mainColor = '#f5f5f5'
     },
     resetBackground () {
-      this.mainColor = '#999'
+      this.mainColor = 'white'
     },
   },
   components: {
@@ -77,6 +78,7 @@ export default {
 @import "src/variables.css";
 
 .event-card {
+  cursor: pointer;
   background-color: white;
   font-family: Montserrat;
   color: var(--highlight-text-color);
@@ -88,10 +90,25 @@ export default {
   font-size: 0.8rem;
   width: 100%;
   position: relative;
+  box-shadow: 0 0 2px 2px rgba(0,0,0,0.20), 0 4px 0 0 rgba(0,0,0,0.10);
+}
+
+.tag-section {
+  height: 2.5rem;
+}
+
+.tag {
+  display: inline-block;
+  color: #222;
+  font-size: 0.6rem;
+  border: 1px solid #666;
+  padding: 2px;
+  border-radius: 2px;
+  margin: 2px;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
 }
 
 .name {
-  cursor: pointer;
   font-weight: bold;
   white-space: nowrap;
   overflow: hidden;
@@ -118,11 +135,11 @@ export default {
 .description {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   line-height: 1rem;
-  height: 3rem;
-  max-height: 3rem;
+  height: 4rem;
+  max-height: 4rem;
   text-overflow: ellipsis;
 }
 

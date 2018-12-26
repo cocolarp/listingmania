@@ -10,6 +10,7 @@ const myEvent = {
   summary: 'some bigass larp',
   distance: 200,
   readable_cost: '50 CHF',
+  tags: [{ key: 'international', label: 'International' }],
   raw: {
     location: {
       name: '212 rue de Tolbiac',
@@ -25,13 +26,16 @@ describe('EventCard', () => {
       },
     })
     expect(wrapper.html()).toContain(trimHtml(`
-    <div class="event-card" style="color: rgb(153, 153, 153);">
+    <div class="event-card" style="background-color: white;">
       <div class="name">Big GN</div>
       <heart-stub event="[object Object]"></heart-stub>
       <div class="date-details">
         <span>May 12, 2020</span>
         <span>&nbsp;|&nbsp;</span>
         <span></span>
+      </div>
+      <div class="tag-section">
+        <div class="tag">International</div>
       </div>
       <div class="separator"></div>
       <div class="description">some bigass larp</div>

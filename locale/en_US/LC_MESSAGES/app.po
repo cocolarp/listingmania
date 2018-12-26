@@ -26,11 +26,20 @@ msgid_plural "%{ events.length } résultats"
 msgstr[0] "%{ events.length } result"
 msgstr[1] "%{ events.length } results"
 
+msgid "2 ou 3 jours"
+msgstr "2 or 3 days"
+
 msgid "A propos"
 msgstr "About us"
 
 msgid "Accès au site"
 msgstr "Site access"
+
+msgid "Adapté PMR"
+msgstr "PWD friendly"
+
+msgid "Adapté aux débutants"
+msgstr "Beginner friendly"
 
 msgid "Ajouter à mes GNs favoris"
 msgstr "Add to My LARPs"
@@ -170,6 +179,9 @@ msgstr "NPC sign up"
 msgid "Inscription joueur"
 msgstr "Sign up for players"
 
+msgid "International"
+msgstr "International"
+
 msgid "J'ai lu et accepte les"
 msgstr "I have read and agree to the"
 
@@ -223,6 +235,9 @@ msgstr "Thanks to all those who contributed to CoCoLarp until now, one way or an
 msgid "Mes GNs uniquement"
 msgstr "My LARPs only"
 
+msgid "Mineurs bienvenus"
+msgstr "Underage welcome"
+
 msgid "Monnaie:"
 msgstr "Currency:"
 
@@ -247,6 +262,12 @@ msgstr "Yes"
 msgid "Page Facebook"
 msgstr "Facebook page"
 
+msgid "Plus de 3 jours"
+msgstr "More than 3 days"
+
+msgid "Plus tard"
+msgstr "Later"
+
 msgid "Proposer des modifications"
 msgstr "Request to modify"
 
@@ -258,6 +279,9 @@ msgstr "Settings"
 
 msgid "Période"
 msgstr "Timeframe"
+
+msgid "Quelques heures"
+msgstr "A few hours"
 
 msgid "Retirer de mes GNs favoris"
 msgstr "Remove from my favorite LARPs"
@@ -286,6 +310,9 @@ msgstr "A sarch engine for LARPs and conventions anywhere in the world"
 msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contacter le support technique."
 msgstr "Holy moly! An error has occurred. Please contact our support at michael@cocolarp.com."
 
+msgid "Une journée"
+msgstr "A day"
+
 msgid "Veuillez patienter, changement de devise en cours..."
 msgstr "Please wait while the currency is modified..."
 
@@ -310,9 +337,6 @@ msgstr "Terms and Conditions"
 msgctxt "password input field"
 msgid "confirmation"
 msgstr "confirm password"
-
-msgid "gettext"
-msgstr "gettext"
 
 msgid "mot de passe"
 msgstr "password"

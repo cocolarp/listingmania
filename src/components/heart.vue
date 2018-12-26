@@ -3,7 +3,7 @@
   span(
     @mouseenter="doHighlightHeart()",
     @mouseleave="resetHeart()"
-    @click="likeEvent()"
+    v-on:click.stop.prevent="likeEvent()"
   ) &#x2764;
 </template>
 

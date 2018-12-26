@@ -5,7 +5,7 @@ import moment from 'moment'
 import merge from 'lodash/merge'
 
 import store from './store'
-import { gettext } from 'src/lang_utils'
+import { $gettext } from 'src/lang_utils'
 import { basicXhr } from 'src/services/utils.js'
 
 export const AVAILABLE_DISTANCES = {
@@ -48,18 +48,25 @@ export const CURRENCY_SYMBOLS = {
   [CURRENCY_USD]: '$',
 }
 
+export const TAG_LABELS = {
+  'beginner_friendly': $gettext('Adapté aux débutants'),
+  'pwd_friendly': $gettext('Adapté PMR'),
+  'international': $gettext('International'),
+  'underage_friendly': $gettext('Mineurs bienvenus'),
+}
+
 const AVAILABLE_CURRENCIES = Object.keys(CURRENCY_SYMBOLS)
 
 function humanDuration (fmt) {
   switch (fmt) {
     case DURATION_HOURS:
-      return gettext('Quelques heures')
+      return $gettext('Quelques heures')
     case DURATION_SHORT:
-      return gettext('Une journée')
+      return $gettext('Une journée')
     case DURATION_MEDIUM:
-      return gettext('2 ou 3 jours')
+      return $gettext('2 ou 3 jours')
     default:
-      return gettext('Plus de 3 jours')
+      return $gettext('Plus de 3 jours')
   }
 }
 
@@ -93,6 +100,7 @@ export function _getConvertedCosts (model, toCurrency, conversionTable) {
   }
 }
 
+
 export function BackentEvent (raw, currency, conversionTable) {
 
   const model = {
@@ -110,6 +118,12 @@ export function BackentEvent (raw, currency, conversionTable) {
     durationCategory: raw.event_format,
     humanDuration: humanDuration(raw.event_format),
     distance: null,
+    tags: raw.tags.map((tagKey) => {
+      return {
+        key: tagKey,
+        label: TAG_LABELS[tagKey],
+      }
+    }),
 
     raw: raw,
   }
