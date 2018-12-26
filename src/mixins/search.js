@@ -130,6 +130,11 @@ export default {
       }, 1500)
     },
     toggleMyEventsOnly (value) {
+      this.$ga.event({
+        eventCategory: 'MyEvents',
+        eventAction: 'toggle',
+        eventValue: value,
+      })
       if (this.$store.state.user) {
         this._updateData('my_events', value)
       } else {
@@ -139,19 +144,35 @@ export default {
     updateAnyTime (value) {
       this.months = Array(13).fill(value)
       this._updateUrl('months', this.months, bits2str(this.months))
+      this.$ga.event({
+        eventCategory: 'DateFilter',
+        eventAction: 'set_anytime',
+        eventValue: value,
+      })
       popEvents()
     },
     updateAnyWhere (value) {
       if (!this.place) {
         this._doShakeLocationInput()
       }
+      this.$ga.event({
+        eventCategory: 'LocationFilter',
+        eventAction: 'set_anywhere',
+        eventValue: value,
+      })
       this._updateData('anywhere', value)
     },
     updateMaxDistance (value) {
+      this.$ga.event({
+        eventCategory: 'LocationFilter',
+        eventAction: 'set_distance',
+        eventValue: value,
+      })
       this._updateData('max_distance', value)
     },
     updatePlace (value) {
       this.place = value
+      this.$ga.event('LocationFilter', 'set_place')
       if (value == null) {
         this._updateUrl('place', this.place, undefined)
       } else {
@@ -162,16 +183,35 @@ export default {
     toggleMonth (index) {
       const nextValue = !this.months[index]
       Vue.set(this.months, index, nextValue)
-      this._updateUrl('months', this.months, bits2str(this.months))
+      const monthsStr = bits2str(this.months)
+      this.$ga.event({
+        eventCategory: 'DateFilter',
+        eventAction: 'toggle_month',
+        eventLabel: monthsStr,
+        eventValue: index,
+      })
+      this._updateUrl('months', this.months, monthsStr)
       popEvents()
     },
     toggleDuration (index) {
       const nextValue = !this.durations[index]
       Vue.set(this.durations, index, nextValue)
-      this._updateUrl('durations', this.durations, bits2str(this.durations))
+      const durationStr = bits2str(this.durations)
+      this.$ga.event({
+        eventCategory: 'DurationFilter',
+        eventAction: 'toggle_duration',
+        eventLabel: durationStr,
+        eventValue: index,
+      })
+      this._updateUrl('durations', this.durations, durationStr)
       popEvents()
     },
     setSortKey (value) {
+      this.$ga.event({
+        eventCategory: 'SortBy',
+        eventAction: 'toggle_sort',
+        eventLabel: value,
+      })
       this._updateData('sort', value)
     },
   },

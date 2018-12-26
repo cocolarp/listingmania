@@ -33,6 +33,10 @@ export default {
       this.highlightHeart = false
     },
     likeEvent: function () {
+      this.$ga.event({
+        eventCategory: 'LikeButton',
+        eventAction: 'click',
+      })
       if (!this.$store.state.user) {
         this.$store.commit('showLoginForm', true)
       } else {

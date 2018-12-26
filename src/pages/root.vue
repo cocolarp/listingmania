@@ -80,6 +80,12 @@ export default {
       router.push({ name: 'home', query: this.$route.query })
     },
     onLoginBtnClick () {
+      this.$ga.event({
+        eventCategory: 'LoginButton',
+        eventAction: 'click',
+        eventLabel: 'is_connected',
+        eventValue: this.displayName != null,
+      })
       if (!this.displayName) {
         this.$store.commit('showLoginForm', true)
       } else {
@@ -87,9 +93,17 @@ export default {
       }
     },
     onCurrencyBtnClick: async function () {
+      this.$ga.event({
+        eventCategory: 'CurrencyButton',
+        eventAction: 'click',
+      })
       this.$store.commit('showCurrencyForm', true)
     },
     openAddEventForm () {
+      this.$ga.event({
+        eventCategory: 'AddEventButton',
+        eventAction: 'click',
+      })
       switch (getBrowserLanguage()) {
         case 'fr':
           window.open('https://docs.google.com/forms/d/e/1FAIpQLSdEsDJcxV4isR4QUjIKhKAyuHGqNb-mbzhTdp7k7RQOKzdj3g/viewform?c=0&w=1')
@@ -113,6 +127,7 @@ export default {
         if (state.user) {
           return state.user.username
         }
+        return null
       },
       loginFormDisplayed: 'loginFormDisplayed',
       logoutFormDisplayed: 'logoutFormDisplayed',
