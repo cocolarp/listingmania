@@ -19,6 +19,7 @@
       .mobile {{ event.summary}}
       .mobile
         .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
+      #map.group(ref="googleMap")
       .group
         p.blue
           strong(v-translate="") Débute le
@@ -59,7 +60,7 @@
 </template>
 
 <script>
-/* global Backent */
+/* global Backent, google, GoogleLoad */
 
 import { getBrowserLanguage } from 'src/lang_utils'
 import { BackentEvent } from 'src/models'
@@ -108,11 +109,29 @@ export default {
           this.$store.state.conversionTable,
         )
       } catch (_err) {
-        console.log('event could not be found')
+        console.log('event could not be found', _err)
         setTimeout(() => {
           this.$router.push({ name: 'home' })
         }, 3000)
       }
+      setTimeout(async () => {
+        await GoogleLoad
+        const coords = {
+          lat: this.event.raw.location.latitude,
+          lng: this.event.raw.location.longitude,
+        }
+        const map = new google.maps.Map(this.$refs.googleMap, {
+          center: coords,
+          zoom: 6,
+          disableDefaultUI: true,
+          zoomControl: true,
+        })
+        new google.maps.Marker({ // eslint-disable-line no-new
+          position: coords,
+          map: map,
+          title: this.event.raw.location.name,
+        })
+      }, 0)
     },
   },
   components: {
@@ -224,6 +243,12 @@ a {
   line-height: initial;
   border-radius: 2px;
   margin: 4px;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
+}
+
+#map {
+  height: 200px;
+  border: solid 1px #ccc;
   box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
 }
 
