@@ -52,7 +52,7 @@
 <script>
 import { mapState } from 'vuex'
 
-import { CURRENCY_SYMBOLS } from 'src/models'
+import { CURRENCY_SYMBOLS } from 'src/enums'
 import router from 'src/routes'
 import { getBrowserLanguage } from 'src/lang_utils'
 

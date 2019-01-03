@@ -3,7 +3,7 @@ import Vue from 'vue'
 import isnan from 'lodash/isNaN'
 import clonedeep from 'lodash/cloneDeep'
 
-import * as models from 'src/models'
+import * as enums from 'src/enums'
 import { getPlaceDetails } from 'src/services/google'
 
 import checkBox from 'src/components/check-box.vue'
@@ -11,7 +11,7 @@ import dateRangeSlider from 'src/components/date-range-slider.vue'
 import distanceSlider from 'src/components/distance-slider.vue'
 import locationInput from 'src/components/location-input.vue'
 
-const ALLOWED_DISTANCES = Object.keys(models.AVAILABLE_DISTANCES).map(
+const ALLOWED_DISTANCES = Object.keys(enums.AVAILABLE_DISTANCES).map(
   (d) => parseInt(d, 10)
 )
 

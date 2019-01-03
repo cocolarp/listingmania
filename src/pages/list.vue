@@ -120,7 +120,8 @@
 
 import moment from 'moment'
 
-import * as models from 'src/models'
+import * as enums from 'src/enums'
+import { transformBackentData } from 'src/models'
 import eventCard from 'src/components/event-card.vue'
 import sortBadge from 'src/components/sort-badge.vue'
 
@@ -151,7 +152,7 @@ export default {
     next(async (vm) => {
       await vm.updateInstanceData(to.query)
       Backent.getEvents().then((rawEvents) => {
-        const events = models.transformBackentData(
+        const events = transformBackentData(
           rawEvents,
           vm.$store.state.currency,
           vm.$store.state.conversionTable,
@@ -189,10 +190,10 @@ export default {
     },
     hasCompatibleDuration (event) {
       let index = {
-        [models.DURATION_HOURS]: 0,
-        [models.DURATION_SHORT]: 0,
-        [models.DURATION_MEDIUM]: 1,
-        [models.DURATION_LONG]: 2,
+        [enums.DURATION_HOURS]: 0,
+        [enums.DURATION_SHORT]: 0,
+        [enums.DURATION_MEDIUM]: 1,
+        [enums.DURATION_LONG]: 2,
       }[event.durationCategory]
       return this.durations[index]
     },

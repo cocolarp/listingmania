@@ -21,6 +21,9 @@ msgstr ""
 msgid "\"Nous” ou “CoCoLarp” : L’ensemble des individus qui constitue notre collectif “CoCoLarp”."
 msgstr "\"We\" or \"CoCoLarp\": all of the individuals who constitute our group \"CoCoLarp\"."
 
+msgid "$gettext"
+msgstr ""
+
 msgid "%{ events.length } résultat"
 msgid_plural "%{ events.length } résultats"
 msgstr[0] "%{ events.length } result"
@@ -41,8 +44,14 @@ msgstr "PWD friendly"
 msgid "Adapté aux débutants"
 msgstr "Beginner friendly"
 
+msgid "Afrikanns"
+msgstr ""
+
 msgid "Ajouter à mes GNs favoris"
 msgstr "Add to My LARPs"
+
+msgid "Albanian"
+msgstr ""
 
 msgid "Annoncer un GN"
 msgstr "Add a LARP"
@@ -50,11 +59,32 @@ msgstr "Add a LARP"
 msgid "Annuler"
 msgstr "Cancel"
 
+msgid "Arabic"
+msgstr ""
+
+msgid "Armenian"
+msgstr ""
+
+msgid "Basque"
+msgstr ""
+
+msgid "Bengali"
+msgstr ""
+
+msgid "Bulgarian"
+msgstr ""
+
 msgid "COURT"
 msgstr "SHORT"
 
 msgid "COÛT"
 msgstr "COST"
+
+msgid "Cambodian"
+msgstr ""
+
+msgid "Catalan"
+msgstr ""
 
 msgid "Ce service que nous rendons à la communauté internationale du GN, nous le faisons pour le plaisir, pour suivre nos idéaux d'intelligence collective, d'accessibilité et de transparence. Grâce à ça, les joueuses et les joueurs peuvent découvrir la variété des jeux existants dans leur région et s'inscrire à ceux qui leur conviendront le mieux. Et les équipes d'organisation utilisent CoCoLarp pour choisir la date de leur jeu, sans concurrence avec les autres."
 msgstr "We provide you with this Larp calendar to follow our values of collective intelligence, accessibility and transparency. It will allow players to discover the wide diversity of existing Larps in their area, and to sign up for those that fit their needs. Organisations will find it useful to plan the date of their next game, without a schedule conflict with another."
@@ -67,6 +97,9 @@ msgstr "This information and/or documents may prove technically inaccurate and t
 
 msgid "Chargement de l'événement…"
 msgstr "Loading event…"
+
+msgid "Chinese (Mandarin)"
+msgstr ""
 
 msgid "Choisissez votre devise ci-dessous:"
 msgstr "Choose your currency below:"
@@ -107,6 +140,12 @@ msgstr "Cost (npc):"
 msgid "Coût joueur:"
 msgstr "Cost (player):"
 
+msgid "Croatian"
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
 msgid "C’est ce calendrier que l’on a voulu changer en site web ambitieux, toujours gratuit, sans publicité, et de qualité professionnelle, en open source. Il sera toujours aussi fiable, parce qu’on n’attend pas que les organisations nous contactent : on ajoute la majorité des jeux nous-mêmes et avec notre communauté."
 msgstr "It is this calendar that we wished to change into an ambitious website, still free, without any ad, and made by professionals, open sourced. This service has always been reliable, particularly because we do not wait for organisations to contact us, we add most of the games ourselves and with our community."
 
@@ -118,6 +157,9 @@ msgstr "DATE"
 
 msgid "DISTANCE"
 msgstr "DISTANCE"
+
+msgid "Danish"
+msgstr ""
 
 msgid "Dans la cadre de l'utilisation du site, CoCoLarp est susceptible de collecter les données d'identification (identifiant et adresse e-mail) et les données de connexion (adresses IP, journaux d'évènement)."
 msgstr "CoCoLarp may collect identification data (ID and e-mail address) and also connection data (IP addresses, event logs)."
@@ -140,6 +182,9 @@ msgstr "Collected data and its use"
 msgid "Droit applicable et juridiction compétente"
 msgstr "Terms & conditions"
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Débute le"
 msgstr "Starts on:"
 
@@ -152,6 +197,12 @@ msgstr "We are currently writing it, please hold on..."
 msgid "En vue d’adapter le site aux demandes de ses visiteurs, nous mesurons le nombre de visites, le nombre de pages vues ainsi que l'activité des visiteurs sur le site et leur fréquence de retour."
 msgstr "In the objective of continous improvement, we measure the amount of visits, page views and visitor activity on the website; we also check the return rate."
 
+msgid "English"
+msgstr ""
+
+msgid "Estonian"
+msgstr ""
+
 msgid "Euro (€)"
 msgstr "Euros (€)"
 
@@ -161,14 +212,50 @@ msgstr "Facebook event"
 msgid "FAQ"
 msgstr "FAQ"
 
+msgid "Fiji"
+msgstr ""
+
+msgid "Finnish"
+msgstr ""
+
 msgid "Format"
 msgstr "Duration"
 
 msgid "Franc Suisse (CHF)"
 msgstr "Swiss Francs (CHF)"
 
+msgid "French"
+msgstr ""
+
+msgid "Georgian"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
 msgid "Groupe Facebook"
 msgstr "Facebook group"
+
+msgid "Gujarati"
+msgstr ""
+
+msgid "Hebrew"
+msgstr ""
+
+msgid "Hindi"
+msgstr ""
+
+msgid "Hungarian"
+msgstr ""
+
+msgid "Icelandic"
+msgstr ""
+
+msgid "Indonesian"
+msgstr ""
 
 msgid "Inscription"
 msgstr "Sign up"
@@ -182,8 +269,24 @@ msgstr "Sign up for players"
 msgid "International"
 msgstr "International"
 
+msgid "Irish"
+msgstr ""
+
+#, fuzzy
+msgid "Italian"
+msgstr "Italian"
+
 msgid "J'ai lu et accepte les"
 msgstr "I have read and agree to the"
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Javanese"
+msgstr ""
+
+msgid "Korean"
+msgstr ""
 
 msgid "LONG"
 msgstr "LONG"
@@ -193,6 +296,15 @@ msgstr "The french rule of law applies to the present terms & conditions. Only P
 
 msgid "La responsabilité de CoCoLarp ne saurait être engagée en cas d’impossibilité d’accès et/ou d’utilisation des services. Par ailleurs, CoCoLarp peut être amené à interrompre le site ou une partie des services, à tout moment sans préavis, le tout sans droit à indemnités. L’Usager reconnaît et accepte que CoCoLarp ne soit pas responsable des interruptions, et des conséquences qui peuvent en découler pour l’Usager ou tout tiers."
 msgstr "CoCoLarp shall not be held responsible in the event of non-access to its services. Furthermore, CoCoLarp could stop all or part of its service at any moment with no claims from any third party. CoCoLarp is not responsible for any consequences any kind of interruption may have for the User."
+
+msgid "Langues:"
+msgstr "Languages:"
+
+msgid "Latin"
+msgstr ""
+
+msgid "Latvian"
+msgstr ""
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
 msgstr ""
@@ -217,6 +329,9 @@ msgstr "The information and/or documents on this website are at least partly pro
 msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
 msgstr "Our brands, logos, signs and any other content on the website is protected by the Code of Intellectual Property and especially by author rights. This is especially true for the name \"CoCoLarp\", our logo displaying an African swallow with a coconut and the background of the Website, also used for its communication."
 
+msgid "Lithuanian"
+msgstr ""
+
 msgid "Livre Sterling (£)"
 msgstr "British Pound Sterling (£)"
 
@@ -229,6 +344,24 @@ msgstr "The use of information and/or documents made available on this website i
 msgid "MOYEN"
 msgstr "MEDIUM"
 
+msgid "Macedonian"
+msgstr ""
+
+msgid "Malay"
+msgstr ""
+
+msgid "Malayalam"
+msgstr ""
+
+msgid "Maltese"
+msgstr ""
+
+msgid "Maori"
+msgstr ""
+
+msgid "Marathi"
+msgstr ""
+
 msgid "Merci à toutes celles et ceux qui ont contribué à CoCoLarp jusqu’à présent, sous une forme ou une autre:"
 msgstr "Thanks to all those who contributed to CoCoLarp until now, one way or another:"
 
@@ -238,11 +371,20 @@ msgstr "My LARPs only"
 msgid "Mineurs bienvenus"
 msgstr "Underage welcome"
 
+msgid "Mongolian"
+msgstr ""
+
 msgid "Monnaie:"
 msgstr "Currency:"
 
+msgid "Nepali"
+msgstr ""
+
 msgid "Nom d'utilisateur ou mot de passe erroné."
 msgstr "Wrong login or password."
+
+msgid "Norwegian"
+msgstr ""
 
 msgid "Notre responsabilité"
 msgstr "Our responsibility"
@@ -262,11 +404,20 @@ msgstr "Yes"
 msgid "Page Facebook"
 msgstr "Facebook page"
 
+msgid "Persian"
+msgstr ""
+
 msgid "Plus de 3 jours"
 msgstr "More than 3 days"
 
 msgid "Plus tard"
 msgstr "Later"
+
+msgid "Polish"
+msgstr ""
+
+msgid "Portuguese"
+msgstr ""
 
 msgid "Proposer des modifications"
 msgstr "Request to modify"
@@ -277,8 +428,14 @@ msgstr "Intellectal property"
 msgid "Préférences"
 msgstr "Settings"
 
+msgid "Punjabi"
+msgstr ""
+
 msgid "Période"
 msgstr "Timeframe"
+
+msgid "Quechua"
+msgstr ""
 
 msgid "Quelques heures"
 msgstr "A few hours"
@@ -289,11 +446,57 @@ msgstr "Remove from my favorite LARPs"
 msgid "Retour aux résultats de la recherche"
 msgstr "Back to search results"
 
+msgid "Romanian"
+msgstr ""
+
+#, fuzzy
+msgid "Russian"
+msgstr "Russian"
+
+msgid "Samoan"
+msgstr ""
+
+msgid "Serbian"
+msgstr ""
+
 msgid "Site officiel"
 msgstr "Official website"
 
+msgid "Slovak"
+msgstr ""
+
+msgid "Slovenian"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
 msgid "Suivez-nous sur Facebook"
 msgstr "Follow us on Facebook"
+
+msgid "Swahili"
+msgstr ""
+
+msgid "Swedish "
+msgstr ""
+
+msgid "Tamil"
+msgstr ""
+
+msgid "Tatar"
+msgstr ""
+
+msgid "Telugu"
+msgstr ""
+
+msgid "Thai"
+msgstr ""
+
+msgid "Tibetan"
+msgstr ""
+
+msgid "Tonga"
+msgstr ""
 
 msgid "Toutes les dates"
 msgstr "Anytime"
@@ -304,6 +507,12 @@ msgstr "Sort by"
 msgid "Trouver mon prochain GN"
 msgstr "Find my next LARP"
 
+msgid "Turkish"
+msgstr ""
+
+msgid "Ukranian"
+msgstr ""
+
 msgid "Un moteur de recherche et de filtres pour des jeux de rôle grandeur nature et des conventions ayant lieu partout dans le monde"
 msgstr "A sarch engine for LARPs and conventions anywhere in the world"
 
@@ -312,6 +521,12 @@ msgstr "Holy moly! An error has occurred. Please contact our support at michael@
 
 msgid "Une journée"
 msgstr "A day"
+
+msgid "Urdu"
+msgstr ""
+
+msgid "Uzbek"
+msgstr ""
 
 msgid "Veuillez patienter, changement de devise en cours..."
 msgstr "Please wait while the currency is modified..."
@@ -322,6 +537,9 @@ msgstr "Please wait while all the are Larps loaded..."
 msgid "Veuillez patienter..."
 msgstr "Please wait..."
 
+msgid "Vietnamese"
+msgstr ""
+
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
 msgstr "Your data will never be communicated to third parties. They could however be transferred for the use of an investigation, in the case of a lawful request or any judiciary authority's."
 
@@ -330,6 +548,12 @@ msgstr "Do you wish to log out?"
 
 msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"
 msgstr "You can ask without any motive, the modification or deletion of your data at: conversation@cocolarp.com"
+
+msgid "Welsh"
+msgstr ""
+
+msgid "Xhosa"
+msgstr ""
 
 msgid "conditions générales d'utilisation"
 msgstr "Terms and Conditions"
@@ -346,6 +570,9 @@ msgstr "username"
 
 msgid "this"
 msgstr "this"
+
+msgid "x"
+msgstr ""
 
 msgid "“Contenu Usager” : Les données transmises par l'Usager au sein du site."
 msgstr "\"User content\": The data the User has provided through the website."

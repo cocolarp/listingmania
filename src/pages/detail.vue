@@ -19,6 +19,11 @@
       .mobile {{ event.summary}}
       .mobile
         .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
+      .mobile
+        .lang-section
+          span(v-translate="") Langues:
+          span &nbsp;
+          span {{ event.languages }}
       #map.group(ref="googleMap")
       .group
         p.blue
@@ -53,6 +58,10 @@
     .col#description
       h1.desktop {{ event.name }}
       .desktop
+        .lang-section
+          span(v-translate="") Langues:
+          span &nbsp;
+          span {{ event.languages }}
         .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
         .spacer
       .desktop {{ event.summary}}

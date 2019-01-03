@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import { CURRENCY_EUR } from './models'
+import { CURRENCY_EUR } from './enums'
 
 Vue.use(Vuex)
 

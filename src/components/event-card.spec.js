@@ -47,6 +47,11 @@ describe('EventCard', () => {
         </div>
         <div class="price">50 CHF</div>
       </div>
+      <div class="lang-section">
+        <span data-msgid="Langues:" data-current-language="fr_FR">Langues:</span>
+        <span>&nbsp;</span>
+        <span></span>
+      </div>
     </div>
     `))
   })

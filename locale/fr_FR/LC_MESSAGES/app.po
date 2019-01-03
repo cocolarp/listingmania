@@ -44,8 +44,14 @@ msgstr ""
 msgid "Adapté aux débutants"
 msgstr ""
 
+msgid "Afrikanns"
+msgstr ""
+
 msgid "Ajouter à mes GNs favoris"
 msgstr "Ajouter à Mes GNs"
+
+msgid "Albanian"
+msgstr ""
 
 msgid "Annoncer un GN"
 msgstr ""
@@ -53,10 +59,31 @@ msgstr ""
 msgid "Annuler"
 msgstr ""
 
+msgid "Arabic"
+msgstr ""
+
+msgid "Armenian"
+msgstr ""
+
+msgid "Basque"
+msgstr ""
+
+msgid "Bengali"
+msgstr ""
+
+msgid "Bulgarian"
+msgstr ""
+
 msgid "COURT"
 msgstr ""
 
 msgid "COÛT"
+msgstr ""
+
+msgid "Cambodian"
+msgstr ""
+
+msgid "Catalan"
 msgstr ""
 
 msgid "Ce service que nous rendons à la communauté internationale du GN, nous le faisons pour le plaisir, pour suivre nos idéaux d'intelligence collective, d'accessibilité et de transparence. Grâce à ça, les joueuses et les joueurs peuvent découvrir la variété des jeux existants dans leur région et s'inscrire à ceux qui leur conviendront le mieux. Et les équipes d'organisation utilisent CoCoLarp pour choisir la date de leur jeu, sans concurrence avec les autres."
@@ -69,6 +96,9 @@ msgid "Ces informations et/ou documents sont susceptibles de contenir des inexac
 msgstr ""
 
 msgid "Chargement de l'événement…"
+msgstr ""
+
+msgid "Chinese (Mandarin)"
 msgstr ""
 
 msgid "Choisissez votre devise ci-dessous:"
@@ -110,6 +140,12 @@ msgstr "Coût (PNJ) :"
 msgid "Coût joueur:"
 msgstr "Coût (PJ) :"
 
+msgid "Croatian"
+msgstr ""
+
+msgid "Czech"
+msgstr ""
+
 msgid "C’est ce calendrier que l’on a voulu changer en site web ambitieux, toujours gratuit, sans publicité, et de qualité professionnelle, en open source. Il sera toujours aussi fiable, parce qu’on n’attend pas que les organisations nous contactent : on ajoute la majorité des jeux nous-mêmes et avec notre communauté."
 msgstr ""
 
@@ -120,6 +156,9 @@ msgid "DATE"
 msgstr ""
 
 msgid "DISTANCE"
+msgstr ""
+
+msgid "Danish"
 msgstr ""
 
 msgid "Dans la cadre de l'utilisation du site, CoCoLarp est susceptible de collecter les données d'identification (identifiant et adresse e-mail) et les données de connexion (adresses IP, journaux d'évènement)."
@@ -143,6 +182,9 @@ msgstr ""
 msgid "Droit applicable et juridiction compétente"
 msgstr ""
 
+msgid "Dutch"
+msgstr ""
+
 msgid "Débute le"
 msgstr "Début :"
 
@@ -155,6 +197,12 @@ msgstr ""
 msgid "En vue d’adapter le site aux demandes de ses visiteurs, nous mesurons le nombre de visites, le nombre de pages vues ainsi que l'activité des visiteurs sur le site et leur fréquence de retour."
 msgstr ""
 
+msgid "English"
+msgstr ""
+
+msgid "Estonian"
+msgstr ""
+
 msgid "Euro (€)"
 msgstr ""
 
@@ -164,13 +212,49 @@ msgstr ""
 msgid "FAQ"
 msgstr ""
 
+msgid "Fiji"
+msgstr ""
+
+msgid "Finnish"
+msgstr ""
+
 msgid "Format"
 msgstr "Durée"
 
 msgid "Franc Suisse (CHF)"
 msgstr ""
 
+msgid "French"
+msgstr ""
+
+msgid "Georgian"
+msgstr ""
+
+msgid "German"
+msgstr ""
+
+msgid "Greek"
+msgstr ""
+
 msgid "Groupe Facebook"
+msgstr ""
+
+msgid "Gujarati"
+msgstr ""
+
+msgid "Hebrew"
+msgstr ""
+
+msgid "Hindi"
+msgstr ""
+
+msgid "Hungarian"
+msgstr ""
+
+msgid "Icelandic"
+msgstr ""
+
+msgid "Indonesian"
 msgstr ""
 
 msgid "Inscription"
@@ -185,7 +269,22 @@ msgstr "Inscription PJ"
 msgid "International"
 msgstr ""
 
+msgid "Irish"
+msgstr ""
+
+msgid "Italian"
+msgstr ""
+
 msgid "J'ai lu et accepte les"
+msgstr ""
+
+msgid "Japanese"
+msgstr ""
+
+msgid "Javanese"
+msgstr ""
+
+msgid "Korean"
 msgstr ""
 
 msgid "LONG"
@@ -195,6 +294,15 @@ msgid "La législation française s'applique au présent contrat. En cas d'absen
 msgstr ""
 
 msgid "La responsabilité de CoCoLarp ne saurait être engagée en cas d’impossibilité d’accès et/ou d’utilisation des services. Par ailleurs, CoCoLarp peut être amené à interrompre le site ou une partie des services, à tout moment sans préavis, le tout sans droit à indemnités. L’Usager reconnaît et accepte que CoCoLarp ne soit pas responsable des interruptions, et des conséquences qui peuvent en découler pour l’Usager ou tout tiers."
+msgstr ""
+
+msgid "Langues:"
+msgstr ""
+
+msgid "Latin"
+msgstr ""
+
+msgid "Latvian"
 msgstr ""
 
 msgid "Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux"
@@ -220,6 +328,9 @@ msgstr ""
 msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
 msgstr ""
 
+msgid "Lithuanian"
+msgstr ""
+
 msgid "Livre Sterling (£)"
 msgstr ""
 
@@ -232,6 +343,24 @@ msgstr ""
 msgid "MOYEN"
 msgstr ""
 
+msgid "Macedonian"
+msgstr ""
+
+msgid "Malay"
+msgstr ""
+
+msgid "Malayalam"
+msgstr ""
+
+msgid "Maltese"
+msgstr ""
+
+msgid "Maori"
+msgstr ""
+
+msgid "Marathi"
+msgstr ""
+
 msgid "Merci à toutes celles et ceux qui ont contribué à CoCoLarp jusqu’à présent, sous une forme ou une autre:"
 msgstr ""
 
@@ -241,11 +370,20 @@ msgstr ""
 msgid "Mineurs bienvenus"
 msgstr ""
 
+msgid "Mongolian"
+msgstr ""
+
 msgid "Monnaie:"
+msgstr ""
+
+msgid "Nepali"
 msgstr ""
 
 msgid "Nom d'utilisateur ou mot de passe erroné."
 msgstr "Identifiant ou mot de passe erroné."
+
+msgid "Norwegian"
+msgstr ""
 
 msgid "Notre responsabilité"
 msgstr ""
@@ -265,10 +403,19 @@ msgstr ""
 msgid "Page Facebook"
 msgstr ""
 
+msgid "Persian"
+msgstr ""
+
 msgid "Plus de 3 jours"
 msgstr ""
 
 msgid "Plus tard"
+msgstr ""
+
+msgid "Polish"
+msgstr ""
+
+msgid "Portuguese"
 msgstr ""
 
 msgid "Proposer des modifications"
@@ -280,7 +427,13 @@ msgstr ""
 msgid "Préférences"
 msgstr ""
 
+msgid "Punjabi"
+msgstr ""
+
 msgid "Période"
+msgstr ""
+
+msgid "Quechua"
 msgstr ""
 
 msgid "Quelques heures"
@@ -292,10 +445,55 @@ msgstr ""
 msgid "Retour aux résultats de la recherche"
 msgstr ""
 
+msgid "Romanian"
+msgstr ""
+
+msgid "Russian"
+msgstr ""
+
+msgid "Samoan"
+msgstr ""
+
+msgid "Serbian"
+msgstr ""
+
 msgid "Site officiel"
 msgstr "Lien principal"
 
+msgid "Slovak"
+msgstr ""
+
+msgid "Slovenian"
+msgstr ""
+
+msgid "Spanish"
+msgstr ""
+
 msgid "Suivez-nous sur Facebook"
+msgstr ""
+
+msgid "Swahili"
+msgstr ""
+
+msgid "Swedish "
+msgstr ""
+
+msgid "Tamil"
+msgstr ""
+
+msgid "Tatar"
+msgstr ""
+
+msgid "Telugu"
+msgstr ""
+
+msgid "Thai"
+msgstr ""
+
+msgid "Tibetan"
+msgstr ""
+
+msgid "Tonga"
 msgstr ""
 
 msgid "Toutes les dates"
@@ -307,6 +505,12 @@ msgstr "Tri par"
 msgid "Trouver mon prochain GN"
 msgstr ""
 
+msgid "Turkish"
+msgstr ""
+
+msgid "Ukranian"
+msgstr ""
+
 msgid "Un moteur de recherche et de filtres pour des jeux de rôle grandeur nature et des conventions ayant lieu partout dans le monde"
 msgstr ""
 
@@ -314,6 +518,12 @@ msgid "Une erreur s'est produite dans l'accès à nos serveurs. Veuillez contact
 msgstr "Archizut ! Une erreur est survenue. Contactez le support technique : michael@cocolarp.com."
 
 msgid "Une journée"
+msgstr ""
+
+msgid "Urdu"
+msgstr ""
+
+msgid "Uzbek"
 msgstr ""
 
 msgid "Veuillez patienter, changement de devise en cours..."
@@ -325,6 +535,9 @@ msgstr "Veuillez patienter, les GNs se chargent..."
 msgid "Veuillez patienter..."
 msgstr ""
 
+msgid "Vietnamese"
+msgstr ""
+
 msgid "Vos données ne font l'objet d'aucune communication à des tiers. Vous êtes toutefois informé.e.s qu'elles pourront être divulguées en application d'une loi, d'un règlement ou en vertu d'une décision d'une autorité réglementaire ou judiciaire compétente."
 msgstr ""
 
@@ -332,6 +545,12 @@ msgid "Voulez-vous vous déconnecter ?"
 msgstr ""
 
 msgid "Vous pouvez demander, sans motif, la modification, la suppression ou la portabilité de vos données à : conversation@cocolarp.com"
+msgstr ""
+
+msgid "Welsh"
+msgstr ""
+
+msgid "Xhosa"
 msgstr ""
 
 msgid "conditions générales d'utilisation"

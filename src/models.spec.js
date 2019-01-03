@@ -24,6 +24,7 @@ describe('BackentEvent', () => {
       'npc_price': null,
       'currency': 'EUR',
       'start': '2019-01-25T00:00:00Z',
+      'languages': ['en', 'fr'],
       'event_format': 'medium',
       'external_url': 'https://www.facebook.com/events/688229804704888/',
       'facebook_event': null,
@@ -56,6 +57,7 @@ describe('BackentEvent', () => {
       'original_price': 10500,
       'readable_cost': '105 €',
       'tags': [{ key: 'international', label: 'International' }],
+      'languages': 'English, French',
       'raw': {
         'currency': 'EUR',
         'description': 'GN Firefly',

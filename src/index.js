@@ -16,7 +16,8 @@ import { client } from './services/backent'
 import { getCurrentlySupportedLocale, getBrowserLanguage } from 'src/lang_utils'
 import store from './store'
 
-import { CURRENCY_EUR, computeConversionTable } from './models'
+import { CURRENCY_EUR } from './enums'
+import { computeConversionTable } from './models'
 
 if (BACKENT_URL) {
   client.init(BACKENT_URL)

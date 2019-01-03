@@ -24,12 +24,16 @@
       span(v-show='shouldDisplayKms') &nbsp;|&nbsp;
       span(v-show='shouldDisplayKms') {{ event.distance }}kms
     .price {{ event.readable_cost }}
+  .lang-section
+    span(v-translate="") Langues:
+    span &nbsp;
+    span {{ event.languages }}
 </template>
 
 <script>
 import Heart from 'src/components/heart.vue'
 
-import { DURATION_COLOR } from 'src/models'
+import { DURATION_COLOR } from 'src/enums'
 
 export default {
   props: ['event', 'anywhere'],
@@ -95,6 +99,11 @@ export default {
 
 .tag-section {
   height: 2.5rem;
+}
+
+.lang-section {
+  font-size: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 .tag {
