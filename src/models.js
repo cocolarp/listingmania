@@ -26,7 +26,7 @@ function humanDuration (fmt) {
 
 export function _readableCost (price, currency) {
   if (price == null) return '?'
-  return `${Math.round(price / 100)} ${enums.CURRENCY_SYMBOLS[currency]}`
+  return `${Math.round(price)} ${enums.CURRENCY_SYMBOLS[currency]}`
 }
 
 function convertCost (price, divider) {
@@ -65,8 +65,8 @@ export function BackentEvent (raw, currency, conversionTable) {
     summary: raw.summary,
     description: raw.description,
     url: raw.external_url,
-    original_price: raw.price,
-    original_npc_price: raw.npc_price,
+    original_price: parseFloat(raw.price),
+    original_npc_price: parseFloat(raw.npc_price),
     original_currency: raw.currency,
     start: moment(raw.start),
     durationCategory: raw.event_format,
