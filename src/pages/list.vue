@@ -190,7 +190,6 @@ export default {
     },
     hasCompatibleDuration (event) {
       let index = {
-        [enums.DURATION_HOURS]: 0,
         [enums.DURATION_SHORT]: 0,
         [enums.DURATION_MEDIUM]: 1,
         [enums.DURATION_LONG]: 2,

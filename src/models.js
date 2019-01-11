@@ -13,8 +13,6 @@ import * as enums from 'src/enums'
 
 function humanDuration (fmt) {
   switch (fmt) {
-    case enums.DURATION_HOURS:
-      return $gettext('Quelques heures')
     case enums.DURATION_SHORT:
       return $gettext('Une journée')
     case enums.DURATION_MEDIUM:
