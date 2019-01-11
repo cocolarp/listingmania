@@ -10,6 +10,7 @@
       ul
         li Mathieu D.
         li Diane D.
+        li Romain F.
         li Laurent K.
         li Sören G.
         li Guillaume H
