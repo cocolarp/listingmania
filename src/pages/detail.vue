@@ -66,10 +66,16 @@
         .spacer
       .desktop {{ event.summary}}
       p.carriage-returns {{ event.description }}
+      p.small.carriage-returns
+        span(v-translate="") Dernière modification:
+        span &nbsp;
+        span {{ lastUpdateLocalized }}
 </template>
 
 <script>
 /* global Backent, google, GoogleLoad */
+
+import moment from 'moment'
 
 import { getBrowserLanguage } from 'src/lang_utils'
 import { BackentEvent } from 'src/models'
@@ -83,6 +89,9 @@ export default {
     }
   },
   computed: {
+    lastUpdateLocalized () {
+      return moment(this.event.updated_at).format('lll')
+    },
     translatedHumanDuration () {
       return this.$gettext(this.event.humanDuration)
     },
@@ -253,6 +262,10 @@ a {
   border-radius: 2px;
   margin: 4px;
   box-shadow: 0 0 1px 1px rgba(0,0,0,0.15);
+}
+
+.small {
+  font-size: 0.8rem;
 }
 
 #map {
