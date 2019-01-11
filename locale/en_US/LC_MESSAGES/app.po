@@ -134,6 +134,12 @@ msgstr "Cookies"
 msgid "Couronne Suédoise (kr)"
 msgstr "Swedish krona (kr)"
 
+msgid "Couronne danoise (kr)"
+msgstr "Danish krone (kr)"
+
+msgid "Couronne norvégienne (kr)"
+msgstr "Norwegian krone (kr)"
+
 msgid "Coût PNJ:"
 msgstr "Cost (npc):"
 
@@ -178,6 +184,9 @@ msgstr "Distance"
 
 msgid "Dollars US ($)"
 msgstr "US Dollars ($)"
+
+msgid "Dollars canadiens ($)"
+msgstr "Canadian dollars ($)"
 
 msgid "Données collectées et utilisation"
 msgstr "Collected data and its use"
@@ -275,7 +284,6 @@ msgstr "International"
 msgid "Irish"
 msgstr ""
 
-#, fuzzy
 msgid "Italian"
 msgstr "Italian"
 
@@ -452,7 +460,9 @@ msgstr "Back to search results"
 msgid "Romanian"
 msgstr ""
 
-#, fuzzy
+msgid "Rouble russe (₽)"
+msgstr "Russian ruble (₽)"
+
 msgid "Russian"
 msgstr "Russian"
 

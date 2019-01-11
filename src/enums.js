@@ -24,16 +24,24 @@ export const DURATION_COLOR = {
 
 export const DURATIONS = [DURATION_SHORT, DURATION_MEDIUM, DURATION_LONG]
 
+export const CURRENCY_CAD = 'CAD'
 export const CURRENCY_CHF = 'CHF'
+export const CURRENCY_DKK = 'DKK'
 export const CURRENCY_EUR = 'EUR'
 export const CURRENCY_GBP = 'GBP'
+export const CURRENCY_NOK = 'NOK'
+export const CURRENCY_RUB = 'RUB'
 export const CURRENCY_SEK = 'SEK'
 export const CURRENCY_USD = 'USD'
 
 export const CURRENCY_SYMBOLS = {
+  [CURRENCY_CAD]: '$',
   [CURRENCY_CHF]: 'CHF',
+  [CURRENCY_DKK]: 'kr',
   [CURRENCY_EUR]: '€',
   [CURRENCY_GBP]: '£',
+  [CURRENCY_NOK]: 'kr',
+  [CURRENCY_RUB]: '₽',
   [CURRENCY_SEK]: 'kr',
   [CURRENCY_USD]: '$',
 }

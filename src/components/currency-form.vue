@@ -8,30 +8,23 @@
   #content
     div(v-if='!isDoingRequest')
       .row
-        .button(
-          @click="submit('EUR')",
-          v-translate="",
-        ) Euro (€)
+        .button(@click="submit('CAD')", v-translate) Dollars canadiens ($)
       .row
-        .button(
-          @click="submit('CHF')",
-          v-translate="",
-        ) Franc Suisse (CHF)
+        .button(@click="submit('EUR')", v-translate) Euro (€)
       .row
-        .button(
-          @click="submit('GBP')",
-          v-translate="",
-        ) Livre Sterling (£)
+        .button(@click="submit('DKK')", v-translate) Couronne danoise (kr)
       .row
-        .button(
-          @click="submit('SEK')",
-          v-translate="",
-        ) Couronne Suédoise (kr)
+        .button(@click="submit('CHF')", v-translate) Franc Suisse (CHF)
       .row
-        .button(
-          @click="submit('USD')",
-          v-translate="",
-        ) Dollars US ($)
+        .button(@click="submit('GBP')", v-translate) Livre Sterling (£)
+      .row
+        .button(@click="submit('NOK')", v-translate) Couronne norvégienne (kr)
+      .row
+        .button(@click="submit('RUB')", v-translate) Rouble russe (₽)
+      .row
+        .button(@click="submit('SEK')", v-translate) Couronne Suédoise (kr)
+      .row
+        .button(@click="submit('USD')", v-translate) Dollars US ($)
     div(v-else)
       .row
         .spacer

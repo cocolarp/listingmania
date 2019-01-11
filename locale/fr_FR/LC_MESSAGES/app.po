@@ -134,6 +134,12 @@ msgstr ""
 msgid "Couronne Suédoise (kr)"
 msgstr ""
 
+msgid "Couronne danoise (kr)"
+msgstr ""
+
+msgid "Couronne norvégienne (kr)"
+msgstr ""
+
 msgid "Coût PNJ:"
 msgstr "Coût (PNJ) :"
 
@@ -177,6 +183,9 @@ msgid "Distance"
 msgstr ""
 
 msgid "Dollars US ($)"
+msgstr ""
+
+msgid "Dollars canadiens ($)"
 msgstr ""
 
 msgid "Données collectées et utilisation"
@@ -449,6 +458,9 @@ msgid "Retour aux résultats de la recherche"
 msgstr ""
 
 msgid "Romanian"
+msgstr ""
+
+msgid "Rouble russe (₽)"
 msgstr ""
 
 msgid "Russian"
