@@ -1,6 +1,8 @@
 <template lang="pug">
 .heart(:style="{color: heartColor}")
   span(
+    :data-balloon="popupText",
+    data-balloon-pos="up",
     @mouseenter="doHighlightHeart()",
     @mouseleave="resetHeart()"
     v-on:click.stop.prevent="likeEvent()"
@@ -8,6 +10,8 @@
 </template>
 
 <script>
+import 'balloon-css'
+
 export default {
   props: ['event'],
   data: function () {
@@ -16,6 +20,9 @@ export default {
     }
   },
   computed: {
+    popupText () {
+      return this.$gettext('Ajouter à mes GNs favoris')
+    },
     isLiked () {
       return this.$store.getters.isLiked(this.event)
     },

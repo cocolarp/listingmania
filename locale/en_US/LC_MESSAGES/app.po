@@ -167,6 +167,9 @@ msgstr "CoCoLarp may collect identification data (ID and e-mail address) and als
 msgid "Dans le monde entier"
 msgstr "Worldwide"
 
+msgid "Dernière modification:"
+msgstr "Last update:"
+
 msgid "Description du service"
 msgstr "About the service"
 

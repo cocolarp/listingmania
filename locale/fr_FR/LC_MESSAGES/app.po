@@ -167,6 +167,9 @@ msgstr ""
 msgid "Dans le monde entier"
 msgstr ""
 
+msgid "Dernière modification:"
+msgstr ""
+
 msgid "Description du service"
 msgstr ""
 
