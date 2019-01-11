@@ -7,6 +7,9 @@ let baseUrl = null
 export const client = {
   init: function (url) {
     baseUrl = url
+    if (!localStorage.getItem('remember')) {
+      localStorage.clear()
+    }
   },
   getEvents () {
     return basicXhr(urljoin(baseUrl, 'api/events/'))
@@ -26,13 +29,16 @@ export const client = {
       })
     )
   },
-  getToken: async function (username, password) {
+  getToken: async function (username, password, rememberMe) {
     const data = await basicXhr(urljoin(baseUrl, 'token/'), 'POST', JSON.stringify({
       'username': username,
       'password': password,
     }))
     if (data.token) {
       localStorage.setItem('token', data.token)
+      if (rememberMe) {
+        localStorage.setItem('remember', 1)
+      }
       return data.token
     }
     throw new Error('unexpected error')

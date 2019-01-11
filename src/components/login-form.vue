@@ -72,6 +72,13 @@
       strong(v-translate="") J'ai lu et accepte les
       span &nbsp;
       a(target="_blank", :href="$router.resolve('terms').href", v-translate="") conditions générales d'utilisation
+    .row(v-if="displayLogin")
+      check-box(
+        msg="",
+        :value="rememberMe",
+        @change="updateRememberMe"
+      )
+      span(v-translate="") Se souvenir de moi
     .row(v-show="!displayLogin")
       #recaptcha
     .row(v-if="invalidLogin")
@@ -103,6 +110,7 @@ export default {
   },
   data: function () {
     return {
+      rememberMe: true,
       processingLogin: false,
       displayLogin: true,
       shakeUsername: false,
@@ -140,6 +148,9 @@ export default {
     updateGcusAccepted () {
       this.gcusAccepted = !this.gcusAccepted
     },
+    updateRememberMe () {
+      this.rememberMe = !this.rememberMe
+    },
     validate () {
       if (!this.username) {
         this.shakeUsername = true
@@ -171,7 +182,7 @@ export default {
     async _doLogin () {
       this.processingLogin = true
       try {
-        await Backent.getToken(this.username, this.password)
+        await Backent.getToken(this.username, this.password, this.rememberMe)
       } catch (e) {
         this.processingLogin = false
         if (e.status === 400) {

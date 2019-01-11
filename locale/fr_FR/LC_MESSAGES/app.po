@@ -448,9 +448,6 @@ msgstr ""
 msgid "Quechua"
 msgstr ""
 
-msgid "Quelques heures"
-msgstr ""
-
 msgid "Retirer de mes GNs favoris"
 msgstr ""
 
@@ -467,6 +464,9 @@ msgid "Russian"
 msgstr ""
 
 msgid "Samoan"
+msgstr ""
+
+msgid "Se souvenir de moi"
 msgstr ""
 
 msgid "Serbian"

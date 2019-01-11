@@ -448,9 +448,6 @@ msgstr "Timeframe"
 msgid "Quechua"
 msgstr ""
 
-msgid "Quelques heures"
-msgstr "A few hours"
-
 msgid "Retirer de mes GNs favoris"
 msgstr "Remove from my favorite LARPs"
 
@@ -468,6 +465,9 @@ msgstr "Russian"
 
 msgid "Samoan"
 msgstr ""
+
+msgid "Se souvenir de moi"
+msgstr "Remember me"
 
 msgid "Serbian"
 msgstr ""
