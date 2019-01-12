@@ -29,6 +29,9 @@ msgid_plural "%{ events.length } résultats"
 msgstr[0] "%{ events.length } result"
 msgstr[1] "%{ events.length } results"
 
+msgid "(à confirmer)"
+msgstr "(to be confirmed)"
+
 msgid "2 ou 3 jours"
 msgstr "2 or 3 days"
 

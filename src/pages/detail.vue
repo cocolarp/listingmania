@@ -34,8 +34,10 @@
       .group(v-if="event.raw.location")
         p
           strong {{ event.raw.location.name }}
-        p
+        p(v-if="event.raw.location.address")
           strong {{ event.raw.location.address }}
+        p(v-else)
+          strong(v-translate) (à confirmer)
       .group(v-else)
         p
           strong(v-translate) Lieu à déterminer

@@ -52,8 +52,12 @@ export default {
     croppedAddress () {
       if (!this.event.raw.location) return this.$gettext("Lieu à déterminer")
 
-      const locationName = this.event.raw.location.name
+      let locationName = this.event.raw.location.name
       if (!locationName) return ''
+
+      if (!this.event.raw.location.address) {
+        locationName = locationName + ' ' + this.$gettext("(à confirmer)")
+      }
       const maxLen = this.shouldDisplayKms ? 22 : 26
 
       if (locationName.length <= maxLen) return locationName
