@@ -1,9 +1,8 @@
-/* global localStorage */
-
 import Vue from 'vue'
 import Vuex from 'vuex'
 
 import { CURRENCY_EUR } from './enums'
+import { clearUserData, saveCurrency } from 'src/storage'
 
 Vue.use(Vuex)
 
@@ -42,7 +41,7 @@ const store = new Vuex.Store({
       state.events = value
     },
     setCurrency (state, data) {
-      localStorage.setItem('currency', data.currency)
+      saveCurrency(data.currency)
       state.currency = data.currency
       state.conversionTable = data.table
     },
@@ -65,7 +64,7 @@ const store = new Vuex.Store({
     },
     setUser (state, value) {
       if (!value) {
-        localStorage.clear()
+        clearUserData()
         location.reload()
       } else {
         state.user = value

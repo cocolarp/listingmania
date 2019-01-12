@@ -1,5 +1,12 @@
 import urljoin from 'url-join'
 import { basicXhr } from './utils.js'
+import {
+  clearUserData,
+  getStoredToken,
+  saveToken,
+  setRemember,
+  shouldRemember,
+} from 'src/storage'
 
 
 let baseUrl = null
@@ -7,8 +14,8 @@ let baseUrl = null
 export const client = {
   init: function (url) {
     baseUrl = url
-    if (!localStorage.getItem('remember')) {
-      localStorage.clear()
+    if (!shouldRemember()) {
+      clearUserData()
     }
   },
   getEvents () {
@@ -35,17 +42,15 @@ export const client = {
       'password': password,
     }))
     if (data.token) {
-      localStorage.setItem('token', data.token)
-      if (rememberMe) {
-        localStorage.setItem('remember', 1)
-      }
+      saveToken(data.token)
+      if (rememberMe) setRemember()
       return data.token
     }
     throw new Error('unexpected error')
   },
   getUser () {
     return basicXhr(urljoin(baseUrl, 'profile/'), 'GET', null, {
-      'Authorization': `Token ${localStorage.getItem('token')}`,
+      'Authorization': `Token ${getStoredToken()}`,
     })
   },
   postLike: async function (eventSlug, doLike = true) {
@@ -55,7 +60,7 @@ export const client = {
         url,
         'POST',
         null, {
-          'Authorization': `Token ${localStorage.getItem('token')}`,
+          'Authorization': `Token ${getStoredToken()}`,
         }
       )
       return true

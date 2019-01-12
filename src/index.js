@@ -14,6 +14,7 @@ import rootPage from './pages/root.vue'
 import router from './routes'
 import { client } from './services/backent'
 import { getCurrentlySupportedLocale, getBrowserLanguage } from 'src/lang_utils'
+import { getCurrency } from './storage'
 import store from './store'
 
 import { CURRENCY_EUR } from './enums'
@@ -57,7 +58,7 @@ async function bootstrapApplication () {
     console.log('User is not authenticated.')
   })
 
-  const chosenCurrency = localStorage.getItem('currency') || CURRENCY_EUR
+  const chosenCurrency = getCurrency() || CURRENCY_EUR
   store.commit('setCurrency', {
     currency: chosenCurrency,
     table: {
