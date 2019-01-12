@@ -340,6 +340,9 @@ msgstr ""
 msgid "Les marques, logos, signes et tout autre contenu du site font l'objet d'une protection par le Code de la propriété intellectuelle et plus particulièrement par le droit d'auteur. Cela vaut tout particulièrement pour le nom “CoCoLarp”, le logo représentant une hirondelle Africaine (ou Européenne) portant une noix de coco et l’image de fond du Site, utilisée également pour la communication."
 msgstr ""
 
+msgid "Lieu à déterminer"
+msgstr ""
+
 msgid "Lithuanian"
 msgstr ""
 

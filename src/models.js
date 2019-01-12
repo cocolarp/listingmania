@@ -53,6 +53,12 @@ export function _getConvertedCosts (model, toCurrency, conversionTable) {
 }
 
 
+function safeParsePrice (x) {
+  if (x == null) return x
+  return parseFloat(x)
+}
+
+
 export function BackentEvent (raw, currency, conversionTable) {
 
   const model = {
@@ -63,8 +69,8 @@ export function BackentEvent (raw, currency, conversionTable) {
     summary: raw.summary,
     description: raw.description,
     url: raw.external_url,
-    original_price: parseFloat(raw.price),
-    original_npc_price: parseFloat(raw.npc_price),
+    original_price: safeParsePrice(raw.price),
+    original_npc_price: safeParsePrice(raw.npc_price),
     original_currency: raw.currency,
     start: moment(raw.start),
     durationCategory: raw.event_format,
@@ -103,6 +109,7 @@ export function BackentEvent (raw, currency, conversionTable) {
   }
 
   model.computeDistance = (lat, lng) => {
+    if (!model.raw.location) return null
     if (!model.raw.location.latitude || !model.raw.location.longitude) {
       return null
     }

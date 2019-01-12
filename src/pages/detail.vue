@@ -24,18 +24,21 @@
           span(v-translate="") Langues:
           span &nbsp;
           span {{ event.languages }}
-      #map.group(ref="googleMap")
+      #map.group(ref="googleMap", v-if="event.raw.location")
       .group
         p.blue
           strong(v-translate="") Débute le
           strong &nbsp;
           strong {{ event.start.format('LL') }}
         p.blue {{ translatedHumanDuration }}
-      .group
+      .group(v-if="event.raw.location")
         p
           strong {{ event.raw.location.name }}
         p
           strong {{ event.raw.location.address }}
+      .group(v-else)
+        p
+          strong(v-translate) Lieu à déterminer
       .group
         p
           span(v-translate="") Coût joueur:
@@ -133,6 +136,7 @@ export default {
         }, 3000)
       }
       setTimeout(async () => {
+        if (!this.event.raw.location) return
         await GoogleLoad
         const coords = {
           lat: this.event.raw.location.latitude,

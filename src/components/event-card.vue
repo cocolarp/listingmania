@@ -50,6 +50,8 @@ export default {
       return this.$gettext(this.event.humanDuration)
     },
     croppedAddress () {
+      if (!this.event.raw.location) return this.$gettext("Lieu à déterminer")
+
       const locationName = this.event.raw.location.name
       if (!locationName) return ''
       const maxLen = this.shouldDisplayKms ? 22 : 26
