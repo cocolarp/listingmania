@@ -20,7 +20,7 @@
       .mobile
         .tag(v-for="tag in event.tags", :key="tag.key") {{ $gettext(tag.label) }}
       .mobile
-        .lang-section
+        .lang-section(v-if="event.languages")
           span(v-translate="") Langues:
           span &nbsp;
           span {{ event.languages }}
@@ -58,7 +58,7 @@
     .col#description
       h1.desktop {{ event.name }}
       .desktop
-        .lang-section
+        .lang-section(v-if="event.languages")
           span(v-translate="") Langues:
           span &nbsp;
           span {{ event.languages }}

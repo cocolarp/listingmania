@@ -25,7 +25,7 @@
       span(v-show='shouldDisplayKms') {{ event.distance }}kms
     .price {{ event.readable_cost }}
   .lang-section
-    span(v-translate="") Langues:
+    span(v-if="event.languages", v-translate="") Langues:
     span &nbsp;
     span {{ event.languages }}
 </template>
