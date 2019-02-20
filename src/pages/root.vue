@@ -1,53 +1,31 @@
-(<template lang="pug">
-#main
-  #wrapper
-    .row#mobile-navbar
-      img(:src="smallLogoSrc", @click="goHome")
-      #mobile-buttons
-        .round-button(@click="onCurrencyBtnClick", v-if="canSwitchCurrencies")
-          span {{ selectedCurrencySymbol}}
-        .round-button(@click="openAddEventForm")
-          .icon-add
-        .round-button(@click="onLoginBtnClick")
-          div(:class="[displayName ? 'icon-logout' : 'icon-user']")
-    .row#navbar
-      #currencies.nav-item
-        .button(@click="onCurrencyBtnClick", v-if="canSwitchCurrencies")
-          span(v-translate="") Monnaie:
-          span &nbsp;
-          span {{ selectedCurrencySymbol }}
-      #user.nav-item
-        .button(@click="onLoginBtnClick")
-          span(:class="[displayName ? 'icon-logout' : 'icon-user']")
-          span &nbsp;
-          span(v-if="displayName") {{ displayName }}
-          span(v-else, v-translate="") Connexion
-      #new-event.nav-item
-        .button(@click="openAddEventForm")
-          span.icon-add
-          span(v-translate="") Annoncer un GN
-    .row#logo
-      .col(@click="goHome")
-        img(:src="logoSrc")
-        translate(tag="div")#motto Le calendrier le plus exhaustif des jeux de rôle grandeur nature français & internationaux
-    .row#top-spacer.spacer
-    .row#pages
-      router-view
-    .row.spacer
-  .row#footer
-    router-link(to="/about", v-translate="") A propos
-    span |
-    a(href="https://www.facebook.com/CoCoLarpCalendar/", target="_blank", v-translate="") Suivez-nous sur Facebook
-    span |
-    router-link(to="/faq", v-translate="") FAQ
-  #login-backdrop(:class="{show: loginFormDisplayed || logoutFormDisplayed || currencyFormDisplayed}")
-  #login-form(:class="{show: loginFormDisplayed}")
-    login-form
-  #logout-form(:class="{show: logoutFormDisplayed}")
-    logout-form
-  #currency-form(:class="{show: currencyFormDisplayed}")
-    currency-form
-</template>)
+<template lang="pug">
+v-app
+  v-content
+    v-container(fluid, fill-height)
+      v-layout(align-center, justify-center)
+        v-flex(xs12, sm8, md4)
+          v-card.elevation-12
+            v-toolbar(dark, color="primary")
+              v-toolbar-title Login form
+              v-spacer
+              v-tooltip(bottom)
+                v-btn(
+                  slot="activator",
+                  href="#",
+                  icon,
+                  large
+                  target="_blank",
+                )
+                  v-icon(large) code
+                span Source
+            v-card-text
+              v-form
+                v-text-field(prepend-icon="person", name="login", label="Login", type="text")
+                v-text-field(id="password", prepend-icon="lock", name="password" label="Password" type="password")
+            v-card-actions
+              v-spacer
+              v-btn(color="primary") Login
+</template>
 
 <script>
 import { mapState } from 'vuex'
@@ -56,18 +34,11 @@ import { CURRENCY_SYMBOLS } from 'src/enums'
 import router from 'src/routes'
 import { getBrowserLanguage } from 'src/lang_utils'
 
-import currencyForm from 'src/components/currency-form.vue'
-import loginForm from 'src/components/login-form.vue'
-import logoutForm from 'src/components/logout-form.vue'
-
 import headerImg from 'src/assets/logo.png'
 import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
 
 export default {
   components: {
-    'currency-form': currencyForm,
-    'login-form': loginForm,
-    'logout-form': logoutForm,
   },
   data: function () {
     return {
@@ -138,120 +109,4 @@ export default {
 </script>
 
 <style scoped>
-@import "src/variables.css";
-
-#main {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-#footer {
-  margin-top: auto;
-  height: 2rem;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: right;
-  font-size: 0.8rem;
-  color: white;
-  text-shadow: 0 0 2px rgba(0,0,0,0.30);
-}
-
-#footer a {
-  margin: 0rem 1rem;
-}
-
-@media (min-width: 1200px) {
-  #navbar {
-    float: right;
-  }
-  #mobile-navbar {
-    display: none;
-  }
-  #login-form, #logout-form, #currency-form {
-    top: 4rem;
-    left: 35%;
-    width: 30%;
-  }
-}
-
-@media (min-width: 768px) and  (max-width: 1200px) {
-  #navbar {
-    float: right;
-  }
-  #mobile-navbar {
-    display: none;
-  }
-  #login-form, #logout-form, #currency-form {
-    top: 4rem;
-    left: 20%;
-    width: 60%;
-  }
-}
-
-@media (max-width: 768px) {
-  #navbar, #logo, #footer, #top-spacer {
-    display: none;
-  }
-  #login-form, #logout-form, #currency-form {
-    top: 10rem;
-    left: 5%;
-    width: 90%;
-  }
-}
-
-#motto {
-  font-family: 'Montserrat-Bold';
-  color: white;
-  font-style: italic;
-  text-shadow: 0 0 2px rgba(0,0,0,0.30);
-}
-
-#mobile-navbar {
-  padding: 0.3rem 0;
-}
-
-#mobile-navbar img {
-  cursor: pointer;
-  height: var(--mobile-logo-height);
-  display: inline-block;
-}
-
-#logo {
-  text-align: center;
-}
-
-#logo img {
-  cursor: pointer;
-  height: var(--logo-height);
-}
-
-.nav-item {
-  line-height: var(--navbar-height);
-  display: inline-block;
-  vertical-align: middle;
-}
-
-#mobile-buttons {
-  float: right;
-}
-
-#login-form, #logout-form, #currency-form {
-  position: absolute;
-  display: none;
-}
-
-#login-backdrop {
-  position: absolute;
-  display: none;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(200,200,200,0.80)
-}
-
-.show {
-  display: block !important;
-}
 </style>

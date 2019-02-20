@@ -5,15 +5,17 @@ import moment from 'moment'
 import Vue from 'vue'
 import GetTextPlugin from 'vue-gettext'
 import VueAnalytics from 'vue-analytics'
+import Vuetify from 'vuetify' // TODO: tree shaking instead.
 
+import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'src/styles.css'
-import 'src/assets/fontello/css/listingmania-embedded.css'
 import translations from 'dist/translations.json'
 
+import { getCurrentlySupportedLocale, getBrowserLanguage } from 'src/lang_utils'
 import rootPage from './pages/root.vue'
 import router from './routes'
 import { client } from './services/backent'
-import { getCurrentlySupportedLocale, getBrowserLanguage } from 'src/lang_utils'
 import { getCurrency } from './storage'
 import store from './store'
 
@@ -29,6 +31,8 @@ if (BACKENT_URL) {
 window.Backent = client
 
 const locale = getCurrentlySupportedLocale()
+
+Vue.use(Vuetify)
 
 Vue.use(GetTextPlugin, {
   translations: translations,
