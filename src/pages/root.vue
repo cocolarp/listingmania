@@ -17,7 +17,7 @@ v-app
           prepend-icon="language",
           v-model="selectedLanguage",
           :items="languages",
-          )
+        )
 
 </template>
 
