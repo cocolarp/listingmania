@@ -9,6 +9,8 @@ div
             prepend-icon="date_range",
             v-model="selectedMonths",
             :items="months",
+            :item-value="monthId",
+            :item-text="monthLabel",
             label="Months",
             solo,
             multiple,
@@ -17,11 +19,11 @@ div
             v-list-tile(slot='prepend-item', ripple, @click='toggleMonths')
               v-list-tile-action
                 v-icon {{ selectAllIcon }}
-              v-list-tile-title Select All
+              v-list-tile-title Select All ({{ originalEvents.length }})
             v-divider.mt-2(slot='prepend-item')
             template(slot='selection', slot-scope='{ item, index }')
               v-chip(v-if='index === 0')
-                span {{ item }}
+                span {{ monthLabel(item) }}
               span.grey--text.caption(v-if='index === 1') (+{{ selectedMonths.length - 1 }} others)
 
     v-divider
@@ -43,12 +45,14 @@ import { transformBackentData } from 'src/models'
 
 import EventCard from 'src/components/event-card.vue'
 
+
 export default {
   data: function () {
     return {
-      events: [],
+      originalEvents: [],
       months: [],
       selectedMonths: [],
+      larpCountByMonth: {},
     }
   },
   computed: {
@@ -61,27 +65,46 @@ export default {
       }
       return 'check_box_outline_blank'
     },
+    events () {
+      return this.originalEvents.filter((event) => {
+        return this.selectedMonths.includes(this.monthId(event.start))
+      })
+    },
   },
   methods: {
+    monthId (month) {
+      return month.format('MM-YYYY')
+    },
+    monthLabel (month) {
+      return `${month.format('MMMM YYYY')} (${this.larpCountByMonth[this.monthId(month)]})`
+    },
+    selectAllMonths () {
+      this.selectedMonths = this.months.slice().map(this.monthId)
+    },
     toggleMonths () {
       if (this.allMonthsSelected) {
         this.selectedMonths = []
       } else {
-        this.selectedMonths = this.months.slice()
+        this.selectAllMonths()
       }
     },
   },
   created () {
     this.months = Array(13).fill(0).map((_, i) => {
-      return moment().add(i, 'months').format('MMMM YYYY')
+      const currentMonth = moment().add(i, 'months')
+      this.larpCountByMonth[this.monthId(currentMonth)] = 0
+      return currentMonth
     })
-    this.selectedMonths = this.months.slice()
+    this.selectAllMonths()
     Backent.getEvents().then((rawEvents) => {
-      this.events = transformBackentData(
+      this.originalEvents = transformBackentData(
         rawEvents,
         this.$store.state.currency,
         this.$store.state.conversionTable,
       )
+      this.originalEvents.forEach((event) => {
+        this.larpCountByMonth[this.monthId(event.start)] += 1
+      })
     })
   },
   components: {
