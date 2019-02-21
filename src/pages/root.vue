@@ -1,30 +1,24 @@
 <template lang="pug">
 v-app
-  v-content
-    v-container(fluid, fill-height)
-      v-layout(align-center, justify-center)
-        v-flex(xs12, sm8, md4)
-          v-card.elevation-12
-            v-toolbar(dark, color="primary")
-              v-toolbar-title Login form
-              v-spacer
-              v-tooltip(bottom)
-                v-btn(
-                  slot="activator",
-                  href="#",
-                  icon,
-                  large
-                  target="_blank",
-                )
-                  v-icon(large) code
-                span Source
-            v-card-text
-              v-form
-                v-text-field(prepend-icon="person", name="login", label="Login", type="text")
-                v-text-field(id="password", prepend-icon="lock", name="password" label="Password" type="password")
-            v-card-actions
-              v-spacer
-              v-btn(color="primary") Login
+  v-toolbar(app, clipped-left, dense, fixed, dark, color='primary')
+    v-toolbar-side-icon
+      img(height='28', src='~src/assets/small-logo.png')
+    v-toolbar-title.white--text Cocolarp
+    v-spacer
+    v-btn(icon)
+      v-icon account_circle
+  router-view
+  v-footer(app).pa-3
+      div &copy; 2019 CocoLarp
+      v-spacer
+      v-flex.xs2
+        v-select.xs4(
+          dense,
+          prepend-icon="language",
+          v-model="selectedLanguage",
+          :items="languages",
+          )
+
 </template>
 
 <script>
@@ -34,16 +28,13 @@ import { CURRENCY_SYMBOLS } from 'src/enums'
 import router from 'src/routes'
 import { getBrowserLanguage } from 'src/lang_utils'
 
-import headerImg from 'src/assets/logo.png'
-import smallLogoImg from 'src/assets/small-logo.png' // OMG is ugly
-
 export default {
   components: {
   },
   data: function () {
     return {
-      logoSrc: headerImg,
-      smallLogoSrc: smallLogoImg,
+      languages: ['French', 'English'],
+      selectedLanguage: ['French'],
     }
   },
   methods: {
