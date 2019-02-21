@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  v-navigation-drawer(app, clipped, width=400)
+  v-navigation-drawer(app, clipped, data-simplebar, width=400)
     v-container(fluid).pb-0
       v-layout(justify-center, column)
         v-flex(xs12)

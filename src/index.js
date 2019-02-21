@@ -1,6 +1,8 @@
 /* global BACKENT_URL, Backent */
 
 import moment from 'moment'
+import 'simplebar'
+import 'simplebar/dist/simplebar.css'
 
 import Vue from 'vue'
 import GetTextPlugin from 'vue-gettext'
