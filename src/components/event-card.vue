@@ -16,6 +16,8 @@ v-card(hover, elevation-4)
     v-btn(flat, icon, @click="displayDetail = !displayDetail")
       v-icon {{ displayDetail ? 'expand_less' : 'expand_more' }}
     v-spacer
+    v-btn(flat, icon, color='green')
+      v-icon(small) share
     v-btn(flat, icon, color='red')
       v-icon(small) favorite_border
   template(v-if="displayDetail")
@@ -44,10 +46,6 @@ export default {
       displayDetail: false,
     }
   },
-  methods: {
-    toggleDetail () {
-    }
-  },
   computed: {
     translatedHumanDuration () {
       return this.$gettext(this.event.humanDuration)
@@ -61,7 +59,7 @@ export default {
       if (!this.event.raw.location.address) {
         locationName = locationName + ' ' + this.$gettext('(à confirmer)')
       }
-      const maxLen = this.shouldDisplayKms ? 22 : 26
+      const maxLen = 50
 
       if (locationName.length <= maxLen) return locationName
       return locationName.substring(0, maxLen) + '…'
