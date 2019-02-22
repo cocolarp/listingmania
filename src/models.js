@@ -76,6 +76,10 @@ export function BackentEvent (raw, currency, conversionTable) {
     durationCategory: raw.event_format,
     humanDuration: humanDuration(raw.event_format),
     distance: null,
+    coords: {
+        lat: raw.location.latitude,
+        lng: raw.location.longitude,
+    },
     tags: raw.tags.map((tagKey) => {
       return {
         key: tagKey,

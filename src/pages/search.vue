@@ -1,6 +1,6 @@
 <template lang="pug">
-div
-  v-navigation-drawer(app, clipped, data-simplebar, width=400)
+div.fill-height
+  v-navigation-drawer(app, clipped,  width=400)
     v-select.pl-4.pr-4.pt-4(
       single-line,
       prepend-icon="date_range",
@@ -36,24 +36,25 @@ div
           )
 
     v-divider
-    v-container(fluid, v-bind="{ ['grid-list-xl']: true }")
+
+    v-container.fix-height(fluid, ref="eventList", data-simplebar)
       v-layout(justify-center, column)
         v-flex(xs12 v-for="event in events", :key="event.id")
-          event-card(:event="event")
-  v-content(app)
-    v-container(fluid)
-      p Map
+          .localizer(:id="'event-' + event.id")
+            event-card(, :event="event")
+
+  v-content.full-height.padding-bottom-36(app)
+    v-container.full-height(fluid, ref="googleMap")
 </template>
 
 <script>
-/* global Backent */
+/* global Backent, GoogleLoad */
 
 import moment from 'moment'
 
 import { transformBackentData } from 'src/models'
 
 import EventCard from 'src/components/event-card.vue'
-
 
 export default {
   data: function () {
@@ -122,6 +123,17 @@ export default {
       return currentMonth
     })
     this.selectAllMonths()
+  },
+  async mounted () {
+    await GoogleLoad
+
+    const map = new google.maps.Map(this.$refs.googleMap, {
+      zoom: 6,
+      center: { lat: 48.86471, lng: 2.349014 },
+      disableDefaultUI: true,
+      zoomControl: true,
+    })
+
     Backent.getEvents().then((rawEvents) => {
       this.originalEvents = transformBackentData(
         rawEvents,
@@ -130,6 +142,15 @@ export default {
       )
       this.originalEvents.forEach((event) => {
         this.larpCountByMonth[this.monthId(event.start)] += 1
+        const marker = new google.maps.Marker({ // eslint-disable-line no-new
+          position: event.coords,
+          map: map,
+          title: event.name,
+        })
+        marker.addListener('click', () => {
+          const eventDiv = document.getElementById(`event-${event.id}`)
+          eventDiv.scrollIntoView({behavior: 'auto', block: 'start'});
+        })
       })
     })
   },
@@ -143,8 +164,30 @@ export default {
 @import "src/variables.css";
 
 .compact-form {
-    transform: scale(0.875);
-    transform-origin: left;
+  /* Make our form smaller */
+  transform: scale(0.875);
+  transform-origin: left;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.padding-bottom-36 {
+  /* Default padding of v-content does not work well with our custom footer */
+  padding-bottom: 36px;
+}
+
+.fix-height {
+  /* the height of this list is wrongly computed for some reason, it overflows.
+  Let's hardcode it to 100%, minus the size of our top forms. */
+  height: calc(100% - 150px);
+}
+
+.localizer {
+  /* A localizer div that also is useful to set the margins. */
+  padding-top: 12px;
+  margin-top: 12px;
 }
 
 </style>
