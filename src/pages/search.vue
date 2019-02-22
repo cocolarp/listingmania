@@ -1,30 +1,37 @@
 <template lang="pug">
 div
   v-navigation-drawer(app, clipped, data-simplebar, width=400)
-    v-container(fluid).pb-0
-      v-layout(justify-center, column)
-        v-flex(xs12)
-          v-select(
-            single-line,
-            prepend-icon="date_range",
-            v-model="selectedMonths",
-            :items="months",
-            :item-value="monthId",
-            :item-text="monthLabel",
-            label="Months",
-            solo,
-            multiple,
-            menu-props="close-on-click, close-on-content-click",
+    v-select.pl-4.pr-4.pt-4(
+      single-line,
+      prepend-icon="date_range",
+      v-model="selectedMonths",
+      :items="months",
+      :item-value="monthId",
+      :item-text="monthLabel",
+      label="Months",
+      solo,
+      multiple,
+    )
+      v-list-tile(slot='prepend-item', ripple, @click='toggleMonths')
+        v-list-tile-action
+          v-icon {{ selectAllIcon }}
+        v-list-tile-title Select All ({{ originalEvents.length }})
+      v-divider.mt-2(slot='prepend-item')
+      template(slot='selection', slot-scope='{ item, index }')
+        v-chip(v-if='index === 0')
+          span {{ monthLabel(item) }}
+        span.grey--text.caption(v-if='index === 1') (+{{ selectedMonths.length - 1 }} others)
+
+    v-container(fluid).pb-0.pt-0.blue-grey.lighten-5
+      v-layout(row)
+        v-flex(xs3)
+          v-select.compact-form.mt-2.mb-2(
+            hide-details,
+            dense,
+            prepend-icon="sort",
+            v-model="currentSortKey",
+            :items="['Start', 'Cost']"
           )
-            v-list-tile(slot='prepend-item', ripple, @click='toggleMonths')
-              v-list-tile-action
-                v-icon {{ selectAllIcon }}
-              v-list-tile-title Select All ({{ originalEvents.length }})
-            v-divider.mt-2(slot='prepend-item')
-            template(slot='selection', slot-scope='{ item, index }')
-              v-chip(v-if='index === 0')
-                span {{ monthLabel(item) }}
-              span.grey--text.caption(v-if='index === 1') (+{{ selectedMonths.length - 1 }} others)
 
     v-divider
     v-container(fluid, v-bind="{ ['grid-list-xl']: true }")
@@ -115,4 +122,10 @@ export default {
 
 <style scoped>
 @import "src/variables.css";
+
+.compact-form {
+    transform: scale(0.875);
+    transform-origin: left;
+}
+
 </style>
