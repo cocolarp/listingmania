@@ -24,13 +24,15 @@ div
 
     v-container(fluid).pb-0.pt-0.blue-grey.lighten-5
       v-layout(row)
-        v-flex(xs3)
-          v-select.compact-form.mt-2.mb-2(
+        v-flex(xs6)
+          v-select.compact-form.mt-2.pt-0.mb-2(
             hide-details,
             dense,
             prepend-icon="sort",
-            v-model="currentSortKey",
-            :items="['Start', 'Cost']"
+            v-model="selectedSortKey",
+            :items="sortItems",
+            item-value="id",
+            item-text="label",
           )
 
     v-divider
@@ -59,6 +61,7 @@ export default {
       originalEvents: [],
       months: [],
       selectedMonths: [],
+      selectedSortKey: 'start',
       larpCountByMonth: {},
     }
   },
@@ -72,9 +75,25 @@ export default {
       }
       return 'check_box_outline_blank'
     },
+    sortItems () {
+      return [
+        { id: 'cost', label: 'Sort by price' },
+        { id: 'start', label: 'Sort by date' },
+      ]
+    },
     events () {
       return this.originalEvents.filter((event) => {
         return this.selectedMonths.includes(this.monthId(event.start))
+      }).sort((eventA, eventB) => {
+        const sortKey = this.selectedSortKey
+        switch (sortKey) {
+          case 'start':
+            return eventA.start.diff(eventB.start)
+          default:
+            if (eventA[sortKey] == null) return 1
+            if (eventB[sortKey] == null) return -1
+            return eventA[sortKey] - eventB[sortKey]
+        }
       })
     },
   },

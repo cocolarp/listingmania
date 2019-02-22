@@ -36,6 +36,10 @@ v-card(hover, elevation-4)
           v-icon(small) timelapse
           span &nbsp;
           span.caption {{ event.humanDuration }}
+        v-flex(xs12, v-if="event.languages").pt-1
+          v-icon(small) language
+          span &nbsp;
+          span.caption {{ event.languages }}
 </template>
 
 <script>
