@@ -11,12 +11,24 @@ v-app
   v-footer(app).pa-3
       div &copy; 2019 CocoLarp
       v-spacer
-      v-flex.xs2
+      v-flex.xs3
         v-select.xs4.compact-form(
           dense,
           prepend-icon="language",
           v-model="selectedLanguage",
           :items="languages",
+          item-value="id",
+          item-text="label",
+        )
+      v-flex.xs3
+        v-select.xs4.compact-form(
+          dense,
+          prepend-icon="money",
+          v-model="selectedCurrency",
+          :items="currencies",
+          item-value="id",
+          :item-text="currencyLabel",
+          @change="updateCurrency",
         )
 
 </template>
@@ -28,16 +40,41 @@ import { CURRENCY_SYMBOLS } from 'src/enums'
 import router from 'src/routes'
 import { getBrowserLanguage } from 'src/lang_utils'
 
+import { computeConversionTable } from 'src/models'
+
 export default {
   components: {
   },
   data: function () {
     return {
-      languages: ['French', 'English'],
-      selectedLanguage: ['French'],
+      languages: [
+        { id: 'fr_FR', label: 'Français' },
+        { id: 'en_US', label: 'English' },
+      ],
+      selectedLanguage: 'fr_FR',
+      currencies: [
+        { id: 'CAD', symbol: '$', label: 'Canadian Dollar' },
+        { id: 'CHF', symbol: 'CHF', label: 'Swiss Franc' },
+        { id: 'DKK', symbol: 'kr', label: 'Danish Krone' },
+        { id: 'EUR', symbol: '€', label: 'Euro' },
+        { id: 'GBP', symbol: '£', label: 'British Pound' },
+        { id: 'NOK', symbol: 'kr', label: 'Norwegian Krone' },
+        { id: 'RUB', symbol: '₽', label: 'Ruble' },
+        { id: 'SEK', symbol: 'kr', label: 'Swedish Krona' },
+        { id: 'USD', symbol: '$', label: 'US Dollar' },
+      ],
+      selectedCurrency: 'EUR',
     }
   },
   methods: {
+    currencyLabel (item) {
+      return `${item.label} (${item.symbol})`
+    },
+    async updateCurrency (currencyCode) {
+      const conversionTable = await computeConversionTable(currencyCode) // this is cached
+      this.$store.commit('setCurrency', { currency: currencyCode, table: conversionTable })
+      this.$store.commit('updateCosts')
+    },
     goHome () {
       router.push({ name: 'home', query: this.$route.query })
     },
@@ -84,7 +121,6 @@ export default {
       canSwitchCurrencies (state) {
         return Object.keys(state.conversionTable).length > 1
       },
-      selectedCurrency: 'currency',
       displayName (state) {
         if (state.user) {
           return state.user.username

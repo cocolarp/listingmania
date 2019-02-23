@@ -15,7 +15,7 @@ div.fill-height
       v-list-tile(slot='prepend-item', ripple, @click='toggleMonths')
         v-list-tile-action
           v-icon {{ selectAllIcon }}
-        v-list-tile-title Select All ({{ originalEvents.length }})
+        v-list-tile-title Select All ({{ storeEvents.length }})
       v-divider.mt-2(slot='prepend-item')
       template(slot='selection', slot-scope='{ item, index }')
         v-chip(v-if='index === 0')
@@ -88,7 +88,6 @@ export default {
   data: function () {
     return {
       map: null,
-      originalEvents: [],
       months: [],
       selectedMonths: [],
       selectedSortKey: 'start',
@@ -111,8 +110,11 @@ export default {
         { id: 'start', label: 'Sort by date' },
       ]
     },
+    storeEvents () {
+      return this.$store.state.events
+    },
     events () {
-      return this.originalEvents.filter((event) => {
+      return this.storeEvents.filter((event) => {
         return this.selectedMonths.includes(this.monthId(event.start))
       }).sort((eventA, eventB) => {
         const sortKey = this.selectedSortKey
@@ -182,12 +184,12 @@ export default {
     })
 
     Backent.getEvents().then((rawEvents) => {
-      this.originalEvents = transformBackentData(
+      const events = transformBackentData(
         rawEvents,
         this.$store.state.currency,
         this.$store.state.conversionTable,
       )
-      this.originalEvents.forEach((event) => {
+      events.forEach((event) => {
         this.larpCountByMonth[this.monthId(event.start)] += 1
         const marker = new google.maps.Marker({ // eslint-disable-line no-new
           position: event.coords,
@@ -195,7 +197,7 @@ export default {
           title: event.name,
           icon: getMapIcon()
         })
-        event.marker = marker
+        event.marker = marker  // save marker on the event
         marker.addListener('click', () => {
           this.localizeEvent(event)
           // Scroll to the card
@@ -205,6 +207,7 @@ export default {
           event.shake = true
           setTimeout(() => event.shake = false, 500)
         })
+        this.$store.commit('registerEvents', events)
       })
     })
   },

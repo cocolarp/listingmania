@@ -3,7 +3,7 @@ v-card(hover, elevation-4, :class="{'selected': event.selected}")
   v-img(height='150px')
     v-container
       v-layout(row)
-        v-flex(xs10).pa-0
+        v-flex(xs9).pa-0
           .subheading.grey--text.d-inline {{ event.name }}
         v-spacer
         .subheading.grey--text.d-inline {{ event.readable_cost }}
