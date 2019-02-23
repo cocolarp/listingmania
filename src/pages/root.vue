@@ -12,7 +12,7 @@ v-app
       div &copy; 2019 CocoLarp
       v-spacer
       v-flex.xs2
-        v-select.xs4(
+        v-select.xs4.compact-form(
           dense,
           prepend-icon="language",
           v-model="selectedLanguage",

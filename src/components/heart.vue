@@ -1,44 +1,24 @@
 <template lang="pug">
-.heart(:style="{color: heartColor}")
-  span(
-    :data-balloon="popupText",
-    data-balloon-pos="up",
-    @mouseenter="doHighlightHeart()",
-    @mouseleave="resetHeart()"
-    v-on:click.stop.prevent="likeEvent()"
-  ) &#x2764;
+v-btn(flat, icon, color='red', @click.stop.prevent="likeEvent()")
+  v-icon(small) {{ heartIcon }}
+  span &nbsp;{{ event.like_count }}
 </template>
 
 <script>
-import 'balloon-css'
-
 export default {
   props: ['event'],
-  data: function () {
-    return {
-      highlightHeart: false,
-    }
-  },
   computed: {
-    popupText () {
-      return this.$gettext('Ajouter à mes GNs favoris')
-    },
     isLiked () {
       return this.$store.getters.isLiked(this.event)
     },
-    heartColor () {
-      if (this.highlightHeart) return '#333'
-      if (this.isLiked) return '#D16E47'
-      return '#999'
+    heartIcon () {
+      if (this.isLiked) {
+        return 'favorite'
+      }
+      return 'favorite_border'
     },
   },
   methods: {
-    doHighlightHeart () {
-      this.highlightHeart = true
-    },
-    resetHeart () {
-      this.highlightHeart = false
-    },
     likeEvent: function () {
       this.$ga.event({
         eventCategory: 'LikeButton',
@@ -47,8 +27,12 @@ export default {
       if (!this.$store.state.user) {
         this.$store.commit('showLoginForm', true)
       } else {
-        this.event.doLike().then(() => {
-          this.resetHeart()
+        this.event.doLike().then((isLiked) => {
+          if (isLiked) {
+            this.event.like_count += 1
+          } else {
+            this.event.like_count -= 1
+          }
         })
       }
     },
@@ -57,9 +41,4 @@ export default {
 </script>
 
 <style scoped>
-.heart {
-  cursor: pointer;
-  font-size: 1.2rem;
-  display: inline-block;
-}
 </style>

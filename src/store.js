@@ -27,7 +27,7 @@ const store = new Vuex.Store({
     isLiked: (state) => (event) => {
       if (!state.user) return false // we don't know yet
       if (!event) return false
-      return state.user.events.includes(event.id)
+      return state.user.events.includes(event.pk)
     },
   },
   mutations: {
@@ -70,14 +70,14 @@ const store = new Vuex.Store({
         state.user = value
       }
     },
-    addLike (state, slug) {
-      if (!state.user.events.includes(slug)) {
-        state.user.events.push(slug)
+    addLike (state, pk) {
+      if (!state.user.events.includes(pk)) {
+        state.user.events.push(pk)
       }
     },
-    dropLike (state, slug) {
-      if (state.user.events.includes(slug)) {
-        removeItem(state.user.events, slug)
+    dropLike (state, pk) {
+      if (state.user.events.includes(pk)) {
+        removeItem(state.user.events, pk)
       }
     },
   },

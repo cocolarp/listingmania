@@ -76,6 +76,7 @@ export function BackentEvent (raw, currency, conversionTable) {
     durationCategory: raw.event_format,
     humanDuration: humanDuration(raw.event_format),
     distance: null,
+    like_count: raw.like_count || 0,
     coords: {
         lat: raw.location.latitude,
         lng: raw.location.longitude,
@@ -91,6 +92,11 @@ export function BackentEvent (raw, currency, conversionTable) {
       .sort((a1, a2) => a1.localeCompare(a2))
       .join(', '),
     raw: raw,
+
+    // Display properties
+    selected: false,
+    shake: false,
+    dialog: false,
   }
 
   model.updateCosts = function (currency, conversionTable) {
@@ -103,12 +109,13 @@ export function BackentEvent (raw, currency, conversionTable) {
     try {
       const isLiked = await Backent.postLike(model.pk)
       if (isLiked) {
-        store.commit('addLike', model.id)
+        store.commit('addLike', model.pk)
       } else {
-        store.commit('dropLike', model.id)
+        store.commit('dropLike', model.pk)
       }
+      return isLiked
     } catch (exc) {
-      console.log(`could not like event '${model.id}`, exc)
+      console.log(`could not like event '${model.slug}`, exc)
     }
   }
 

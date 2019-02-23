@@ -37,11 +37,22 @@ div.fill-height
 
     v-divider
 
-    v-container.fix-height(fluid, ref="eventList", data-simplebar)
+    v-container.fix-height(fluid, ref="eventList", data-simplebar).pt-0
       v-layout(justify-center, column)
         v-flex(xs12 v-for="event in events", :key="event.id")
-          .localizer(:id="'event-' + event.id")
-            event-card(, :event="event")
+          .localizer(:id="'event-' + event.id", @click="centerOnMap(event)")
+            v-dialog(
+              v-model="event.dialog",
+              @keydown.esc="event.dialog = false",
+              lazy,
+              full-width
+            )
+              event-card(
+                :event="event",
+                :class="{'animate-shake': event.shake}",
+                slot="activator"
+              )
+              event-detail(:event="event")
 
   v-content.full-height.padding-bottom-36(app)
     v-container.full-height(fluid, ref="googleMap")
@@ -52,13 +63,30 @@ div.fill-height
 
 import moment from 'moment'
 
+import mapStyle from 'src/map-style.json'
 import { transformBackentData } from 'src/models'
 
 import EventCard from 'src/components/event-card.vue'
+import EventDetail from 'src/components/event-detail.vue'
 
+let previousEvent = null
+let previousMarker = null
+
+function getMapIcon (selected = false) {
+  return {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: selected ? '#E53935' : '#1976d2',
+    fillOpacity: 1.0,
+    strokeColor: '#666',
+    strokeOpacity: 0.8,
+    strokeWeight: 1,
+    scale: 8,
+  }
+}
 export default {
   data: function () {
     return {
+      map: null,
       originalEvents: [],
       months: [],
       selectedMonths: [],
@@ -115,6 +143,9 @@ export default {
         this.selectAllMonths()
       }
     },
+    centerOnMap (event) {
+      this.map.setCenter(event.coords)
+    },
   },
   created () {
     this.months = Array(13).fill(0).map((_, i) => {
@@ -127,11 +158,12 @@ export default {
   async mounted () {
     await GoogleLoad
 
-    const map = new google.maps.Map(this.$refs.googleMap, {
+    this.map = new google.maps.Map(this.$refs.googleMap, {
       zoom: 6,
       center: { lat: 48.86471, lng: 2.349014 },
       disableDefaultUI: true,
       zoomControl: true,
+      styles: mapStyle,
     })
 
     Backent.getEvents().then((rawEvents) => {
@@ -144,30 +176,38 @@ export default {
         this.larpCountByMonth[this.monthId(event.start)] += 1
         const marker = new google.maps.Marker({ // eslint-disable-line no-new
           position: event.coords,
-          map: map,
+          map: this.map,
           title: event.name,
+          icon: getMapIcon()
         })
         marker.addListener('click', () => {
+          // Switch selections
+          if (previousEvent) previousEvent.selected = false
+          event.selected = true
+          previousEvent = event
+          // Switch map icons
+          if (previousMarker) previousMarker.setIcon(getMapIcon())
+          marker.setIcon(getMapIcon(true))
+          previousMarker = marker
+          // Scroll to the card
           const eventDiv = document.getElementById(`event-${event.id}`)
           eventDiv.scrollIntoView({behavior: 'auto', block: 'start'});
+          // Shake the card
+          event.shake = true
+          setTimeout(() => event.shake = false, 500)
         })
       })
     })
   },
   components: {
     'event-card': EventCard,
+    'event-detail': EventDetail,
   },
 }
 </script>
 
 <style scoped>
 @import "src/variables.css";
-
-.compact-form {
-  /* Make our form smaller */
-  transform: scale(0.875);
-  transform-origin: left;
-}
 
 .full-height {
   height: 100%;
@@ -188,6 +228,14 @@ export default {
   /* A localizer div that also is useful to set the margins. */
   padding-top: 12px;
   margin-top: 12px;
+}
+
+.description {
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap; /* ancient Opera */
+  white-space: -o-pre-wrap; /* newer Opera */
+  white-space: pre-wrap; /* Chrome; W3C standard */
+  word-wrap: break-word; /* IE */
 }
 
 </style>

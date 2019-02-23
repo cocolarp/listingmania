@@ -1,5 +1,5 @@
 <template lang="pug">
-v-card(hover, elevation-4)
+v-card(hover, elevation-4, :class="{'selected': event.selected}")
   v-img(height='150px')
     v-container
       v-layout(row)
@@ -12,37 +12,19 @@ v-card(hover, elevation-4)
         span &nbsp;
         span.caption {{ event.start.format('ll') }}
   v-divider
-  v-card-actions.pa-2
-    v-btn(flat, icon, @click="displayDetail = !displayDetail")
-      v-icon {{ displayDetail ? 'expand_less' : 'expand_more' }}
+  v-card-actions.pl-4.pr-4
+    v-icon(small) timelapse
+    span &nbsp;
+    span.caption {{ event.humanDuration }}
     v-spacer
     v-btn(flat, icon, color='green')
       v-icon(small) share
-    v-btn(flat, icon, color='red')
-      v-icon(small) favorite_border
-  template(v-if="displayDetail")
-    v-divider
-    v-container.pa-2
-      v-layout(column)
-        v-flex(xs12).pb-1
-          v-icon(small) group
-          span &nbsp;
-          span.caption {{ event.organization }}
-        v-flex(xs12).pt-1.pb-1
-          v-icon(small) location_on
-          span &nbsp;
-          span.caption {{ croppedAddress }}
-        v-flex(xs12).pt-1
-          v-icon(small) timelapse
-          span &nbsp;
-          span.caption {{ event.humanDuration }}
-        v-flex(xs12, v-if="event.languages").pt-1
-          v-icon(small) language
-          span &nbsp;
-          span.caption {{ event.languages }}
+    heart(:event="event")
 </template>
 
 <script>
+import Heart from 'src/components/heart.vue'
+
 export default {
   props: ['event'],
   data: function () {
@@ -69,8 +51,14 @@ export default {
       return locationName.substring(0, maxLen) + '…'
     },
   },
+  components: {
+    'heart': Heart,
+  },
 }
 </script>
 
 <style scoped>
+.selected {
+  background-color: #f8f8f8;
+}
 </style>
