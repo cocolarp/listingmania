@@ -50,7 +50,8 @@ div.fill-height
               event-card(
                 :event="event",
                 :class="{'animate-shake': event.shake}",
-                slot="activator"
+                slot="activator",
+                @localize="localizeEvent",
               )
               event-detail(:event="event")
 
@@ -77,10 +78,10 @@ function getMapIcon (selected = false) {
     path: google.maps.SymbolPath.CIRCLE,
     fillColor: selected ? '#E53935' : '#1976d2',
     fillOpacity: 1.0,
-    strokeColor: '#666',
+    strokeColor: '#fff',
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    scale: 8,
+    scale: 6,
   }
 }
 export default {
@@ -144,8 +145,22 @@ export default {
       }
     },
     centerOnMap (event) {
-      this.map.setCenter(event.coords)
+      this.map.panTo(event.coords)
     },
+    selectEvent (event) {
+      // Switch selections
+      if (previousEvent) previousEvent.selected = false
+      event.selected = true
+      previousEvent = event
+      // Switch map icons
+      if (previousMarker) previousMarker.setIcon(getMapIcon())
+      event.marker.setIcon(getMapIcon(true))
+      previousMarker = event.marker
+    },
+    localizeEvent (event) {
+      this.selectEvent(event)
+      this.centerOnMap(event)
+    }
   },
   created () {
     this.months = Array(13).fill(0).map((_, i) => {
@@ -180,15 +195,9 @@ export default {
           title: event.name,
           icon: getMapIcon()
         })
+        event.marker = marker
         marker.addListener('click', () => {
-          // Switch selections
-          if (previousEvent) previousEvent.selected = false
-          event.selected = true
-          previousEvent = event
-          // Switch map icons
-          if (previousMarker) previousMarker.setIcon(getMapIcon())
-          marker.setIcon(getMapIcon(true))
-          previousMarker = marker
+          this.localizeEvent(event)
           // Scroll to the card
           const eventDiv = document.getElementById(`event-${event.id}`)
           eventDiv.scrollIntoView({behavior: 'auto', block: 'start'});

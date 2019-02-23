@@ -17,8 +17,8 @@ v-card(hover, elevation-4, :class="{'selected': event.selected}")
     span &nbsp;
     span.caption {{ event.humanDuration }}
     v-spacer
-    v-btn(flat, icon, color='green')
-      v-icon(small) share
+    v-btn(flat, icon, color='blue darken-2', @click.stop.prevent="$emit('localize', event)")
+      v-icon(small) place
     heart(:event="event")
 </template>
 
