@@ -81,7 +81,7 @@ function getMapIcon (selected = false) {
     strokeColor: '#fff',
     strokeOpacity: 0.8,
     strokeWeight: 1,
-    scale: 6,
+    scale: selected ? 8 : 6,
   }
 }
 export default {
