@@ -66,21 +66,8 @@ window.GoogleLoad = new Promise((resolve, reject) => {
     }
   }, 3000)
 })
-window.RecaptchaLoad = new Promise((resolve, reject) => {
-  let isLoaded = false
-  window.onloadCallback = function () {
-    isLoaded = true
-    resolve()
-  }
-  setTimeout(() => {
-    if (!isLoaded) {
-      console.log("Could not load Google Recaptcha.")
-    }
-  }, 3000)
-})
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&libraries=places&key=AIzaSyCDjYyOPVtg43sXCTvJtdHtlJySKa4EN0I" async defer></script>
-    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
   </body>
 </html>
