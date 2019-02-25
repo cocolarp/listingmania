@@ -1,12 +1,24 @@
 <template lang="pug">
 v-app
+  v-dialog(
+    lazy,
+    content-class="no-box-shadow",
+    v-model="loginFormDisplayed",
+    @keydown.esc="closeLoginForm",
+  )
+    login-form(@close="closeLoginForm")
   v-toolbar(app, clipped-left, dense, fixed, dark, color='primary')
     v-toolbar-side-icon
       img(height='28', src='~src/assets/small-logo.png')
     v-toolbar-title.white--text Cocolarp
     v-spacer
-    v-btn(icon)
-      v-icon account_circle
+    v-menu(offset-y, v-if="$store.state.user")
+      v-btn(slot="activator", flat) {{ $store.state.user.username }}
+      v-list
+        v-list-tile(@click="$store.commit('setUser', null)")
+          v-list-tile-title Sign out
+    template(v-else)
+      v-btn(flat, @click="showLoginForm") Connect
   router-view
   v-footer(app).pa-3
       div &copy; 2019 CocoLarp
@@ -40,11 +52,11 @@ import { CURRENCY_SYMBOLS } from 'src/enums'
 import router from 'src/routes'
 import { getBrowserLanguage } from 'src/lang_utils'
 
+import LoginForm from 'src/components/login-form.vue'
+
 import { computeConversionTable } from 'src/models'
 
 export default {
-  components: {
-  },
   data: function () {
     return {
       languages: [
@@ -63,10 +75,19 @@ export default {
         { id: 'SEK', symbol: 'kr', label: 'Swedish Krona' },
         { id: 'USD', symbol: '$', label: 'US Dollar' },
       ],
-      selectedCurrency: 'EUR',
+      selectedCurrency: this.$store.state.currency,
     }
   },
   methods: {
+    showLoginForm () {
+      this.$store.commit('showLoginForm', true)
+    },
+    showSignupForm () {
+      this.$store.commit('showLoginForm', true)
+    },
+    closeLoginForm () {
+      this.$store.commit('showLoginForm', false)
+    },
     currencyLabel (item) {
       return `${item.label} (${item.symbol})`
     },
@@ -131,6 +152,9 @@ export default {
       logoutFormDisplayed: 'logoutFormDisplayed',
       currencyFormDisplayed: 'currencyFormDisplayed',
     }),
+  },
+  components: {
+    'login-form': LoginForm,
   },
 }
 </script>

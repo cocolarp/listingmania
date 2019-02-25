@@ -1,3 +1,7 @@
+html {
+  overflow: hidden;
+}
+
 .compact-form {
   /* Make our form smaller */
   transform: scale(0.875);
@@ -34,3 +38,8 @@
   word-wrap: break-word; /* IE */
 }
 
+.no-box-shadow {
+  /* In this context the automatic backdrop creates a visual glitch; remove it */
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
