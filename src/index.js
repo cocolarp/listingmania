@@ -78,16 +78,6 @@ async function bootstrapApplication () {
     })
   })
 
-  document.addEventListener('click', (event) => {
-    let item = event.target.closest('.button')
-    if (item) {
-      item.classList.add('pop-animate')
-      setTimeout(() => {
-        item.classList.remove('pop-animate')
-      }, 1000)
-    }
-  })
-
   new Vue( // eslint-disable-line no-new
     Object.assign({
       el: '#content',
