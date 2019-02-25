@@ -18,7 +18,7 @@ v-app
         v-list-tile(@click="$store.commit('setUser', null)")
           v-list-tile-title(v-translate) Sign out
     template(v-else)
-      v-btn(flat, @click="showLoginForm", v-translate) Connect
+      v-btn(flat, @click="showLoginForm") {{ loginLabel }}
   router-view
   v-footer(app).pa-3
       div &copy; 2019 CocoLarp
@@ -142,6 +142,7 @@ export default {
     },
   },
   computed: {
+    loginLabel () { return this.$gettext('Login') },
     selectedCurrencySymbol () {
       return CURRENCY_SYMBOLS[this.selectedCurrency]
     },
