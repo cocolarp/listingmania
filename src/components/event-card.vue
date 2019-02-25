@@ -1,6 +1,6 @@
 <template lang="pug">
 v-card(hover, elevation-4, :class="{'selected': event.selected}")
-  v-img(height='150px')
+  v-img(height='200px')
     v-container
       v-layout(row)
         v-flex(xs9).pa-0
@@ -11,6 +11,8 @@ v-card(hover, elevation-4, :class="{'selected': event.selected}")
         v-icon(small) calendar_today
         span &nbsp;
         span.caption {{ event.start.format('ll') }}
+      v-layout(row).mt-2
+        .description.caption {{ event.summary }}
   v-divider
   v-card-actions.pl-4.pr-4
     v-icon(small) timelapse

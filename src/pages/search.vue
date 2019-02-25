@@ -242,12 +242,4 @@ export default {
   margin-top: 12px;
 }
 
-.description {
-  white-space: -moz-pre-wrap; /* Firefox */
-  white-space: -pre-wrap; /* ancient Opera */
-  white-space: -o-pre-wrap; /* newer Opera */
-  white-space: pre-wrap; /* Chrome; W3C standard */
-  word-wrap: break-word; /* IE */
-}
-
 </style>
