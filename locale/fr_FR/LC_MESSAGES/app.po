@@ -18,17 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 2.0.6\n"
 
-msgid "(à confirmer)"
-msgstr ""
+msgid "(to be confirmed)"
+msgstr "(à confirmer)"
 
-msgid "2 ou 3 jours"
-msgstr ""
+msgid "2 to 3 days"
+msgstr "2 à 3 jours"
 
-msgid "Adapté PMR"
-msgstr ""
-
-msgid "Adapté aux débutants"
-msgstr ""
+msgid "A day"
+msgstr "Une journée"
 
 msgid "Afrikanns"
 msgstr ""
@@ -45,6 +42,9 @@ msgstr ""
 msgid "Basque"
 msgstr ""
 
+msgid "Beginner friendly"
+msgstr "Débutants bienvenus"
+
 msgid "Bengali"
 msgstr ""
 
@@ -54,6 +54,9 @@ msgstr ""
 msgid "Cambodian"
 msgstr ""
 
+msgid "Cancel"
+msgstr "Annuler"
+
 msgid "Catalan"
 msgstr ""
 
@@ -61,7 +64,13 @@ msgid "Chinese (Mandarin)"
 msgstr ""
 
 msgid "CoCoLarp - Communauté Collaborative pour le GN"
-msgstr ""
+msgstr "CoCoLarp - Communauté Collaborative pour le GN"
+
+msgid "Confirm password"
+msgstr "Confirmer"
+
+msgid "Connect"
+msgstr "Connexion"
 
 msgid "Croatian"
 msgstr ""
@@ -74,6 +83,12 @@ msgstr ""
 
 msgid "Dutch"
 msgstr ""
+
+msgid "E-Mail"
+msgstr ""
+
+msgid "E-mail must be valid"
+msgstr "L'email doit être valide"
 
 msgid "English"
 msgstr ""
@@ -141,11 +156,11 @@ msgstr ""
 msgid "Latvian"
 msgstr ""
 
-msgid "Lieu à déterminer"
-msgstr ""
-
 msgid "Lithuanian"
 msgstr ""
+
+msgid "Login"
+msgstr "Connexion"
 
 msgid "Macedonian"
 msgstr ""
@@ -165,11 +180,14 @@ msgstr ""
 msgid "Marathi"
 msgstr ""
 
-msgid "Mineurs bienvenus"
-msgstr ""
-
 msgid "Mongolian"
 msgstr ""
+
+msgid "More than 3 days"
+msgstr "Plus de 3 jours"
+
+msgid "Name must be more than 4 characters long"
+msgstr "Le nom d'utilisateur doit comporter plus de 4 caractères"
 
 msgid "Nepali"
 msgstr ""
@@ -177,11 +195,20 @@ msgstr ""
 msgid "Norwegian"
 msgstr ""
 
+msgid "PWD friendly"
+msgstr "Adapté PMR"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Password must be more than 6 characters long"
+msgstr "Le mot de passe doit comporter plus de 6 caractères"
+
 msgid "Persian"
 msgstr ""
 
-msgid "Plus de 3 jours"
-msgstr ""
+msgid "Place to be confirmed"
+msgstr "Lieu à déterminer"
 
 msgid "Polish"
 msgstr ""
@@ -204,8 +231,17 @@ msgstr ""
 msgid "Samoan"
 msgstr ""
 
+msgid "Select All"
+msgstr "Tout sélectionner"
+
 msgid "Serbian"
 msgstr ""
+
+msgid "Sign out"
+msgstr "Déconnexion"
+
+msgid "Sign up"
+msgstr "S'enregistrer"
 
 msgid "Slovak"
 msgstr ""
@@ -213,7 +249,16 @@ msgstr ""
 msgid "Slovenian"
 msgstr ""
 
+msgid "Sort by date"
+msgstr "Trier par date"
+
+msgid "Sort by price"
+msgstr "Trier par prix"
+
 msgid "Spanish"
+msgstr ""
+
+msgid "Submit"
 msgstr ""
 
 msgid "Swahili"
@@ -246,8 +291,8 @@ msgstr ""
 msgid "Ukranian"
 msgstr ""
 
-msgid "Une journée"
-msgstr ""
+msgid "Underage friendly"
+msgstr "Adapté aux mineurs"
 
 msgid "Urdu"
 msgstr ""
@@ -263,6 +308,9 @@ msgstr ""
 
 msgid "Xhosa"
 msgstr ""
+
+msgid "others"
+msgstr "autres"
 
 msgid "this"
 msgstr ""

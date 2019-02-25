@@ -16,9 +16,9 @@ v-app
       v-btn(slot="activator", flat) {{ $store.state.user.username }}
       v-list
         v-list-tile(@click="$store.commit('setUser', null)")
-          v-list-tile-title Sign out
+          v-list-tile-title(v-translate) Sign out
     template(v-else)
-      v-btn(flat, @click="showLoginForm") Connect
+      v-btn(flat, @click="showLoginForm", v-translate) Connect
   router-view
   v-footer(app).pa-3
       div &copy; 2019 CocoLarp
@@ -31,6 +31,7 @@ v-app
           :items="languages",
           item-value="id",
           item-text="label",
+          @change="updateLanguage",
         )
       v-flex.xs3
         v-select.xs4.compact-form(
@@ -46,6 +47,8 @@ v-app
 </template>
 
 <script>
+/* global Vue */
+
 import { mapState } from 'vuex'
 
 import { CURRENCY_SYMBOLS } from 'src/enums'
@@ -60,10 +63,10 @@ export default {
   data: function () {
     return {
       languages: [
-        { id: 'fr_FR', label: 'Français' },
-        { id: 'en_US', label: 'English' },
+        { id: 'fr', label: 'Français' },
+        { id: 'en', label: 'English' },
       ],
-      selectedLanguage: 'fr_FR',
+      selectedLanguage: getBrowserLanguage(),
       currencies: [
         { id: 'CAD', symbol: '$', label: 'Canadian Dollar' },
         { id: 'CHF', symbol: 'CHF', label: 'Swiss Franc' },
@@ -95,6 +98,10 @@ export default {
       const conversionTable = await computeConversionTable(currencyCode) // this is cached
       this.$store.commit('setCurrency', { currency: currencyCode, table: conversionTable })
       this.$store.commit('updateCosts')
+    },
+    async updateLanguage (lang) {
+      console.log("changing language to", lang)
+      Vue.config.language = lang
     },
     goHome () {
       router.push({ name: 'home', query: this.$route.query })

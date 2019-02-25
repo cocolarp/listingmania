@@ -34,6 +34,8 @@ window.Backent = client
 
 const locale = getCurrentlySupportedLocale()
 
+window.Vue = Vue
+
 Vue.use(Vuetify)
 
 Vue.use(GetTextPlugin, {

@@ -47,10 +47,10 @@ export const CURRENCY_SYMBOLS = {
 }
 
 export const TAG_LABELS = {
-  'beginner_friendly': $gettext('Adapté aux débutants'),
-  'pwd_friendly': $gettext('Adapté PMR'),
+  'beginner_friendly': $gettext('Beginner friendly'),
+  'pwd_friendly': $gettext('PWD friendly'),
   'international': $gettext('International'),
-  'underage_friendly': $gettext('Mineurs bienvenus'),
+  'underage_friendly': $gettext('Underage friendly'),
 }
 
 export const AVAILABLE_CURRENCIES = Object.keys(CURRENCY_SYMBOLS)

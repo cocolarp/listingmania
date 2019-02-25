@@ -15,12 +15,15 @@ div.fill-height
       v-list-tile(slot='prepend-item', ripple, @click='toggleMonths')
         v-list-tile-action
           v-icon {{ selectAllIcon }}
-        v-list-tile-title Select All ({{ storeEvents.length }})
+        v-list-tile-title
+          span(v-translate) Select All
+          span &nbsp;({{ storeEvents.length }})
       v-divider.mt-2(slot='prepend-item')
       template(slot='selection', slot-scope='{ item, index }')
         v-chip(v-if='index === 0')
           span {{ monthLabel(item) }}
-        span.grey--text.caption(v-if='index === 1') (+{{ selectedMonths.length - 1 }} others)
+        span.grey--text.caption(v-if='index === 1')
+          | (+{{ selectedMonths.length - 1 }} {{ moreMonthsLabel }})
 
     v-container(fluid).pb-0.pt-0.blue-grey.lighten-5
       v-layout(row)
@@ -60,7 +63,7 @@ div.fill-height
 </template>
 
 <script>
-/* global Backent, GoogleLoad */
+/* global Backent, GoogleLoad, Vue */
 
 import moment from 'moment'
 
@@ -95,6 +98,9 @@ export default {
     }
   },
   computed: {
+    currentLocale () {
+      return Vue.config.language
+    },
     allMonthsSelected () {
       return (this.selectedMonths.length === this.months.length)
     },
@@ -106,10 +112,11 @@ export default {
     },
     sortItems () {
       return [
-        { id: 'cost', label: 'Sort by price' },
-        { id: 'start', label: 'Sort by date' },
+        { id: 'cost', label: this.$gettext('Sort by price') },
+        { id: 'start', label: this.$gettext('Sort by date') },
       ]
     },
+    moreMonthsLabel () { return this.$gettext('others') },
     storeEvents () {
       return this.$store.state.events
     },
@@ -135,6 +142,13 @@ export default {
     },
     monthLabel (month) {
       return `${month.format('MMMM YYYY')} (${this.larpCountByMonth[this.monthId(month)]})`
+    },
+    generateMonths () {
+      this.months = Array(13).fill(0).map((_, i) => {
+        const currentMonth = moment().add(i, 'months')
+        this.larpCountByMonth[this.monthId(currentMonth)] = 0
+        return currentMonth
+      })
     },
     selectAllMonths () {
       this.selectedMonths = this.months.slice().map(this.monthId)
@@ -165,11 +179,7 @@ export default {
     }
   },
   created () {
-    this.months = Array(13).fill(0).map((_, i) => {
-      const currentMonth = moment().add(i, 'months')
-      this.larpCountByMonth[this.monthId(currentMonth)] = 0
-      return currentMonth
-    })
+    this.generateMonths()
     this.selectAllMonths()
   },
   async mounted () {
@@ -210,6 +220,12 @@ export default {
         this.$store.commit('registerEvents', events)
       })
     })
+  },
+  watch: {
+    currentLocale: function (newLocale) {
+      moment.locale(newLocale)
+      this.generateMonths()
+    }
   },
   components: {
     'event-card': EventCard,

@@ -14,11 +14,11 @@ import * as enums from 'src/enums'
 function humanDuration (fmt) {
   switch (fmt) {
     case enums.DURATION_SHORT:
-      return $gettext('Une journée')
+      return $gettext('A day')
     case enums.DURATION_MEDIUM:
-      return $gettext('2 ou 3 jours')
+      return $gettext('2 to 3 days')
     default:
-      return $gettext('Plus de 3 jours')
+      return $gettext('More than 3 days')
   }
 }
 

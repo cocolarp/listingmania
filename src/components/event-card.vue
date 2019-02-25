@@ -44,13 +44,13 @@ export default {
       return this.$gettext(this.event.humanDuration)
     },
     croppedAddress () {
-      if (!this.event.raw.location) return this.$gettext('Lieu à déterminer')
+      if (!this.event.raw.location) return this.$gettext('Place to be confirmed')
 
       let locationName = this.event.raw.location.name
       if (!locationName) return ''
 
       if (!this.event.raw.location.address) {
-        locationName = locationName + ' ' + this.$gettext('(à confirmer)')
+        locationName = locationName + ' ' + this.$gettext('(to be confirmed)')
       }
       const maxLen = 50
 

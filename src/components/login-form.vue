@@ -5,9 +5,9 @@ v-container
       v-card.elevation-12
         v-toolbar(dark, color='primary')
           v-toolbar-title
-            v-btn(flat, @click="signupMode = false") Login
+            v-btn(flat, @click="signupMode = false") {{ loginLabel }}
           v-spacer
-          v-btn(flat, color="orange accent-2", @click="signupMode = true") Sign up
+          v-btn(flat, color="orange accent-2", @click="signupMode = true") {{ signupLabel }}
         v-card-text
           v-form(v-model="isValid")
             v-text-field(
@@ -15,7 +15,7 @@ v-container
               name='login',
               v-model="username",
               :rules="usernameRules",
-              label='Login',
+              :label='loginLabel',
               type='text',
               required,
             )
@@ -25,7 +25,7 @@ v-container
               :rules="emailRules",
               name='email',
               v-model="email",
-              label='E-Mail',
+              :label='emailLabel',
               type='text',
               required,
             )
@@ -33,7 +33,7 @@ v-container
               prepend-icon='lock',
               name='password',
               v-model="password",
-              label='Password',
+              :label='passwordLabel',
               type='password',
               :rules="passwordRules",
               required,
@@ -44,17 +44,18 @@ v-container
               name='password',
               v-model="password2",
               :rules="passwordRules2",
-              label='Password',
+              :label='confimationLabel',
               type='password',
               required,
             )
         v-card-actions
           v-spacer
-          v-btn(color='green darken-1', flat='flat', @click="$emit('close')") Cancel
+          v-btn(color='green darken-1', flat='flat', @click="$emit('close')", v-translate) Cancel
           v-btn(
             color='primary',
             @click="submit",
             :disabled="!isValid",
+            v-translate,
           ) Submit
 </template>
 
@@ -70,24 +71,29 @@ export default {
       password: null,
       password2: null,
       signupMode: false,
-      usernameRules: [
-        v => !!v || 'Name is required',
-        v => (v && v.length > 4) || 'Name must be more than 4 characters long'
-      ],
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid'
-      ],
-      passwordRules: [
-        v => !!v || 'Password is required',
-        v => (v && v.length > 6) || 'Password must be more than 6 characters long'
-      ],
     }
   },
   computed: {
+    usernameRules () { return [
+      v => !!v || 'Name is required',
+      v => (v && v.length > 4) || this.$gettext('Name must be more than 4 characters long')
+    ]},
+    emailRules () { return [
+      v => !!v || 'E-mail is required',
+      v => /.+@.+/.test(v) || this.$gettext('E-mail must be valid')
+    ]},
+    passwordRules () { return [
+      v => !!v || 'Password is required',
+      v => (v && v.length > 6) || this.$gettext('Password must be more than 6 characters long')
+    ]},
     passwordRules2 () {
       return [(v) => (!!v && v) === this.password || 'Values do not match']
     },
+    loginLabel () { return this.$gettext('Login') },
+    signupLabel () { return this.$gettext('Sign up') },
+    emailLabel () { return this.$gettext('E-Mail') },
+    passwordLabel () { return this.$gettext('Password') },
+    confimationLabel () { return this.$gettext('Confirm password') },
   },
   methods: {
     async submit () {
