@@ -1,4 +1,2 @@
-include node_modules/systematic/mk/main.mk
-
-deploy: clean dist
-	rsync -avz --delete -e ssh dist/ myserver:projects/www.cocolarp.com/dist/
+deploy:
+	rsync -avz --delete -e ssh dist/ myserver:projects/www.cocolarp.com/frozen/
